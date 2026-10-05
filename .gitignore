@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+/build/
+/dist/
+/*.build/
+/*.dist/
+/data/
+/staad_dj_settings.json
+/data/pdf_metadata_cache.json

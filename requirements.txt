@@ -1,0 +1,10 @@
+customtkinter
+Pillow
+openpyxl
+pyautocad
+ezdxf
+comtypes
+pywin32
+PyMuPDF
+numpy
+PyInstaller
