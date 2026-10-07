@@ -1,57 +1,30 @@
 # -*- mode: python ; coding: utf-8 -*-
-
-
+# A directory build avoids extracting the Qt runtime on every launch.
 a = Analysis(
     ["CivTools.py"],
     pathex=["src"],
     binaries=[],
     datas=[
         ("assets/icons/logo.ico", "assets/icons"),
-        ("assets/icons/dxf_extractor.png", "assets/icons"),
-        ("assets/icons/dj_parameter.png", "assets/icons"),
-        ("assets/icons/pipe_rack.png", "assets/icons"),
-        ("assets/icons/autocad_mapper.png", "assets/icons"),
-        ("assets/icons/standards_library.png", "assets/icons"),
-        ("assets/icons/video-tutorial.png", "assets/icons"),
-        ("assets/icons/file_icon.png", "assets/icons"),
-        ("assets/icons/excel_icon.png", "assets/icons"),
-        ("assets/images/background4.png", "assets/images"),
-        ("assets/images/snap.png", "assets/images"),
-        ("assets/images/snap2.png", "assets/images"),
+        ("fonts/Poppins/Poppins-Regular.ttf", "fonts/Poppins"),
+        ("fonts/Poppins/Poppins-SemiBold.ttf", "fonts/Poppins"),
+        ("fonts/Poppins/Poppins-Bold.ttf", "fonts/Poppins"),
+        ("fonts/Poppins/OFL.txt", "fonts/Poppins"),
     ],
-    # Keep the optional tools available while their heavy modules load on demand.
-    hiddenimports=[
-        "civtools.autocad_plotter",
-        "civtools.dj_parameter_assigner",
-        "civtools.drawing_manager",
-        "civtools.dxf_extractor_app",
-        "civtools.piperack_generator",
-    ],
+    hiddenimports=["civtools.core.mapper", "civtools.core.dj", "civtools.core.quantities", "civtools.core.piperack"],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
+    excludes=["tkinter", "customtkinter", "PyQt5", "PyQt6"],
     noarchive=False,
     optimize=0,
 )
 pyz = PYZ(a.pure)
-
 exe = EXE(
-    pyz,
-    a.scripts,
-    a.binaries,
-    a.datas,
-    [],
-    name="CivTools",
-    debug=False,
-    bootloader_ignore_signals=False,
-    strip=False,
-    upx=False,
-    console=False,
+    pyz, a.scripts, [], exclude_binaries=True,
+    name="CivTools", debug=False, bootloader_ignore_signals=False,
+    strip=False, upx=False, console=False,
     disable_windowed_traceback=False,
-    argv_emulation=False,
-    target_arch=None,
-    codesign_identity=None,
-    entitlements_file=None,
     icon=["assets/icons/logo.ico"],
 )
+coll = COLLECT(exe, a.binaries, a.datas, strip=False, upx=False, name="CivTools")

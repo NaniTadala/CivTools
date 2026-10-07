@@ -1,0 +1,32 @@
+{
+  "source": {
+    "passed": true,
+    "failures": [],
+    "pdf_rendered": true,
+    "tools": [
+      "quantities",
+      "dj",
+      "rack",
+      "mapper",
+      "library"
+    ],
+    "exit_code": 0,
+    "seconds": 4.46
+  },
+  "packaged": {
+    "passed": true,
+    "failures": [],
+    "pdf_rendered": true,
+    "tools": [
+      "quantities",
+      "dj",
+      "rack",
+      "mapper",
+      "library"
+    ],
+    "exit_code": 0,
+    "seconds": 5.93
+  },
+  "executable_sha256": "13cf74823cd642502a4bf2ac1d42ffab99e013594bdf386c536994b865d4f370",
+  "distribution_bytes": 198727185
+}

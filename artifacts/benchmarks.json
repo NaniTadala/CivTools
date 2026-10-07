@@ -1,0 +1,16 @@
+{
+  "typical_rack": {
+    "nodes": 68,
+    "beams": 104,
+    "median_ms": 0.24
+  },
+  "large_rack": {
+    "nodes": 9160,
+    "beams": 24320,
+    "median_ms": 61.25
+  },
+  "workbook_validation": {
+    "rows": 10000,
+    "ms": 1549.99
+  }
+}
