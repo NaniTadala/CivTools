@@ -49,9 +49,8 @@ class Job(QRunnable):
                 self.signals.event.emit(kind, value)
         try:
             if self.cad:
-                            # Use a more specific message for STAAD.Pro operations (serialized COM access)
-                            self.signals.event.emit("stage", "Connecting to STAAD.Pro…")
-                            with _cad_lock:
+                self.signals.event.emit("stage", "Connecting to CAD…")
+                with _cad_lock:
                     import pythoncom
                     pythoncom.CoInitialize()
                     try:

@@ -11,7 +11,7 @@ from PySide6.QtCore import Qt, QAbstractTableModel, QModelIndex, QSortFilterProx
 from PySide6.QtGui import QColor, QDesktopServices, QFont, QPixmap, QSyntaxHighlighter, QTextCharFormat
 from PySide6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QFormLayout, QLineEdit,
-    QDoubleSpinBox, QSpinBox, QComboBox, QFileDialog, QListWidget, QStyledItemDelegate,
+    QDoubleSpinBox, QSpinBox, QComboBox, QFileDialog, QListWidget,
     QPlainTextEdit, QProgressBar, QScrollArea, QMessageBox, QTableView,
     QHeaderView, QAbstractItemView, QSplitter, QInputDialog, QTableWidget, QTableWidgetItem,
     QTabWidget,
@@ -786,33 +786,6 @@ class DJPage(ToolPage):
         table = QTableView()
         table.setAccessibleName(title)
         table.setModel(self.models[kind])
-        # Use a delegate for numeric value entry to provide a consistent spinbox editor
-        class NumericDelegate(QStyledItemDelegate):
-            def __init__(self, minimum=-1e12, maximum=1e12, decimals=4, parent=None):
-                super().__init__(parent)
-                self.minimum = minimum
-                self.maximum = maximum
-                self.decimals = decimals
-
-            def createEditor(self, parent, option, index):
-                editor = QDoubleSpinBox(parent)
-                editor.setDecimals(self.decimals)
-                editor.setRange(self.minimum, self.maximum)
-                editor.setButtonSymbols(QDoubleSpinBox.ButtonSymbols.NoButtons)
-                editor.setFrame(False)
-                return editor
-
-            def setEditorData(self, editor, index):
-                value = index.model().data(index, Qt.ItemDataRole.EditRole)
-                try:
-                    editor.setValue(float(value))
-                except Exception:
-                    editor.setValue(0.0)
-
-            def setModelData(self, editor, model, index):
-                model.setData(index, editor.value(), Qt.ItemDataRole.EditRole)
-
-        table.setItemDelegateForColumn(2, NumericDelegate(decimals=4))
         table.setAlternatingRowColors(True)
         table.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
         table.verticalHeader().setVisible(False)
