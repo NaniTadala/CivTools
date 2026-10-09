@@ -166,7 +166,7 @@ class ToolIllustration(QWidget):
         self.kind = kind
         self.setFixedSize(86, 64)
         self.setAccessibleName(f"{kind} engineering illustration")
-        self.setToolTip({"mapper": "Excel coordinates → AutoCAD geometry", "dj": "STAAD.Pro DJ parameters",
+        self.setToolTip({"mapper": "Excel coordinates → AutoCAD geometry", "dj": "STAAD.Pro concrete and steel design parameters",
                          "rack": "STAAD.Pro pipe rack modeling", "quantities": "DXF drawings → Excel quantities",
                          "library": "EIL engineering standards"}[kind])
 

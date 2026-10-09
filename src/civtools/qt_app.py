@@ -14,7 +14,7 @@ from .jobs import PdfProcess, Job
 
 TOOLS = (
     ("quantities", "DXF quantity extractor", "Quantities", "Extract drawing quantities and consolidate them in Excel.", "DXF / EXCEL"),
-    ("dj", "DJ parameter assigner", "Modeling", "Assign DJ parameters to physical members in STAAD.Pro.", "STAAD.PRO"),
+    ("dj", "STAAD parameter generator", "Modeling", "Generate concrete and steel design commands for the active STAAD.Pro model.", "STAAD.PRO"),
     ("rack", "Pipe rack modeler", "Modeling", "Configure grids, tiers and bracing for a STAAD model.", "STAAD.PRO"),
     ("mapper", "AutoCAD smart mapper", "Drawings", "Plot spreadsheet coordinates and labels in AutoCAD.", "EXCEL / CAD"),
     ("library", "EIL standards library", "Documents", "Find, preview and open engineering standards.", "PDF LIBRARY"),
@@ -170,7 +170,7 @@ class UtilityWindow(QMainWindow):
         title = next(t[1] for t in TOOLS if t[0] == key)
         self.setWindowTitle(f"{title} · CivTools")
         self.setWindowIcon(tool_icon(key, 64))
-        width, height = {"quantities": (640, 680), "dj": (580, 660), "rack": (720, 700),
+        width, height = {"quantities": (640, 680), "dj": (900, 740), "rack": (720, 700),
                          "mapper": (580, 620), "library": (850, 680)}[key]
         self.resize(width, height)
         self.setMinimumSize(480, 460)
@@ -205,13 +205,15 @@ class UtilityWindow(QMainWindow):
         self.show()
 
     def focus_search(self):
-        if hasattr(self.page, "search"):
-            self.page.search.setFocus()
-            self.page.search.selectAll()
+        search = getattr(self.page, "search", getattr(self.page, "parameter_search", None))
+        if search is not None:
+            search.setFocus()
+            search.selectAll()
 
     def clear_search(self):
-        if hasattr(self.page, "search"):
-            self.page.search.clear()
+        search = getattr(self.page, "search", getattr(self.page, "parameter_search", None))
+        if search is not None:
+            search.clear()
 
     def closeEvent(self, event):
         # Keep inputs and active workers alive; closing a utility is reversible.

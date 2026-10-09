@@ -57,6 +57,10 @@ QProgressBar::chunk { background: #2E865C; border-radius: 3px; }
 QTableView { background: white; alternate-background-color: #F6F9F5; border: 1px solid #E0E8E1; border-radius: 8px; gridline-color: #EDF2EC; selection-background-color: #E3F0E5; selection-color: #1D5738; }
 QTableView::item { padding: 8px; border: none; }
 QHeaderView::section { background: #F2F6EF; border: none; border-bottom: 1px solid #E0E8E1; padding: 12px; color: #607868; font-weight: 600; }
+QTabWidget::pane { background: white; border: 1px solid #DFE8E0; border-radius: 8px; top: -1px; }
+QTabBar::tab { background: #E8F2EB; color: #315B44; border: 1px solid #DFE8E0; border-bottom: none; border-top-left-radius: 7px; border-top-right-radius: 7px; padding: 8px 14px; margin-right: 4px; font-weight: 600; }
+QTabBar::tab:selected { background: white; color: #176B50; border-color: #DFE8E0; }
+QTabBar::tab:hover:!selected { background: #DCEADF; color: #193D2E; }
 QStatusBar { background: #F5F7F5; color: #71857A; border-top: 1px solid #E1E9E1; }
 QToolTip { background: #163D30; color: white; border: none; padding: 8px; }
 QSplitter::handle { background: transparent; width: 12px; }

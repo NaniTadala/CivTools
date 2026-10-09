@@ -24,8 +24,10 @@ python -m venv .venv
 
 AutoCAD and STAAD.Pro must be installed for the corresponding CAD operations.
 Open the intended AutoCAD drawing or STAAD model before running a job. Pipe rack
-generation requires a blank model. These operations modify the active CAD model;
-the geometry preview is a modeling aid, not a structural design check.
+generation requires a blank model. Pipe rack generation and AutoCAD plotting modify
+the active CAD model; the parameter generator scans STAAD and creates a command
+preview for review and export. The geometry preview is a modeling aid, not a
+structural design check.
 
 ## Tools
 
@@ -34,8 +36,9 @@ the geometry preview is a modeling aid, not a structural design check.
   totals. Select an `.xlsx` or `.xlsm` mapping workbook, then choose an output
   workbook. Consolidation requires `Drawing_Structure_Mapping`. Work is staged in
   a temporary copy and committed only after success; VBA is preserved for `.xlsm`.
-- **DJ parameter assigner:** new or existing STAAD design briefs, design codes,
-  material filtering and member assignment progress. Local settings carry over.
+- **STAAD parameter generator:** configure concrete and steel design parameters,
+  scan the active STAAD model, and generate editable command previews. Search
+  parameters, save or load JSON presets, validate commands and export the preview.
 - **Pipe rack modeler:** comma-separated grid positions and tier elevations,
   live geometry preview, support selection, bracing and saved configurations.
 - **AutoCAD smart mapper:** choose a worksheet (the first is selected by default), with a header row followed

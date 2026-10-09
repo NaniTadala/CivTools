@@ -11,7 +11,7 @@ a = Analysis(
         ("fonts/Poppins/Poppins-Bold.ttf", "fonts/Poppins"),
         ("fonts/Poppins/OFL.txt", "fonts/Poppins"),
     ],
-    hiddenimports=["civtools.core.mapper", "civtools.core.dj", "civtools.core.quantities", "civtools.core.piperack"],
+    hiddenimports=["civtools.core.mapper", "civtools.core.dj", "civtools.core.staad_parameters", "openstaadpy", "civtools.core.quantities", "civtools.core.piperack"],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

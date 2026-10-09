@@ -5,6 +5,7 @@ import shutil
 import tempfile
 import threading
 import time
+from dataclasses import dataclass
 from concurrent.futures import ProcessPoolExecutor
 from concurrent.futures.process import BrokenProcessPool
 from multiprocessing import get_context
@@ -48,8 +49,9 @@ class Job(QRunnable):
                 self.signals.event.emit(kind, value)
         try:
             if self.cad:
-                self.signals.event.emit("stage", "Connecting to CAD…")
-                with _cad_lock:
+                            # Use a more specific message for STAAD.Pro operations (serialized COM access)
+                            self.signals.event.emit("stage", "Connecting to STAAD.Pro…")
+                            with _cad_lock:
                     import pythoncom
                     pythoncom.CoInitialize()
                     try:
@@ -113,6 +115,48 @@ def run_dj(config, report):
     service = DJService(report)
     service.assign_dj_parameters(config)
     return OperationResult(str(service.finish()), successful=getattr(service, "processed_count", 0))
+
+
+@dataclass
+class GeneratedParameterCommands:
+    kind: str
+    text: str
+    model_path: str
+    member_count: int
+    warning_count: int
+
+    def __str__(self):
+        return (
+            f"Generated {self.kind} commands from {self.model_path} · "
+            f"{self.member_count:,} members scanned · "
+            f"{self.warning_count:,} warnings"
+        )
+
+
+def run_staad_parameter_generation(kind, parameters, report):
+    from .core.staad_parameters import (
+        ConcreteGenerator,
+        MAX_LINE_DEFAULT,
+        StaadService,
+        SteelGenerator,
+        TOL_DEFAULT,
+    )
+
+    service = StaadService()
+    report("stage", "Scanning the active STAAD.Pro model…")
+    members = service.load_model(TOL_DEFAULT, False)
+    generator_type = ConcreteGenerator if kind == "concrete" else SteelGenerator
+    text = generator_type(service, MAX_LINE_DEFAULT).generate(parameters, True)
+    warning_count = sum(
+        line.startswith("* WARNING") for line in text.splitlines()
+    )
+    return GeneratedParameterCommands(
+        kind=kind,
+        text=text,
+        model_path=service.model_path,
+        member_count=len(members),
+        warning_count=warning_count,
+    )
 
 
 def run_piperack(config, report):

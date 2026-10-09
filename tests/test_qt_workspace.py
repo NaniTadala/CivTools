@@ -76,6 +76,31 @@ class WorkspaceTests(unittest.TestCase):
             for key in ("quantities", "mapper", "dj", "library"):
                 self.window.utility_windows[key].grab().save(str(output / f"{key}.png"))
 
+    def test_staad_generator_parameters_preview_and_saved_settings(self):
+        self.window.navigate("dj")
+        page = self.window.pages["dj"]
+        model = page.models["concrete"]
+        fc = model.index(0, 2)
+        self.assertEqual(model.data(fc), 30.0)
+        self.assertTrue(model.setData(fc, "32.5", Qt.ItemDataRole.EditRole))
+        self.assertEqual(page.concrete[0].value, 32.5)
+
+        page.parameter_search.setText("compressive strength")
+        self.app.processEvents()
+        self.assertFalse(page.parameter_tables["concrete"].isRowHidden(0))
+        self.assertTrue(page.parameter_tables["concrete"].isRowHidden(1))
+        page.parameter_search.clear()
+
+        page.output.setPlainText("FC 30000 MEMB 1")
+        self.assertTrue(page.validate_preview(show_feedback=False))
+        page.output.setPlainText("FC " + ("1" * 80))
+        self.assertFalse(page.validate_preview(show_feedback=False))
+
+        page.save_state()
+        restored = type(page)(self.window)
+        restored.restore_state("dj")
+        self.assertEqual(restored.concrete[0].value, 32.5)
+
     def test_search_categories_and_empty_state(self):
         dashboard = self.window.dashboard
         dashboard.search.setText("STAAD")

@@ -1,5 +1,6 @@
 """Consistent tool workflows inside the Qt workspace."""
 from collections import OrderedDict
+from dataclasses import asdict
 import json
 import math
 import os
@@ -7,19 +8,26 @@ import time
 from pathlib import Path
 
 from PySide6.QtCore import Qt, QAbstractTableModel, QModelIndex, QSortFilterProxyModel, QTimer, QUrl
-from PySide6.QtGui import QDesktopServices, QPixmap
+from PySide6.QtGui import QColor, QDesktopServices, QFont, QPixmap, QSyntaxHighlighter, QTextCharFormat
 from PySide6.QtWidgets import (
-    QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QFormLayout, QLineEdit,
-    QDoubleSpinBox, QSpinBox, QComboBox, QFileDialog, QListWidget,
+    QApplication, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QFormLayout, QLineEdit,
+    QDoubleSpinBox, QSpinBox, QComboBox, QFileDialog, QListWidget, QStyledItemDelegate,
     QPlainTextEdit, QProgressBar, QScrollArea, QMessageBox, QTableView,
     QHeaderView, QAbstractItemView, QSplitter, QInputDialog, QTableWidget, QTableWidgetItem,
+    QTabWidget,
 )
-from .jobs import Job, run_quantities, run_mapper, run_piperack, run_dj, scan_pdfs, render_pdf
+from .jobs import GeneratedParameterCommands, Job, run_quantities, run_mapper, run_piperack, run_staad_parameter_generation, scan_pdfs, render_pdf
 from .qt_widgets import label, button, panel, RackPreview, ComboBox, CheckBox as QCheckBox
 from .qt_artwork import ToolIllustration, product_icon
 from .core.geometry import rack_size
 from .core.results import OperationResult
 from .core.spreadsheet import inspect_mapping
+from .core.staad_parameters import (
+    CONCRETE_PARAMETERS,
+    MAX_LINE_DEFAULT,
+    Parameter,
+    STEEL_PARAMETERS,
+)
 
 
 def data_root():
@@ -64,7 +72,7 @@ class ToolPage(QWidget):
         layout.setContentsMargins(16, 8, 16, 12)
         layout.setSpacing(8)
         key = {"DXF quantity extractor": "quantities", "AutoCAD smart mapper": "mapper",
-               "DJ parameter assigner": "dj", "Pipe rack modeler": "rack", "EIL standards library": "library"}[title]
+               "STAAD parameter generator": "dj", "Pipe rack modeler": "rack", "EIL standards library": "library"}[title]
         heading = QHBoxLayout()
         copy = QVBoxLayout()
         copy.setSpacing(4)
@@ -116,7 +124,7 @@ class ToolPage(QWidget):
         names = {
             "quantities": ("workbook",), "mapper": ("workbook", "height", "offset", "sample_toggle"),
             "rack": ("trans", "long", "trans_levels", "long_levels", "base", "depth", "support", "bracing", "preview_toggle", "saved_toggle"),
-            "dj": ("brief", "brief_number", "code", "scope", "material"),
+            "dj": (),
             "library": ("search", "preview_toggle"),
         }
         self.state_fields = names[key]
@@ -618,80 +626,356 @@ class MapperPage(ToolPage):
             self.invalid(str(error))
 
 
+class ParameterModel(QAbstractTableModel):
+    HEADERS = ("Use", "Parameter", "Value", "Scope", "Description")
+
+    def __init__(self, parameters):
+        super().__init__()
+        self.parameters = parameters
+
+    def rowCount(self, parent=QModelIndex()):
+        return 0 if parent.isValid() else len(self.parameters)
+
+    def columnCount(self, parent=QModelIndex()):
+        return 0 if parent.isValid() else len(self.HEADERS)
+
+    def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole and orientation == Qt.Orientation.Horizontal:
+            return self.HEADERS[section]
+        return None
+
+    def data(self, index, role=Qt.ItemDataRole.DisplayRole):
+        if not index.isValid():
+            return None
+        parameter = self.parameters[index.row()]
+        column = index.column()
+        if role == Qt.ItemDataRole.CheckStateRole and column == 0:
+            return Qt.CheckState.Checked if parameter.enabled else Qt.CheckState.Unchecked
+        if role in (Qt.ItemDataRole.DisplayRole, Qt.ItemDataRole.EditRole):
+            return ("", parameter.name, "" if parameter.value is None else parameter.value,
+                    parameter.scope, parameter.description)[column]
+        if role == Qt.ItemDataRole.ForegroundRole and not parameter.enabled:
+            return QColor("#8793aa")
+        if role == Qt.ItemDataRole.ToolTipRole:
+            return parameter.description
+        return None
+
+    def flags(self, index):
+        if not index.isValid():
+            return Qt.ItemFlag.NoItemFlags
+        flags = Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable
+        if index.column() == 0:
+            flags |= Qt.ItemFlag.ItemIsUserCheckable
+        elif index.column() == 2 and self.parameters[index.row()].value is not None:
+            flags |= Qt.ItemFlag.ItemIsEditable
+        return flags
+
+    def setData(self, index, value, role=Qt.ItemDataRole.EditRole):
+        if not index.isValid():
+            return False
+        parameter = self.parameters[index.row()]
+        if index.column() == 0 and role == Qt.ItemDataRole.CheckStateRole:
+            parameter.enabled = Qt.CheckState(value) == Qt.CheckState.Checked
+            self.dataChanged.emit(index, self.index(index.row(), 4), [role, Qt.ItemDataRole.ForegroundRole])
+            return True
+        if index.column() == 2 and role == Qt.ItemDataRole.EditRole:
+            try:
+                number_value = float(value)
+            except (TypeError, ValueError):
+                return False
+            if not math.isfinite(number_value):
+                return False
+            parameter.value = number_value
+            self.dataChanged.emit(index, index, [role])
+            return True
+        return False
+
+    def toggle_all(self, enabled):
+        if not self.parameters:
+            return
+        for parameter in self.parameters:
+            parameter.enabled = enabled
+        self.dataChanged.emit(
+            self.index(0, 0),
+            self.index(len(self.parameters) - 1, 4),
+            [Qt.ItemDataRole.CheckStateRole, Qt.ItemDataRole.ForegroundRole],
+        )
+
+
+class CommandHighlighter(QSyntaxHighlighter):
+    def highlightBlock(self, text):
+        if text.startswith("*"):
+            fmt = QTextCharFormat()
+            fmt.setForeground(QColor("#71857A"))
+            fmt.setFontItalic(True)
+            self.setFormat(0, len(text), fmt)
+            return
+        token = text.split(" ", 1)[0]
+        fmt = QTextCharFormat()
+        fmt.setForeground(QColor("#176B50"))
+        fmt.setFontWeight(QFont.Weight.Bold)
+        self.setFormat(0, len(token), fmt)
+
+
 class DJPage(ToolPage):
     def __init__(self, window):
-        super().__init__(window, "DJ parameter assigner", "Assign member end-node design parameters to physical members in STAAD.Pro.", "Modeling")
-        frame, layout = panel("Design brief", "Keep the STAAD model open. Assignment applies DJ1 and DJ2 to analytical members within each physical member.")
-        form = QFormLayout()
-        form.setSpacing(16)
-        self.brief = combo(["New", "Existing"])
-        self.brief_number = QSpinBox()
-        self.brief_number.setRange(1, 99999)
-        self.brief_number.setValue(2)
-        self.code = combo(["IS800 LSD", "IS800 WSD", "IS800 1984", "AISC 360-05", "AISC 360-10", "AISC 360-16", "AISC"])
-        form.addRow("Design brief", self.brief)
-        form.addRow("Existing brief number", self.brief_number)
-        form.addRow("Design code", self.code)
-        self.brief_form = form
-        layout.addLayout(form)
-        self.body.addWidget(frame)
-        frame, layout = panel("Member scope")
-        form = QFormLayout()
-        form.setSpacing(16)
-        self.scope = combo(["All Member with Material", "All Members"])
-        self.material = combo(["STEEL", "CONCRETE", "ALUMINUM", "TIMBER"])
-        form.addRow("Assign to", self.scope)
-        form.addRow("Material", self.material)
-        layout.addLayout(form)
-        self.body.addWidget(frame)
+        super().__init__(
+            window,
+            "STAAD parameter generator",
+            "Generate concrete and steel design commands from the active STAAD.Pro model.",
+            "Modeling",
+        )
+        self.concrete = [Parameter(**asdict(item)) for item in CONCRETE_PARAMETERS]
+        self.steel = [Parameter(**asdict(item)) for item in STEEL_PARAMETERS]
+        self.models = {
+            "concrete": ParameterModel(self.concrete),
+            "steel": ParameterModel(self.steel),
+        }
+        for model in self.models.values():
+            model.dataChanged.connect(lambda *args: self.save_timer.start())
+        toolbar = QHBoxLayout()
+        self.parameter_search = QLineEdit()
+        self.search = self.parameter_search
+        self.parameter_search.setPlaceholderText("Search parameters…")
+        self.parameter_search.setAccessibleName("Search design parameters")
+        toolbar.addWidget(self.parameter_search, 1)
+        self.body.addLayout(toolbar)
+        self.tabs = QTabWidget()
+        self.parameter_tables = {}
+        for kind, title in (("concrete", "Concrete parameters"), ("steel", "Steel parameters")):
+            self.parameter_tables[kind] = self._parameter_tab(kind, title)
+        self.output = QPlainTextEdit()
+        self.output.setAccessibleName("Generated STAAD command preview")
+        self.output.setLineWrapMode(QPlainTextEdit.LineWrapMode.NoWrap)
+        self.output.setFont(QFont("Cascadia Code", 10))
+        self.highlighter = CommandHighlighter(self.output.document())
+        preview = QWidget()
+        preview_layout = QVBoxLayout(preview)
+        preview_layout.setContentsMargins(0, 8, 0, 0)
+        preview_layout.addWidget(label(
+            "Review or edit the generated commands before exporting them.",
+            "muted",
+            True,
+        ))
+        self.output_stats = label("No commands generated", "muted", True)
+        preview_layout.addWidget(self.output_stats)
+        preview_layout.addWidget(self.output, 1)
+        self.tabs.addTab(preview, "Command preview")
+        self.body.addWidget(self.tabs, 1)
+        self.selected_kind = "concrete"
+        self.tabs.currentChanged.connect(self.remember_parameter_tab)
+        self.parameter_search.textChanged.connect(self.filter_parameters)
         self.body.addStretch()
-        self.brief.currentTextChanged.connect(self.update_fields)
-        self.scope.currentTextChanged.connect(self.update_fields)
-        self.load_settings()
-        self.update_fields()
-        self.action_bar.addWidget(button("Assign DJ parameters  →", self.start))
+        self.generate_button = button("Generate commands  →", self.start)
+        self.action_bar.addWidget(self.generate_button)
+        self.action_bar.addWidget(button("Validate", self.validate_preview, True))
+        self.action_bar.addWidget(button("Copy", self.copy_preview, True))
+        self.action_bar.addWidget(button("Export", self.export_preview, True))
 
-    def update_fields(self, *args):
-        existing = self.brief.currentText() == "Existing"
-        self.brief_number.setEnabled(existing)
-        self.code.setEnabled(not existing)
-        self.brief_form.setRowVisible(self.brief_number, existing)
-        self.brief_form.setRowVisible(self.code, not existing)
-        self.material.setEnabled(self.scope.currentIndex() == 0)
+    def _parameter_tab(self, kind, title):
+        page = QWidget()
+        layout = QVBoxLayout(page)
+        layout.setContentsMargins(0, 8, 0, 0)
+        actions = QHBoxLayout()
+        actions.addWidget(label("Select design parameters and adjust their values.", "muted", True), 1)
+        actions.addWidget(button("Enable all", lambda: self.models[kind].toggle_all(True), True))
+        actions.addWidget(button("Disable all", lambda: self.models[kind].toggle_all(False), True))
+        actions.addWidget(button("Save preset", lambda: self.save_preset(kind), True))
+        actions.addWidget(button("Load preset", lambda: self.load_preset(kind), True))
+        layout.addLayout(actions)
+        table = QTableView()
+        table.setAccessibleName(title)
+        table.setModel(self.models[kind])
+        # Use a delegate for numeric value entry to provide a consistent spinbox editor
+        class NumericDelegate(QStyledItemDelegate):
+            def __init__(self, minimum=-1e12, maximum=1e12, decimals=4, parent=None):
+                super().__init__(parent)
+                self.minimum = minimum
+                self.maximum = maximum
+                self.decimals = decimals
 
-    def load_settings(self):
-        paths = [config_root() / "staad_dj_settings.json", data_root() / "staad_dj_settings.json"]
-        for path in paths:
-            if not path.is_file():
-                continue
-            try:
-                settings = json.loads(path.read_text(encoding="utf-8"))
-                for field, key in ((self.brief, "design_brief"), (self.code, "design_code"), (self.scope, "member_selection"), (self.material, "material")):
-                    index = field.findText(str(settings.get(key, "")))
-                    if index >= 0:
-                        field.setCurrentIndex(index)
-                self.brief_number.setValue(int(settings.get("brief_number", 2)))
-            except (OSError, ValueError, TypeError):
-                self.invalid("Saved DJ settings could not be read. Defaults are available.")
-            break
+            def createEditor(self, parent, option, index):
+                editor = QDoubleSpinBox(parent)
+                editor.setDecimals(self.decimals)
+                editor.setRange(self.minimum, self.maximum)
+                editor.setButtonSymbols(QDoubleSpinBox.ButtonSymbols.NoButtons)
+                editor.setFrame(False)
+                return editor
+
+            def setEditorData(self, editor, index):
+                value = index.model().data(index, Qt.ItemDataRole.EditRole)
+                try:
+                    editor.setValue(float(value))
+                except Exception:
+                    editor.setValue(0.0)
+
+            def setModelData(self, editor, model, index):
+                model.setData(index, editor.value(), Qt.ItemDataRole.EditRole)
+
+        table.setItemDelegateForColumn(2, NumericDelegate(decimals=4))
+        table.setAlternatingRowColors(True)
+        table.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        table.verticalHeader().setVisible(False)
+        table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+        table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
+        table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
+        table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Stretch)
+        layout.addWidget(table, 1)
+        self.tabs.addTab(page, title)
+        return table
+
+    def restore_state(self, key):
+        super().restore_state(key)
+        try:
+            saved = json.loads(str(self.window.settings.value("forms/dj_parameters", "{}")))
+            if not isinstance(saved, dict):
+                raise ValueError("Saved parameter settings must be a JSON object.")
+            for kind, parameters in (("concrete", self.concrete), ("steel", self.steel)):
+                values = saved.get(kind, {})
+                if not isinstance(values, dict):
+                    raise ValueError(f"Saved {kind} parameter settings are invalid.")
+                for parameter in parameters:
+                    item = values.get(parameter.name)
+                    if item is None:
+                        continue
+                    if not isinstance(item, dict) or not isinstance(item.get("enabled"), bool):
+                        raise ValueError(f"Saved settings for {parameter.name} are invalid.")
+                    value = item.get("value")
+                    if value is not None:
+                        value = float(value)
+                        if not math.isfinite(value):
+                            raise ValueError(f"Saved value for {parameter.name} must be finite.")
+                    parameter.enabled = item["enabled"]
+                    parameter.value = value
+                self.models[kind].layoutChanged.emit()
+        except (TypeError, ValueError) as error:
+            self.invalid(f"Saved parameter settings could not be read: {error}")
+
+    def save_state(self):
+        super().save_state()
+        saved = {
+            kind: {item.name: {"enabled": item.enabled, "value": item.value} for item in parameters}
+            for kind, parameters in (("concrete", self.concrete), ("steel", self.steel))
+        }
+        self.window.settings.setValue("forms/dj_parameters", json.dumps(saved))
+
+    def filter_parameters(self, text):
+        term = text.casefold().strip()
+        for kind, table in self.parameter_tables.items():
+            for row, parameter in enumerate(self.models[kind].parameters):
+                searchable = f"{parameter.name} {parameter.scope} {parameter.description}".casefold()
+                table.setRowHidden(row, bool(term) and term not in searchable)
 
     def start(self):
-        config = {"brief_option": self.brief.currentText(), "existing_brief_number": self.brief_number.value(),
-                  "design_code": self.code.currentText(), "member_selection": self.scope.currentText(), "material_filter": self.material.currentText()}
-        settings = {"design_brief": config["brief_option"], "brief_number": config["existing_brief_number"],
-                    "design_code": config["design_code"], "member_selection": config["member_selection"], "material": config["material_filter"]}
-        try:
-            root = config_root()
-            root.mkdir(parents=True, exist_ok=True)
-            (root / "staad_dj_settings.json").write_text(json.dumps(settings, indent=2), encoding="utf-8")
-        except OSError as error:
-            self.invalid(f"Cannot save settings: {error}")
+        index = self.tabs.currentIndex()
+        kind = ("concrete", "steel")[index] if index in (0, 1) else self.selected_kind
+        parameters = [Parameter(**asdict(item)) for item in self.models[kind].parameters]
+        self.tabs.setCurrentIndex(index)
+        self.run(lambda report: run_staad_parameter_generation(kind, parameters, report), cad=True)
+
+    def remember_parameter_tab(self, index):
+        if index in (0, 1):
+            self.selected_kind = ("concrete", "steel")[index]
+
+    def on_success(self, result):
+        super().on_success(result)
+        if isinstance(result, GeneratedParameterCommands):
+            self.output.setPlainText(result.text)
+            self.output_stats.setText(str(result))
+            self.target.setText(f"Target: {result.model_path}")
+            self.target.show()
+            self.tabs.setCurrentIndex(2)
+            self.validate_preview(show_feedback=False)
+
+    def validate_preview(self, show_feedback=True):
+        errors = []
+        lines = self.output.toPlainText().splitlines()
+        for number, line in enumerate(lines, 1):
+            if len(line) > MAX_LINE_DEFAULT and not line.startswith("*"):
+                errors.append(f"Line {number} exceeds {MAX_LINE_DEFAULT} characters")
+            if any(entity in line for entity in ("&amp;", "&lt;", "&gt;")):
+                errors.append(f"Line {number} contains an HTML entity")
+            if line.endswith("-") and number == len(lines):
+                errors.append("The final line cannot end with a continuation marker")
+        if errors:
+            message = "Preview validation found: " + "; ".join(errors[:6])
+            self.invalid(message)
+            return False
+        if show_feedback:
+            self.feedback_text("Command preview validation passed.", "success")
+        return True
+
+    def copy_preview(self):
+        QApplication.clipboard().setText(self.output.toPlainText())
+        self.feedback_text("Command preview copied to the clipboard.", "success")
+
+    def export_preview(self):
+        path, _ = QFileDialog.getSaveFileName(
+            self,
+            "Export STAAD commands",
+            "staad_design_parameters.std",
+            "STAAD input files (*.std);;Text files (*.txt);;All files (*)",
+        )
+        if not path:
             return
-        self.run(lambda report: run_dj(config, report), cad=True)
+        try:
+            Path(path).write_text(self.output.toPlainText(), encoding="utf-8")
+        except OSError as error:
+            self.invalid(f"Could not export command preview: {error}")
+            return
+        self.feedback_text(f"Command preview exported to {path}", "success")
+
+    def save_preset(self, kind):
+        path, _ = QFileDialog.getSaveFileName(
+            self, f"Save {kind} preset", f"{kind}_parameters.json", "JSON (*.json)"
+        )
+        if not path:
+            return
+        items = self.models[kind].parameters
+        try:
+            Path(path).write_text(
+                json.dumps([asdict(item) for item in items], indent=2),
+                encoding="utf-8",
+            )
+        except OSError as error:
+            self.invalid(f"Could not save preset: {error}")
+            return
+        self.feedback_text(f"{kind.title()} preset saved.", "success")
+
+    def load_preset(self, kind):
+        path, _ = QFileDialog.getOpenFileName(
+            self, f"Load {kind} preset", "", "JSON (*.json)"
+        )
+        if not path:
+            return
+        try:
+            raw = json.loads(Path(path).read_text(encoding="utf-8"))
+            if not isinstance(raw, list):
+                raise ValueError("Preset must contain a JSON list.")
+            loaded = [Parameter(**item) for item in raw]
+            expected = self.models[kind].parameters
+            if len(loaded) != len(expected) or [p.name for p in loaded] != [p.name for p in expected]:
+                raise ValueError("Preset parameters do not match this tool version.")
+            if any(
+                not isinstance(item.enabled, bool)
+                or (item.value is not None and not math.isfinite(float(item.value)))
+                for item in loaded
+            ):
+                raise ValueError("Preset contains invalid parameter values.")
+            model = self.models[kind]
+            model.beginResetModel()
+            for current, replacement in zip(expected, loaded):
+                current.enabled = replacement.enabled
+                current.value = replacement.value
+            model.endResetModel()
+            self.save_state()
+            self.feedback_text(f"{kind.title()} preset loaded.", "success")
+        except (OSError, TypeError, ValueError, KeyError) as error:
+            self.invalid(f"Could not load preset: {error}")
 
     def on_finished(self):
         super().on_finished()
-        self.update_fields()
 
 
 def parse_series(text, title, minimum):

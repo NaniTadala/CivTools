@@ -7,4 +7,5 @@ comtypes
 pywin32
 PyMuPDF>=1.24
 numpy
+openstaadpy
 PyInstaller
