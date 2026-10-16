@@ -4,6 +4,7 @@ from dataclasses import asdict
 import json
 import math
 import os
+import re
 import time
 from pathlib import Path
 
@@ -353,7 +354,7 @@ class QuantityPage(ToolPage):
         self.list.setMaximumHeight(110)
         self.list.setSelectionMode(QAbstractItemView.SelectionMode.ExtendedSelection)
         self.setAcceptDrops(True)
-        self.list.setStyleSheet("QListWidget { background: #F8FBF7; border: 1px solid #E1E9E0; border-radius: 8px; padding: 8px; } QListWidget::item { padding: 6px; }")
+        self.list.setStyleSheet("QListWidget { background: #F8FBFC; border: 1px solid #E1E9EE; border-radius: 8px; padding: 8px; } QListWidget::item { padding: 6px; }")
         self.list.hide()
         layout.addWidget(self.list)
         self.empty_files = label("Drop DXF files here, or use Add DXF files.", "hint", True)
@@ -703,18 +704,20 @@ class ParameterModel(QAbstractTableModel):
 
 
 class CommandHighlighter(QSyntaxHighlighter):
+    WORD_PATTERN = re.compile(r"\b(?!TO\b)[A-Z]+\b", re.IGNORECASE)
+
     def highlightBlock(self, text):
         if text.startswith("*"):
             fmt = QTextCharFormat()
-            fmt.setForeground(QColor("#71857A"))
+            fmt.setForeground(QColor("#718592"))
             fmt.setFontItalic(True)
             self.setFormat(0, len(text), fmt)
             return
-        token = text.split(" ", 1)[0]
         fmt = QTextCharFormat()
-        fmt.setForeground(QColor("#176B50"))
+        fmt.setForeground(QColor("#176FA5"))
         fmt.setFontWeight(QFont.Weight.Bold)
-        self.setFormat(0, len(token), fmt)
+        for match in self.WORD_PATTERN.finditer(text):
+            self.setFormat(match.start(), match.end() - match.start(), fmt)
 
 
 class DJPage(ToolPage):
@@ -791,7 +794,8 @@ class DJPage(ToolPage):
         table.verticalHeader().setVisible(False)
         table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
         table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
-        table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
+        table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Fixed)
+        table.setColumnWidth(2, 120)
         table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
         table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Stretch)
         layout.addWidget(table, 1)

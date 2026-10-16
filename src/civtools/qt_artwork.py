@@ -182,24 +182,6 @@ class ToolIllustration(QWidget):
         p.end()
 
 
-class IntegrationStrip(QWidget):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.setFixedSize(157, 49)
-        self.setAccessibleName("Works with AutoCAD, STAAD.Pro and Excel")
-        self.setToolTip("AutoCAD · STAAD.Pro · Excel")
-
-    def paintEvent(self, event):
-        p = QPainter(self)
-        p.setRenderHint(QPainter.RenderHint.Antialiasing)
-        p.setFont(QFont("Poppins", 7))
-        for i, (key, caption) in enumerate((("mapper", "AutoCAD"), ("dj", "STAAD.Pro"), ("excel", "Excel"))):
-            product_icon(key, 28).paint(p, i * 53 + 12, 0, 28, 28)
-            p.setPen(QColor("#637C70"))
-            p.drawText(QRectF(i * 53, 31, 53, 18), Qt.AlignmentFlag.AlignCenter, caption)
-        p.end()
-
-
 @lru_cache(maxsize=24)
 def action_icon(kind, secondary=False):
     """Tiny icons for commands, matching button contrast and the toolkit's stroke."""
@@ -208,7 +190,7 @@ def action_icon(kind, secondary=False):
     pixmap.fill(Qt.GlobalColor.transparent)
     p = QPainter(pixmap)
     p.setRenderHint(QPainter.RenderHint.Antialiasing)
-    p.setPen(QPen(QColor("#315B44" if secondary else "#FFFFFF"), 1.4,
+    p.setPen(QPen(QColor("#245B7A" if secondary else "#FFFFFF"), 1.4,
                   Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
     if kind == "add":
         p.drawLine(8, 3, 8, 13); p.drawLine(3, 8, 13, 8)

@@ -143,7 +143,11 @@ def run_staad_parameter_generation(kind, parameters, report):
 
     service = StaadService()
     report("stage", "Scanning the active STAAD.Pro model…")
-    members = service.load_model(TOL_DEFAULT, False)
+    members = service.load_model(
+        TOL_DEFAULT,
+        False,
+        include_section_types=kind == "steel",
+    )
     generator_type = ConcreteGenerator if kind == "concrete" else SteelGenerator
     text = generator_type(service, MAX_LINE_DEFAULT).generate(parameters, True)
     warning_count = sum(

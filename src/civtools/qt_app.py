@@ -4,12 +4,12 @@ from pathlib import Path
 import sys
 
 from PySide6.QtCore import Qt, QThreadPool, QTimer, QUrl, QSettings, QEvent
-from PySide6.QtGui import QFont, QFontDatabase, QIcon, QKeySequence, QShortcut, QDesktopServices
+from PySide6.QtGui import QFont, QFontDatabase, QIcon, QKeySequence, QShortcut, QDesktopServices, QPixmap
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QFrame, QVBoxLayout,
-    QHBoxLayout, QGridLayout, QStackedWidget, QScrollArea, QLineEdit, QComboBox, QMessageBox, QSizePolicy)
+    QHBoxLayout, QGridLayout, QStackedWidget, QScrollArea, QLineEdit, QComboBox, QMessageBox,
+    QSizePolicy, QPushButton, QButtonGroup)
 from .qt_style import STYLE, style_for_scale
 from .qt_widgets import label, button, tool_icon, ComboBox, CheckBox as QCheckBox
-from .qt_artwork import IntegrationStrip
 from .jobs import PdfProcess, Job
 
 TOOLS = (
@@ -84,7 +84,16 @@ class Dashboard(QWidget):
         copy.addWidget(label("Pick a tool. Keep your workspace.", "muted"))
         top.addLayout(copy)
         top.addStretch()
-        top.addWidget(IntegrationStrip())
+        logo = label("")
+        logo_path = get_resource_path("assets/images/logo.png")
+        logo_pixmap = QPixmap(logo_path)
+        if logo_pixmap.isNull():
+            raise FileNotFoundError(f"Unable to load dashboard logo: {logo_path}")
+        logo.setPixmap(logo_pixmap.scaledToHeight(54, Qt.TransformationMode.SmoothTransformation))
+        logo.setAccessibleName("L&T Energy Hydrocarbon logo")
+        logo.setToolTip("L&T Energy Hydrocarbon")
+        self.logo = logo
+        top.addWidget(logo)
         layout.addLayout(top)
         search_row = QHBoxLayout()
         self.search = QLineEdit()
@@ -93,11 +102,29 @@ class Dashboard(QWidget):
         self.search.setAccessibleName("Search engineering tools")
         self.search.textChanged.connect(self.filter_cards)
         search_row.addWidget(self.search, 1)
-        self.categories = ComboBox()
-        self.categories.addItems(["All tools", "Modeling", "Quantities", "Drawings", "Documents"])
-        self.categories.currentTextChanged.connect(self.set_category)
-        search_row.addWidget(self.categories)
         layout.addLayout(search_row)
+        category_row = QHBoxLayout()
+        category_row.setSpacing(8)
+        category_label = label("Category", "muted")
+        category_label.setAccessibleName("Category filter")
+        category_row.addWidget(category_label)
+        self.category_group = QButtonGroup(self)
+        self.category_group.setExclusive(True)
+        self.category_buttons = {}
+        for category in ("All tools", "Modeling", "Quantities", "Drawings", "Documents"):
+            category_button = QPushButton(category)
+            category_button.setObjectName("chip")
+            category_button.setCheckable(True)
+            category_button.setAccessibleName(f"Filter tools by {category}")
+            category_button.clicked.connect(
+                lambda checked=False, value=category: self.set_category(value)
+            )
+            self.category_group.addButton(category_button)
+            category_row.addWidget(category_button)
+            self.category_buttons[category] = category_button
+        self.category_buttons[self.category].setChecked(True)
+        category_row.addStretch()
+        layout.addLayout(category_row)
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
@@ -126,7 +153,10 @@ class Dashboard(QWidget):
         self.filter_cards()
 
     def set_category(self, category):
+        if category not in self.category_buttons:
+            raise ValueError(f"Unknown tool category: {category}")
         self.category = category
+        self.category_buttons[category].setChecked(True)
         self.filter_cards()
 
     def filter_cards(self, *args):

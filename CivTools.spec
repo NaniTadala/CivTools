@@ -6,6 +6,7 @@ a = Analysis(
     binaries=[],
     datas=[
         ("assets/icons/logo.ico", "assets/icons"),
+        ("assets/images/logo.png", "assets/images"),
         ("fonts/Poppins/Poppins-Regular.ttf", "fonts/Poppins"),
         ("fonts/Poppins/Poppins-SemiBold.ttf", "fonts/Poppins"),
         ("fonts/Poppins/Poppins-Bold.ttf", "fonts/Poppins"),

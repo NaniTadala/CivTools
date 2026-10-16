@@ -80,6 +80,7 @@ class WorkspaceTests(unittest.TestCase):
         self.window.navigate("dj")
         page = self.window.pages["dj"]
         model = page.models["concrete"]
+        self.assertGreaterEqual(page.parameter_tables["concrete"].columnWidth(2), 120)
         fc = model.index(0, 2)
         self.assertEqual(model.data(fc), 30.0)
         self.assertTrue(model.setData(fc, "32.5", Qt.ItemDataRole.EditRole))
@@ -91,7 +92,13 @@ class WorkspaceTests(unittest.TestCase):
         self.assertTrue(page.parameter_tables["concrete"].isRowHidden(1))
         page.parameter_search.clear()
 
-        page.output.setPlainText("FC 30000 MEMB 1")
+        page.output.setPlainText("FC 30000 MEMB 1 TO 5 to 6")
+        self.app.processEvents()
+        ranges = page.output.document().firstBlock().layout().formats()
+        self.assertEqual(
+            [(item.start, item.length) for item in ranges],
+            [(0, 2), (9, 4)],
+        )
         self.assertTrue(page.validate_preview(show_feedback=False))
         page.output.setPlainText("FC " + ("1" * 80))
         self.assertFalse(page.validate_preview(show_feedback=False))
@@ -103,12 +110,21 @@ class WorkspaceTests(unittest.TestCase):
 
     def test_search_categories_and_empty_state(self):
         dashboard = self.window.dashboard
+        self.assertFalse(dashboard.logo.pixmap().isNull())
+        self.assertEqual(dashboard.logo.accessibleName(), "L&T Energy Hydrocarbon logo")
+        self.assertGreaterEqual(dashboard.logo.pixmap().height(), 54)
+        self.assertTrue(dashboard.category_buttons["All tools"].isChecked())
+        self.assertEqual(len(dashboard.category_buttons), 5)
+        dashboard.category_buttons["Modeling"].click()
+        self.assertEqual(dashboard.category, "Modeling")
+        self.assertEqual(sum(not c.isHidden() for c in dashboard.cards), 2)
         dashboard.search.setText("STAAD")
         self.assertEqual(sum(not c.isHidden() for c in dashboard.cards), 2)
-        dashboard.set_category("Documents")
+        dashboard.category_buttons["Documents"].click()
         self.assertFalse(dashboard.empty.isHidden())
         dashboard.search.clear()
         self.assertEqual(sum(not c.isHidden() for c in dashboard.cards), 1)
+        self.assertTrue(dashboard.category_buttons["Documents"].isChecked())
 
     def test_open_buttons_launch_every_tool_and_resume_the_same_window(self):
         errors = []
