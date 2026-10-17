@@ -30,6 +30,7 @@ class Member:
     beam_x: bool
     beam_z: bool
     section_type: int = 0
+    plan_brace: bool = False
 
 
 @dataclass(slots=True)
@@ -100,6 +101,14 @@ STEEL_PARAMETERS = [
     Parameter(True, "FU", 490000.0, "Steel beams except channels and angles", "Steel ultimate tensile strength in active STAAD force/area units"),
     Parameter(True, "FU (CHANNELS AND ANGLES)", 410000.0, "Channel and angle steel beams", "Steel ultimate tensile strength in active STAAD force/area units"),
     Parameter(True, "BEAM", 1.0, "All steel", "Beam design parameter"),
+    Parameter(True, "TMAIN", 250.0, "All steel beams and columns", "Main reinforcement yield strength in active STAAD force/area units"),
+    Parameter(True, "MAIN", 250.0, "All steel plan braces", "Main reinforcement yield strength in active STAAD force/area units"),
+    Parameter(True, "STP", 1.0, "All steel", "Steel parameter"),
+    Parameter(True, "IMM", 1.0, "All steel columns", "Steel column parameter"),
+    Parameter(True, "CMX", 0.9, "All steel columns", "Steel column parameter"),
+    Parameter(True, "CMZ", 0.9, "All steel columns", "Steel column parameter"),
+    Parameter(True, "NSF", 1.0, "All steel braces", "Steel brace parameter"),
+    Parameter(True, "LAT", 1.0, "Steel beams except columns and braces", "Steel beam parameter"),
     Parameter(True, "KY", 1.0, "All steel", "Effective length factor about local y-axis"),
     Parameter(True, "KZ", 1.0, "All steel", "Effective length factor about local z-axis"),
     Parameter(True, "LY", 0.0, "All steel", "Effective length about local y-axis"),
@@ -248,6 +257,7 @@ class StaadService:
             column_y = math.hypot(dx, dz) / length <= tolerance
             beam_x = horizontal and dz / length <= tolerance and dx > dz
             beam_z = horizontal and dx / length <= tolerance and dz > dx
+            plan_brace = horizontal and not beam_x and not beam_z
 
             index = len(members)
             members.append(
@@ -264,6 +274,7 @@ class StaadService:
                     beam_x,
                     beam_z,
                     section_type,
+                    plan_brace,
                 )
             )
             by_node.setdefault(n1, []).append(index)
@@ -759,6 +770,35 @@ class SteelGenerator(BaseGenerator):
             for member in self.s.members
             if member.steel
         ]
+        steel_beam_and_column_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel
+            and (member.beam_x or member.beam_z or member.column_y)
+        ]
+        steel_plan_brace_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel and member.plan_brace
+        ]
+        steel_column_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel and member.column_y
+        ]
+        steel_brace_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel
+            and not member.column_y
+            and not member.beam_x
+            and not member.beam_z
+        ]
+        steel_beam_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel and (member.beam_x or member.beam_z)
+        ]
         fyld_ids = [
             member.member_id
             for member in self.s.members
@@ -795,6 +835,56 @@ class SteelGenerator(BaseGenerator):
                 blocks.append(
                     "\n".join(
                         self.wrap("SELECT MEMBER", steel_ids)
+                    )
+                )
+            elif name == "TMAIN":
+                value = self.require_value(parameter)
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name} {self.fmt(value)} MEMB",
+                            steel_beam_and_column_ids,
+                        )
+                    )
+                )
+            elif name == "MAIN":
+                value = self.require_value(parameter)
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name} {self.fmt(value)} MEMB",
+                            steel_plan_brace_ids,
+                        )
+                    )
+                )
+            elif name in {"IMM", "CMX", "CMZ"}:
+                value = self.require_value(parameter)
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name} {self.fmt(value)} MEMB",
+                            steel_column_ids,
+                        )
+                    )
+                )
+            elif name == "NSF":
+                value = self.require_value(parameter)
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name} {self.fmt(value)} MEMB",
+                            steel_brace_ids,
+                        )
+                    )
+                )
+            elif name == "LAT":
+                value = self.require_value(parameter)
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name} {self.fmt(value)} MEMB",
+                            steel_beam_ids,
+                        )
                     )
                 )
             elif name in {

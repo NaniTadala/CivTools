@@ -115,6 +115,110 @@ class StaadParameterGenerationTests(unittest.TestCase):
 
         self.assertEqual(result.text, "BEAM 1 MEMB 3 4 6\n")
 
+    def test_tmain_includes_only_steel_beams_and_columns(self):
+        members = [
+            Member(1, 1, 2, 5.0, "W", "STEEL", False, True, False, True, False),
+            Member(2, 2, 3, 5.0, "W", "STEEL", False, True, False, False, True),
+            Member(3, 3, 4, 5.0, "W", "STEEL", False, True, True, False, False),
+            Member(4, 4, 5, 5.0, "W", "STEEL", False, True, False, False, False),
+            Member(5, 5, 6, 5.0, "RECT", "CONCRETE", True, False, False, True, False),
+        ]
+        with patch("civtools.core.staad_parameters.StaadService") as service_type:
+            service = service_type.return_value
+            service.load_model.return_value = members
+            service.members = members
+            service.model_path = "model.std"
+
+            result = run_staad_parameter_generation(
+                "steel",
+                [Parameter(True, "TMAIN", 250.0, "All steel beams and columns", "Main reinforcement")],
+                lambda kind, value: None,
+            )
+
+        self.assertEqual(result.text, "TMAIN 250 MEMB 1 TO 3\n")
+
+    def test_main_includes_only_steel_plan_braces(self):
+        members = [
+            Member(1, 1, 2, 5.0, "W", "STEEL", False, True, False, True, False),
+            Member(2, 2, 3, 5.0, "W", "STEEL", False, True, False, False, True),
+            Member(3, 3, 4, 5.0, "W", "STEEL", False, True, True, False, False),
+            Member(4, 4, 5, 5.0, "W", "STEEL", False, True, False, False, False, plan_brace=True),
+            Member(5, 5, 6, 5.0, "W", "STEEL", False, True, False, False, False),
+            Member(6, 6, 7, 5.0, "RECT", "CONCRETE", True, False, False, False, False, plan_brace=True),
+        ]
+        with patch("civtools.core.staad_parameters.StaadService") as service_type:
+            service = service_type.return_value
+            service.load_model.return_value = members
+            service.members = members
+            service.model_path = "model.std"
+
+            result = run_staad_parameter_generation(
+                "steel",
+                [Parameter(True, "MAIN", 250.0, "All steel plan braces", "Main reinforcement")],
+                lambda kind, value: None,
+            )
+
+        self.assertEqual(result.text, "MAIN 250 MEMB 4\n")
+
+    def test_stp_column_brace_and_lateral_parameters_use_their_scopes(self):
+        members = [
+            Member(1, 1, 2, 5.0, "W", "STEEL", False, True, False, True, False),
+            Member(2, 2, 3, 5.0, "W", "STEEL", False, True, False, False, True),
+            Member(3, 3, 4, 5.0, "W", "STEEL", False, True, True, False, False),
+            Member(4, 4, 5, 5.0, "W", "STEEL", False, True, False, False, False, plan_brace=True),
+            Member(5, 5, 6, 5.0, "W", "STEEL", False, True, False, False, False),
+            Member(6, 6, 7, 5.0, "RECT", "CONCRETE", True, False, False, True, False),
+        ]
+        with patch("civtools.core.staad_parameters.StaadService") as service_type:
+            service = service_type.return_value
+            service.load_model.return_value = members
+            service.members = members
+            service.model_path = "model.std"
+
+            result = run_staad_parameter_generation(
+                "steel",
+                [
+                    Parameter(True, "STP", 1.0, "All steel", "Steel parameter"),
+                    Parameter(True, "IMM", 1.0, "All steel columns", "Column parameter"),
+                    Parameter(True, "CMX", 0.9, "All steel columns", "Column parameter"),
+                    Parameter(True, "CMZ", 0.9, "All steel columns", "Column parameter"),
+                    Parameter(True, "NSF", 1.0, "All steel braces", "Brace parameter"),
+                    Parameter(True, "LAT", 1.0, "Steel beams except columns and braces", "Beam parameter"),
+                ],
+                lambda kind, value: None,
+            )
+
+        self.assertEqual(
+            result.text,
+            "STP 1 MEMB 1 TO 5\n\n"
+            "IMM 1 MEMB 3\n\n"
+            "CMX 0.9 MEMB 3\n\n"
+            "CMZ 0.9 MEMB 3\n\n"
+            "NSF 1 MEMB 4 5\n\n"
+            "LAT 1 MEMB 1 2\n",
+        )
+
+    def test_load_model_classifies_only_horizontal_diagonal_plan_braces(self):
+        service = StaadService()
+        service.os = MagicMock()
+        service.os.Geometry.GetBeamList.return_value = [1, 2, 3]
+        service.os.Geometry.GetMemberIncidence.side_effect = [(1, 2), (3, 4), (5, 6)]
+        service.os.Geometry.GetNodeCoordinates.side_effect = {
+            1: (0.0, 0.0, 0.0),
+            2: (3.0, 0.0, 4.0),
+            3: (0.0, 0.0, 0.0),
+            4: (3.0, 2.0, 4.0),
+            5: (0.0, 0.0, 0.0),
+            6: (3.0, 0.0, 0.0),
+        }.__getitem__
+        service.os.Property.GetBeamSectionName.return_value = "W"
+        service.os.Property.GetBeamMaterialName.return_value = "STEEL"
+
+        with patch.object(service, "connect"):
+            members = service.load_model(0.10)
+
+        self.assertEqual([member.plan_brace for member in members], [True, False, False])
+
     def test_fyld_includes_only_non_channel_angle_steel_beams(self):
         members = [
             Member(
