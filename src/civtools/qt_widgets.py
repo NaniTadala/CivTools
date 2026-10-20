@@ -29,7 +29,7 @@ class ComboBox(QComboBox):
         super().paintEvent(event)
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
-        painter.setPen(QPen(QColor("#526F5C" if self.isEnabled() else "#A4B3A9"), 1.5))
+        painter.setPen(QPen(QColor("#526B7B" if self.isEnabled() else "#A4B2BA"), 1.5))
         x, y = self.width() - 15, self.height() / 2
         painter.drawLine(QPointF(x - 4, y - 2), QPointF(x, y + 2))
         painter.drawLine(QPointF(x, y + 2), QPointF(x + 4, y - 2))
@@ -53,7 +53,7 @@ def button(text, callback, secondary=False):
         pixmap.fill(Qt.GlobalColor.transparent)
         painter = QPainter(pixmap)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
-        painter.setPen(QPen(QColor("#315B44" if secondary else "#FFFFFF"), 1.5))
+        painter.setPen(QPen(QColor("#245B7A" if secondary else "#FFFFFF"), 1.5))
         painter.drawLine(2, 8, 13, 8)
         painter.drawLine(9, 4, 13, 8)
         painter.drawLine(9, 12, 13, 8)
@@ -97,9 +97,9 @@ def tool_icon(kind, size=46, dark=False):
     painter.setRenderHint(QPainter.RenderHint.Antialiasing)
     painter.scale(size / 48, size / 48)
     painter.setPen(Qt.PenStyle.NoPen)
-    painter.setBrush(QColor("#2B5846" if dark else "#EBF3E9"))
+    painter.setBrush(QColor("#214E6B" if dark else "#E8F3F8"))
     painter.drawRoundedRect(QRectF(0, 0, 48, 48), 10, 10)
-    painter.setPen(QPen(QColor("#BCD5C4" if dark else "#4C805C"), 1.8))
+    painter.setPen(QPen(QColor("#B9D5E4" if dark else "#4B83A3"), 1.8))
     painter.setBrush(Qt.BrushStyle.NoBrush)
     if kind in ("rack", "dj"):
         for x in (13, 25, 35):
@@ -144,7 +144,7 @@ class RackPreview(QWidget):
         p = QPainter(self)
         p.setRenderHint(QPainter.RenderHint.Antialiasing)
         w, h = self.width(), self.height()
-        p.setPen(QPen(QColor("#D5E2D0"), 1))
+        p.setPen(QPen(QColor("#D5E3EB"), 1))
         for x in range(0, w, 24):
             p.drawLine(x, 0, x, h)
         for y in range(0, h, 24):
@@ -163,10 +163,10 @@ class RackPreview(QWidget):
         points = [QPointF((w - (xmax - xmin) * scale) / 2 + (x - xmin) * scale,
                          (h - (ymax - ymin) * scale) / 2 + (y - ymin) * scale) for x, y in projected]
         for a, b, kind in self.plan.beams:
-            p.setPen(QPen(QColor("#83A57F" if kind == "brace" else "#49745A"), 1.4 if kind == "brace" else 2))
+            p.setPen(QPen(QColor("#8AB8D0" if kind == "brace" else "#4B83A3"), 1.4 if kind == "brace" else 2))
             p.drawLine(points[a], points[b])
         p.setPen(Qt.PenStyle.NoPen)
-        p.setBrush(QColor("#426B48"))
+        p.setBrush(QColor("#32769B"))
         for index in self.plan.foundations:
             p.drawEllipse(points[index], 3, 2)
         p.end()

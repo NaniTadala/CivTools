@@ -12,6 +12,9 @@ DJ_DIRECTION_TOL = 0.001
 DJ_COLLINEAR_DOT_MIN = 0.999
 DJ_ELEVATION_ROUND = 2
 DJ_DOT_EQUAL_TOL = 1.0e-7
+CHANNEL_AND_ANGLE_PROPERTY_TYPES = frozenset(
+    {630, 631, 633, 634, 635, 640, 641, 642, 643, 644, 645, 646}
+)
 
 @dataclass(slots=True)
 class Member:
@@ -26,6 +29,8 @@ class Member:
     column_y: bool
     beam_x: bool
     beam_z: bool
+    section_type: int = 0
+    plan_brace: bool = False
 
 
 @dataclass(slots=True)
@@ -91,7 +96,19 @@ CONCRETE_PARAMETERS = [
 ]
 
 STEEL_PARAMETERS = [
-    Parameter(True, "FYLD", 355000.0, "All steel", "Steel yield strength in active STAAD force/area units"),
+    Parameter(True, "FYLD", 355000.0, "Steel beams except channels and angles", "Steel yield strength in active STAAD force/area units"),
+    Parameter(True, "FYLD (CHANNELS AND ANGLES)", 250000.0, "Channel and angle steel beams", "Steel yield strength in active STAAD force/area units"),
+    Parameter(True, "FU", 490000.0, "Steel beams except channels and angles", "Steel ultimate tensile strength in active STAAD force/area units"),
+    Parameter(True, "FU (CHANNELS AND ANGLES)", 410000.0, "Channel and angle steel beams", "Steel ultimate tensile strength in active STAAD force/area units"),
+    Parameter(True, "BEAM", 1.0, "All steel", "Beam design parameter"),
+    Parameter(True, "TMAIN", 250.0, "All steel beams and columns", "Main reinforcement yield strength in active STAAD force/area units"),
+    Parameter(True, "MAIN", 250.0, "All steel plan braces", "Main reinforcement yield strength in active STAAD force/area units"),
+    Parameter(True, "STP", 1.0, "All steel", "Steel parameter"),
+    Parameter(True, "IMM", 1.0, "All steel columns", "Steel column parameter"),
+    Parameter(True, "CMX", 0.9, "All steel columns", "Steel column parameter"),
+    Parameter(True, "CMZ", 0.9, "All steel columns", "Steel column parameter"),
+    Parameter(True, "NSF", 1.0, "All steel braces", "Steel brace parameter"),
+    Parameter(True, "LAT", 1.0, "Steel beams except columns and braces", "Steel beam parameter"),
     Parameter(True, "KY", 1.0, "All steel", "Effective length factor about local y-axis"),
     Parameter(True, "KZ", 1.0, "All steel", "Effective length factor about local z-axis"),
     Parameter(True, "LY", 0.0, "All steel", "Effective length about local y-axis"),
@@ -174,6 +191,7 @@ class StaadService:
         self,
         tolerance: float,
         fallback: bool = False,
+        include_section_types: bool = False,
     ) -> list[Member]:
         self.connect()
         self._node_cache.clear()
@@ -221,11 +239,25 @@ class StaadService:
                 section,
                 fallback,
             )
+            section_type = 0
+            if include_section_types and steel:
+                try:
+                    section_type = int(
+                        self.os.Property.GetBeamSectionPropertyTypeNo(
+                            member_id
+                        )
+                    )
+                except Exception as exc:
+                    raise RuntimeError(
+                        "Could not retrieve the section property type for "
+                        f"steel member {member_id}: {exc}"
+                    ) from exc
 
             horizontal = dy / length <= tolerance
             column_y = math.hypot(dx, dz) / length <= tolerance
             beam_x = horizontal and dz / length <= tolerance and dx > dz
             beam_z = horizontal and dx / length <= tolerance and dz > dx
+            plan_brace = horizontal and not beam_x and not beam_z
 
             index = len(members)
             members.append(
@@ -241,6 +273,8 @@ class StaadService:
                     column_y,
                     beam_x,
                     beam_z,
+                    section_type,
+                    plan_brace,
                 )
             )
             by_node.setdefault(n1, []).append(index)
@@ -691,6 +725,12 @@ class ConcreteGenerator(BaseGenerator):
 
 
 class SteelGenerator(BaseGenerator):
+    CHANNEL_ANGLE_FYLD_NAME = "FYLD (CHANNELS AND ANGLES)"
+    CHANNEL_ANGLE_FU_NAME = "FU (CHANNELS AND ANGLES)"
+    CHANNEL_ANGLE_PREFIXES = (
+        "ISMC",
+        "ISA",
+    )
     VALUELESS = {
         "CHECK CODE",
         "SELECT MEMBER",
@@ -701,6 +741,25 @@ class SteelGenerator(BaseGenerator):
     DJ_NAMES = {"DESIGN JOINT", "DJ"}
     STUB_DJ_NAMES = {"DJ STUB COLUMNS"}
 
+    @staticmethod
+    def _is_channel_or_angle(member: Member) -> bool:
+        if member.section_type in CHANNEL_AND_ANGLE_PROPERTY_TYPES:
+            return True
+
+        section = member.section.upper()
+        if "CHANNEL" in section or "ANGLE" in section:
+            return True
+
+        compact = "".join(
+            character for character in section if character.isalnum()
+        )
+        return any(
+            compact.startswith(prefix)
+            and len(compact) > len(prefix)
+            and compact[len(prefix)].isdigit()
+            for prefix in SteelGenerator.CHANNEL_ANGLE_PREFIXES
+        )
+
     def generate(
         self,
         parameters: list[Parameter],
@@ -710,6 +769,49 @@ class SteelGenerator(BaseGenerator):
             member.member_id
             for member in self.s.members
             if member.steel
+        ]
+        steel_beam_and_column_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel
+            and (member.beam_x or member.beam_z or member.column_y)
+        ]
+        steel_plan_brace_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel and member.plan_brace
+        ]
+        steel_column_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel and member.column_y
+        ]
+        steel_brace_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel
+            and not member.column_y
+            and not member.beam_x
+            and not member.beam_z
+        ]
+        steel_beam_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel and (member.beam_x or member.beam_z)
+        ]
+        fyld_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel
+            and (member.beam_x or member.beam_z)
+            and not self._is_channel_or_angle(member)
+        ]
+        channel_angle_fyld_ids = [
+            member.member_id
+            for member in self.s.members
+            if member.steel
+            and (member.beam_x or member.beam_z)
+            and self._is_channel_or_angle(member)
         ]
         blocks: list[str] = []
 
@@ -733,6 +835,79 @@ class SteelGenerator(BaseGenerator):
                 blocks.append(
                     "\n".join(
                         self.wrap("SELECT MEMBER", steel_ids)
+                    )
+                )
+            elif name == "TMAIN":
+                value = self.require_value(parameter)
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name} {self.fmt(value)} MEMB",
+                            steel_beam_and_column_ids,
+                        )
+                    )
+                )
+            elif name == "MAIN":
+                value = self.require_value(parameter)
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name} {self.fmt(value)} MEMB",
+                            steel_plan_brace_ids,
+                        )
+                    )
+                )
+            elif name in {"IMM", "CMX", "CMZ"}:
+                value = self.require_value(parameter)
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name} {self.fmt(value)} MEMB",
+                            steel_column_ids,
+                        )
+                    )
+                )
+            elif name == "NSF":
+                value = self.require_value(parameter)
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name} {self.fmt(value)} MEMB",
+                            steel_brace_ids,
+                        )
+                    )
+                )
+            elif name == "LAT":
+                value = self.require_value(parameter)
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name} {self.fmt(value)} MEMB",
+                            steel_beam_ids,
+                        )
+                    )
+                )
+            elif name in {
+                "FYLD",
+                self.CHANNEL_ANGLE_FYLD_NAME,
+                "FU",
+                self.CHANNEL_ANGLE_FU_NAME,
+            }:
+                value = self.require_value(parameter)
+                member_ids = (
+                    channel_angle_fyld_ids
+                    if name in {
+                        self.CHANNEL_ANGLE_FYLD_NAME,
+                        self.CHANNEL_ANGLE_FU_NAME,
+                    }
+                    else fyld_ids
+                )
+                blocks.append(
+                    "\n".join(
+                        self.wrap(
+                            f"{name.split()[0]} {self.fmt(value)} MEMB",
+                            member_ids,
+                        )
                     )
                 )
             else:
@@ -1560,5 +1735,3 @@ class SteelGenerator(BaseGenerator):
         elif "." not in text:
             text += ".0"
         return text
-
-
