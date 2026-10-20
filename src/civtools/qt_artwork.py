@@ -7,6 +7,7 @@ from PySide6.QtWidgets import QWidget
 ACCENTS = {
     "quantities": ("#E8F1FB", "#39719C"), "mapper": ("#FBECE9", "#C94438"),
     "dj": ("#EAF0FB", "#456CA5"), "rack": ("#F0ECFA", "#7963AB"),
+    "productivity": ("#E2F3F1", "#267E78"),
     "library": ("#FBF2E1", "#A77C31"), "excel": ("#E7F3EA", "#217346"),
 }
 
@@ -48,7 +49,7 @@ def illustration(kind):
             p.setBrush(QColor(accent))
             p.drawEllipse(QPointF(126, 51), 2.5, 2.5)
             product_icon("mapper", 25).paint(p, 123, 73, 25, 25)
-    elif kind in ("rack", "dj"):
+    elif kind in ("rack", "dj", "productivity"):
         if kind == "rack":
             points = [(32, 49), (65, 62), (117, 38), (84, 25)]
             for a, b in zip(points, points[1:] + points[:1]):
@@ -68,7 +69,8 @@ def illustration(kind):
                 p.drawEllipse(QPointF(x, y), 4, 4)
             p.setPen(Qt.PenStyle.NoPen)
             p.setBrush(QColor(accent))
-            for x, caption in ((18, "DJ1"), (105, "DJ2")):
+            captions = ((18, "MODEL"), (105, "DATA")) if kind == "productivity" else ((18, "DJ1"), (105, "DJ2"))
+            for x, caption in captions:
                 p.drawRoundedRect(QRectF(x, 76, 38, 19), 5, 5)
                 p.setPen(QColor("#FFFFFF"))
                 p.setFont(QFont("Poppins", 8, QFont.Weight.DemiBold))
@@ -112,7 +114,7 @@ def product_icon(kind, size=48):
         hole = QPainterPath()
         hole.moveTo(21, 23); hole.lineTo(24, 16); hole.lineTo(26, 23); hole.closeSubpath()
         p.drawPath(path.subtracted(hole))
-    elif kind in ("dj", "rack"):
+    elif kind in ("dj", "rack", "productivity"):
         for x in (12, 24, 36):
             p.drawLine(x, 13, x, 35)
         for y in (14, 25, 35):
@@ -168,7 +170,7 @@ class ToolIllustration(QWidget):
         self.setAccessibleName(f"{kind} engineering illustration")
         self.setToolTip({"mapper": "Excel coordinates → AutoCAD geometry", "dj": "STAAD.Pro concrete and steel design parameters",
                          "rack": "STAAD.Pro pipe rack modeling", "quantities": "DXF drawings → Excel quantities",
-                         "library": "EIL engineering standards"}[kind])
+                         "library": "EIL engineering standards", "productivity": "STAAD.Pro local productivity tools"}[kind])
 
     def paintEvent(self, event):
         p = QPainter(self)

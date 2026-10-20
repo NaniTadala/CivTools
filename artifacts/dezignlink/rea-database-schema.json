@@ -1,0 +1,232 @@
+{
+  "evidence_id": "ev_a0e67cd53da462f5792f6bef484f3d5ee3cad5ccfbef171a2489746c94eb4cf8",
+  "subject": {
+    "name": "client.sqlite3",
+    "digest": {
+      "sha256": "ae4dcf0da21a7e6b76266b5d88955005be9e353681084098b1013a2af01a1da9"
+    },
+    "local_path": "C:\\Root Bridge Technologies\\dEZignLink for STAAD.Pro\\client.sqlite3",
+    "format": "file",
+    "architecture": null
+  },
+  "provider": {
+    "id": "sqlite",
+    "name": "REA SQLite database inspector",
+    "version": "SQLite 3.53.4"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.analysis",
+  "operation": "inspect_sqlite_database",
+  "parameters": {
+    "path": "C:\\Root Bridge Technologies\\dEZignLink for STAAD.Pro\\client.sqlite3",
+    "schema_scope": "database"
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "artifact": {
+      "path": "C:\\Root Bridge Technologies\\dEZignLink for STAAD.Pro\\client.sqlite3",
+      "sha256": "ae4dcf0da21a7e6b76266b5d88955005be9e353681084098b1013a2af01a1da9",
+      "bytes": 270336
+    },
+    "wal": null,
+    "engine": {
+      "name": "SQLite",
+      "version": "3.53.4"
+    },
+    "database_encoding": "UTF-8",
+    "schema": {
+      "scope": "database",
+      "completeness": "complete",
+      "tables": [
+        {
+          "name": "results",
+          "sql": "CREATE TABLE results (\n\tid INTEGER NOT NULL, \n\tstd_file VARCHAR NOT NULL, \n\tmem_inc JSON, \n\tnode_coords JSON, \n\tunits JSON, \n\tbeta JSON, \n\taccess_date VARCHAR, \n\tsel_mem JSON, \n\tdef_rel JSON, \n\tdat_tbl JSON, \n\tPRIMARY KEY (id)\n)",
+          "root_page": 2,
+          "kind": "table",
+          "without_rowid": false,
+          "strict": false,
+          "column_count": 10,
+          "columns_completeness": "complete",
+          "columns": [
+            {
+              "cid": 0,
+              "name": "id",
+              "declared_type": "INTEGER",
+              "not_null": true,
+              "default_sql": null,
+              "primary_key_position": 1,
+              "hidden": 0
+            },
+            {
+              "cid": 1,
+              "name": "std_file",
+              "declared_type": "VARCHAR",
+              "not_null": true,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            },
+            {
+              "cid": 2,
+              "name": "mem_inc",
+              "declared_type": "JSON",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            },
+            {
+              "cid": 3,
+              "name": "node_coords",
+              "declared_type": "JSON",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            },
+            {
+              "cid": 4,
+              "name": "units",
+              "declared_type": "JSON",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            },
+            {
+              "cid": 5,
+              "name": "beta",
+              "declared_type": "JSON",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            },
+            {
+              "cid": 6,
+              "name": "access_date",
+              "declared_type": "VARCHAR",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            },
+            {
+              "cid": 7,
+              "name": "sel_mem",
+              "declared_type": "JSON",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            },
+            {
+              "cid": 8,
+              "name": "def_rel",
+              "declared_type": "JSON",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            },
+            {
+              "cid": 9,
+              "name": "dat_tbl",
+              "declared_type": "JSON",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            }
+          ]
+        },
+        {
+          "name": "settings",
+          "sql": "CREATE TABLE settings (\n\tid INTEGER NOT NULL, \n\tdnld_path VARCHAR, \n\tlast_email VARCHAR, \n\tlast_cookie JSON, \n\tPRIMARY KEY (id)\n)",
+          "root_page": 4,
+          "kind": "table",
+          "without_rowid": false,
+          "strict": false,
+          "column_count": 4,
+          "columns_completeness": "complete",
+          "columns": [
+            {
+              "cid": 0,
+              "name": "id",
+              "declared_type": "INTEGER",
+              "not_null": true,
+              "default_sql": null,
+              "primary_key_position": 1,
+              "hidden": 0
+            },
+            {
+              "cid": 1,
+              "name": "dnld_path",
+              "declared_type": "VARCHAR",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            },
+            {
+              "cid": 2,
+              "name": "last_email",
+              "declared_type": "VARCHAR",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            },
+            {
+              "cid": 3,
+              "name": "last_cookie",
+              "declared_type": "JSON",
+              "not_null": false,
+              "default_sql": null,
+              "primary_key_position": 0,
+              "hidden": 0
+            }
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_results_std_file",
+          "table": "results",
+          "sql": "CREATE UNIQUE INDEX ix_results_std_file ON results (std_file)",
+          "root_page": 3
+        }
+      ],
+      "views": [],
+      "triggers": []
+    },
+    "rows": null,
+    "limitations": [
+      "Inspects an offline stable file set. Filesystem identity checks detect observed acquisition changes; they do not establish an atomic snapshot of an actively changing database. Supply an application-created backup or quiescent database/WAL pair.",
+      "The source database and WAL are never opened by SQLite or modified. A private copy may acquire its own WAL-index sidecar and is removed after inspection.",
+      "SQLite reports current schema and selected committed rows from its valid database/WAL state. Deleted records, uncommitted or invalid WAL tails, encrypted databases, forensic recovery, and full integrity verification are outside this profile.",
+      "Stored CREATE statements preserve index/view/trigger definitions. Views, triggers, and virtual/shadow table rows are not executed; virtual-table column expansion is unsupported.",
+      "Selected rows have unspecified order and are a bounded sample. Text display may replace invalid sequences; bytes_hex and encoding preserve SQLite's text byte representation, not original on-disk page offsets.",
+      "Resource boundaries: at most two concurrent inspections per provider; combined input 256 MiB per inspection, complete worker JSON 16 MiB, native SQLite value/record and SQL statement lengths 16 MiB, owned-worker JavaScript heap 256 MiB and supervised deadline 30 seconds. These are distinct from total resident memory; an overall native SQLite heap cap is not claimed. Failures return no partial success."
+    ]
+  },
+  "confidence": "observed",
+  "authority": "shipped-artifact",
+  "environment": null,
+  "limitations": [
+    "Inspects an offline stable file set. Filesystem identity checks detect observed acquisition changes; they do not establish an atomic snapshot of an actively changing database. Supply an application-created backup or quiescent database/WAL pair.",
+    "The source database and WAL are never opened by SQLite or modified. A private copy may acquire its own WAL-index sidecar and is removed after inspection.",
+    "SQLite reports current schema and selected committed rows from its valid database/WAL state. Deleted records, uncommitted or invalid WAL tails, encrypted databases, forensic recovery, and full integrity verification are outside this profile.",
+    "Stored CREATE statements preserve index/view/trigger definitions. Views, triggers, and virtual/shadow table rows are not executed; virtual-table column expansion is unsupported.",
+    "Selected rows have unspecified order and are a bounded sample. Text display may replace invalid sequences; bytes_hex and encoding preserve SQLite's text byte representation, not original on-disk page offsets.",
+    "Resource boundaries: at most two concurrent inspections per provider; combined input 256 MiB per inspection, complete worker JSON 16 MiB, native SQLite value/record and SQL statement lengths 16 MiB, owned-worker JavaScript heap 256 MiB and supervised deadline 30 seconds. These are distinct from total resident memory; an overall native SQLite heap cap is not claimed. Failures return no partial success."
+  ],
+  "relationship_coverage": null,
+  "locations": [
+    {
+      "kind": "artifact-path",
+      "path": "C:\\Root Bridge Technologies\\dEZignLink for STAAD.Pro\\client.sqlite3"
+    }
+  ],
+  "evidence_links": []
+}

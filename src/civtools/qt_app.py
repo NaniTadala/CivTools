@@ -16,6 +16,7 @@ TOOLS = (
     ("quantities", "DXF quantity extractor", "Quantities", "Extract drawing quantities and consolidate them in Excel.", "DXF / EXCEL"),
     ("dj", "STAAD parameter generator", "Modeling", "Generate concrete and steel design commands for the active STAAD.Pro model.", "STAAD.PRO"),
     ("rack", "Pipe rack modeler", "Modeling", "Configure grids, tiers and bracing for a STAAD model.", "STAAD.PRO"),
+    ("productivity", "STAAD productivity suite", "Modeling", "Select and group members, export results, generate PEB frames and STAAD commands.", "STAAD.PRO / EXCEL"),
     ("mapper", "AutoCAD smart mapper", "Drawings", "Plot spreadsheet coordinates and labels in AutoCAD.", "EXCEL / CAD"),
     ("library", "EIL standards library", "Documents", "Find, preview and open engineering standards.", "PDF LIBRARY"),
 )
@@ -88,7 +89,7 @@ class Dashboard(QWidget):
         layout.addLayout(top)
         search_row = QHBoxLayout()
         self.search = QLineEdit()
-        self.search.setPlaceholderText("Find a tool…  Ctrl+F")
+        self.search.setPlaceholderText("Find a toolâ€¦  Ctrl+F")
         self.search.setClearButtonEnabled(True)
         self.search.setAccessibleName("Search engineering tools")
         self.search.textChanged.connect(self.filter_cards)
@@ -111,7 +112,7 @@ class Dashboard(QWidget):
         scroll.setWidget(self.surface)
         layout.addWidget(scroll, 1)
         footer = QHBoxLayout()
-        self.count = label("5 tools", "muted")
+        self.count = label(f"{len(TOOLS)} tools", "muted")
         footer.addWidget(self.count)
         footer.addStretch()
         footer.addWidget(label("Text size", "muted"))
@@ -168,10 +169,10 @@ class UtilityWindow(QMainWindow):
         super().__init__()
         self.launcher, self.key, self.page = launcher, key, page
         title = next(t[1] for t in TOOLS if t[0] == key)
-        self.setWindowTitle(f"{title} · CivTools")
+        self.setWindowTitle(f"{title} Â· CivTools")
         self.setWindowIcon(tool_icon(key, 64))
         width, height = {"quantities": (640, 680), "dj": (900, 740), "rack": (720, 700),
-                         "mapper": (580, 620), "library": (850, 680)}[key]
+                         "mapper": (580, 620), "library": (850, 680), "productivity": (480, 560)}[key]
         self.resize(width, height)
         self.setMinimumSize(480, 460)
         central = QWidget()
@@ -239,7 +240,7 @@ class CivToolsApp(QMainWindow):
         self.settings = QSettings(str(root / "workspace.ini"), QSettings.Format.IniFormat)
         for name in ("Regular", "SemiBold", "Bold"):
             QFontDatabase.addApplicationFont(get_resource_path(f"fonts/Poppins/Poppins-{name}.ttf"))
-        self.setWindowTitle("CivTools · Toolkit")
+        self.setWindowTitle("CivTools Â· Toolkit")
         self.resize(780, 700)
         self.setMinimumSize(520, 500)
         self.setWindowIcon(QIcon(get_resource_path("assets/icons/logo.ico")))
@@ -283,7 +284,9 @@ class CivToolsApp(QMainWindow):
             return
         if key not in self.pages:
             from .qt_pages import QuantityPage, MapperPage, RackPage, DJPage, LibraryPage
-            factory = {"quantities": QuantityPage, "mapper": MapperPage, "rack": RackPage, "dj": DJPage, "library": LibraryPage}
+            from .qt_productivity import ProductivityPage
+            factory = {"quantities": QuantityPage, "mapper": MapperPage, "rack": RackPage, "dj": DJPage, "library": LibraryPage,
+                       "productivity": ProductivityPage}
             page = factory[key](self)
             page.restore_state(key)
             utility = UtilityWindow(self, key, page)
@@ -301,10 +304,10 @@ class CivToolsApp(QMainWindow):
 
     def update_status(self):
         active = sum(getattr(page, "busy", False) for page in self.pages.values())
-        self.statusBar().showMessage(f"{active} operation{'s' if active != 1 else ''} running · Reopen a tool to view progress" if active else "Tools open in their own windows · Inputs stay when you close them")
+        self.statusBar().showMessage(f"{active} operation{'s' if active != 1 else ''} running Â· Reopen a tool to view progress" if active else "Tools open in their own windows Â· Inputs stay when you close them")
         for card in self.dashboard.cards:
             page = self.pages.get(card.tool[0])
-            card.open_button.setText("Running…" if getattr(page, "busy", False) else "Resume" if page else "Open")
+            card.open_button.setText("Runningâ€¦" if getattr(page, "busy", False) else "Resume" if page else "Open")
 
     def open_tutorials(self):
         path = os.environ.get("CIVTOOLS_TUTORIALS_PATH")

@@ -1,0 +1,638 @@
+"""Local STAAD productivity suite, with reviewable command/file outputs."""
+import csv
+import io
+import json
+import math
+from pathlib import Path
+
+from PySide6.QtCore import Qt, QTimer
+from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QFormLayout,
+    QLineEdit, QPlainTextEdit, QTabWidget, QTableWidget, QTableWidgetItem,
+    QAbstractItemView, QHeaderView, QSpinBox, QFileDialog, QMessageBox, QBoxLayout)
+
+from .qt_pages import ToolPage, combo, number as numeric_field
+from .qt_widgets import label, button, CheckBox, RackPreview
+from .core.staad_productivity import (CATEGORIES, DOFS, ModelSnapshot, classify_members,
+    group_commands, release_commands, renumber_plan, renumber_csv, combination_commands,
+    read_combination_csv, tapered_commands, id_list)
+from .core.peb import PebConfig, build_peb_plan, geometry_commands
+from .core import staad_productivity_com as live
+
+
+def number(*args):
+    field = numeric_field(*args)
+    # Keep native buttons: on some Windows Qt builds NoButtons + QSS collapses
+    # the embedded line editor to a single pixel, hiding all numeric values.
+    field.setButtonSymbols(field.ButtonSymbols.UpDownArrows)
+    return field
+
+
+class ProductivityPage(ToolPage):
+    def __init__(self, window):
+        super().__init__(window, 'STAAD productivity suite',
+                         'Local model tools, result workbooks and structure generators.', 'Modeling')
+        self.setObjectName('productivityPage')
+        # The shared QLineEdit styling must not add a second padded border inside spin boxes.
+        self.setStyleSheet('QWidget#productivityPage QAbstractSpinBox QLineEdit '
+                          '{ border: none; padding: 0px; min-height: 0px; background: transparent; }')
+        self.snapshot = None
+        self.categories = {}
+        self.mapping = None
+        self.output_extension = '.txt'
+        self.tabs = QTabWidget()
+        self.tabs.setMinimumHeight(440)
+        self.body.addWidget(self.tabs)
+        self._model_tab()
+        self._results_tab()
+        self._combination_tab()
+        self._girder_tab()
+        self._peb_tab()
+        self._existing_tab()
+        preview, layout = self._tab('Preview')
+        self.output_caption = label('Generate commands or a geometry file to review here.', 'muted', True)
+        layout.addWidget(self.output_caption)
+        self.output = QPlainTextEdit()
+        self.output.setReadOnly(True)
+        self.output.setLineWrapMode(QPlainTextEdit.LineWrapMode.NoWrap)
+        self.output.setAccessibleName('Productivity output preview')
+        layout.addWidget(self.output, 1)
+        row = QHBoxLayout()
+        row.addWidget(button('Copy', self.copy_output, True))
+        row.addWidget(button('Export preview', self.export_output))
+        self.apply_button = button('Apply renumber plan', self.apply_renumber)
+        self.apply_button.setEnabled(False)
+        row.addWidget(self.apply_button)
+        layout.addLayout(row)
+        self.preview_tab = preview
+        self.state_widgets = {'group_prefix': self.group_prefix, 'renumber_start': self.renumber_start,
+                              'release_end': self.release_end, 'combination_csv': self.combination_csv,
+                              'girder_ids': self.girder_ids, 'girder_unit': self.girder_unit,
+                              'peb_variant': self.peb_variant, 'peb_frames': self.peb_frames,
+                              'peb_unit': self.peb_unit, 'peb_support': self.peb_support}
+        self.state_widgets.update({'girder_' + k: v for k, v in self.girder_dimensions.items()})
+        self.state_widgets.update({'peb_' + k: v for k, v in self.peb_dimensions.items()})
+        self.state_widgets.update({'release_' + k: v for k, v in self.release_dofs.items()})
+        self.state_widgets.update({'pedestal_' + k: v for k, v in self.pedestal_dimensions.items()})
+        self.state_widgets['result_kind'] = self.result_kind
+        self.renumber_start.valueChanged.connect(self.invalidate_mapping)
+
+    def _tab(self, title):
+        page = QWidget()
+        layout = QVBoxLayout(page)
+        layout.setContentsMargins(6, 10, 6, 6)
+        self.tabs.addTab(page, title)
+        return page, layout
+
+    def _model_tab(self):
+        _, layout = self._tab('Model')
+        row = QHBoxLayout()
+        row.addWidget(button('Scan STAAD', self.scan))
+        row.addWidget(button('Load snapshot', self.load_snapshot, True))
+        row.addWidget(button('Save snapshot', self.save_snapshot, True))
+        layout.addLayout(row)
+        self.model_caption = label('Scan an open analytical model, or load a geometry snapshot for offline command generation.', 'muted', True)
+        layout.addWidget(self.model_caption)
+        layout.addWidget(label('Classification uses Y-up geometry and straight beam chains between column nodes. '
+                               'Review sloping members and assign engineering roles below.', 'muted', True))
+        row = QHBoxLayout()
+        self.search = QLineEdit()
+        self.search.setPlaceholderText('Find member ID or category')
+        self.category_filter = combo(['All categories', *CATEGORIES])
+        row.addWidget(self.search, 1)
+        row.addWidget(self.category_filter)
+        layout.addLayout(row)
+        self.members = QTableWidget(0, 6)
+        self.members.setHorizontalHeaderLabels(['Member', 'Start', 'End', 'Category', 'Mid Y', 'Length'])
+        self.members.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.members.setSelectionMode(QAbstractItemView.SelectionMode.ExtendedSelection)
+        self.members.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.members.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
+        self.members.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
+        self.members.setMinimumHeight(190)
+        self.members.setAccessibleName('Scanned member classifications')
+        layout.addWidget(self.members, 1)
+        row = QHBoxLayout()
+        row.addWidget(button('Select visible', self.select_visible, True))
+        row.addWidget(button('Select in STAAD', self.select_in_staad, True))
+        row.addWidget(button('Support nodes', self.select_supports, True))
+        layout.addLayout(row)
+        row = QHBoxLayout()
+        self.role = combo(CATEGORIES)
+        row.addWidget(self.role, 1)
+        row.addWidget(button('Assign role to selected rows', self.assign_role, True))
+        layout.addLayout(row)
+        row = QHBoxLayout()
+        self.group_prefix = QLineEdit('CIV')
+        self.group_prefix.setMaximumWidth(100)
+        row.addWidget(label('Group prefix'))
+        row.addWidget(self.group_prefix)
+        row.addWidget(button('Preview groups', self.preview_groups))
+        layout.addLayout(row)
+        row = QHBoxLayout()
+        self.release_end = combo(['START', 'END', 'BOTH'])
+        row.addWidget(self.release_end)
+        self.release_dofs = {}
+        for dof in DOFS:
+            check = CheckBox(dof)
+            check.setChecked(dof == 'MZ')
+            self.release_dofs[dof] = check
+            row.addWidget(check)
+        layout.addLayout(row)
+        layout.addWidget(button('Preview releases for selected members', self.preview_releases))
+        row = QHBoxLayout()
+        self.renumber_start = QSpinBox()
+        self.renumber_start.setRange(1, 1_000_000_000)
+        row.addWidget(label('Renumber from'))
+        row.addWidget(self.renumber_start)
+        row.addWidget(button('Preview renumbering', self.preview_renumber))
+        layout.addLayout(row)
+        self.search.textChanged.connect(self.filter_members)
+        self.category_filter.currentTextChanged.connect(self.filter_members)
+
+    def _results_tab(self):
+        _, layout = self._tab('Results')
+        layout.addWidget(label('Scan the active model first. Results are read from STAAD in its base units; '
+                               'the workbook includes units and signed component envelopes.', 'muted', True))
+        form = QFormLayout()
+        self.result_kind = combo(['Reactions', 'Displacements', 'Pedestal'])
+        self.result_nodes = QLineEdit()
+        self.result_nodes.setPlaceholderText('Blank: supports for reactions, all nodes for displacements')
+        self.result_cases = QLineEdit()
+        self.result_cases.setPlaceholderText('Blank: all scanned cases; or 1, 2, 10 TO 15')
+        form.addRow('Results', self.result_kind)
+        form.addRow('Node IDs', self.result_nodes)
+        form.addRow('Load case IDs', self.result_cases)
+        layout.addLayout(form)
+        self.result_caption = label('No model scanned.', 'muted', True)
+        layout.addWidget(self.result_caption)
+        self.pedestal_panel = QWidget()
+        form = QFormLayout(self.pedestal_panel)
+        self.pedestal_dimensions = {}
+        for name, title, default in [('height', 'Height', 1.5), ('width_x', 'Width X', .6),
+                                     ('width_z', 'Width Z', .6), ('density', 'Weight density (force / length³)', 24)]:
+            field = number(default, .000001, 1e9)
+            field.setDecimals(6)
+            self.pedestal_dimensions[name] = field
+            form.addRow(title, field)
+        layout.addWidget(self.pedestal_panel)
+        layout.addWidget(label('Pedestal: use the displayed STAAD base units. Global Y is vertical. '
+                               'Transfers signed reactions downward, adds pedestal weight to Fy, and retains torsion My. '
+                               'Negate reactions for loads acting on the foundation.', 'muted', True))
+        layout.addWidget(button('Export result workbook', self.export_results))
+        layout.addStretch()
+        self.result_kind.currentTextChanged.connect(lambda text: self.pedestal_panel.setEnabled(text == 'Pedestal'))
+        self.pedestal_panel.setEnabled(False)
+
+    def _combination_tab(self):
+        _, layout = self._tab('Load combinations')
+        layout.addWidget(label('Enter one row per load contribution. Reuse a combination number for its other cases. '
+                               'Factors are supplied by you; no design-code factors are assumed. '
+                               'A scanned model also enables case-ID checks.', 'muted', True))
+        self.combination_csv = QPlainTextEdit('combination,title,case,factor\n101,ULS DL LL,1,1.5\n101,ULS DL LL,2,1.5\n102,SLS DL LL,1,1\n102,SLS DL LL,2,1')
+        self.combination_csv.setAccessibleName('Load combination CSV input')
+        self.combination_csv.setMinimumHeight(180)
+        layout.addWidget(self.combination_csv, 1)
+        row = QHBoxLayout()
+        row.addWidget(button('Save Excel template', self.save_combination_template, True))
+        row.addWidget(button('Import CSV / Excel', self.import_combinations, True))
+        row.addWidget(button('Preview combinations', self.preview_combinations))
+        layout.addLayout(row)
+
+    def _girder_tab(self):
+        _, layout = self._tab('Plate girders')
+        layout.addWidget(label('Generate tapered-I section properties for specified members. '
+                               'Dimensions describe the section, without a strength or buckling check.', 'muted', True))
+        form = QFormLayout()
+        self.girder_ids = QLineEdit('1 TO 5')
+        self.girder_unit = combo(['METER', 'INCHES'])
+        form.addRow('Member IDs', self.girder_ids)
+        form.addRow('Dimension units', self.girder_unit)
+        self.girder_dimensions = {}
+        for key, title, default in [('d1', 'Depth at start', .8), ('tw', 'Web thickness', .01),
+            ('d2', 'Depth at end', .6), ('bt', 'Top flange width', .3), ('tt', 'Top flange thickness', .02),
+            ('bb', 'Bottom flange width', .3), ('tb', 'Bottom flange thickness', .02)]:
+            field = number(default, .000001, 100000)
+            field.setDecimals(6)
+            self.girder_dimensions[key] = field
+            form.addRow(title, field)
+        layout.addLayout(form)
+        layout.addWidget(button('Preview plate-girder property', self.preview_girder))
+        layout.addStretch()
+
+    def _peb_tab(self):
+        _, layout = self._tab('PEB structures')
+        layout.addWidget(label('A: gable frame · B: gable with ridge columns · C: gable with two internal column lines · '
+                               'D: single-slope frame. Generates connected columns, rafters, purlins and ties. '
+                               'Assign sections, materials, bracing and loads in STAAD before analysis.', 'muted', True))
+        inputs = QWidget()
+        form = QFormLayout(inputs)
+        form.setContentsMargins(0, 0, 0, 0)
+        self.peb_variant = combo(['A', 'B', 'C', 'D'])
+        self.peb_unit = combo(['METER', 'INCHES'])
+        self.peb_support = combo(['Pinned', 'Fixed'])
+        self.peb_frames = QSpinBox()
+        self.peb_frames.setRange(2, 500)
+        self.peb_frames.setValue(4)
+        form.addRow('Variant', self.peb_variant)
+        form.addRow('Length units', self.peb_unit)
+        form.addRow('Supports', self.peb_support)
+        self.peb_dimensions = {}
+        for key, title, default in [('width', 'Width', 20), ('eave_height', 'Eave / low-side height', 6),
+            ('ridge_height', 'Ridge / high-side height', 9), ('frame_spacing', 'Frame spacing', 6),
+            ('tie_spacing', 'Maximum tie spacing', 3), ('purlin_spacing', 'Maximum purlin spacing', 1.5),
+            ('inner_left', 'Inner column from left (C)', 5),
+            ('inner_right', 'Inner column from right (C)', 5)]:
+            field = number(default, .000001, 100000)
+            field.setDecimals(6)
+            self.peb_dimensions[key] = field
+            form.addRow(title, field)
+        form.addRow('Number of frames', self.peb_frames)
+        content = QHBoxLayout()
+        self.peb_content = content
+        content.addWidget(inputs, 3)
+        visual = QWidget()
+        visual_layout = QVBoxLayout(visual)
+        visual_layout.setContentsMargins(6, 0, 0, 0)
+        self.peb_estimate = label('Generate a geometry preview to see node and member counts.', 'muted', True)
+        visual_layout.addWidget(self.peb_estimate)
+        self.peb_preview = RackPreview()
+        self.peb_preview.setMinimumHeight(200)
+        self.peb_preview.setAccessibleName('PEB geometry wireframe preview')
+        visual_layout.addWidget(self.peb_preview, 1)
+        visual_layout.addWidget(button('Generate PEB geometry', self.preview_peb))
+        content.addWidget(visual, 2)
+        layout.addLayout(content)
+        self.peb_variant.currentTextChanged.connect(self.update_peb_fields)
+        self.update_peb_fields()
+        for field in self.peb_dimensions.values():
+            field.valueChanged.connect(self.invalidate_peb_preview)
+        self.peb_frames.valueChanged.connect(self.invalidate_peb_preview)
+        self.peb_unit.currentTextChanged.connect(self.invalidate_peb_preview)
+        self.peb_support.currentTextChanged.connect(self.invalidate_peb_preview)
+        self.peb_variant.currentTextChanged.connect(self.invalidate_peb_preview)
+
+    def invalidate_peb_preview(self, *args):
+        self.peb_preview.plan = None
+        self.peb_preview.update()
+        self.peb_estimate.setText('Inputs changed. Generate geometry to refresh the preview.')
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        if hasattr(self, 'peb_content'):
+            direction = QBoxLayout.Direction.TopToBottom if self.width() < 800 else QBoxLayout.Direction.LeftToRight
+            self.peb_content.setDirection(direction)
+
+    def _existing_tab(self):
+        _, layout = self._tab('Parameters / racks')
+        layout.addWidget(label('Use the existing local CivTools generators. They keep their own settings and command previews.', 'muted', True))
+        layout.addWidget(button('Open STAAD parameter generator', lambda: self.window.navigate('dj')))
+        layout.addWidget(button('Open pipe rack modeler', lambda: self.window.navigate('rack')))
+        layout.addStretch()
+
+    def update_peb_fields(self, *args):
+        for key in ('inner_left', 'inner_right'):
+            self.peb_dimensions[key].setEnabled(self.peb_variant.currentText() == 'C')
+
+    def restore_state(self, key):
+        super().restore_state(key)
+        try:
+            data = json.loads(str(self.window.settings.value('forms/productivity_inputs', '{}')))
+            if not isinstance(data, dict):
+                raise ValueError('Saved inputs must be an object.')
+            for name, field in self.state_widgets.items():
+                value = data.get(name)
+                if value is None:
+                    continue
+                if isinstance(field, QPlainTextEdit):
+                    field.setPlainText(str(value))
+                elif isinstance(field, QLineEdit):
+                    field.setText(str(value))
+                elif isinstance(field, CheckBox):
+                    field.setChecked(value is True)
+                elif hasattr(field, 'setCurrentText'):
+                    field.setCurrentText(str(value))
+                else:
+                    if not math.isfinite(float(value)):
+                        raise ValueError('Saved numeric input must be finite.')
+                    field.setValue(int(value) if isinstance(field, QSpinBox) else float(value))
+        except (ValueError, TypeError, OverflowError) as exc:
+            self.invalid(f'Saved productivity inputs could not be read: {exc}')
+        for field in self.state_widgets.values():
+            signal = (field.textChanged if isinstance(field, (QLineEdit, QPlainTextEdit)) else
+                      field.toggled if isinstance(field, CheckBox) else
+                      field.currentTextChanged if hasattr(field, 'currentTextChanged') else field.valueChanged)
+            signal.connect(lambda *args: self.save_timer.start())
+
+    def save_state(self):
+        super().save_state()
+        if not hasattr(self, 'state_widgets'):
+            return
+        data = {}
+        for name, field in self.state_widgets.items():
+            data[name] = (field.toPlainText() if isinstance(field, QPlainTextEdit) else
+                          field.text() if isinstance(field, QLineEdit) else
+                          field.isChecked() if isinstance(field, CheckBox) else
+                          field.currentText() if hasattr(field, 'currentText') else field.value())
+        self.window.settings.setValue('forms/productivity_inputs', json.dumps(data))
+
+    def guard(self, operation):
+        try:
+            operation()
+        except Exception as exc:
+            self.invalid(str(exc))
+
+    def require_model(self):
+        if self.snapshot is None:
+            raise ValueError('Scan STAAD or load a model snapshot first.')
+        return self.snapshot
+
+    def scan(self):
+        self.run(live.scan, cad=True)
+
+    def on_success(self, result):
+        super().on_success(result)
+        if isinstance(result, ModelSnapshot):
+            self.set_snapshot(result)
+        elif self.mapping is not None and getattr(result, 'output_path', ''):
+            # A successful renumber changes every cached model reference.
+            self.invalidate_mapping()
+
+    def set_snapshot(self, snapshot):
+        self.snapshot = snapshot
+        self.categories = classify_members(snapshot, overrides=snapshot.classifications)
+        self.invalidate_mapping()
+        self.model_caption.setText(str(snapshot) + '\n' + snapshot.path)
+        self.result_caption.setText(f'Length: {snapshot.length_unit}; force: {snapshot.force_unit}; '
+                                    f'moments: {snapshot.force_unit} {snapshot.length_unit}; rotations: rad.\n'
+                                    'Load cases: ' + ', '.join(map(str, snapshot.load_cases)))
+        self.result_nodes.clear()
+        self.result_cases.clear()
+        self.populate_members()
+
+    def populate_members(self):
+        model = self.require_model()
+        self.members.setUpdatesEnabled(False)
+        try:
+            self.members.setRowCount(len(model.members))
+            for row, (mid, (a, b)) in enumerate(sorted(model.members.items())):
+                values = (mid, a, b, self.categories[mid],
+                          f'{(model.nodes[a][1] + model.nodes[b][1]) / 2:.5g}',
+                          f'{math.dist(model.nodes[a], model.nodes[b]):.5g}')
+                for col, value in enumerate(values):
+                    self.members.setItem(row, col, QTableWidgetItem(str(value)))
+        finally:
+            self.members.setUpdatesEnabled(True)
+        self.filter_members()
+
+    def filter_members(self, *args):
+        term, category = self.search.text().strip().casefold(), self.category_filter.currentText()
+        for row in range(self.members.rowCount()):
+            role = self.members.item(row, 3).text()
+            match = term in (self.members.item(row, 0).text() + ' ' + role).casefold()
+            self.members.setRowHidden(row, not match or (category != 'All categories' and role != category))
+
+    def selected_ids(self):
+        self.require_model()
+        ids = [int(self.members.item(index.row(), 0).text())
+               for index in self.members.selectionModel().selectedRows()
+               if not self.members.isRowHidden(index.row())]
+        if not ids:
+            raise ValueError('Select member rows first; use Select visible for a whole category.')
+        return sorted(ids)
+
+    def select_visible(self):
+        from PySide6.QtCore import QItemSelection, QItemSelectionModel
+        selection = QItemSelection()
+        for row in range(self.members.rowCount()):
+            if not self.members.isRowHidden(row):
+                selection.select(self.members.model().index(row, 0), self.members.model().index(row, 5))
+        self.members.selectionModel().select(selection, QItemSelectionModel.SelectionFlag.ClearAndSelect | QItemSelectionModel.SelectionFlag.Rows)
+
+    def assign_role(self):
+        def assign():
+            for mid in self.selected_ids():
+                self.categories[mid] = self.role.currentText()
+                self.snapshot.classifications[mid] = self.role.currentText()
+            self.invalidate_mapping()
+            self.populate_members()
+        self.guard(assign)
+
+    def select_in_staad(self):
+        def start():
+            model, ids = self.require_model(), self.selected_ids()
+            self.run(lambda report: live.select_members(model, ids, report), cad=True)
+        self.guard(start)
+
+    def select_supports(self):
+        def start():
+            model = self.require_model()
+            self.run(lambda report: live.select_members(model, model.supports, report, nodes=True), cad=True)
+        self.guard(start)
+
+    def show_output(self, text, caption, extension='.txt'):
+        if extension != '.csv':
+            self.invalidate_mapping()
+        self.output.setPlainText(text)
+        self.output_caption.setText(caption)
+        self.output_extension = extension
+        self.tabs.setCurrentWidget(self.preview_tab)
+        self.feedback_text(caption, 'success')
+
+    def preview_groups(self):
+        self.guard(lambda: self.show_output(group_commands(self.require_model(), self.categories, self.group_prefix.text().strip()),
+                                            'Group commands for ' + self.snapshot.path))
+
+    def preview_releases(self):
+        self.guard(lambda: self.show_output(release_commands(self.selected_ids(), self.release_end.currentText(),
+                      [k for k, field in self.release_dofs.items() if field.isChecked()]),
+                      'Release commands in LOCAL member axes for ' + self.snapshot.path))
+
+    def invalidate_mapping(self, *args):
+        self.mapping = None
+        if hasattr(self, 'apply_button'):
+            self.apply_button.setEnabled(False)
+
+    def preview_renumber(self):
+        def generate():
+            self.mapping = renumber_plan(self.require_model(), self.renumber_start.value(), self.categories)
+            self.show_output(renumber_csv(self.mapping), 'Renumber plan: category, then Y/Z/X midpoint order. ' + self.snapshot.path, '.csv')
+            self.apply_button.setEnabled(True)
+        self.guard(generate)
+
+    def apply_renumber(self):
+        if self.mapping is None:
+            self.invalid('Generate a fresh renumber plan first.')
+            return
+        model, mapping = self.snapshot, dict(self.mapping)
+        answer = QMessageBox.question(self, 'Apply member renumbering',
+            f'Save and renumber {len(mapping):,} members in:\n{model.path}\n\n'
+            'CivTools will save the current model, create a backup and a numbering journal, '
+            'then apply the previewed plan. Existing analysis results and saved selections may become invalid. '
+            'Close the STAAD editor before continuing.', QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No)
+        if answer == QMessageBox.StandardButton.Yes:
+            def operation(report):
+                result = live.apply_renumber(model, mapping, report)
+                report('renumbered', True)
+                return result
+            self.run(operation, cad=True)
+
+    def on_event(self, kind, value):
+        if kind == 'renumbered':
+            self.snapshot = None
+            self.categories = {}
+            self.members.setRowCount(0)
+            self.invalidate_mapping()
+            self.model_caption.setText('Model renumbered. Scan again before using member tools.')
+            self.result_caption.setText('Scan the renumbered model again.')
+        else:
+            super().on_event(kind, value)
+
+    def on_failure(self, message):
+        if self.mapping is not None:
+            # An interrupted renumber must never leave an applicable stale plan.
+            self.snapshot = None
+            self.categories = {}
+            self.members.setRowCount(0)
+            self.invalidate_mapping()
+            self.model_caption.setText('Operation failed. Inspect STAAD and scan again before continuing.')
+        super().on_failure(message)
+
+    def export_results(self):
+        def start():
+            model = self.require_model()
+            kind = self.result_kind.currentText()
+            allowed = model.nodes if kind == 'Displacements' else model.supports
+            nodes = id_list(self.result_nodes.text(), allowed) if self.result_nodes.text().strip() else sorted(allowed)
+            cases = id_list(self.result_cases.text(), model.load_cases) if self.result_cases.text().strip() else list(model.load_cases)
+            if not nodes or not cases:
+                raise ValueError('The scanned model has no matching nodes or load cases.')
+            pedestal = tuple(field.value() for field in self.pedestal_dimensions.values()) if kind == 'Pedestal' else None
+            path, _ = QFileDialog.getSaveFileName(self, 'Export STAAD results', self.last_folder() + '/staad-results.xlsx', 'Excel workbook (*.xlsx)')
+            if path:
+                self.remember_folder(path)
+                self.run(lambda report: live.export_results(model, kind, nodes, cases, path, report, pedestal), cad=True)
+        self.guard(start)
+
+    def preview_combinations(self):
+        self.guard(lambda: self.show_output(combination_commands(read_combination_csv(self.combination_csv.toPlainText()),
+                          self.snapshot.load_cases if self.snapshot else None,
+                          self.snapshot.primary_cases if self.snapshot else None), 'Linear load-combination commands from your factors.'))
+
+    def save_combination_template(self):
+        def save():
+            from openpyxl import Workbook
+            path, _ = QFileDialog.getSaveFileName(self, 'Save combination template', self.last_folder() + '/load-combinations.xlsx', 'Excel workbook (*.xlsx)')
+            if path:
+                if Path(path).suffix.lower() != '.xlsx':
+                    raise ValueError('Save the template as .xlsx.')
+                wb = Workbook()
+                try:
+                    ws = wb.active
+                    ws.title = 'LOAD_COMB'
+                    for row in [('combination', 'title', 'case', 'factor'), (101, 'ULS DL LL', 1, 1.5), (101, 'ULS DL LL', 2, 1.5)]:
+                        ws.append(row)
+                    ws.freeze_panes = 'A2'
+                    wb.save(path)
+                finally:
+                    wb.close()
+                self.remember_folder(path)
+                self.feedback_text('Saved template: ' + path, 'success')
+        self.guard(save)
+
+    def import_combinations(self):
+        def load():
+            path, _ = QFileDialog.getOpenFileName(self, 'Import load combinations', self.last_folder(), 'Load combinations (*.csv *.xlsx)')
+            if not path:
+                return
+            if Path(path).suffix.lower() == '.xlsx':
+                from openpyxl import load_workbook
+                wb = load_workbook(path, read_only=True, data_only=False)
+                try:
+                    if 'LOAD_COMB' not in wb.sheetnames:
+                        raise ValueError('Workbook requires a LOAD_COMB worksheet.')
+                    ws = wb['LOAD_COMB']
+                    if ws.max_row > 10001 or ws.max_column > 4:
+                        raise ValueError('Use the four-column template with at most 10,000 contributions.')
+                    stream = io.StringIO()
+                    csv.writer(stream).writerows(ws.iter_rows(values_only=True))
+                    text = stream.getvalue()
+                finally:
+                    wb.close()
+            else:
+                if Path(path).stat().st_size > 2_000_000:
+                    raise ValueError('CSV file exceeds 2 MB.')
+                text = Path(path).read_text(encoding='utf-8-sig')
+            combination_commands(read_combination_csv(text))
+            self.combination_csv.setPlainText(text)
+            self.remember_folder(path)
+        self.guard(load)
+
+    def preview_girder(self):
+        self.guard(lambda: self.show_output(tapered_commands(id_list(self.girder_ids.text(),
+                         self.snapshot.members if self.snapshot else None),
+                         [field.value() for field in self.girder_dimensions.values()], self.girder_unit.currentText()),
+                         'Tapered-I property commands; check incidence and restore input units after insertion.'))
+
+    def preview_peb(self):
+        def generate():
+            config = PebConfig(variant=self.peb_variant.currentText(), frames=self.peb_frames.value(),
+                               unit=self.peb_unit.currentText(), support=self.peb_support.currentText(),
+                               **{key: field.value() for key, field in self.peb_dimensions.items()})
+            plan = build_peb_plan(config)
+            self.peb_preview.plan = plan
+            self.peb_preview.update()
+            caption = f'PEB {config.variant}: {len(plan.nodes):,} nodes / {len(plan.beams):,} members. Geometry-only STAAD file.'
+            self.peb_estimate.setText(caption)
+            self.show_output(geometry_commands(plan, config.unit), caption, '.std')
+        self.guard(generate)
+
+    def last_folder(self):
+        return str(self.window.settings.value('folders/productivity', str(Path.home() / 'Documents')))
+
+    def remember_folder(self, path):
+        self.window.settings.setValue('folders/productivity', str(Path(path).parent))
+
+    def copy_output(self):
+        from PySide6.QtWidgets import QApplication
+        QApplication.clipboard().setText(self.output.toPlainText())
+        self.feedback_text('Copied preview.', 'success')
+
+    def export_output(self):
+        def save():
+            if not self.output.toPlainText().strip():
+                raise ValueError('Generate a preview first.')
+            ext = self.output_extension
+            path, _ = QFileDialog.getSaveFileName(self, 'Export preview', self.last_folder() + '/civtools-output' + ext,
+                                                 f'Generated output (*{ext})')
+            if path:
+                if Path(path).suffix.lower() != ext:
+                    raise ValueError(f'Use the {ext} extension for this output.')
+                if self.snapshot and Path(path).resolve() == Path(self.snapshot.path).resolve():
+                    raise ValueError('Choose a new output file; keep the source STAAD model.')
+                Path(path).write_text(self.output.toPlainText(), encoding='utf-8')
+                self.remember_folder(path)
+                self.feedback_text('Exported ' + path, 'success')
+        self.guard(save)
+
+    def save_snapshot(self):
+        def save():
+            model = self.require_model()
+            path, _ = QFileDialog.getSaveFileName(self, 'Save geometry snapshot', self.last_folder() + '/staad-snapshot.json', 'JSON (*.json)')
+            if path:
+                if Path(path).suffix.lower() != '.json':
+                    raise ValueError('Save the snapshot as .json.')
+                Path(path).write_text(model.to_json(), encoding='utf-8')
+                self.remember_folder(path)
+        self.guard(save)
+
+    def load_snapshot(self):
+        def load():
+            path, _ = QFileDialog.getOpenFileName(self, 'Load geometry snapshot', self.last_folder(), 'JSON (*.json)')
+            if path:
+                if Path(path).stat().st_size > 16_000_000:
+                    raise ValueError('Snapshot exceeds 16 MB.')
+                self.set_snapshot(ModelSnapshot.from_json(Path(path).read_text(encoding='utf-8')))
+                self.remember_folder(path)
+                self.feedback_text('Loaded offline geometry snapshot. Live actions recheck the active model.', 'success')
+        self.guard(load)

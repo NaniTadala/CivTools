@@ -1,4 +1,5 @@
 .venv/
+.rea-npm-cache/
 __pycache__/
 *.py[cod]
 /build/
@@ -8,3 +9,5 @@ __pycache__/
 /data/
 /staad_dj_settings.json
 /data/pdf_metadata_cache.json
+
+.rea-runtime/

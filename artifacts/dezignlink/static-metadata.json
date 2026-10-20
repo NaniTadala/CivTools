@@ -1,0 +1,5400 @@
+{
+  "artifact": "C:\\Root Bridge Technologies\\dEZignLink for STAAD.Pro\\dEZignLink_v3.2.1.exe",
+  "sha256": "d700fa2cc24fabfd2b0afecddba608d190050d593bc356085837d680d6913aaa",
+  "entry": "dEZignLink_v3.2_uc",
+  "entry_sha256": "359ee14ea82d5c10ed55f4ca200afd520f582e2262dcbac08b4c9345eb86efb0",
+  "marshal_bytes_consumed": 96441,
+  "method": "Static PyInstaller CArchive + Python 3.9 marshal metadata; no execution",
+  "scopes": [
+    {
+      "scope": "<module>",
+      "source_line": 14,
+      "names": [
+        "json",
+        "random",
+        "re",
+        "socket",
+        "string",
+        "time",
+        "fileinput",
+        "math",
+        "gc",
+        "os",
+        "ctypes",
+        "shutil",
+        "webbrowser",
+        "pathlib",
+        "Path",
+        "datetime",
+        "openpyxl",
+        "Workbook",
+        "openpyxl.styles",
+        "Font",
+        "Alignment",
+        "Border",
+        "Side",
+        "PatternFill",
+        "load_workbook",
+        "openpyxl.worksheet.datavalidation",
+        "DataValidation",
+        "docx",
+        "Document",
+        "docx.shared",
+        "Pt",
+        "Mm",
+        "getmac",
+        "get_mac_address",
+        "gma",
+        "sqlalchemy",
+        "Column",
+        "Integer",
+        "String",
+        "sqlalchemy.orm",
+        "declarative_base",
+        "JSON",
+        "create_engine",
+        "select",
+        "update",
+        "delete",
+        "sessionmaker",
+        "natsort",
+        "natsorted",
+        "comtypes",
+        "automation",
+        "client",
+        "deepdiff",
+        "DeepDiff",
+        "pygetwindow",
+        "gw",
+        "requests",
+        "win32com.client",
+        "win32com",
+        "pythoncom",
+        "xlsxwriter",
+        "PySimpleGUI_License",
+        "PySimpleGUI",
+        "sg",
+        "dEZignLink_theme",
+        "theme_add_new",
+        "theme",
+        "theme_background_color",
+        "buttonColors",
+        "popup_bkgrnd_clr0",
+        "popup_bttn_clr0",
+        "popup_bkgrnd_clr1",
+        "popup_bttn_clr1",
+        "set_options",
+        "appName",
+        "appVersion",
+        "staadFile",
+        "staadFilePrev",
+        "status",
+        "Session",
+        "s",
+        "REMOTE_SERVER",
+        "memTypesList",
+        "mouseOverEvents",
+        "mouseAwayEvents",
+        "mouseOverImgs",
+        "mouseAwayImgs",
+        "btnPressed",
+        "Dispatch",
+        "objShell",
+        "SpecialFolders",
+        "allUserDocs",
+        "format",
+        "defaultDnldPath",
+        "Base",
+        "Results",
+        "Settings",
+        "conn_string",
+        "engine",
+        "metadata",
+        "create_all",
+        "dbSession",
+        "results",
+        "session",
+        "stmt",
+        "execute",
+        "first",
+        "begin",
+        "dnldPath",
+        "add",
+        "make_safe_array_double",
+        "make_safe_array_int",
+        "make_safe_array_long",
+        "make_safe_str",
+        "make_safe_array_long_input",
+        "make_safe_array_int_input",
+        "make_variant_vt_ref",
+        "connOS",
+        "bool",
+        "GetSTAADFile",
+        "GetNodeList",
+        "GetBeamList",
+        "GetSelectedBeams",
+        "GetMemberIncidence",
+        "GetSelectedNodes",
+        "GetNodeCoordinates",
+        "SelectMultipleBeams",
+        "SelectMultipleNodes",
+        "CreateGroupEx",
+        "DefineReleases",
+        "GetSupportReactions",
+        "GetNodeDisplacements",
+        "userCredWin",
+        "setWin",
+        "toolbar",
+        "selMemWin",
+        "defRelWin",
+        "desParamsWin",
+        "resWindow",
+        "dataTblWin",
+        "loadCombWin",
+        "pipeRackWin",
+        "pebStrWin",
+        "is_connected",
+        "logIn",
+        "logOut",
+        "checkSession",
+        "checkOsStatus",
+        "getFileContent",
+        "getModelData",
+        "modelUnchanged",
+        "differentBaseUnit",
+        "modelChangedButNotSaved",
+        "smProc",
+        "rnProc",
+        "gmProc",
+        "drProc",
+        "defineReleases",
+        "dpProc",
+        "getLoadCases",
+        "genDataTbl",
+        "genDataTblFile",
+        "ldCmbTemp",
+        "ldCmbProc",
+        "pltGrdrsProc",
+        "prProc",
+        "pebProc",
+        "serverCall",
+        "last_email",
+        "lastEmail",
+        "last_cookie",
+        "lastCookie",
+        "smActButtonsList",
+        "drActButtonsList",
+        "memGrpsTypeDict",
+        "dtActButtonsList",
+        "loadCaseList",
+        "loadCaseSelList",
+        "loadCaseBalList",
+        "Window",
+        "Image",
+        "loading_window",
+        "Read",
+        "event",
+        "values",
+        "close",
+        "win_toolbar",
+        "win_userCred",
+        "win_settings",
+        "win_selMem",
+        "win_defRel",
+        "win_desParams",
+        "win_dataTbl",
+        "win_loadComb",
+        "win_pipeRack",
+        "win_pebStrA",
+        "win_pebStrB",
+        "win_pebStrC",
+        "win_pebStrD",
+        "inputsDict",
+        "pebType",
+        "prevDesCode",
+        "dpAssignClose",
+        "noModelSts",
+        "read_all_windows",
+        "window",
+        "Exception",
+        "WIN_CLOSED",
+        "keys",
+        "index",
+        "btnKey",
+        "TIMEOUT_EVENT",
+        "filter_by",
+        "all",
+        "stdFile",
+        "query",
+        "recordRows",
+        "len",
+        "accessDates",
+        "range",
+        "i",
+        "append",
+        "strptime",
+        "__dict__",
+        "min",
+        "oldest_entry",
+        "where",
+        "access_date",
+        "str",
+        "modelPath",
+        "replace",
+        "enumerate",
+        "slashList",
+        "slash1Idx",
+        "slash2Idx",
+        "modelPathIter",
+        "rfind",
+        "slashIdx",
+        "modelName",
+        "list",
+        "modelNameList",
+        "join",
+        "popup",
+        "url",
+        "open",
+        "PopupGetFolder",
+        "selectedDnldPath",
+        "dnld_path",
+        "setDnldPath",
+        "alertMsg",
+        "write_event_value",
+        "selMemDict",
+        "resFrmSrvr",
+        "isinstance",
+        "miDict",
+        "mncDict",
+        "osGeo",
+        "_FlagAsMethod",
+        "GetLastPlateNo",
+        "GetLastPhysicalMemberNo",
+        "GetLastSolidNo",
+        "getAllTitles",
+        "T",
+        "Yes",
+        "No",
+        "read",
+        "choice",
+        "_",
+        "today",
+        "strftime",
+        "bkUpFile",
+        "copyfile",
+        "start_thread",
+        "edtrOpnMsg",
+        "Output",
+        "osOut",
+        "AreResultsAvailable",
+        "excel",
+        "version",
+        "xlsxAvlbl",
+        "docxAvlbl",
+        "word",
+        "button",
+        "codeSelMsg",
+        "loads",
+        "memGroupsDict",
+        "key",
+        "get",
+        "modelData",
+        "modelIsSame",
+        "result",
+        "prevSelMemsArr",
+        "prevSelNodesArr",
+        "selMemsList",
+        "ClearMemberSelection",
+        "selNodesList",
+        "ClearNodeSelection",
+        "memGroups",
+        "memInc",
+        "popupText",
+        "relStartMems",
+        "relEndMems",
+        "Text",
+        "Button",
+        "drPopupLayout",
+        "dumps",
+        "Frame",
+        "Checkbox",
+        "Radio",
+        "selDict",
+        "startEnd",
+        "relSel",
+        "sum",
+        "st",
+        "dofRelease",
+        "osPrp",
+        "SaveModel",
+        "et",
+        "round",
+        "relStatus",
+        "designParams",
+        "assignText",
+        "stdFP",
+        "dP",
+        "FileInput",
+        "staad_File",
+        "CloseSTAADFile",
+        "sleep",
+        "line",
+        "print",
+        "OpenSTAADFile",
+        "ex",
+        "type",
+        "__name__",
+        "errMsg",
+        "mkdir",
+        "fileName",
+        "filePath",
+        "dpStr",
+        "txtFile",
+        "write",
+        "lcSelList",
+        "set",
+        "lcDeselList",
+        "Click",
+        "copy",
+        "fileData",
+        "alertText",
+        "successText",
+        "layout",
+        "collect"
+      ],
+      "arguments": [],
+      "strings": [
+        "#cccccc",
+        "#000000",
+        "#ffffff",
+        "#c4c4c4",
+        "dEZignLinkTheme",
+        "black",
+        "orange",
+        "lightgreen",
+        "dEZignLink for STAAD.Pro",
+        "v3.2.1",
+        "rootbridge.tech",
+        "WScript.Shell",
+        "Desktop",
+        "\\{0}",
+        "C:",
+        "Results",
+        "Settings",
+        "sqlite:///client.sqlite3",
+        "make_safe_array_double",
+        "make_safe_array_int",
+        "make_safe_array_long",
+        "make_safe_str",
+        "make_safe_array_long_input",
+        "make_safe_array_int_input",
+        "make_variant_vt_ref",
+        "connOS",
+        "GetSTAADFile",
+        "GetNodeList",
+        "GetBeamList",
+        "GetSelectedBeams",
+        "GetMemberIncidence",
+        "GetSelectedNodes",
+        "GetNodeCoordinates",
+        "SelectMultipleBeams",
+        "SelectMultipleNodes",
+        "CreateGroupEx",
+        "DefineReleases",
+        "GetSupportReactions",
+        "GetNodeDisplacements",
+        "userCredWin",
+        "setWin",
+        "toolbar",
+        "selMemWin",
+        "defRelWin",
+        "desParamsWin",
+        "resWindow",
+        "dataTblWin",
+        "loadCombWin",
+        "pipeRackWin",
+        "pebStrWin",
+        "is_connected",
+        "logIn",
+        "logOut",
+        "checkSession",
+        "checkOsStatus",
+        "getFileContent",
+        "getModelData",
+        "modelUnchanged",
+        "differentBaseUnit",
+        "modelChangedButNotSaved",
+        "smProc",
+        "rnProc",
+        "gmProc",
+        "drProc",
+        "defineReleases",
+        "dpProc",
+        "getLoadCases",
+        "genDataTbl",
+        "genDataTblFile",
+        "ldCmbTemp",
+        "ldCmbProc",
+        "pltGrdrsProc",
+        "prProc",
+        "pebProc",
+        "serverCall",
+        "",
+        "Columns",
+        "Primary Beams",
+        "Secondary Beams",
+        "Vertical Bracings",
+        "Plan Bracings",
+        "Pri. Beams - X Dir.",
+        "Pri. Beams - Z Dir.",
+        "Sec./Ter. Beams - X Dir.",
+        "Sec./Ter. Beams - Z Dir.",
+        "Rafters",
+        "Rafter Bracings",
+        "Support Nodes",
+        "./img/rbtLogo.png",
+        "#231f20",
+        "-CODE-",
+        "-PROC-",
+        "-COLY-",
+        "Columns LY LZ LX",
+        "-BMLY-",
+        "Beams LY LZ LX",
+        "-BMDJ-",
+        "X",
+        "ALT-x",
+        "Exit",
+        "Cancel",
+        "-SET_BTN-",
+        "./img/ctrlSettings.png",
+        "red",
+        "+",
+        "No model",
+        "No connection",
+        "access_date",
+        "%Y-%m-%d %H:%M:%S.%f",
+        " to STAAD.Pro",
+        "-MDL_NM-",
+        " open in STAAD.Pro",
+        "\\",
+        "/",
+        "<listcomp>",
+        "...",
+        " ~ ",
+        "-AUTH_MENU-",
+        "Log In",
+        "ALERT!\n\n",
+        "You are not connected to the internet, ",
+        "please connect and try again.\n",
+        "Register",
+        "Dashboard",
+        "Log Out",
+        "-SUBMIT-",
+        "-RSTPWD-",
+        "Browse Folder",
+        "Select folder",
+        "-Path-",
+        "Save",
+        "-SLMEM-",
+        "./img/btnSelect.png",
+        "STAAD.Pro should be running\n",
+        "and a model should be open\n",
+        "for this tool to function.\n",
+        "-RD_POPUP-",
+        "Base Unit of STAAD.Pro is different from the current model.\n",
+        "Change Base Unit and try again.\n\n",
+        "To change the Base Unit in STAAD.Pro, close the current ",
+        "STAAD file (without closing STAAD.Pro). Navigate to \"Configure\", ",
+        "and update the Base Unit to align with the current STAAD file.\n",
+        "-RNMEM-",
+        "./img/btnRenum.png",
+        "renum_members",
+        "modelData",
+        "Geometry",
+        "GetLastPlateNo",
+        "GetLastPhysicalMemberNo",
+        "GetLastSolidNo",
+        "This model contains either Plates, Physical Members,\n",
+        "or Solids. Renumbering is not supported for such models.\n",
+        "remote",
+        "Changes in model detected. Save model and try again.\n",
+        "Warning",
+        "WARNING!",
+        "This command renumbers all members in the structure in One Go.\nThis is an irreversible operation.\nAll undo and redo records will be lost.\nAll saved views based on previous numbering will become invalid.",
+        "As a safety measure, a back-up of the current file will be\ncreated in the same folder.",
+        "bold",
+        "Do you want to proceed?",
+        "Yes",
+        ".",
+        "_BKUP_",
+        "%Y%m%d%H%M%S",
+        ".std",
+        "<lambda>",
+        "-THEAD ENDED-",
+        "File back-up could not be created, permission denied.\nWe recommend creating a back-up of the current file\nmanually, as the Renumbering operation is irreversible.\n\nBack-up created manually? / Proceed without back-up?",
+        "STAAD.Pro Editor window is open.\n",
+        "Close the Editor window and try again.\n",
+        "-DFGRP-",
+        "./img/btnGroups.png",
+        "grp_members",
+        "Information",
+        "INFORMATION!",
+        "This command creates groups of Members, Nodes, and Floors in One Go.\nThe groups are named uniquely to avoid overwriting\ncurrently existing user-defined groups.\nHowever, groups previously created by this tool will be overwritten.\n\nDo you want to proceed?",
+        "-DFREL-",
+        "./img/btnReleases.png",
+        "-DESPR-",
+        "./img/btnDgnprm.png",
+        "Make sure the model is saved before assigning Design\n",
+        "Parameters with this tool, as the Parameters shall\n",
+        "be generated based on the last saved model data.\n",
+        "Unsaved changes will not be captured.\n",
+        "-RESDT-",
+        "./img/btnTables.png",
+        "AreResultsAvailable",
+        "Excel.Application",
+        "MS Excel is required to write the output generated by this tool.\n\n",
+        "We failed to detect a valid installation of MS Excel\n",
+        "in the system. Kindly install MS Excel\n",
+        "-DT_POPUP-",
+        "-LOADDC-",
+        "./img/btnLoadcomb.png",
+        "MS Excel is required to create the template generated by this tool.\n\n",
+        "Word.Application",
+        "MS Word is required to write the output generated by this tool.\n\n",
+        "We failed to detect a valid installation of MS Word\n",
+        "in the system. Kindly install MS Word\n",
+        "-PLTGRD-",
+        "./img/btnPltgrdrs.png",
+        "This command generates a text file containing custom Plate Girders in One Go.\nThe content is compatible with STAAD Editor file, and the same\nneeds to be pasted in the Editor window as instructed\nto create the Plate Girders in your model.\n\nDo you want to proceed?",
+        "-PIPRCK-",
+        "./img/btnPiperack.png",
+        "-PEB_A-",
+        "./img/btnPebA.png",
+        "A",
+        "-PEB_B-",
+        "./img/btnPebB.png",
+        "B",
+        "-PEB_C-",
+        "./img/btnPebC.png",
+        "C",
+        "-PEB_D-",
+        "./img/btnPebD.png",
+        "D",
+        "-HLP_BTN-",
+        "./img/ctrlHelp.png",
+        "chk_sub",
+        "active",
+        "-DEFREL-",
+        "Select design code before processing members.\n",
+        "_PROC-BTN-DSBL_",
+        "_PROC-BTN-ENBL_",
+        "_SLMEM-BTN_",
+        "-LVL-",
+        "levels",
+        "-BMAL-",
+        "-NDAL-",
+        "mem_inc",
+        "Geometry changed!",
+        "\nProcess members again.\n",
+        "local",
+        "-SND-",
+        "{0} {1} selected",
+        "-TW_STS-",
+        "{0} beams at level {1} selected",
+        "{0} main nodes at level {1} selected",
+        "{0} beams at level {1} deselected",
+        "{0} {1} deselected",
+        "{0} main nodes at level {1} deselected",
+        "No selection in model, buttons reset",
+        "No beams in the selected level",
+        "No main nodes in the selected level",
+        "_DFREL-BTN_",
+        "-DR_POPUP-",
+        "Release cannot",
+        "OK",
+        "Proceed",
+        "-SELREL-",
+        "Define Releases",
+        "Location",
+        "Start",
+        "End",
+        "Release Type",
+        "Release",
+        "relType",
+        "REL",
+        "FX",
+        "fx",
+        "MX",
+        "mx",
+        "FY",
+        "fy",
+        "MY",
+        "my",
+        "FZ",
+        "fz",
+        "MZ",
+        "mz",
+        "Assign",
+        "Close",
+        "No",
+        "Root",
+        "Property",
+        "SaveModel",
+        "Releases assigned in {0} seconds",
+        "No releases assigned",
+        "_DSPRM-BTN_",
+        "Columns LY LZ UNL",
+        "Beams LY LZ UNL",
+        "Columns LY LZ LT",
+        "Beams LY LZ LT",
+        "Invalid",
+        "Beams DJ1 DJ2",
+        "_ASGN-DP_",
+        "CloseSTAADFile",
+        "OpenSTAADFile",
+        ".bak",
+        "FINISH",
+        "Design Parameters could not be assigned due to {0}.\n\n",
+        "Alternatively, a text file containing the Design Parameters shall be created. ",
+        "The content is compatible with STAAD Editor file, and the same ",
+        "needs to be pasted in the Editor window as instructed ",
+        "to create the Design Parameters in your model.\n",
+        "_",
+        ".txt",
+        "***** {0} | {1} *****\n\n",
+        "* STAAD Editor command lines for defining Design Parameters.\n\n",
+        "* NOTE FOR USER:\n",
+        "* Copy the below command lines and paste in STAAD Editor\n",
+        "* after the \"PARAMETER\" title.\n\n",
+        "w",
+        "{0} saved in location {1}",
+        "-GR_POPUP-",
+        "-GETLC-",
+        "_GETLC-BTN-DSBL_",
+        "_GETLC-BTN-ENBL_",
+        "-LCAVL-",
+        "Available Load Cases here",
+        "-LCSEL-",
+        "Selected Load Cases here",
+        "-SEL-",
+        "-SELALL-",
+        "-DESEL-",
+        "-DESELALL-",
+        "_SUCCESS_",
+        "All Load Cases selected",
+        "-SUPRTN-",
+        "-NDDISP-",
+        "-PEDFRC-",
+        "Support reactions",
+        "Node displacements",
+        "Pedestal forces",
+        "There are no analysis results available for the current model.\n\n",
+        "Run analysis in STAAD.Pro before proceeding for this tool.\n",
+        "-LCTEMP-",
+        "LCTEMP",
+        "-INVK_SELLCF-",
+        "-SELLCF-",
+        "-GENLC-",
+        "-LCFPTH-",
+        "GENLC",
+        "-GENPR-",
+        "-RS-",
+        "Roof Slope",
+        "Ridge Height",
+        "-RH-",
+        "-GENPEB-",
+        "-GEN_FILE-",
+        "\n",
+        "SUCCESS!\n\n"
+      ],
+      "bytecode_sha256": "7554153b48e2e255ccddf31fd7e163f7657784a8b4286b51a8ad4b15f92403c9",
+      "bytecode_bytes": 15022
+    },
+    {
+      "scope": "<module>.Results",
+      "source_line": 117,
+      "names": [
+        "__name__",
+        "__module__",
+        "__qualname__",
+        "__tablename__",
+        "Column",
+        "Integer",
+        "id",
+        "String",
+        "std_file",
+        "JSON",
+        "mem_inc",
+        "node_coords",
+        "units",
+        "beta",
+        "access_date",
+        "sel_mem",
+        "def_rel",
+        "dat_tbl"
+      ],
+      "arguments": [],
+      "strings": [
+        "Results",
+        "results"
+      ],
+      "bytecode_sha256": "c12b810a6ae65a55526951a6775c3c53fe82cfd8882373b4dc2798d704127ba2",
+      "bytecode_bytes": 108
+    },
+    {
+      "scope": "<module>.Settings",
+      "source_line": 130,
+      "names": [
+        "__name__",
+        "__module__",
+        "__qualname__",
+        "__tablename__",
+        "Column",
+        "Integer",
+        "id",
+        "String",
+        "dnld_path",
+        "last_email",
+        "JSON",
+        "last_cookie"
+      ],
+      "arguments": [],
+      "strings": [
+        "Settings",
+        "settings"
+      ],
+      "bytecode_sha256": "2f090f7cdd9343f3f6a2ac3c3fa32813f7e3d1188d4524c7c43e2f4872db1bf2",
+      "bytecode_bytes": 52
+    },
+    {
+      "scope": "<module>.make_safe_array_double",
+      "source_line": 159,
+      "names": [
+        "automation",
+        "_midlSAFEARRAY",
+        "ctypes",
+        "c_double",
+        "create"
+      ],
+      "arguments": [
+        "size"
+      ],
+      "strings": [],
+      "bytecode_sha256": "16f6c4b763d61511769095399eb2fca4d5d67db2119a758c7eda0b6dbac92291",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.make_safe_array_int",
+      "source_line": 162,
+      "names": [
+        "automation",
+        "_midlSAFEARRAY",
+        "ctypes",
+        "c_int",
+        "create"
+      ],
+      "arguments": [
+        "size"
+      ],
+      "strings": [],
+      "bytecode_sha256": "16f6c4b763d61511769095399eb2fca4d5d67db2119a758c7eda0b6dbac92291",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.make_safe_array_long",
+      "source_line": 165,
+      "names": [
+        "automation",
+        "_midlSAFEARRAY",
+        "ctypes",
+        "c_long",
+        "create"
+      ],
+      "arguments": [
+        "size"
+      ],
+      "strings": [],
+      "bytecode_sha256": "16f6c4b763d61511769095399eb2fca4d5d67db2119a758c7eda0b6dbac92291",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.make_safe_str",
+      "source_line": 168,
+      "names": [
+        "automation",
+        "c_char_p"
+      ],
+      "arguments": [],
+      "strings": [],
+      "bytecode_sha256": "270910a0cdc752988dd2741c3ed6aad6def7516a760d5be6a657945d77d9c0cc",
+      "bytecode_bytes": 8
+    },
+    {
+      "scope": "<module>.make_safe_array_long_input",
+      "source_line": 171,
+      "names": [
+        "automation",
+        "_midlSAFEARRAY",
+        "ctypes",
+        "c_long",
+        "create"
+      ],
+      "arguments": [
+        "lista"
+      ],
+      "strings": [],
+      "bytecode_sha256": "04f6993425f89c110cec7b636c232aa440808740340672086186bb6c130521bb",
+      "bytecode_bytes": 18
+    },
+    {
+      "scope": "<module>.make_safe_array_int_input",
+      "source_line": 174,
+      "names": [
+        "automation",
+        "_midlSAFEARRAY",
+        "ctypes",
+        "c_int",
+        "create"
+      ],
+      "arguments": [
+        "lista"
+      ],
+      "strings": [],
+      "bytecode_sha256": "04f6993425f89c110cec7b636c232aa440808740340672086186bb6c130521bb",
+      "bytecode_bytes": 18
+    },
+    {
+      "scope": "<module>.make_variant_vt_ref",
+      "source_line": 177,
+      "names": [
+        "automation",
+        "VARIANT",
+        "ctypes",
+        "addressof",
+        "_",
+        "c_void_p",
+        "VT_BYREF",
+        "vt"
+      ],
+      "arguments": [
+        "obj",
+        "var_type"
+      ],
+      "strings": [],
+      "bytecode_sha256": "b61e86d55c3d7dbe7fcbadbb068be21680227215ce1f0507d4f9c42c2a135e84",
+      "bytecode_bytes": 38
+    },
+    {
+      "scope": "<module>.connOS",
+      "source_line": 184,
+      "names": [
+        "pythoncom",
+        "CoInitialize",
+        "client",
+        "GetActiveObject",
+        "Geometry",
+        "Output",
+        "Property",
+        "Support",
+        "View"
+      ],
+      "arguments": [
+        "module"
+      ],
+      "strings": [
+        "StaadPro.OpenSTAAD",
+        "Root",
+        "Geometry",
+        "Output",
+        "Property",
+        "Support",
+        "View"
+      ],
+      "bytecode_sha256": "817e5ed826af26cf8a300ce2955e225da6bbfe16c2ab4ce6c3380ba7d2fc0d15",
+      "bytecode_bytes": 114
+    },
+    {
+      "scope": "<module>.GetSTAADFile",
+      "source_line": 204,
+      "names": [
+        "_FlagAsMethod",
+        "make_safe_str",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_BSTR",
+        "GetSTAADFile"
+      ],
+      "arguments": [
+        "osModule",
+        "bFullPath"
+      ],
+      "strings": [
+        "GetSTAADFile"
+      ],
+      "bytecode_sha256": "6104f9f8cba968790215b1ea6944c3cbb8c8d38121235de395fb55e90c8597ce",
+      "bytecode_bytes": 48
+    },
+    {
+      "scope": "<module>.GetNodeList",
+      "source_line": 211,
+      "names": [
+        "_FlagAsMethod",
+        "GetNodeCount",
+        "make_safe_array_long",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_ARRAY",
+        "VT_I4",
+        "GetNodeList"
+      ],
+      "arguments": [
+        "osModule"
+      ],
+      "strings": [
+        "GetNodeCount",
+        "GetNodeList"
+      ],
+      "bytecode_sha256": "1f2f2cd5e7ae445bce5ff57391e8400c553bf7b5202a79b48b2e4d514ebda402",
+      "bytecode_bytes": 72
+    },
+    {
+      "scope": "<module>.GetBeamList",
+      "source_line": 220,
+      "names": [
+        "_FlagAsMethod",
+        "GetMemberCount",
+        "make_safe_array_long",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_ARRAY",
+        "VT_I4",
+        "GetBeamList"
+      ],
+      "arguments": [
+        "osModule"
+      ],
+      "strings": [
+        "GetMemberCount",
+        "GetBeamList"
+      ],
+      "bytecode_sha256": "1f2f2cd5e7ae445bce5ff57391e8400c553bf7b5202a79b48b2e4d514ebda402",
+      "bytecode_bytes": 72
+    },
+    {
+      "scope": "<module>.GetSelectedBeams",
+      "source_line": 229,
+      "names": [
+        "_FlagAsMethod",
+        "GetNoOfSelectedBeams",
+        "make_safe_array_long",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_ARRAY",
+        "VT_I4",
+        "GetSelectedBeams"
+      ],
+      "arguments": [
+        "osModule"
+      ],
+      "strings": [
+        "GetNoOfSelectedBeams",
+        "GetSelectedBeams",
+        "ClearMemberSelection"
+      ],
+      "bytecode_sha256": "756ac3deaf6c1869ed72a9f893bbf3047137495103b429a68d6c09815823e3a3",
+      "bytecode_bytes": 82
+    },
+    {
+      "scope": "<module>.GetMemberIncidence",
+      "source_line": 240,
+      "names": [
+        "_FlagAsMethod",
+        "make_safe_array_long",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_I4",
+        "GetMemberIncidence"
+      ],
+      "arguments": [
+        "osModule",
+        "beam"
+      ],
+      "strings": [
+        "GetMemberIncidence"
+      ],
+      "bytecode_sha256": "97675d9711decfd4c76a5b3bc642dd623170bc1b49f1ba1a7fb52f30e288dd9b",
+      "bytecode_bytes": 80
+    },
+    {
+      "scope": "<module>.GetSelectedNodes",
+      "source_line": 249,
+      "names": [
+        "_FlagAsMethod",
+        "GetNoOfSelectedNodes",
+        "make_safe_array_long",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_ARRAY",
+        "VT_I4",
+        "GetSelectedNodes"
+      ],
+      "arguments": [
+        "osModule"
+      ],
+      "strings": [
+        "GetNoOfSelectedNodes",
+        "GetSelectedNodes",
+        "ClearNodeSelection"
+      ],
+      "bytecode_sha256": "756ac3deaf6c1869ed72a9f893bbf3047137495103b429a68d6c09815823e3a3",
+      "bytecode_bytes": 82
+    },
+    {
+      "scope": "<module>.GetNodeCoordinates",
+      "source_line": 260,
+      "names": [
+        "_FlagAsMethod",
+        "make_safe_array_double",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_R8",
+        "GetNodeCoordinates",
+        "round"
+      ],
+      "arguments": [
+        "osModule",
+        "node"
+      ],
+      "strings": [
+        "GetNodeCoordinates"
+      ],
+      "bytecode_sha256": "3e7f112908bb8bf5072d5bfb9c0abcdd3cf5d1eff9e0caf9326b40071a046766",
+      "bytecode_bytes": 156
+    },
+    {
+      "scope": "<module>.SelectMultipleBeams",
+      "source_line": 274,
+      "names": [
+        "_FlagAsMethod",
+        "make_safe_array_long_input",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_ARRAY",
+        "VT_I4",
+        "SelectMultipleBeams"
+      ],
+      "arguments": [
+        "osModule",
+        "memArr"
+      ],
+      "strings": [
+        "SelectMultipleBeams"
+      ],
+      "bytecode_sha256": "a0bc287184bffc4d8a7fd5b0cfcfe41915cd733e853a966037f9fcd00cc49fc6",
+      "bytecode_bytes": 50
+    },
+    {
+      "scope": "<module>.SelectMultipleNodes",
+      "source_line": 281,
+      "names": [
+        "_FlagAsMethod",
+        "make_safe_array_long_input",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_ARRAY",
+        "VT_I4",
+        "SelectMultipleNodes"
+      ],
+      "arguments": [
+        "osModule",
+        "nodeArr"
+      ],
+      "strings": [
+        "SelectMultipleNodes"
+      ],
+      "bytecode_sha256": "a0bc287184bffc4d8a7fd5b0cfcfe41915cd733e853a966037f9fcd00cc49fc6",
+      "bytecode_bytes": 50
+    },
+    {
+      "scope": "<module>.CreateGroupEx",
+      "source_line": 288,
+      "names": [
+        "_FlagAsMethod",
+        "make_safe_array_long_input",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_ARRAY",
+        "VT_I4",
+        "CreateGroupEx",
+        "len"
+      ],
+      "arguments": [
+        "osModule",
+        "grpType",
+        "grpName",
+        "memsList"
+      ],
+      "strings": [
+        "CreateGroupEx"
+      ],
+      "bytecode_sha256": "1f46b0b450b054058f1681d39bffc7ff3863bb2925612a9a98a1e02d7e8180a8",
+      "bytecode_bytes": 60
+    },
+    {
+      "scope": "<module>.DefineReleases",
+      "source_line": 295,
+      "names": [
+        "_FlagAsMethod",
+        "make_safe_array_int_input",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_ARRAY",
+        "VT_I4",
+        "CreateMemberReleaseSpec",
+        "AssignMemberSpecToBeam"
+      ],
+      "arguments": [
+        "osModule",
+        "dofRel",
+        "relStartMems",
+        "relEndMems"
+      ],
+      "strings": [
+        "CreateMemberReleaseSpec",
+        "AssignMemberSpecToBeam"
+      ],
+      "bytecode_sha256": "f29ad44fa02128f029e08d12a799a5f9bbdf85bb416fded0930ece5ea334f795",
+      "bytecode_bytes": 158
+    },
+    {
+      "scope": "<module>.GetSupportReactions",
+      "source_line": 314,
+      "names": [
+        "connOS",
+        "_FlagAsMethod",
+        "GetSupportCount",
+        "make_safe_array_long",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_ARRAY",
+        "VT_I4",
+        "GetSupportNodes",
+        "make_safe_array_double",
+        "VT_R8",
+        "GetSupportReactions",
+        "append"
+      ],
+      "arguments": [
+        "osModule",
+        "selLC"
+      ],
+      "strings": [
+        "Support",
+        "GetSupportCount",
+        "GetSupportNodes",
+        "GetSupportReactions"
+      ],
+      "bytecode_sha256": "45de8427f3357efb2342204bdc55de27923160a576dced53c8b497ed0b376901",
+      "bytecode_bytes": 174
+    },
+    {
+      "scope": "<module>.GetNodeDisplacements",
+      "source_line": 334,
+      "names": [
+        "_FlagAsMethod",
+        "make_safe_array_double",
+        "make_variant_vt_ref",
+        "automation",
+        "VT_ARRAY",
+        "VT_R8",
+        "GetNodeDisplacements",
+        "append"
+      ],
+      "arguments": [
+        "osModule",
+        "selLC",
+        "floorDict"
+      ],
+      "strings": [
+        "GetNodeDisplacements"
+      ],
+      "bytecode_sha256": "802a716762a8b9f0d98da6d71dc70fd340e20ee9fc5555028becc73a2a55284a",
+      "bytecode_bytes": 124
+    },
+    {
+      "scope": "<module>.userCredWin",
+      "source_line": 351,
+      "names": [
+        "sg",
+        "Text",
+        "InputText",
+        "Button",
+        "Window",
+        "bind",
+        "mouseOverEvents",
+        "append",
+        "mouseAwayEvents"
+      ],
+      "arguments": [
+        "lastEmail"
+      ],
+      "strings": [
+        "Enter registered credentials",
+        "Email",
+        "-email-",
+        "-pwd-",
+        "*",
+        "Submit",
+        "-SUBMIT-",
+        "Cancel",
+        "-RSTPWD-",
+        "",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "-SUBMIT-+MOUSE OVER+",
+        "-SUBMIT-+MOUSE AWAY+",
+        "Cancel+MOUSE OVER+",
+        "Cancel+MOUSE AWAY+",
+        "-RSTPWD-+MOUSE OVER+",
+        "-RSTPWD-+MOUSE AWAY+"
+      ],
+      "bytecode_sha256": "8aca93df907b0c3511f4bfa57f83687510b4eb19aac2092869efc57fb8c68707",
+      "bytecode_bytes": 290
+    },
+    {
+      "scope": "<module>.setWin",
+      "source_line": 390,
+      "names": [
+        "dbSession",
+        "select",
+        "Settings",
+        "dnld_path",
+        "execute",
+        "first",
+        "sg",
+        "Column",
+        "Text",
+        "InputText",
+        "Button",
+        "Window",
+        "bind",
+        "mouseOverEvents",
+        "append",
+        "mouseAwayEvents"
+      ],
+      "arguments": [],
+      "strings": [
+        "Download path:",
+        "-Path-",
+        "Browse Folder",
+        "Save",
+        "Cancel",
+        "r",
+        "",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "Browse Folder+MOUSE OVER+",
+        "Browse Folder+MOUSE AWAY+",
+        "Save+MOUSE OVER+",
+        "Save+MOUSE AWAY+",
+        "Cancel+MOUSE OVER+",
+        "Cancel+MOUSE AWAY+"
+      ],
+      "bytecode_sha256": "62d126e45a437a9ebee84e9552f36e735445968b5b6ae637637f213d170a34bb",
+      "bytecode_bytes": 342
+    },
+    {
+      "scope": "<module>.toolbar",
+      "source_line": 439,
+      "names": [
+        "sg",
+        "Column",
+        "Text",
+        "appName",
+        "ButtonMenu",
+        "Button",
+        "staadFile",
+        "Window",
+        "format",
+        "appVersion",
+        "bind",
+        "mouseOverEvents",
+        "append",
+        "mouseAwayEvents",
+        "mouseOverImgs",
+        "mouseAwayImgs"
+      ],
+      "arguments": [],
+      "strings": [
+        "#e6e6e6",
+        "calibri 12 bold",
+        "Unused",
+        "",
+        "./img/ctrlLogin.png",
+        "-AUTH_MENU-",
+        "Log In",
+        "-SET_BTN-",
+        "./img/ctrlSettings.png",
+        "Settings",
+        "-HLP_BTN-",
+        "./img/ctrlHelp.png",
+        "Help",
+        "./img/btnSelect.png",
+        "-SLMEM-",
+        "./img/btnRenum.png",
+        "-RNMEM-",
+        "./img/btnGroups.png",
+        "-DFGRP-",
+        "./img/btnReleases.png",
+        "-DFREL-",
+        "./img/btnDgnprm.png",
+        "-DESPR-",
+        "./img/btnTables.png",
+        "-RESDT-",
+        "./img/btnLoadcomb.png",
+        "-LOADDC-",
+        "./img/btnPltgrdrs.png",
+        "-PLTGRD-",
+        "./img/btnPiperack.png",
+        "-PIPRCK-",
+        "./img/btnPebA.png",
+        "-PEB_A-",
+        "./img/btnPebB.png",
+        "-PEB_B-",
+        "./img/btnPebC.png",
+        "-PEB_C-",
+        "./img/btnPebD.png",
+        "-PEB_D-",
+        "-MDL_NM-",
+        "dEZignLink {0}",
+        "./img/dEZignLinkTB.ico",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "-SET_BTN-+MOUSE OVER+",
+        "-SET_BTN-+MOUSE AWAY+",
+        "./img/ctrlSettings1.png",
+        "-HLP_BTN-+MOUSE OVER+",
+        "-HLP_BTN-+MOUSE AWAY+",
+        "./img/ctrlHelp1.png",
+        "<Alt_L><s>",
+        "ALT-s",
+        "-SLMEM-+MOUSE OVER+",
+        "-SLMEM-+MOUSE AWAY+",
+        "./img/btnSelect1.png",
+        "<Alt_L><n>",
+        "ALT-n",
+        "-RNMEM-+MOUSE OVER+",
+        "-RNMEM-+MOUSE AWAY+",
+        "./img/btnRenum1.png",
+        "<Alt_L><g>",
+        "ALT-g",
+        "-DFGRP-+MOUSE OVER+",
+        "-DFGRP-+MOUSE AWAY+",
+        "./img/btnGroups1.png",
+        "<Alt_L><r>",
+        "ALT-r",
+        "-DFREL-+MOUSE OVER+",
+        "-DFREL-+MOUSE AWAY+",
+        "./img/btnReleases1.png",
+        "<Alt_L><m>",
+        "ALT-m",
+        "-DESPR-+MOUSE OVER+",
+        "-DESPR-+MOUSE AWAY+",
+        "./img/btnDgnprm1.png",
+        "<Alt_L><t>",
+        "ALT-t",
+        "-RESDT-+MOUSE OVER+",
+        "-RESDT-+MOUSE AWAY+",
+        "./img/btnTables1.png",
+        "<Alt_L><l>",
+        "ALT-l",
+        "-LOADDC-+MOUSE OVER+",
+        "-LOADDC-+MOUSE AWAY+",
+        "./img/btnLoadcomb1.png",
+        "<Alt_L><e>",
+        "ALT-e",
+        "-PLTGRD-+MOUSE OVER+",
+        "-PLTGRD-+MOUSE AWAY+",
+        "./img/btnPltgrdrs1.png",
+        "<Alt_L><p>",
+        "ALT-p",
+        "-PIPRCK-+MOUSE OVER+",
+        "-PIPRCK-+MOUSE AWAY+",
+        "./img/btnPiperack1.png",
+        "<Alt_L><a>",
+        "ALT-a",
+        "-PEB_A-+MOUSE OVER+",
+        "-PEB_A-+MOUSE AWAY+",
+        "./img/btnPebA1.png",
+        "<Alt_L><b>",
+        "ALT-b",
+        "-PEB_B-+MOUSE OVER+",
+        "-PEB_B-+MOUSE AWAY+",
+        "./img/btnPebB1.png",
+        "<Alt_L><c>",
+        "ALT-c",
+        "-PEB_C-+MOUSE OVER+",
+        "-PEB_C-+MOUSE AWAY+",
+        "./img/btnPebC1.png",
+        "<Alt_L><d>",
+        "ALT-d",
+        "-PEB_D-+MOUSE OVER+",
+        "-PEB_D-+MOUSE AWAY+",
+        "./img/btnPebD1.png"
+      ],
+      "bytecode_sha256": "bb3c8276c049f1542d571c09468a87c929731344a88a1867632f1a146e33f237",
+      "bytecode_bytes": 1690
+    },
+    {
+      "scope": "<module>.selMemWin",
+      "source_line": 683,
+      "names": [
+        "sg",
+        "Column",
+        "Text",
+        "modelPath",
+        "Button",
+        "Frame",
+        "Combo",
+        "status",
+        "Window",
+        "modelUnchanged",
+        "staadFile",
+        "getModelData",
+        "json",
+        "loads",
+        "dumps",
+        "write_event_value",
+        "bind",
+        "mouseOverEvents",
+        "append",
+        "mouseAwayEvents",
+        "mouseOverImgs",
+        "mouseAwayImgs",
+        "btnPressed",
+        "update"
+      ],
+      "arguments": [],
+      "strings": [
+        "SELECT MEMBER GROUPS",
+        "-MDL_NM-",
+        "",
+        "-HLP_BTN-",
+        "./img/ctrlHelp.png",
+        "Help",
+        "X",
+        "./img/ctrlPower.png",
+        "Exit",
+        "top",
+        "Process Members",
+        "-PROC-",
+        "Columns",
+        "-COL-",
+        "Pri. Beams",
+        "-PBM-",
+        "Sec. Beams",
+        "-SBM-",
+        "Vrt. Bracings",
+        "-VBR-",
+        "Pln. Bracings",
+        "-PBR-",
+        "Pri. Beams - X",
+        "-PBMX-",
+        "Pri. Beams - Z",
+        "-PBMZ-",
+        "Sec./Ter. Beams - X",
+        "-SBMX-",
+        "Sec./Ter. Beams - Z",
+        "-SBMZ-",
+        "Sup. Nodes",
+        "-SND-",
+        "Rafters",
+        "-RAF-",
+        "Raf. Bracings",
+        "-RBR-",
+        "Level",
+        "#B0B0B0",
+        "-LVL-",
+        "Members",
+        "-BMAL-",
+        "Main Nodes",
+        "-NDAL-",
+        "-TW_STS-",
+        "sel_mem",
+        "act_buttons",
+        "mem_groups",
+        "_SLMEM-BTN_",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "-HLP_BTN-+MOUSE OVER+",
+        "-HLP_BTN-+MOUSE AWAY+",
+        "./img/ctrlHelp1.png",
+        "X+MOUSE OVER+",
+        "X+MOUSE AWAY+",
+        "./img/ctrlPower1.png",
+        "-PROC-+MOUSE OVER+",
+        "-PROC-+MOUSE AWAY+",
+        "-COL-+MOUSE OVER+",
+        "-COL-+MOUSE AWAY+",
+        "-PBM-+MOUSE OVER+",
+        "-PBM-+MOUSE AWAY+",
+        "-SBM-+MOUSE OVER+",
+        "-SBM-+MOUSE AWAY+",
+        "-VBR-+MOUSE OVER+",
+        "-VBR-+MOUSE AWAY+",
+        "-PBR-+MOUSE OVER+",
+        "-PBR-+MOUSE AWAY+",
+        "-PBMX-+MOUSE OVER+",
+        "-PBMX-+MOUSE AWAY+",
+        "-PBMZ-+MOUSE OVER+",
+        "-PBMZ-+MOUSE AWAY+",
+        "-SBMX-+MOUSE OVER+",
+        "-SBMX-+MOUSE AWAY+",
+        "-SBMZ-+MOUSE OVER+",
+        "-SBMZ-+MOUSE AWAY+",
+        "-BMAL-+MOUSE OVER+",
+        "-BMAL-+MOUSE AWAY+",
+        "-NDAL-+MOUSE OVER+",
+        "-NDAL-+MOUSE AWAY+",
+        "-RBR-+MOUSE OVER+",
+        "-RBR-+MOUSE AWAY+",
+        "-RAF-+MOUSE OVER+",
+        "-RAF-+MOUSE AWAY+",
+        "-SND-+MOUSE OVER+",
+        "-SND-+MOUSE AWAY+",
+        "System Ready"
+      ],
+      "bytecode_sha256": "692f7a9dcf43b7e7be9bbded68d06fdef64d62c7dd6de8c865fb108d435c9a6d",
+      "bytecode_bytes": 1602
+    },
+    {
+      "scope": "<module>.defRelWin",
+      "source_line": 863,
+      "names": [
+        "sg",
+        "Column",
+        "Text",
+        "modelPath",
+        "Button",
+        "status",
+        "Window",
+        "modelUnchanged",
+        "staadFile",
+        "getModelData",
+        "json",
+        "loads",
+        "dumps",
+        "write_event_value",
+        "bind",
+        "mouseOverEvents",
+        "append",
+        "mouseAwayEvents",
+        "mouseOverImgs",
+        "mouseAwayImgs",
+        "update"
+      ],
+      "arguments": [],
+      "strings": [
+        "DEFINE RELEASES ON SELECTED BEAMS",
+        "-MDL_NM-",
+        "",
+        "-HLP_BTN-",
+        "./img/ctrlHelp.png",
+        "Help",
+        "X",
+        "./img/ctrlPower.png",
+        "Exit",
+        "top",
+        "Process Members",
+        "-PROC-",
+        "Define Releases",
+        "-DEFREL-",
+        "-TW_STS-",
+        "def_rel",
+        "mem_groups",
+        "mem_incs",
+        "_DFREL-BTN_",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "-HLP_BTN-+MOUSE OVER+",
+        "-HLP_BTN-+MOUSE AWAY+",
+        "./img/ctrlHelp1.png",
+        "X+MOUSE OVER+",
+        "X+MOUSE AWAY+",
+        "./img/ctrlPower1.png",
+        "-PROC-+MOUSE OVER+",
+        "-PROC-+MOUSE AWAY+",
+        "-DEFREL-+MOUSE OVER+",
+        "-DEFREL-+MOUSE AWAY+",
+        "System Ready"
+      ],
+      "bytecode_sha256": "b93e60e49924376784e223e0a99007bb7cac798513398a09896a90657333c033",
+      "bytecode_bytes": 574
+    },
+    {
+      "scope": "<module>.desParamsWin",
+      "source_line": 945,
+      "names": [
+        "serverCall",
+        "isinstance",
+        "str",
+        "sg",
+        "popup",
+        "popup_bttn_clr0",
+        "popup_bkgrnd_clr0",
+        "Column",
+        "Text",
+        "modelPath",
+        "Button",
+        "Combo",
+        "status",
+        "Window",
+        "bind",
+        "mouseOverEvents",
+        "append",
+        "mouseAwayEvents",
+        "mouseOverImgs",
+        "mouseAwayImgs",
+        "update"
+      ],
+      "arguments": [],
+      "strings": [
+        "des_params",
+        "ALERT!\n\n",
+        "GENERATE DESIGN PARAMETERS",
+        "-MDL_NM-",
+        "",
+        "-HLP_BTN-",
+        "./img/ctrlHelp.png",
+        "Help",
+        "X",
+        "./img/ctrlPower.png",
+        "Exit",
+        "top",
+        "Select Design Code: ",
+        "center",
+        "-CODE-",
+        "Process Members",
+        "-PROC-",
+        "Columns LY LZ LX",
+        "-COLY-",
+        "Beams DJ1 DJ2",
+        "-BMDJ-",
+        "Beams LY LZ LX",
+        "-BMLY-",
+        "-TW_STS-",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "-HLP_BTN-+MOUSE OVER+",
+        "-HLP_BTN-+MOUSE AWAY+",
+        "./img/ctrlHelp1.png",
+        "X+MOUSE OVER+",
+        "X+MOUSE AWAY+",
+        "./img/ctrlPower1.png",
+        "-PROC-+MOUSE OVER+",
+        "-PROC-+MOUSE AWAY+",
+        "-COLY-+MOUSE OVER+",
+        "-COLY-+MOUSE AWAY+",
+        "-BMDJ-+MOUSE OVER+",
+        "-BMDJ-+MOUSE AWAY+",
+        "-BMLY-+MOUSE OVER+",
+        "-BMLY-+MOUSE AWAY+",
+        "System Ready"
+      ],
+      "bytecode_sha256": "25affbd6f43716cc14fcc88c8ed407842cdf6a0e531d7b888b53a9e4f1dd2d43",
+      "bytecode_bytes": 714
+    },
+    {
+      "scope": "<module>.resWindow",
+      "source_line": 1045,
+      "names": [
+        "sg",
+        "Output",
+        "Button",
+        "Window",
+        "update",
+        "bind",
+        "append",
+        "read",
+        "time",
+        "serverCall",
+        "getFileContent",
+        "replace",
+        "str",
+        "window",
+        "write_event_value",
+        "format",
+        "round",
+        "win_desParams",
+        "index",
+        "close"
+      ],
+      "arguments": [
+        "desParam",
+        "stdFP",
+        "resText",
+        "assignText"
+      ],
+      "strings": [
+        "_RES-WIN_",
+        "Assign",
+        "-Yes-",
+        "Cancel",
+        "-No-",
+        "",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "-Yes-+MOUSE OVER+",
+        "-Yes-+MOUSE AWAY+",
+        "-No-+MOUSE OVER+",
+        "-No-+MOUSE AWAY+",
+        "des_params",
+        "modelData",
+        "PARAMCOUNT",
+        "_ASGN-DP_",
+        "{0} assigned in {1} seconds",
+        "-TW_STS-",
+        "+"
+      ],
+      "bytecode_sha256": "40642e6b3894fb13bf228584970909f3ad60be1d81337ccb5dd961aaae48962b",
+      "bytecode_bytes": 444
+    },
+    {
+      "scope": "<module>.dataTblWin",
+      "source_line": 1108,
+      "names": [
+        "sg",
+        "Column",
+        "Text",
+        "modelPath",
+        "Button",
+        "Frame",
+        "Listbox",
+        "status",
+        "Window",
+        "modelUnchanged",
+        "staadFile",
+        "getModelData",
+        "json",
+        "loads",
+        "dumps",
+        "write_event_value",
+        "bind",
+        "mouseOverEvents",
+        "append",
+        "mouseAwayEvents",
+        "mouseOverImgs",
+        "mouseAwayImgs",
+        "update"
+      ],
+      "arguments": [],
+      "strings": [
+        "GENERATE ANALYSIS RESULTS DATA TABLES",
+        "-MDL_NM-",
+        "",
+        "-HLP_BTN-",
+        "./img/ctrlHelp.png",
+        "Help",
+        "X",
+        "./img/ctrlPower.png",
+        "Exit",
+        "top",
+        "Get",
+        "Load Cases",
+        "-GETLC-",
+        "Generate Data Tables",
+        "Support Reactions",
+        "-SUPRTN-",
+        "Node Displacements",
+        "-NDDISP-",
+        "Pedestal Forces",
+        "-PEDFRC-",
+        "Available:",
+        "Available Load Cases here",
+        "extended",
+        "-LCAVL-",
+        ">",
+        "-SEL-",
+        ">>",
+        "-SELALL-",
+        "<",
+        "-DESEL-",
+        "<<",
+        "-DESELALL-",
+        "Selected:",
+        "Selected Load Cases here",
+        "-LCSEL-",
+        "-TW_STS-",
+        "dat_tbl",
+        "load_cases",
+        "_SUCCESS_",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "-HLP_BTN-+MOUSE OVER+",
+        "-HLP_BTN-+MOUSE AWAY+",
+        "./img/ctrlHelp1.png",
+        "X+MOUSE OVER+",
+        "X+MOUSE AWAY+",
+        "./img/ctrlPower1.png",
+        "-GETLC-+MOUSE OVER+",
+        "-GETLC-+MOUSE AWAY+",
+        "-SUPRTN-+MOUSE OVER+",
+        "-SUPRTN-+MOUSE AWAY+",
+        "-NDDISP-+MOUSE OVER+",
+        "-NDDISP-+MOUSE AWAY+",
+        "-PEDFRC-+MOUSE OVER+",
+        "-PEDFRC-+MOUSE AWAY+",
+        "-SEL-+MOUSE OVER+",
+        "-SEL-+MOUSE AWAY+",
+        "-SELALL-+MOUSE OVER+",
+        "-SELALL-+MOUSE AWAY+",
+        "-DESEL-+MOUSE OVER+",
+        "-DESEL-+MOUSE AWAY+",
+        "-DESELALL-+MOUSE OVER+",
+        "-DESELALL-+MOUSE AWAY+",
+        "System Ready"
+      ],
+      "bytecode_sha256": "3acf3a7972a5ea61a959cb65d342d76cdece026d2a06ee4d97240ba0ba8db139",
+      "bytecode_bytes": 1160
+    },
+    {
+      "scope": "<module>.loadCombWin",
+      "source_line": 1247,
+      "names": [
+        "sg",
+        "Text",
+        "Button",
+        "FileBrowse",
+        "Input",
+        "Column",
+        "Window",
+        "bind",
+        "mouseOverEvents",
+        "append",
+        "mouseAwayEvents",
+        "mouseOverImgs",
+        "mouseAwayImgs"
+      ],
+      "arguments": [],
+      "strings": [
+        "Load Combinations",
+        "calibri 16 bold",
+        "",
+        "-HLP_BTN-",
+        "./img/ctrlHelp.png",
+        "Help",
+        "X",
+        "./img/ctrlPower.png",
+        "Exit",
+        "Download Template",
+        "-LCTEMP-",
+        "-SELLCF-",
+        "-LCFPTH-",
+        "Select Load Comb File",
+        "-INVK_SELLCF-",
+        "Generate Output",
+        "-GENLC-",
+        "Cancel",
+        "right",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "-HLP_BTN-+MOUSE OVER+",
+        "-HLP_BTN-+MOUSE AWAY+",
+        "./img/ctrlHelp1.png",
+        "X+MOUSE OVER+",
+        "X+MOUSE AWAY+",
+        "./img/ctrlPower1.png",
+        "-LCTEMP-+MOUSE OVER+",
+        "-LCTEMP-+MOUSE AWAY+",
+        "-INVK_SELLCF-+MOUSE OVER+",
+        "-INVK_SELLCF-+MOUSE AWAY+",
+        "-GENLC-+MOUSE OVER+",
+        "-GENLC-+MOUSE AWAY+",
+        "Cancel+MOUSE OVER+",
+        "Cancel+MOUSE AWAY+"
+      ],
+      "bytecode_sha256": "33e15a6bfe6f86111fdf28258d0db72fdf29b335ed483db1a0694300e4391a6b",
+      "bytecode_bytes": 568
+    },
+    {
+      "scope": "<module>.pipeRackWin",
+      "source_line": 1319,
+      "names": [
+        "sg",
+        "Image",
+        "Text",
+        "Button",
+        "InputText",
+        "Radio",
+        "Frame",
+        "Column",
+        "Window",
+        "bind",
+        "mouseOverEvents",
+        "append",
+        "mouseAwayEvents",
+        "mouseOverImgs",
+        "mouseAwayImgs"
+      ],
+      "arguments": [],
+      "strings": [
+        "./img/imgPiperack.png",
+        "",
+        "-HLP_BTN-",
+        "./img/ctrlHelp.png",
+        "Help",
+        "X",
+        "./img/ctrlPower.png",
+        "Exit",
+        "T1, T2, T3, .., Tn:",
+        "Tier Beam Spacings",
+        "(Values separated by commas)",
+        "L1, L2, L3, .., Ln:",
+        "Longitudinal Beam Spacings",
+        "Inputs Fields:",
+        "calibri 16 bold",
+        "Units:",
+        "Metric (m)",
+        "MKS",
+        "English (in)",
+        "FPS",
+        "Piperack Width, W:",
+        "Piperack Width",
+        "No. of Frames, N:",
+        "No. of Frames",
+        "Frame Spacing, S:",
+        "Frame Spacing",
+        "Generate",
+        "-GENPR-",
+        "Cancel",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "-HLP_BTN-+MOUSE OVER+",
+        "-HLP_BTN-+MOUSE AWAY+",
+        "./img/ctrlHelp1.png",
+        "X+MOUSE OVER+",
+        "X+MOUSE AWAY+",
+        "./img/ctrlPower1.png",
+        "-GENPR-+MOUSE OVER+",
+        "-GENPR-+MOUSE AWAY+",
+        "Cancel+MOUSE OVER+",
+        "Cancel+MOUSE AWAY+"
+      ],
+      "bytecode_sha256": "9fa4bf24f603b410957b4f643f15d1c8bd0678a978b910ec023fe79d07b6b781",
+      "bytecode_bytes": 672
+    },
+    {
+      "scope": "<module>.pebStrWin",
+      "source_line": 1398,
+      "names": [
+        "sg",
+        "Image",
+        "Text",
+        "Button",
+        "Radio",
+        "InputText",
+        "Frame",
+        "insert",
+        "Column",
+        "Window",
+        "bind",
+        "mouseOverEvents",
+        "append",
+        "mouseAwayEvents",
+        "mouseOverImgs",
+        "mouseAwayImgs"
+      ],
+      "arguments": [
+        "pebType"
+      ],
+      "strings": [
+        "A",
+        "./img/imgPebA.png",
+        "B",
+        "./img/imgPebB.png",
+        "C",
+        "./img/imgPebC.png",
+        "D",
+        "./img/imgPebD.png",
+        "",
+        "-HLP_BTN-",
+        "./img/ctrlHelp.png",
+        "Help",
+        "X",
+        "./img/ctrlPower.png",
+        "Exit",
+        "Roof Slope:               1:",
+        "-RS-",
+        "Roof Slope",
+        "Ridge Height, H2:",
+        "-RH-",
+        "Ridge Height",
+        "Inputs Fields:",
+        "calibri 16 bold",
+        "Units:",
+        "Metric (m)",
+        "MKS",
+        "English (in)",
+        "FPS",
+        "Structure Width, W:",
+        "PEB Width",
+        "Column Height, H1:",
+        "Column Height",
+        "Ridge Location",
+        "No. of Frames, N:",
+        "No. of Frames",
+        "Frame Spacing, S:",
+        "Frame Spacing",
+        "Tie Beam Max Spacing, Ts:",
+        "Tie Beam Spacing",
+        "Purlin Max Spacing, Ps:",
+        "Purlin Spacing",
+        "Col Spacings, W1:",
+        "Column Spacing, W1",
+        "W2:",
+        "Column Spacing, W2",
+        "Column-A Height, Ha:",
+        "Column-B Height, Hb:",
+        "Column B",
+        "Generate",
+        "-GENPEB-",
+        "Cancel",
+        "<Enter>",
+        "+MOUSE OVER+",
+        "<Leave>",
+        "+MOUSE AWAY+",
+        "-HLP_BTN-+MOUSE OVER+",
+        "-HLP_BTN-+MOUSE AWAY+",
+        "./img/ctrlHelp1.png",
+        "X+MOUSE OVER+",
+        "X+MOUSE AWAY+",
+        "./img/ctrlPower1.png",
+        "-GENPEB-+MOUSE OVER+",
+        "-GENPEB-+MOUSE AWAY+",
+        "Cancel+MOUSE OVER+",
+        "Cancel+MOUSE AWAY+"
+      ],
+      "bytecode_sha256": "f74865c15f91bbf667052f38a7fa51d4ca889f7663be0970507631dd54635f7f",
+      "bytecode_bytes": 1058
+    },
+    {
+      "scope": "<module>.is_connected",
+      "source_line": 1510,
+      "names": [
+        "socket",
+        "gethostbyname",
+        "Exception"
+      ],
+      "arguments": [
+        "hostname"
+      ],
+      "strings": [],
+      "bytecode_sha256": "04facc65047adaa0702dfb2825100a63c0b6562e30386bd244e790f35b8f7b0b",
+      "bytecode_bytes": 42
+    },
+    {
+      "scope": "<module>.logIn",
+      "source_line": 1518,
+      "names": [
+        "re",
+        "match",
+        "values",
+        "sg",
+        "popup",
+        "popup_bttn_clr0",
+        "popup_bkgrnd_clr0",
+        "gma",
+        "join",
+        "range",
+        "appVersion",
+        "s",
+        "get",
+        "post",
+        "Exception",
+        "is_connected",
+        "REMOTE_SERVER",
+        "locals",
+        "text",
+        "split",
+        "popup_bttn_clr1",
+        "popup_bkgrnd_clr1",
+        "win_userCred",
+        "close",
+        "win_toolbar",
+        "update",
+        "requests",
+        "utils",
+        "dict_from_cookiejar",
+        "cookies",
+        "dbSession",
+        "select",
+        "Settings",
+        "dnld_path",
+        "execute",
+        "first",
+        "begin",
+        "where",
+        "json",
+        "dumps"
+      ],
+      "arguments": [],
+      "strings": [],
+      "bytecode_sha256": "bc127ed896803eec2eb1b01e99897efc738c67e52e9df006cb0cdbb63bcf68a2",
+      "bytecode_bytes": 934
+    },
+    {
+      "scope": "<module>.logIn.<genexpr>",
+      "source_line": 1529,
+      "names": [
+        "random",
+        "SystemRandom",
+        "choice",
+        "string",
+        "ascii_uppercase",
+        "digits"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "8d66f183e698fadbe0fe968b42160d1ce5b29e662676b8c8333b88620e387fe4",
+      "bytecode_bytes": 36
+    },
+    {
+      "scope": "<module>.logOut",
+      "source_line": 1622,
+      "names": [
+        "s",
+        "get",
+        "Exception",
+        "is_connected",
+        "REMOTE_SERVER",
+        "sg",
+        "popup",
+        "popup_bttn_clr0",
+        "popup_bkgrnd_clr0",
+        "locals",
+        "text",
+        "split",
+        "popup_bttn_clr1",
+        "popup_bkgrnd_clr1",
+        "dbSession",
+        "select",
+        "Settings",
+        "dnld_path",
+        "execute",
+        "first",
+        "begin",
+        "update",
+        "where",
+        "values",
+        "json",
+        "dumps",
+        "window",
+        "write_event_value",
+        "win_toolbar"
+      ],
+      "arguments": [],
+      "strings": [
+        "ALERT!\n\n",
+        "Unable to reach our server, please check ",
+        "your internet connection.\n",
+        "You are not connected to the internet, ",
+        "please connect and try again.\n",
+        "res",
+        "Logged-out",
+        "|",
+        "",
+        "Exit",
+        "You are not logged-in",
+        "Unused",
+        "-AUTH_MENU-",
+        "./img/ctrlLogin.png"
+      ],
+      "bytecode_sha256": "ab9d4bdbb83591162d1549762a7949893c98e5c03e4e2b50d38591f9d6db5d89",
+      "bytecode_bytes": 518
+    },
+    {
+      "scope": "<module>.checkSession",
+      "source_line": 1682,
+      "names": [
+        "is_connected",
+        "REMOTE_SERVER",
+        "sg",
+        "popup",
+        "popup_bttn_clr0",
+        "popup_bkgrnd_clr0",
+        "requests",
+        "utils",
+        "cookiejar_from_dict",
+        "json",
+        "loads",
+        "s",
+        "cookies",
+        "update",
+        "get",
+        "Exception",
+        "locals",
+        "text",
+        "win_toolbar",
+        "split"
+      ],
+      "arguments": [
+        "lastEmail",
+        "lastCookie"
+      ],
+      "strings": [
+        "ALERT!\n\n",
+        "You are not connected to the internet, ",
+        "please connect and log-in.\n",
+        "Unable to reach our server, please check ",
+        "your internet connection.\n",
+        "res",
+        "You are already logged-in",
+        "Unused",
+        "Dashboard",
+        "Log Out",
+        "-AUTH_MENU-",
+        "./img/ctrlAuth.png",
+        "|"
+      ],
+      "bytecode_sha256": "b89d0f19fdd59eb985afdc5ccd278e4b5b26d8565a7d4e610f69e79e3ebcd070",
+      "bytecode_bytes": 294
+    },
+    {
+      "scope": "<module>.checkOsStatus",
+      "source_line": 1720,
+      "names": [
+        "connOS",
+        "GetSTAADFile",
+        "Exception"
+      ],
+      "arguments": [],
+      "strings": [
+        "Root",
+        "No model",
+        "No connection"
+      ],
+      "bytecode_sha256": "0f49aa1f4e1f671e2123549a7bc7ffe096a0045cd29942e6ea8d93f1008c0546",
+      "bytecode_bytes": 84
+    },
+    {
+      "scope": "<module>.getFileContent",
+      "source_line": 1734,
+      "names": [
+        "open",
+        "readlines",
+        "close"
+      ],
+      "arguments": [
+        "stdFP"
+      ],
+      "strings": [
+        "r"
+      ],
+      "bytecode_sha256": "86b84bf77f382bc52e19319d39bdf6b3e2429726715c36299816d58a859de20d",
+      "bytecode_bytes": 30
+    },
+    {
+      "scope": "<module>.getModelData",
+      "source_line": 1741,
+      "names": [
+        "getFileContent",
+        "int",
+        "strip",
+        "append",
+        "split",
+        "Exception",
+        "isdigit",
+        "len",
+        "round",
+        "float",
+        "re",
+        "findall",
+        "find"
+      ],
+      "arguments": [
+        "stdFP"
+      ],
+      "strings": [
+        " detected in the model. Process exiting.\n",
+        "Please make necessary corrections & try again.",
+        "JOINT COORDINATES\n",
+        "MEMBER INCIDENCES\n",
+        ";",
+        "LOAD",
+        "C",
+        " ",
+        "Erroneous joint coordinates",
+        "Erroneous member incidences",
+        "[0-9]+",
+        ": ",
+        " : "
+      ],
+      "bytecode_sha256": "26cf39546cce29c3b2dcb1c2c19f1b796569477ca6a1a18071ced4d7738c0bc7",
+      "bytecode_bytes": 758
+    },
+    {
+      "scope": "<module>.modelUnchanged",
+      "source_line": 1803,
+      "names": [
+        "dbSession",
+        "select",
+        "Results",
+        "filter_by",
+        "execute",
+        "all",
+        "begin",
+        "update",
+        "where",
+        "std_file",
+        "values",
+        "str",
+        "datetime",
+        "now",
+        "isinstance",
+        "window",
+        "write_event_value",
+        "__dict__",
+        "json",
+        "loads",
+        "sorted",
+        "dumps"
+      ],
+      "arguments": [
+        "stdFP",
+        "resData",
+        "curModelData"
+      ],
+      "strings": [
+        "-RD_POPUP-",
+        "mem_inc",
+        "node_coords",
+        "dat_tbl",
+        "load_cases"
+      ],
+      "bytecode_sha256": "ee0df06ef7cba5f79c20d563ff9f82b330b4d18dd8f8d5a5bb07926f6534ea1e",
+      "bytecode_bytes": 390
+    },
+    {
+      "scope": "<module>.differentBaseUnit",
+      "source_line": 1842,
+      "names": [
+        "connOS",
+        "_FlagAsMethod",
+        "GetBaseUnit",
+        "GetInputUnitForLength"
+      ],
+      "arguments": [],
+      "strings": [
+        "Root",
+        "GetBaseUnit",
+        "GetInputUnitForLength",
+        "English",
+        "Metric"
+      ],
+      "bytecode_sha256": "f5105b325c12893cfbae9728588affe18257021584912827f7d8b304c371d43d",
+      "bytecode_bytes": 96
+    },
+    {
+      "scope": "<module>.modelChangedButNotSaved",
+      "source_line": 1856,
+      "names": [
+        "connOS",
+        "GetBeamList",
+        "list",
+        "GetMemberIncidence",
+        "str",
+        "GetNodeList",
+        "GetNodeCoordinates",
+        "DeepDiff",
+        "math",
+        "isclose"
+      ],
+      "arguments": [
+        "miStd",
+        "mncStd",
+        "source"
+      ],
+      "strings": [
+        "Geometry",
+        "remote",
+        "local",
+        "values_changed",
+        "new_value",
+        "old_value"
+      ],
+      "bytecode_sha256": "14abc8666f98919937e5214f5fba2ed71450dc79d488709e3f0222e0f6e9c238",
+      "bytecode_bytes": 278
+    },
+    {
+      "scope": "<module>.smProc",
+      "source_line": 1887,
+      "names": [
+        "time",
+        "write_event_value",
+        "serverCall",
+        "getFileContent",
+        "staadFile",
+        "isinstance",
+        "str",
+        "dbSession",
+        "begin",
+        "update",
+        "Results",
+        "where",
+        "std_file",
+        "values",
+        "datetime",
+        "now",
+        "execute",
+        "json",
+        "dumps",
+        "format",
+        "round",
+        "win_selMem"
+      ],
+      "arguments": [
+        "window"
+      ],
+      "strings": [
+        "_PROC-BTN-DSBL_",
+        "sel_members",
+        "processMembers",
+        "-RD_POPUP-",
+        "_PROC-BTN-ENBL_",
+        "No geometry found!\n",
+        "act_buttons",
+        "mem_groups",
+        "_SLMEM-BTN_",
+        "Processing operation completed in {0} seconds",
+        "-TW_STS-"
+      ],
+      "bytecode_sha256": "f8f6fc0c3b62d8dbbdeff241b9d90859308ded17eef2d7b0ca99ece3091c1672",
+      "bytecode_bytes": 442
+    },
+    {
+      "scope": "<module>.rnProc",
+      "source_line": 1958,
+      "names": [
+        "time",
+        "serverCall",
+        "getFileContent",
+        "staadFile",
+        "isinstance",
+        "str",
+        "write_event_value",
+        "dbSession",
+        "begin",
+        "update",
+        "Results",
+        "where",
+        "std_file",
+        "values",
+        "datetime",
+        "now",
+        "execute",
+        "pythoncom",
+        "CoInitialize",
+        "client",
+        "GetActiveObject",
+        "Geometry",
+        "_FlagAsMethod",
+        "RenumberBeam",
+        "SaveModel",
+        "format",
+        "round",
+        "Exception"
+      ],
+      "arguments": [
+        "window",
+        "stdFile"
+      ],
+      "strings": [
+        "renum_members",
+        "processMembers",
+        "-RD_POPUP-",
+        "No geometry found!\n",
+        "StaadPro.OpenSTAAD",
+        "SaveModel",
+        "RenumberBeam",
+        "Renumbering operation completed in {0} seconds",
+        "-GR_POPUP-",
+        "",
+        "Connection to STAAD.Pro could not be established.\n",
+        "Renumbering operation failed. Please try again.\n"
+      ],
+      "bytecode_sha256": "c143c7a0595c38b8b54c6af4dba5106b6ebb84e630e503ed53806c7542c8545f",
+      "bytecode_bytes": 614
+    },
+    {
+      "scope": "<module>.gmProc",
+      "source_line": 2054,
+      "names": [
+        "time",
+        "serverCall",
+        "getFileContent",
+        "staadFile",
+        "isinstance",
+        "str",
+        "write_event_value",
+        "dbSession",
+        "begin",
+        "update",
+        "Results",
+        "where",
+        "std_file",
+        "values",
+        "datetime",
+        "now",
+        "execute",
+        "len",
+        "list",
+        "keys",
+        "pythoncom",
+        "CoInitialize",
+        "client",
+        "GetActiveObject",
+        "Geometry",
+        "_FlagAsMethod",
+        "DeleteGroup",
+        "Exception",
+        "CreateGroupEx",
+        "SaveModel",
+        "format",
+        "round"
+      ],
+      "arguments": [
+        "window",
+        "stdFile"
+      ],
+      "strings": [
+        "grp_members",
+        "processMembers",
+        "-RD_POPUP-",
+        "No geometry found!\n",
+        "_CND_LVL",
+        "_RB",
+        "_",
+        "StaadPro.OpenSTAAD",
+        "SaveModel",
+        "DeleteGroup",
+        "_CND",
+        "_MEM_LVL",
+        "_FLR_LVL",
+        "gmProc.<locals>.<listcomp>",
+        "Groups created in {0} seconds",
+        "-GR_POPUP-",
+        "Connection to STAAD.Pro could not be established.\n",
+        "Grouping operation failed. Please try again.\n",
+        "Nothing to group in the geometry!\n"
+      ],
+      "bytecode_sha256": "bfba847cbde4ec67efa3d1ffea557650cb222cd18c89af4caf55ba7a5356f0bd",
+      "bytecode_bytes": 1004
+    },
+    {
+      "scope": "<module>.gmProc.<listcomp>",
+      "source_line": 2153,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "2490d834105d9fcce1c76fd18b603a18353804a23889d1448fd7e84d349d339d",
+      "bytecode_bytes": 28
+    },
+    {
+      "scope": "<module>.drProc",
+      "source_line": 2178,
+      "names": [
+        "time",
+        "write_event_value",
+        "serverCall",
+        "getFileContent",
+        "staadFile",
+        "isinstance",
+        "str",
+        "dbSession",
+        "begin",
+        "update",
+        "Results",
+        "where",
+        "std_file",
+        "values",
+        "datetime",
+        "now",
+        "execute",
+        "json",
+        "dumps",
+        "format",
+        "round",
+        "win_defRel"
+      ],
+      "arguments": [
+        "window"
+      ],
+      "strings": [
+        "_PROC-BTN-DSBL_",
+        "def_releases",
+        "processMembers",
+        "-RD_POPUP-",
+        "_PROC-BTN-ENBL_",
+        "No geometry found!\n",
+        "mem_groups",
+        "mem_incs",
+        "_DFREL-BTN_",
+        "Processing operation completed in {0} seconds",
+        "-TW_STS-"
+      ],
+      "bytecode_sha256": "f8f6fc0c3b62d8dbbdeff241b9d90859308ded17eef2d7b0ca99ece3091c1672",
+      "bytecode_bytes": 442
+    },
+    {
+      "scope": "<module>.defineReleases",
+      "source_line": 2249,
+      "names": [
+        "time",
+        "win_defRel",
+        "update",
+        "connOS",
+        "GetSelectedBeams",
+        "window",
+        "write_event_value",
+        "json",
+        "loads",
+        "serverCall",
+        "isinstance",
+        "str",
+        "dumps",
+        "format",
+        "round"
+      ],
+      "arguments": [
+        "memGrp",
+        "mInc"
+      ],
+      "strings": [
+        "Analyzing selected members...",
+        "-TW_STS-",
+        "Geometry",
+        "No member selected!\nSelect members and then click 'Define Releases'.\n",
+        "-RD_POPUP-",
+        "def_releases",
+        "defineReleases",
+        "_PROC-BTN-ENBL_",
+        "Analysis completed in {0} seconds",
+        "-DR_POPUP-",
+        "-SELREL-"
+      ],
+      "bytecode_sha256": "7607f9abcff2b0720d37bb15bc5572e51eaf364516e0520d70877354379ff1d0",
+      "bytecode_bytes": 316
+    },
+    {
+      "scope": "<module>.dpProc",
+      "source_line": 2303,
+      "names": [
+        "time",
+        "write_event_value",
+        "serverCall",
+        "getFileContent",
+        "staadFile",
+        "isinstance",
+        "str",
+        "dbSession",
+        "begin",
+        "update",
+        "Results",
+        "where",
+        "std_file",
+        "values",
+        "datetime",
+        "now",
+        "execute",
+        "append",
+        "json",
+        "dumps",
+        "format",
+        "round",
+        "win_desParams"
+      ],
+      "arguments": [
+        "window",
+        "designCode"
+      ],
+      "strings": [
+        "_PROC-BTN-DSBL_",
+        "des_params",
+        "-RD_POPUP-",
+        "_PROC-BTN-ENBL_",
+        "No geometry found!\n",
+        "-COLY-",
+        "-BMDJ-",
+        "-BMLY-",
+        "dpProc.<locals>.<listcomp>",
+        "_DSPRM-BTN_",
+        "Processing operation completed in {0} seconds",
+        "-TW_STS-",
+        "Members for generating design parameters not found in geometry"
+      ],
+      "bytecode_sha256": "98d87137b625b60967acb9743b19c196ff56cad80ad0f02c42b0dbf27f968feb",
+      "bytecode_bytes": 446
+    },
+    {
+      "scope": "<module>.dpProc.<listcomp>",
+      "source_line": 2356,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "4b68d369c9c3c338bd5e4dda0af4d035785fc7901884adeef869ae19e29ae8e2",
+      "bytecode_bytes": 16
+    },
+    {
+      "scope": "<module>.getLoadCases",
+      "source_line": 2378,
+      "names": [
+        "time",
+        "write_event_value",
+        "serverCall",
+        "getFileContent",
+        "staadFile",
+        "isinstance",
+        "str",
+        "dbSession",
+        "begin",
+        "update",
+        "Results",
+        "where",
+        "std_file",
+        "values",
+        "datetime",
+        "now",
+        "execute",
+        "pythoncom",
+        "CoInitialize",
+        "client",
+        "GetActiveObject",
+        "Output",
+        "_FlagAsMethod",
+        "AreResultsAvailable",
+        "json",
+        "dumps",
+        "format",
+        "round",
+        "win_dataTbl",
+        "Exception"
+      ],
+      "arguments": [
+        "window"
+      ],
+      "strings": [
+        "_GETLC-BTN-DSBL_",
+        "data_table",
+        "modelData",
+        "-RD_POPUP-",
+        "_GETLC-BTN-ENBL_",
+        "No geometry found!\n",
+        "StaadPro.OpenSTAAD",
+        "AreResultsAvailable",
+        "-DT_POPUP-",
+        "load_cases",
+        "_SUCCESS_",
+        "Load cases fetched in {0} seconds",
+        "-TW_STS-",
+        "Connection to STAAD.Pro could not be established.\n",
+        "Load cases could not be fetched. Please try again.\n"
+      ],
+      "bytecode_sha256": "1520028640d900fef3e2d1686418fbe18747f2579d2a6b07ba8bd9169934d7b5",
+      "bytecode_bytes": 520
+    },
+    {
+      "scope": "<module>.genDataTbl",
+      "source_line": 2466,
+      "names": [
+        "connOS",
+        "_FlagAsMethod",
+        "AreResultsAvailable",
+        "window",
+        "write_event_value",
+        "time",
+        "lower",
+        "win_dataTbl",
+        "update",
+        "serverCall",
+        "getFileContent",
+        "staadFile",
+        "isinstance",
+        "str",
+        "GetSupportReactions",
+        "append",
+        "round",
+        "GetNodeDisplacements",
+        "range",
+        "math",
+        "sqrt",
+        "pow",
+        "format",
+        "genDataTblFile"
+      ],
+      "arguments": [
+        "tblParam",
+        "lcSelList"
+      ],
+      "strings": [
+        "Output",
+        "AreResultsAvailable",
+        "-DT_POPUP-",
+        "Getting ",
+        "...",
+        "-TW_STS-",
+        "data_table",
+        "-RD_POPUP-",
+        "METER",
+        "-",
+        "INCHES",
+        "Node",
+        "L/C",
+        "Fx \n(",
+        ")",
+        "Fy \n(",
+        "Fz \n(",
+        "Mx \n(",
+        "My \n(",
+        "Mz \n(",
+        "LC_List",
+        "Column nodes for level - ",
+        "Column \nNode",
+        "X \n(",
+        "Y \n(",
+        "Z \n(",
+        "rX \n(rad)",
+        "rY \n(rad)",
+        "rZ \n(rad)",
+        "Resultant \nof X and Z \n(",
+        "{0} fetched in {1} seconds"
+      ],
+      "bytecode_sha256": "7968b03f3db1bb53cb9cfc453d8847346259437851751632c1f2875950277d80",
+      "bytecode_bytes": 1038
+    },
+    {
+      "scope": "<module>.genDataTblFile",
+      "source_line": 2562,
+      "names": [
+        "time",
+        "lower",
+        "win_dataTbl",
+        "update",
+        "staadFile",
+        "replace",
+        "enumerate",
+        "str",
+        "datetime",
+        "today",
+        "strftime",
+        "dbSession",
+        "select",
+        "Settings",
+        "dnld_path",
+        "execute",
+        "first",
+        "Path",
+        "mkdir",
+        "xlsxwriter",
+        "Workbook",
+        "set_properties",
+        "appName",
+        "add_worksheet",
+        "add_format",
+        "set_column",
+        "set_bg_color",
+        "write",
+        "format",
+        "write_row",
+        "write_rich_string",
+        "range",
+        "insert_image",
+        "len",
+        "write_array_formula",
+        "freeze_panes",
+        "win32com",
+        "client",
+        "Dispatch",
+        "ScreenUpdating",
+        "DisplayAlerts",
+        "EnableEvents",
+        "Workbooks",
+        "Open",
+        "Worksheets",
+        "PivotCaches",
+        "Create",
+        "Range",
+        "CurrentRegion",
+        "CreatePivotTable",
+        "RowAxisLayout",
+        "ShowValuesRow",
+        "ColumnGrand",
+        "PivotFields",
+        "Orientation",
+        "Function",
+        "Sheets",
+        "Name",
+        "Close",
+        "upper",
+        "round",
+        "window",
+        "write_event_value"
+      ],
+      "arguments": [
+        "tblParam",
+        "lcSelList",
+        "dataTable",
+        "uLen",
+        "uFrc",
+        "uMmt"
+      ],
+      "strings": [
+        "Pedestal forces",
+        "Creating pivot table for ",
+        "...",
+        "-TW_STS-",
+        "\\",
+        "/",
+        "genDataTblFile.<locals>.<listcomp>",
+        "_",
+        "%Y%m%d%H%M%S",
+        ".xlsx",
+        "Node",
+        "author",
+        ". @ level ",
+        "center",
+        "vcenter",
+        "align",
+        "#DCE6F1",
+        "bold",
+        "A1",
+        "NODE DISPLACEMENTS TABLE GENERATED BY {0}",
+        "Pedestal",
+        "mm",
+        "Pedestal dim., Ix",
+        "Pedestal dim., Iz",
+        "Pedestal ht., hp",
+        "Self weight of Pedestal, W",
+        "Fyp =",
+        "Fy + W",
+        "Fxp =",
+        "Fx",
+        "Fzp =",
+        "Fz",
+        "Mxp =",
+        "Mx + (Fz * hp)",
+        "Mzp =",
+        "Mz - (Fx * hp)",
+        "font_script",
+        "bg_color",
+        "#C5D9F1",
+        "PEDESTAL FORCES TABLE GENERATED BY dEZignLink",
+        "B3",
+        "INPUT TABLE",
+        "D7",
+        "3",
+        "C",
+        "E2",
+        "./img/imgPedestal.png",
+        "I3",
+        "FORCES AT PEDESTAL BOTTOM",
+        "I9",
+        "Note : Torsional Moment is not considered in this file.",
+        "I10",
+        "Please consider separately, if needed.",
+        "C8:C8",
+        "{=C4*C5*C6*C7}",
+        "I11",
+        "Fxp \n(",
+        ")",
+        "{=C12:C",
+        "}",
+        "I12:I",
+        "J11",
+        "Fyp \n(",
+        "{=D12:D",
+        "+$C$8}",
+        "J12:J",
+        "K11",
+        "Fzp \n(",
+        "{=E12:E",
+        "K12:K",
+        "L11",
+        "Mxp \n(",
+        "{=F12:F",
+        "+E12:E",
+        "*$C$6}",
+        "L12:L",
+        "M11",
+        "Mzp \n(",
+        "{=H12:H",
+        "-C12:C",
+        "M12:M",
+        "SUPPORT REACTIONS TABLE GENERATED BY {0}",
+        "Excel.Application",
+        "Support",
+        "A3",
+        "J3",
+        "supportReactions_summary",
+        "F",
+        " \n(",
+        "Max of ",
+        "Min of ",
+        "Max",
+        "K3",
+        "nodeDisplacements_summary",
+        "Column \nNode",
+        "Resultant",
+        "Resultant \nof X and Z \n(",
+        "Spreadsheet with pivot table for {0} created in {1} seconds",
+        "{0} saved in location {1}",
+        "Spreadsheet for {0} created in {1} seconds",
+        "-GR_POPUP-"
+      ],
+      "bytecode_sha256": "558667f163435477bac0d3ee5f00b716fbe73cc3b93b362bdb821adbf7c56b63",
+      "bytecode_bytes": 2648
+    },
+    {
+      "scope": "<module>.genDataTblFile.<listcomp>",
+      "source_line": 2572,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "/"
+      ],
+      "bytecode_sha256": "e6de0c467eb347063a5abcef419dcf29d6983610da1d120a41214d3c65c66408",
+      "bytecode_bytes": 28
+    },
+    {
+      "scope": "<module>.ldCmbTemp",
+      "source_line": 2796,
+      "names": [
+        "serverCall",
+        "isinstance",
+        "str",
+        "window",
+        "write_event_value",
+        "Workbook",
+        "active",
+        "title",
+        "DataValidation",
+        "prompt",
+        "add_data_validation",
+        "add",
+        "error",
+        "errorTitle",
+        "Side",
+        "value",
+        "merge_cells",
+        "column_dimensions",
+        "width",
+        "range",
+        "Font",
+        "cell",
+        "font",
+        "PatternFill",
+        "fill",
+        "Alignment",
+        "alignment",
+        "Border",
+        "border",
+        "number_format",
+        "dbSession",
+        "select",
+        "Settings",
+        "dnld_path",
+        "execute",
+        "first",
+        "Path",
+        "mkdir",
+        "save",
+        "format"
+      ],
+      "arguments": [
+        "proc"
+      ],
+      "strings": [
+        "gen_loadComb",
+        "",
+        "-RD_POPUP-",
+        "LOAD_COMB",
+        "DO NOT EDIT OR DELETE THIS FIELD",
+        "A2:A4",
+        "whole",
+        "greaterThan",
+        "Enter valid load case number",
+        "Invalid Entry",
+        "Load case number here",
+        "B2:AY2",
+        "Enter valid load combination number",
+        "Load combination number here",
+        "A5:A204",
+        "textLength",
+        "lessThanOrEqual",
+        "Load symbol can be of maximum 4 characters",
+        "Load symbol here",
+        "B3:AY3",
+        "list",
+        "Select load type from drop-down",
+        "Load type here",
+        "B4:AY4",
+        "decimal",
+        "Enter valid factor",
+        "Load combination factor here",
+        "B5:AY204",
+        "thin",
+        "000000",
+        "LOAD COMBINATIONS FOR STAAD.Pro",
+        "A1",
+        "LOAD COMB NO",
+        "A2",
+        "A",
+        "Calibri",
+        "00A6A6A6",
+        "solid",
+        "center",
+        "0.00",
+        "00DCE6F1",
+        "\\",
+        "{0} saved in location {1}",
+        "-GR_POPUP-"
+      ],
+      "bytecode_sha256": "8b6c1ab5da33085b4cd9d6214fa666babe258a10f5b8795af50a8432f9c4978b",
+      "bytecode_bytes": 860
+    },
+    {
+      "scope": "<module>.ldCmbProc",
+      "source_line": 2909,
+      "names": [
+        "load_workbook",
+        "sheetnames",
+        "window",
+        "write_event_value",
+        "iter_rows",
+        "max_column",
+        "max_row",
+        "range",
+        "len",
+        "serverCall",
+        "isinstance",
+        "str",
+        "int",
+        "Document",
+        "sections",
+        "Mm",
+        "page_width",
+        "page_height",
+        "add_heading",
+        "add_paragraph",
+        "add_page_break",
+        "add_section",
+        "dbSession",
+        "select",
+        "Settings",
+        "dnld_path",
+        "execute",
+        "first",
+        "Path",
+        "mkdir",
+        "save",
+        "format"
+      ],
+      "arguments": [
+        "lcFilePath",
+        "proc"
+      ],
+      "strings": [
+        "LOAD_COMB",
+        "LOAD_COMB sheet not found in the file selected!\n",
+        "-RD_POPUP-",
+        "ldCmbProc.<locals>.<listcomp>",
+        "LOAD COMB NO",
+        "Data not in required format!\n",
+        "Insufficient data in sheet!\n",
+        "gen_loadComb",
+        "Invalid Entries:",
+        "",
+        "\n",
+        "ldCmbProc.<locals>.addTable",
+        "\\",
+        "{0} saved in location {1}",
+        "-GR_POPUP-"
+      ],
+      "bytecode_sha256": "c7139c31bbbfdca457f9f28a05f7df7d8789f5a2dee5d85e06c99000a2349fba",
+      "bytecode_bytes": 1032
+    },
+    {
+      "scope": "<module>.ldCmbProc.<listcomp>",
+      "source_line": 2923,
+      "names": [
+        "list"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "ldCmbProc.<locals>.<listcomp>.<listcomp>"
+      ],
+      "bytecode_sha256": "f4b1f714b62afb82ffe7a4a47b7fa90c5890e4118029dbf5ad04e9cf4972d42a",
+      "bytecode_bytes": 30
+    },
+    {
+      "scope": "<module>.ldCmbProc.<listcomp>.<listcomp>",
+      "source_line": 2923,
+      "names": [
+        "value"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "9908ca9f7eb15ef6bb3523f56a04931cc4339799388de3967e2054d21fa3a42f",
+      "bytecode_bytes": 18
+    },
+    {
+      "scope": "<module>.ldCmbProc.<listcomp>",
+      "source_line": 2939,
+      "names": [
+        "list"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "ldCmbProc.<locals>.<listcomp>.<listcomp>"
+      ],
+      "bytecode_sha256": "f4b1f714b62afb82ffe7a4a47b7fa90c5890e4118029dbf5ad04e9cf4972d42a",
+      "bytecode_bytes": 30
+    },
+    {
+      "scope": "<module>.ldCmbProc.<listcomp>.<listcomp>",
+      "source_line": 2939,
+      "names": [
+        "value"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "9908ca9f7eb15ef6bb3523f56a04931cc4339799388de3967e2054d21fa3a42f",
+      "bytecode_bytes": 18
+    },
+    {
+      "scope": "<module>.ldCmbProc.<listcomp>",
+      "source_line": 2944,
+      "names": [
+        "len",
+        "list"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "ldCmbProc.<locals>.<listcomp>.<listcomp>"
+      ],
+      "bytecode_sha256": "e217700b9dc53a88315f039d8e15b5e8ba6d93b26acf2fc1cd1b0a9b030c6c6d",
+      "bytecode_bytes": 56
+    },
+    {
+      "scope": "<module>.ldCmbProc.<listcomp>.<listcomp>",
+      "source_line": 2946,
+      "names": [
+        "value"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "09db232ad5cdd10578b7b5c59cbaea2a353156017c0dbef87fb7020ab43fd85b",
+      "bytecode_bytes": 28
+    },
+    {
+      "scope": "<module>.ldCmbProc.<listcomp>.<listcomp>",
+      "source_line": 2944,
+      "names": [
+        "value"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "09db232ad5cdd10578b7b5c59cbaea2a353156017c0dbef87fb7020ab43fd85b",
+      "bytecode_bytes": 28
+    },
+    {
+      "scope": "<module>.ldCmbProc.addTable",
+      "source_line": 3011,
+      "names": [
+        "add_table",
+        "len",
+        "rows",
+        "cells",
+        "range",
+        "str",
+        "text",
+        "Pt",
+        "paragraphs",
+        "runs",
+        "font",
+        "size",
+        "add_row",
+        "cell",
+        "merge"
+      ],
+      "arguments": [
+        "tblData",
+        "tblStyle",
+        "fntSz"
+      ],
+      "strings": [
+        "",
+        "LOAD COMB NO"
+      ],
+      "bytecode_sha256": "ef4a52e27676e25103e7ea8771ee8687a722c5ce1a533fc017e8ca467f28e6e4",
+      "bytecode_bytes": 268
+    },
+    {
+      "scope": "<module>.pltGrdrsProc",
+      "source_line": 3052,
+      "names": [
+        "serverCall",
+        "isinstance",
+        "str",
+        "window",
+        "write_event_value",
+        "dbSession",
+        "select",
+        "Settings",
+        "dnld_path",
+        "execute",
+        "first",
+        "Path",
+        "mkdir",
+        "open",
+        "write",
+        "format"
+      ],
+      "arguments": [],
+      "strings": [
+        "gen_pltgrdrs",
+        "-RD_POPUP-",
+        "\\",
+        "w",
+        "{0} saved in location {1}",
+        "-GR_POPUP-"
+      ],
+      "bytecode_sha256": "9c3c6cc73f0f2eaf780e32ccd84abc26594ef1dce86ea7b712cbeca53b9feda5",
+      "bytecode_bytes": 238
+    },
+    {
+      "scope": "<module>.prProc",
+      "source_line": 3082,
+      "names": [
+        "float",
+        "append",
+        "Exception",
+        "split",
+        "len",
+        "join",
+        "format",
+        "window",
+        "write_event_value",
+        "int",
+        "keys",
+        "sum",
+        "serverCall",
+        "isinstance",
+        "str",
+        "json",
+        "dumps"
+      ],
+      "arguments": [
+        "ipDict"
+      ],
+      "strings": [
+        "null",
+        "negative",
+        "nonNum",
+        ",",
+        "",
+        "Invalid Entries:\n\n",
+        ", ",
+        "Null entries found in {0}\n\n",
+        "Negative entries found in {0}\n\n",
+        "Non-numeric entries found in {0}\n\n",
+        "Enter valid inputs and try again.\n",
+        "-RD_POPUP-",
+        "Piperack Width",
+        "prProc.<locals>.<listcomp>",
+        "Tier Beam Spacings",
+        "Longitudinal Beam Spacings",
+        "No. of Frames",
+        "Frame Spacing",
+        "Invalid Geometry:\n\n",
+        "Total heights do not match!\n",
+        "Sum of Tier Beam Spacings must be equal to \n",
+        "sum of Longitudinal Beam Spacings:\n",
+        "T1+T2+T3+...+Tn = L1+L2+..+Ln\n\n",
+        "No. of frames must be at least 2\n\n",
+        "gen_pipeRack",
+        "-GEN_FILE-"
+      ],
+      "bytecode_sha256": "bc210f35193b7564f4ea603331c85b210992330df21930d205aa411e111283dc",
+      "bytecode_bytes": 760
+    },
+    {
+      "scope": "<module>.prProc.<listcomp>",
+      "source_line": 3130,
+      "names": [
+        "float"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "e119a79366bf458ccc15cc1e3ae3634b521358649e209aebd3388f0b53f7e272",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.prProc.<listcomp>",
+      "source_line": 3131,
+      "names": [
+        "float"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "e119a79366bf458ccc15cc1e3ae3634b521358649e209aebd3388f0b53f7e272",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.prProc.<listcomp>",
+      "source_line": 3134,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "373338069235c844c7e8c36bf9815b70abd34f73c3f32e23796754a884e7e61b",
+      "bytecode_bytes": 28
+    },
+    {
+      "scope": "<module>.pebProc",
+      "source_line": 3171,
+      "names": [
+        "float",
+        "append",
+        "Exception",
+        "remove",
+        "join",
+        "format",
+        "window",
+        "write_event_value",
+        "int",
+        "keys",
+        "math",
+        "ceil",
+        "cos",
+        "atan2",
+        "sqrt",
+        "pow",
+        "sg",
+        "Window",
+        "Text",
+        "popup_bkgrnd_clr0",
+        "Yes",
+        "No",
+        "popup_bttn_clr0",
+        "read",
+        "serverCall",
+        "isinstance",
+        "str",
+        "json",
+        "dumps"
+      ],
+      "arguments": [
+        "ipDict",
+        "pebType"
+      ],
+      "strings": [
+        "null",
+        "negative",
+        "nonNum",
+        "Roof Slope",
+        "Ridge Height",
+        "Invalid Entries:\n\n",
+        ", ",
+        "Null entries found in {0}\n\n",
+        "Negative entries found in {0}\n\n",
+        "Non-numeric entries found in {0}\n\n",
+        "Enter valid inputs and try again.\n",
+        "-RD_POPUP-",
+        "PEB Width",
+        "Column Height",
+        "C",
+        "Column Spacing, W1",
+        "Column Spacing, W2",
+        "No. of Frames",
+        "Frame Spacing",
+        "Tie Beam Spacing",
+        "Purlin Spacing",
+        "pebProc.<locals>.<listcomp>",
+        "Invalid Geometry:\n\n",
+        "D",
+        "Column-B height must be greater than Column-A height\n\n",
+        "Ridge height must be greater than Column height\n\n",
+        "Column Spacing W1 must be smaller than half of PEB width\n\n",
+        "Column Spacing W2 must be smaller than half of PEB width\n\n",
+        "Invalid Spacing for ",
+        "Tie Beams:\n\n",
+        "Tie Beams cannot be placed with the given spacing.\n\n",
+        "Tie Beams",
+        "Invalid Spacings for Tie Beams and Purlins:\n\n",
+        "Tie Beams & Purlins cannot be placed with the given spacings.\n\n",
+        "Purlins:\n\n",
+        "Purlins cannot be placed with the given spacing.\n\n",
+        "Do you want to proceed?",
+        "",
+        "ALERT!",
+        "calibri 12 bold",
+        "No",
+        "gen_pebStr",
+        "-GEN_FILE-"
+      ],
+      "bytecode_sha256": "08050e26f7d2266da6233e5942ff2e3034d04c6d1c9a67664b11b1ef53aa8499",
+      "bytecode_bytes": 1180
+    },
+    {
+      "scope": "<module>.pebProc.<listcomp>",
+      "source_line": 3230,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "373338069235c844c7e8c36bf9815b70abd34f73c3f32e23796754a884e7e61b",
+      "bytecode_bytes": 28
+    },
+    {
+      "scope": "<module>.serverCall",
+      "source_line": 3310,
+      "names": [
+        "s",
+        "post",
+        "Exception",
+        "is_connected",
+        "REMOTE_SERVER",
+        "locals",
+        "text",
+        "win_toolbar",
+        "update",
+        "json",
+        "ValueError"
+      ],
+      "arguments": [
+        "route"
+      ],
+      "strings": [
+        "serverCall.<locals>.<listcomp>",
+        "Unable to reach our server, please check ",
+        "your internet connection.\n",
+        "You are not connected to the internet, ",
+        "please connect and try again.\n",
+        "res",
+        "Get",
+        "You are not logged in, ",
+        "please log in and try again.\n",
+        "Unused",
+        "-AUTH_MENU-",
+        "./img/ctrlLogin.png",
+        "subscription",
+        "active",
+        "The model",
+        "If you have upgraded",
+        "Server error, please try again.\n"
+      ],
+      "bytecode_sha256": "a5c1a03cc16df20c59004401dca8f1834452879dc9e898f5b6adcfb65dc52d44",
+      "bytecode_bytes": 272
+    },
+    {
+      "scope": "<module>.serverCall.<listcomp>",
+      "source_line": 3312,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "4b68d369c9c3c338bd5e4dda0af4d035785fc7901884adeef869ae19e29ae8e2",
+      "bytecode_bytes": 16
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 3535,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "/"
+      ],
+      "bytecode_sha256": "e6de0c467eb347063a5abcef419dcf29d6983610da1d120a41214d3c65c66408",
+      "bytecode_bytes": 28
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 3694,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "Editor"
+      ],
+      "bytecode_sha256": "458f6d15b59d6537f46969877852953f6c0fa658357cf2e2393939c5b928a33a",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 3695,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "STAAD.Pro"
+      ],
+      "bytecode_sha256": "458f6d15b59d6537f46969877852953f6c0fa658357cf2e2393939c5b928a33a",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<lambda>",
+      "source_line": 3730,
+      "names": [
+        "rnProc",
+        "window",
+        "staadFile"
+      ],
+      "arguments": [],
+      "strings": [],
+      "bytecode_sha256": "25c31280481e2fa7c563cfb7bdc4b5fe4bb64b08a16d062b152c293ca6b77f82",
+      "bytecode_bytes": 10
+    },
+    {
+      "scope": "<module>.<lambda>",
+      "source_line": 3752,
+      "names": [
+        "rnProc",
+        "window",
+        "staadFile"
+      ],
+      "arguments": [],
+      "strings": [],
+      "bytecode_sha256": "25c31280481e2fa7c563cfb7bdc4b5fe4bb64b08a16d062b152c293ca6b77f82",
+      "bytecode_bytes": 10
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 3780,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "Editor"
+      ],
+      "bytecode_sha256": "458f6d15b59d6537f46969877852953f6c0fa658357cf2e2393939c5b928a33a",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 3781,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "STAAD.Pro"
+      ],
+      "bytecode_sha256": "458f6d15b59d6537f46969877852953f6c0fa658357cf2e2393939c5b928a33a",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<lambda>",
+      "source_line": 3804,
+      "names": [
+        "gmProc",
+        "window",
+        "staadFile"
+      ],
+      "arguments": [],
+      "strings": [],
+      "bytecode_sha256": "25c31280481e2fa7c563cfb7bdc4b5fe4bb64b08a16d062b152c293ca6b77f82",
+      "bytecode_bytes": 10
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 3819,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "Editor"
+      ],
+      "bytecode_sha256": "458f6d15b59d6537f46969877852953f6c0fa658357cf2e2393939c5b928a33a",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 3820,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "STAAD.Pro"
+      ],
+      "bytecode_sha256": "458f6d15b59d6537f46969877852953f6c0fa658357cf2e2393939c5b928a33a",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 3853,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "Editor"
+      ],
+      "bytecode_sha256": "458f6d15b59d6537f46969877852953f6c0fa658357cf2e2393939c5b928a33a",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 3854,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "STAAD.Pro"
+      ],
+      "bytecode_sha256": "458f6d15b59d6537f46969877852953f6c0fa658357cf2e2393939c5b928a33a",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<lambda>",
+      "source_line": 4039,
+      "names": [
+        "smProc",
+        "window"
+      ],
+      "arguments": [],
+      "strings": [],
+      "bytecode_sha256": "acaf7ecea046ac44cc74a6dac4e42b6313928ce7e7a563098d9e57db9bca43e4",
+      "bytecode_bytes": 8
+    },
+    {
+      "scope": "<module>.<lambda>",
+      "source_line": 4041,
+      "names": [
+        "drProc",
+        "window"
+      ],
+      "arguments": [],
+      "strings": [],
+      "bytecode_sha256": "acaf7ecea046ac44cc74a6dac4e42b6313928ce7e7a563098d9e57db9bca43e4",
+      "bytecode_bytes": 8
+    },
+    {
+      "scope": "<module>.<lambda>",
+      "source_line": 4044,
+      "names": [
+        "dpProc",
+        "window",
+        "values"
+      ],
+      "arguments": [],
+      "strings": [
+        "-CODE-"
+      ],
+      "bytecode_sha256": "30b045e409ab203a6f297fe0e6876d7d96d1dcde242b9bbaa35c2c02cf635ddd",
+      "bytecode_bytes": 14
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 4142,
+      "names": [
+        "selMemDict",
+        "event"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "602c89c3fb1b36d4cc39a3afd83f65c9872a9b1df669468c681b20f02dacb1df",
+      "bytecode_bytes": 28
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 4162,
+      "names": [
+        "selMemDict",
+        "event"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "602c89c3fb1b36d4cc39a3afd83f65c9872a9b1df669468c681b20f02dacb1df",
+      "bytecode_bytes": 28
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 4323,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "UNL"
+      ],
+      "bytecode_sha256": "458f6d15b59d6537f46969877852953f6c0fa658357cf2e2393939c5b928a33a",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 4326,
+      "names": [],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [
+        "LT"
+      ],
+      "bytecode_sha256": "458f6d15b59d6537f46969877852953f6c0fa658357cf2e2393939c5b928a33a",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<lambda>",
+      "source_line": 4439,
+      "names": [
+        "getLoadCases",
+        "window"
+      ],
+      "arguments": [],
+      "strings": [],
+      "bytecode_sha256": "acaf7ecea046ac44cc74a6dac4e42b6313928ce7e7a563098d9e57db9bca43e4",
+      "bytecode_bytes": 8
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 4491,
+      "names": [
+        "loadCaseSelList"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "aa0e4c7315adb2575ec4246d5ca889e8d60e4052c9f132de3a8fababb8e30370",
+      "bytecode_bytes": 24
+    },
+    {
+      "scope": "<module>.<listcomp>",
+      "source_line": 4510,
+      "names": [
+        "lcDeselList"
+      ],
+      "arguments": [
+        ".0"
+      ],
+      "strings": [],
+      "bytecode_sha256": "aa0e4c7315adb2575ec4246d5ca889e8d60e4052c9f132de3a8fababb8e30370",
+      "bytecode_bytes": 24
+    }
+  ],
+  "remote_call_windows": [
+    {
+      "scope": "desParamsWin",
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 2,
+          "opcode": "LOAD_CONST",
+          "value": "des_params"
+        },
+        {
+          "offset": 4,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 6,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 8,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 10,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 12,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 14,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 16,
+          "opcode": "114",
+          "value": 54
+        },
+        {
+          "offset": 18,
+          "opcode": "LOAD_CONST",
+          "value": "ALERT!\n\n"
+        },
+        {
+          "offset": 20,
+          "opcode": "STORE_FAST",
+          "value": "alertText"
+        },
+        {
+          "offset": 22,
+          "opcode": "LOAD_FAST",
+          "value": "alertText"
+        },
+        {
+          "offset": 24,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 26,
+          "opcode": "55",
+          "value": 0
+        },
+        {
+          "offset": 28,
+          "opcode": "STORE_FAST",
+          "value": "alertText"
+        },
+        {
+          "offset": 30,
+          "opcode": "LOAD_GLOBAL",
+          "value": "sg"
+        },
+        {
+          "offset": 32,
+          "opcode": "LOAD_ATTR",
+          "value": "popup"
+        }
+      ]
+    },
+    {
+      "scope": "resWindow",
+      "instructions": [
+        {
+          "offset": 244,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 246,
+          "opcode": "LOAD_CONST",
+          "value": "des_params"
+        },
+        {
+          "offset": 248,
+          "opcode": "LOAD_GLOBAL",
+          "value": "getFileContent"
+        },
+        {
+          "offset": 250,
+          "opcode": "LOAD_FAST",
+          "value": "stdFP"
+        },
+        {
+          "offset": 252,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 254,
+          "opcode": "LOAD_CONST",
+          "value": "modelData"
+        },
+        {
+          "offset": 256,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 258,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 260,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 262,
+          "opcode": "STORE_FAST",
+          "value": "pCount"
+        },
+        {
+          "offset": 264,
+          "opcode": "LOAD_FAST",
+          "value": "assignText"
+        },
+        {
+          "offset": 266,
+          "opcode": "LOAD_METHOD",
+          "value": "replace"
+        },
+        {
+          "offset": 268,
+          "opcode": "LOAD_CONST",
+          "value": "PARAMCOUNT"
+        },
+        {
+          "offset": 270,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 272,
+          "opcode": "LOAD_FAST",
+          "value": "pCount"
+        },
+        {
+          "offset": 274,
+          "opcode": "LOAD_CONST",
+          "value": 1
+        },
+        {
+          "offset": 276,
+          "opcode": "23",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "scope": "smProc",
+      "instructions": [
+        {
+          "offset": 20,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 22,
+          "opcode": "LOAD_CONST",
+          "value": "sel_members"
+        },
+        {
+          "offset": 24,
+          "opcode": "LOAD_GLOBAL",
+          "value": "getFileContent"
+        },
+        {
+          "offset": 26,
+          "opcode": "LOAD_GLOBAL",
+          "value": "staadFile"
+        },
+        {
+          "offset": 28,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 30,
+          "opcode": "LOAD_CONST",
+          "value": "processMembers"
+        },
+        {
+          "offset": 32,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 34,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 36,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 38,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 40,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 42,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 44,
+          "opcode": "114",
+          "value": 78
+        },
+        {
+          "offset": 46,
+          "opcode": "LOAD_FAST",
+          "value": "window"
+        },
+        {
+          "offset": 48,
+          "opcode": "LOAD_METHOD",
+          "value": "write_event_value"
+        },
+        {
+          "offset": 50,
+          "opcode": "LOAD_CONST",
+          "value": "-RD_POPUP-"
+        },
+        {
+          "offset": 52,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        }
+      ]
+    },
+    {
+      "scope": "rnProc",
+      "instructions": [
+        {
+          "offset": 8,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 10,
+          "opcode": "LOAD_CONST",
+          "value": "renum_members"
+        },
+        {
+          "offset": 12,
+          "opcode": "LOAD_GLOBAL",
+          "value": "getFileContent"
+        },
+        {
+          "offset": 14,
+          "opcode": "LOAD_GLOBAL",
+          "value": "staadFile"
+        },
+        {
+          "offset": 16,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 18,
+          "opcode": "LOAD_CONST",
+          "value": "processMembers"
+        },
+        {
+          "offset": 20,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 22,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 24,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 26,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 28,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 30,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 32,
+          "opcode": "114",
+          "value": 54
+        },
+        {
+          "offset": 34,
+          "opcode": "LOAD_FAST",
+          "value": "window"
+        },
+        {
+          "offset": 36,
+          "opcode": "LOAD_METHOD",
+          "value": "write_event_value"
+        },
+        {
+          "offset": 38,
+          "opcode": "LOAD_CONST",
+          "value": "-RD_POPUP-"
+        },
+        {
+          "offset": 40,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        }
+      ]
+    },
+    {
+      "scope": "gmProc",
+      "instructions": [
+        {
+          "offset": 8,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 10,
+          "opcode": "LOAD_CONST",
+          "value": "grp_members"
+        },
+        {
+          "offset": 12,
+          "opcode": "LOAD_GLOBAL",
+          "value": "getFileContent"
+        },
+        {
+          "offset": 14,
+          "opcode": "LOAD_GLOBAL",
+          "value": "staadFile"
+        },
+        {
+          "offset": 16,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 18,
+          "opcode": "LOAD_CONST",
+          "value": "processMembers"
+        },
+        {
+          "offset": 20,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 22,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 24,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 26,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 28,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 30,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 32,
+          "opcode": "114",
+          "value": 54
+        },
+        {
+          "offset": 34,
+          "opcode": "LOAD_FAST",
+          "value": "window"
+        },
+        {
+          "offset": 36,
+          "opcode": "LOAD_METHOD",
+          "value": "write_event_value"
+        },
+        {
+          "offset": 38,
+          "opcode": "LOAD_CONST",
+          "value": "-RD_POPUP-"
+        },
+        {
+          "offset": 40,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        }
+      ]
+    },
+    {
+      "scope": "drProc",
+      "instructions": [
+        {
+          "offset": 20,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 22,
+          "opcode": "LOAD_CONST",
+          "value": "def_releases"
+        },
+        {
+          "offset": 24,
+          "opcode": "LOAD_GLOBAL",
+          "value": "getFileContent"
+        },
+        {
+          "offset": 26,
+          "opcode": "LOAD_GLOBAL",
+          "value": "staadFile"
+        },
+        {
+          "offset": 28,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 30,
+          "opcode": "LOAD_CONST",
+          "value": "processMembers"
+        },
+        {
+          "offset": 32,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 34,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 36,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 38,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 40,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 42,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 44,
+          "opcode": "114",
+          "value": 78
+        },
+        {
+          "offset": 46,
+          "opcode": "LOAD_FAST",
+          "value": "window"
+        },
+        {
+          "offset": 48,
+          "opcode": "LOAD_METHOD",
+          "value": "write_event_value"
+        },
+        {
+          "offset": 50,
+          "opcode": "LOAD_CONST",
+          "value": "-RD_POPUP-"
+        },
+        {
+          "offset": 52,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        }
+      ]
+    },
+    {
+      "scope": "defineReleases",
+      "instructions": [
+        {
+          "offset": 90,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 92,
+          "opcode": "LOAD_CONST",
+          "value": "def_releases"
+        },
+        {
+          "offset": 94,
+          "opcode": "LOAD_FAST",
+          "value": "smArr"
+        },
+        {
+          "offset": 96,
+          "opcode": "LOAD_FAST",
+          "value": "memGroupsDict"
+        },
+        {
+          "offset": 98,
+          "opcode": "LOAD_FAST",
+          "value": "memIncidencesDict"
+        },
+        {
+          "offset": 100,
+          "opcode": "103",
+          "value": 3
+        },
+        {
+          "offset": 102,
+          "opcode": "LOAD_CONST",
+          "value": "defineReleases"
+        },
+        {
+          "offset": 104,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 106,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 108,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 110,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 112,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 114,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 116,
+          "opcode": "114",
+          "value": 154
+        },
+        {
+          "offset": 118,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 120,
+          "opcode": "STORE_FAST",
+          "value": "status"
+        },
+        {
+          "offset": 122,
+          "opcode": "LOAD_GLOBAL",
+          "value": "window"
+        }
+      ]
+    },
+    {
+      "scope": "dpProc",
+      "instructions": [
+        {
+          "offset": 20,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 22,
+          "opcode": "LOAD_CONST",
+          "value": "des_params"
+        },
+        {
+          "offset": 24,
+          "opcode": "LOAD_GLOBAL",
+          "value": "getFileContent"
+        },
+        {
+          "offset": 26,
+          "opcode": "LOAD_GLOBAL",
+          "value": "staadFile"
+        },
+        {
+          "offset": 28,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 30,
+          "opcode": "LOAD_FAST",
+          "value": "designCode"
+        },
+        {
+          "offset": 32,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 34,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 36,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 38,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 40,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 42,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 44,
+          "opcode": "114",
+          "value": 78
+        },
+        {
+          "offset": 46,
+          "opcode": "LOAD_FAST",
+          "value": "window"
+        },
+        {
+          "offset": 48,
+          "opcode": "LOAD_METHOD",
+          "value": "write_event_value"
+        },
+        {
+          "offset": 50,
+          "opcode": "LOAD_CONST",
+          "value": "-RD_POPUP-"
+        },
+        {
+          "offset": 52,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        }
+      ]
+    },
+    {
+      "scope": "getLoadCases",
+      "instructions": [
+        {
+          "offset": 20,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 22,
+          "opcode": "LOAD_CONST",
+          "value": "data_table"
+        },
+        {
+          "offset": 24,
+          "opcode": "LOAD_GLOBAL",
+          "value": "getFileContent"
+        },
+        {
+          "offset": 26,
+          "opcode": "LOAD_GLOBAL",
+          "value": "staadFile"
+        },
+        {
+          "offset": 28,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 30,
+          "opcode": "LOAD_CONST",
+          "value": "modelData"
+        },
+        {
+          "offset": 32,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 34,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 36,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 38,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 40,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 42,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 44,
+          "opcode": "114",
+          "value": 78
+        },
+        {
+          "offset": 46,
+          "opcode": "LOAD_FAST",
+          "value": "window"
+        },
+        {
+          "offset": 48,
+          "opcode": "LOAD_METHOD",
+          "value": "write_event_value"
+        },
+        {
+          "offset": 50,
+          "opcode": "LOAD_CONST",
+          "value": "-RD_POPUP-"
+        },
+        {
+          "offset": 52,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        }
+      ]
+    },
+    {
+      "scope": "genDataTbl",
+      "instructions": [
+        {
+          "offset": 80,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 82,
+          "opcode": "LOAD_CONST",
+          "value": "data_table"
+        },
+        {
+          "offset": 84,
+          "opcode": "LOAD_GLOBAL",
+          "value": "getFileContent"
+        },
+        {
+          "offset": 86,
+          "opcode": "LOAD_GLOBAL",
+          "value": "staadFile"
+        },
+        {
+          "offset": 88,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 90,
+          "opcode": "LOAD_FAST",
+          "value": "lcSelList"
+        },
+        {
+          "offset": 92,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 94,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 96,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 98,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 100,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 102,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 104,
+          "opcode": "114",
+          "value": 130
+        },
+        {
+          "offset": 106,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 108,
+          "opcode": "STORE_FAST",
+          "value": "status"
+        },
+        {
+          "offset": 110,
+          "opcode": "LOAD_GLOBAL",
+          "value": "window"
+        },
+        {
+          "offset": 112,
+          "opcode": "LOAD_METHOD",
+          "value": "write_event_value"
+        }
+      ]
+    },
+    {
+      "scope": "ldCmbTemp",
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 2,
+          "opcode": "LOAD_CONST",
+          "value": "gen_loadComb"
+        },
+        {
+          "offset": 4,
+          "opcode": "LOAD_FAST",
+          "value": "proc"
+        },
+        {
+          "offset": 6,
+          "opcode": "LOAD_CONST",
+          "value": ""
+        },
+        {
+          "offset": 8,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 10,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 12,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 14,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 16,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 18,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 20,
+          "opcode": "114",
+          "value": 42
+        },
+        {
+          "offset": 22,
+          "opcode": "LOAD_GLOBAL",
+          "value": "window"
+        },
+        {
+          "offset": 24,
+          "opcode": "LOAD_METHOD",
+          "value": "write_event_value"
+        },
+        {
+          "offset": 26,
+          "opcode": "LOAD_CONST",
+          "value": "-RD_POPUP-"
+        },
+        {
+          "offset": 28,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 30,
+          "opcode": "102",
+          "value": 2
+        },
+        {
+          "offset": 32,
+          "opcode": "LOAD_CONST",
+          "value": null
+        }
+      ]
+    },
+    {
+      "scope": "ldCmbProc",
+      "instructions": [
+        {
+          "offset": 452,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 454,
+          "opcode": "LOAD_CONST",
+          "value": "gen_loadComb"
+        },
+        {
+          "offset": 456,
+          "opcode": "LOAD_FAST",
+          "value": "proc"
+        },
+        {
+          "offset": 458,
+          "opcode": "LOAD_FAST",
+          "value": "lcDataFrmt"
+        },
+        {
+          "offset": 460,
+          "opcode": "CALL_FUNCTION",
+          "value": 3
+        },
+        {
+          "offset": 462,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 464,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 466,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 468,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 470,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 472,
+          "opcode": "EXTENDED_ARG",
+          "value": 1
+        },
+        {
+          "offset": 474,
+          "opcode": "114",
+          "value": 496
+        },
+        {
+          "offset": 476,
+          "opcode": "LOAD_GLOBAL",
+          "value": "window"
+        },
+        {
+          "offset": 478,
+          "opcode": "LOAD_METHOD",
+          "value": "write_event_value"
+        },
+        {
+          "offset": 480,
+          "opcode": "LOAD_CONST",
+          "value": "-RD_POPUP-"
+        },
+        {
+          "offset": 482,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 484,
+          "opcode": "102",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "scope": "pltGrdrsProc",
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 2,
+          "opcode": "LOAD_CONST",
+          "value": "gen_pltgrdrs"
+        },
+        {
+          "offset": 4,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 6,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 8,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 10,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 12,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 14,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 16,
+          "opcode": "114",
+          "value": 38
+        },
+        {
+          "offset": 18,
+          "opcode": "LOAD_GLOBAL",
+          "value": "window"
+        },
+        {
+          "offset": 20,
+          "opcode": "LOAD_METHOD",
+          "value": "write_event_value"
+        },
+        {
+          "offset": 22,
+          "opcode": "LOAD_CONST",
+          "value": "-RD_POPUP-"
+        },
+        {
+          "offset": 24,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 26,
+          "opcode": "102",
+          "value": 2
+        },
+        {
+          "offset": 28,
+          "opcode": "LOAD_CONST",
+          "value": null
+        },
+        {
+          "offset": 30,
+          "opcode": "CALL_METHOD",
+          "value": 2
+        },
+        {
+          "offset": 32,
+          "opcode": "1",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "scope": "prProc",
+      "instructions": [
+        {
+          "offset": 678,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 680,
+          "opcode": "LOAD_CONST",
+          "value": "gen_pipeRack"
+        },
+        {
+          "offset": 682,
+          "opcode": "LOAD_FAST",
+          "value": "prWid"
+        },
+        {
+          "offset": 684,
+          "opcode": "LOAD_FAST",
+          "value": "zDirBmSpc"
+        },
+        {
+          "offset": 686,
+          "opcode": "LOAD_FAST",
+          "value": "xDirBmSpc"
+        },
+        {
+          "offset": 688,
+          "opcode": "LOAD_FAST",
+          "value": "prFrmNum"
+        },
+        {
+          "offset": 690,
+          "opcode": "LOAD_FAST",
+          "value": "prFrmSpc"
+        },
+        {
+          "offset": 692,
+          "opcode": "LOAD_FAST",
+          "value": "unitSys"
+        },
+        {
+          "offset": 694,
+          "opcode": "CALL_FUNCTION",
+          "value": 7
+        },
+        {
+          "offset": 696,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 698,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        },
+        {
+          "offset": 700,
+          "opcode": "LOAD_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 702,
+          "opcode": "LOAD_GLOBAL",
+          "value": "str"
+        },
+        {
+          "offset": 704,
+          "opcode": "CALL_FUNCTION",
+          "value": 2
+        },
+        {
+          "offset": 706,
+          "opcode": "EXTENDED_ARG",
+          "value": 2
+        },
+        {
+          "offset": 708,
+          "opcode": "114",
+          "value": 730
+        },
+        {
+          "offset": 710,
+          "opcode": "LOAD_GLOBAL",
+          "value": "window"
+        }
+      ]
+    },
+    {
+      "scope": "pebProc",
+      "instructions": [
+        {
+          "offset": 1086,
+          "opcode": "LOAD_GLOBAL",
+          "value": "serverCall"
+        },
+        {
+          "offset": 1088,
+          "opcode": "LOAD_CONST",
+          "value": "gen_pebStr"
+        },
+        {
+          "offset": 1090,
+          "opcode": "LOAD_FAST",
+          "value": "pebWid"
+        },
+        {
+          "offset": 1092,
+          "opcode": "LOAD_FAST",
+          "value": "pebColHt"
+        },
+        {
+          "offset": 1094,
+          "opcode": "LOAD_FAST",
+          "value": "pebColSpcW1"
+        },
+        {
+          "offset": 1096,
+          "opcode": "LOAD_FAST",
+          "value": "pebColSpcW2"
+        },
+        {
+          "offset": 1098,
+          "opcode": "LOAD_FAST",
+          "value": "pebRfSlp"
+        },
+        {
+          "offset": 1100,
+          "opcode": "LOAD_FAST",
+          "value": "pebRdgHt"
+        },
+        {
+          "offset": 1102,
+          "opcode": "LOAD_FAST",
+          "value": "pebFrmNum"
+        },
+        {
+          "offset": 1104,
+          "opcode": "LOAD_FAST",
+          "value": "pebFrmSpc"
+        },
+        {
+          "offset": 1106,
+          "opcode": "LOAD_FAST",
+          "value": "pebTbSpc"
+        },
+        {
+          "offset": 1108,
+          "opcode": "LOAD_FAST",
+          "value": "pebPurSpc"
+        },
+        {
+          "offset": 1110,
+          "opcode": "LOAD_FAST",
+          "value": "unitSys"
+        },
+        {
+          "offset": 1112,
+          "opcode": "LOAD_FAST",
+          "value": "pebType"
+        },
+        {
+          "offset": 1114,
+          "opcode": "CALL_FUNCTION",
+          "value": 13
+        },
+        {
+          "offset": 1116,
+          "opcode": "STORE_FAST",
+          "value": "resFrmSrvr"
+        },
+        {
+          "offset": 1118,
+          "opcode": "LOAD_GLOBAL",
+          "value": "isinstance"
+        }
+      ]
+    },
+    {
+      "scope": "serverCall",
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "LOAD_CONST",
+          "value": "<vendor route template omitted>"
+        },
+        {
+          "offset": 2,
+          "opcode": "LOAD_FAST",
+          "value": "route"
+        },
+        {
+          "offset": 4,
+          "opcode": "23",
+          "value": 0
+        },
+        {
+          "offset": 6,
+          "opcode": "STORE_FAST",
+          "value": "url"
+        },
+        {
+          "offset": 8,
+          "opcode": "LOAD_CONST",
+          "value": "<nested code>"
+        },
+        {
+          "offset": 10,
+          "opcode": "LOAD_CONST",
+          "value": "serverCall.<locals>.<listcomp>"
+        },
+        {
+          "offset": 12,
+          "opcode": "MAKE_FUNCTION",
+          "value": 0
+        },
+        {
+          "offset": 14,
+          "opcode": "LOAD_FAST",
+          "value": "args"
+        },
+        {
+          "offset": 16,
+          "opcode": "68",
+          "value": 0
+        },
+        {
+          "offset": 18,
+          "opcode": "CALL_FUNCTION",
+          "value": 1
+        },
+        {
+          "offset": 20,
+          "opcode": "STORE_FAST",
+          "value": "payload"
+        },
+        {
+          "offset": 22,
+          "opcode": "122",
+          "value": 18
+        },
+        {
+          "offset": 24,
+          "opcode": "LOAD_GLOBAL",
+          "value": "s"
+        },
+        {
+          "offset": 26,
+          "opcode": "LOAD_ATTR",
+          "value": "post"
+        },
+        {
+          "offset": 28,
+          "opcode": "LOAD_FAST",
+          "value": "url"
+        },
+        {
+          "offset": 30,
+          "opcode": "LOAD_FAST",
+          "value": "payload"
+        },
+        {
+          "offset": 32,
+          "opcode": "LOAD_CONST",
+          "value": [
+            "json"
+          ]
+        },
+        {
+          "offset": 34,
+          "opcode": "CALL_FUNCTION_KW",
+          "value": 2
+        },
+        {
+          "offset": 36,
+          "opcode": "STORE_FAST",
+          "value": "res"
+        }
+      ]
+    }
+  ]
+}

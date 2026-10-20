@@ -57,7 +57,7 @@ def combo(items):
 
 
 class ToolPage(QWidget):
-    def __init__(self, window, title, description, category):
+    def __init__(self, window, title, description, category, artwork=None):
         super().__init__()
         self.window = window
         self.busy = False
@@ -71,8 +71,9 @@ class ToolPage(QWidget):
         layout = QVBoxLayout(self)
         layout.setContentsMargins(16, 8, 16, 12)
         layout.setSpacing(8)
-        key = {"DXF quantity extractor": "quantities", "AutoCAD smart mapper": "mapper",
-               "STAAD parameter generator": "dj", "Pipe rack modeler": "rack", "EIL standards library": "library"}[title]
+        key = artwork or {"DXF quantity extractor": "quantities", "AutoCAD smart mapper": "mapper",
+               "STAAD parameter generator": "dj", "Pipe rack modeler": "rack", "EIL standards library": "library",
+               "STAAD productivity suite": "productivity"}[title]
         heading = QHBoxLayout()
         copy = QVBoxLayout()
         copy.setSpacing(4)
@@ -125,6 +126,7 @@ class ToolPage(QWidget):
             "quantities": ("workbook",), "mapper": ("workbook", "height", "offset", "sample_toggle"),
             "rack": ("trans", "long", "trans_levels", "long_levels", "base", "depth", "support", "bracing", "preview_toggle", "saved_toggle"),
             "dj": (),
+            "productivity": (),
             "library": ("search", "preview_toggle"),
         }
         self.state_fields = names[key]

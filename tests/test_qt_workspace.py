@@ -51,7 +51,7 @@ class WorkspaceTests(unittest.TestCase):
         self.assertTrue(predicate(), "Background task did not finish")
 
     def test_all_pages_construct_and_keep_state(self):
-        for key in ("quantities", "mapper", "rack", "dj", "library"):
+        for key in ("quantities", "mapper", "rack", "dj", "library", "productivity"):
             self.window.navigate(key)
             self.app.processEvents()
             self.assertIs(self.window.utility_windows[key].page, self.window.pages[key])
@@ -101,10 +101,130 @@ class WorkspaceTests(unittest.TestCase):
         restored.restore_state("dj")
         self.assertEqual(restored.concrete[0].value, 32.5)
 
+    def test_productivity_local_workflows_and_saved_inputs(self):
+        from civtools.core.staad_productivity import ModelSnapshot
+        from PySide6.QtWidgets import QTabWidget
+        self.window.navigate('productivity')
+        palette = self.window.pages['productivity']
+        self.assertEqual(len(palette.buttons), 13)
+        self.assertEqual(palette.findChildren(QTabWidget), [])
+        for key in ('rack', 'pebA', 'pebB', 'pebC', 'pebD'):
+            self.assertFalse(palette.buttons[key].isEnabled())
+            self.assertIn('Deferred', palette.buttons[key].toolTip())
+        snapshot = ModelSnapshot('sample.std', 'Metric',
+            {1: (0, 0, 0), 2: (0, 6, 0), 3: (10, 6, 0), 4: (10, 0, 0)},
+            {1: (1, 2), 2: (2, 3), 3: (3, 4)}, [1, 4], [1, 2])
+        for key in ('select', 'renumber', 'groups', 'releases', 'parameters', 'tables', 'combinations', 'girders'):
+            page = palette.open_feature(key)
+            page.set_snapshot(snapshot)
+            self.assertEqual(page.findChildren(QTabWidget), [])
+        selector = palette.children_windows['select'].page
+        selector.category_buttons['Pri.Beams'].click()
+        self.assertEqual(selector.selected_ids(), [2])
+        selector.level.setCurrentText('0')
+        self.assertEqual(sum(not selector.members.isRowHidden(row) for row in range(selector.members.rowCount())), 0)
+        selector.level.setCurrentText('All levels')
+        selector.set_snapshot(snapshot)
+        self.assertIs(palette.shared_snapshot, snapshot)
+        self.assertIn('Offline snapshot', palette.model_status.text())
+        self.assertIs(palette.children_windows['groups'].page.snapshot, snapshot)
+        releases = palette.children_windows['releases'].page
+        releases.category_filter.setCurrentText('Primary beams X')
+        releases.select_visible()
+        releases.preview_releases()
+        self.assertIn('2 START MZ', releases.output.toPlainText())
+        groups = palette.children_windows['groups'].page
+        groups.preview_groups()
+        self.assertIn('_CIV_PB_X 2', groups.output.toPlainText())
+        renum = palette.children_windows['renumber'].page
+        renum.preview_renumber()
+        self.assertTrue(renum.apply_button.isEnabled())
+        renum.renumber_start.setValue(100)
+        self.assertFalse(renum.apply_button.isEnabled())
+        comb = palette.children_windows['combinations'].page
+        comb.preview_combinations()
+        self.assertIn('LOAD COMB 101', comb.output.toPlainText())
+        from openpyxl import Workbook
+        matrix = Path(self.temp.name) / 'matrix.xlsx'
+        workbook = Workbook()
+        worksheet = workbook.active
+        worksheet.title = 'LOAD_COMB'
+        for row in [('Combinations',), (None, 1, 2), (None, 'DL', 'LL'),
+                    (None, 'Dead', 'Live'), (201, 1.5, 1.2)]:
+            worksheet.append(row)
+        workbook.save(matrix)
+        workbook.close()
+        with patch('civtools.qt_productivity.QFileDialog.getOpenFileName', return_value=(str(matrix), '')):
+            comb.import_combinations()
+        comb.preview_combinations()
+        self.assertIn('LOAD COMB 201', comb.output.toPlainText())
+        self.assertIn('1 1.5 2 1.2', comb.output.toPlainText())
+        girder = palette.children_windows['girders'].page
+        girder.girder_ids.setText('2')
+        girder.preview_girder()
+        self.assertIn('2 TAPERED', girder.output.toPlainText())
+        child = palette.children_windows['girders']
+        child.close()
+        self.assertFalse(child.isVisible())
+        self.assertIs(palette.open_feature('girders'), girder)
+        renum.busy = True
+        self.assertTrue(palette.busy)
+        renum.busy = False
+        renum.on_event('renumbered', True)
+        self.assertIsNone(palette.shared_snapshot)
+        self.assertTrue(all(child.page.snapshot is None for child in palette.children_windows.values()))
+        self.assertIn('renumbered', palette.model_status.text())
+        palette.save_state()
+        restored = type(palette)(self.window)
+        restored.restore_state('productivity')
+        self.assertEqual(restored.open_feature('renumber').renumber_start.value(), 100)
+        self.assertEqual(restored.open_feature('girders').girder_ids.text(), '2')
+        restored.close_children()
+        for child in restored.children_windows.values(): child.deleteLater()
+
+    def test_productivity_apply_refreshes_preview_and_invalidates_shared_model(self):
+        from civtools.core.staad_productivity import ModelSnapshot
+        from civtools.core.results import OperationResult
+        self.window.navigate('productivity')
+        palette = self.window.pages['productivity']
+        model = ModelSnapshot('sample.std', 'Metric',
+            {1: (0, 0, 0), 2: (0, 6, 0), 3: (10, 6, 0), 4: (10, 0, 0)},
+            {1: (1, 2), 2: (2, 3), 3: (3, 4)}, [1, 4], [1])
+        groups = palette.open_feature('groups')
+        groups.set_snapshot(model)
+        groups.preview_groups()
+        groups.group_prefix.setText('UPDATED')
+        with patch.object(groups, 'confirm_model_change', return_value=True) as confirm, patch.object(groups, 'run') as schedule:
+            groups.apply_groups()
+        self.assertIn('_UPDATED_', groups.output.toPlainText())
+        self.assertIn('_UPDATED_', confirm.call_args.args[2])
+        self.assertTrue(schedule.call_args.kwargs['cad'])
+        events = []
+        with patch('civtools.qt_productivity.live.apply_groups', return_value=OperationResult('Applied')) as apply:
+            schedule.call_args.args[0](lambda *event: events.append(event))
+        self.assertEqual(apply.call_args.args[2], 'UPDATED')
+        self.assertIn(('model_changed', True), events)
+        groups.on_event('model_changed', True)
+        self.assertIsNone(palette.shared_snapshot)
+        releases = palette.open_feature('releases')
+        releases.set_snapshot(model)
+        releases.category_filter.setCurrentText('Primary beams X')
+        releases.select_visible()
+        releases.release_end.setCurrentText('BOTH')
+        with patch.object(releases, 'confirm_model_change', return_value=True) as confirm, patch.object(releases, 'run') as schedule:
+            releases.apply_releases()
+        self.assertIn('Replaces releases at selected ends', confirm.call_args.args[3])
+        with patch('civtools.qt_productivity.live.apply_releases', return_value=OperationResult('Applied')) as apply:
+            schedule.call_args.args[0](lambda *event: None)
+        self.assertEqual(apply.call_args.args[1:4], ((2,), 'BOTH', ('MZ',)))
+        releases.on_failure('Simulated uncertain failure')
+        self.assertIsNone(palette.shared_snapshot)
+        self.assertIsNone(groups.snapshot)
+
     def test_search_categories_and_empty_state(self):
         dashboard = self.window.dashboard
         dashboard.search.setText("STAAD")
-        self.assertEqual(sum(not c.isHidden() for c in dashboard.cards), 2)
+        self.assertEqual(sum(not c.isHidden() for c in dashboard.cards), 3)
         dashboard.set_category("Documents")
         self.assertFalse(dashboard.empty.isHidden())
         dashboard.search.clear()

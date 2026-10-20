@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-15",
+  "tool": "STAAD productivity suite",
+  "full_suite": {"tests": 54, "passed": 54, "failed": 0},
+  "final_layout_check": {"test": "test_productivity_local_workflows_and_saved_inputs", "passed": true},
+  "visual_preview": "artifacts/productivity-peb.png",
+  "network_required": false,
+  "live_staad_model_modified_during_testing": false,
+  "live_staad_interoperability_verified": false,
+  "vendor_output_equivalence_verified": false,
+  "packaged_executable_rebuilt": false,
+  "environment": "Python 3.10 with existing workspace site-packages; PDF tests required child-process access."
+}
