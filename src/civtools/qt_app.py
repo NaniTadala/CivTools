@@ -96,7 +96,7 @@ class Dashboard(QWidget):
         layout.addLayout(top)
         search_row = QHBoxLayout()
         self.search = QLineEdit()
-        self.search.setPlaceholderText("Find a toolâ€¦  Ctrl+F")
+        self.search.setPlaceholderText("Find a tool…  Ctrl+F")
         self.search.setClearButtonEnabled(True)
         self.search.setAccessibleName("Search engineering tools")
         self.search.textChanged.connect(self.filter_cards)
@@ -281,7 +281,7 @@ class CivToolsApp(QMainWindow):
         self.settings = QSettings(str(root / "workspace.ini"), QSettings.Format.IniFormat)
         for name in ("Regular", "SemiBold", "Bold"):
             QFontDatabase.addApplicationFont(get_resource_path(f"fonts/Poppins/Poppins-{name}.ttf"))
-        self.setWindowTitle("CivTools Â· Toolkit")
+        self.setWindowTitle("CivTools | Toolkit")
         self.resize(780, 700)
         self.setMinimumSize(520, 500)
         self.setWindowIcon(QIcon(get_resource_path("assets/icons/logo.ico")))
@@ -349,10 +349,10 @@ class CivToolsApp(QMainWindow):
 
     def update_status(self):
         active = sum(getattr(page, "busy", False) for page in self.pages.values())
-        self.statusBar().showMessage(f"{active} operation{'s' if active != 1 else ''} running Â· Reopen a tool to view progress" if active else "Tools open in their own windows Â· Inputs stay when you close them")
+        self.statusBar().showMessage(f"{active} operation{'s' if active != 1 else ''} running · Reopen a tool to view progress" if active else "Tools open in their own windows · Inputs stay when you close them")
         for card in self.dashboard.cards:
             page = self.pages.get(card.tool[0])
-            card.open_button.setText("Runningâ€¦" if getattr(page, "busy", False) else "Resume" if page else "Open")
+            card.open_button.setText("Running…" if getattr(page, "busy", False) else "Resume" if page else "Open")
 
     def open_tutorials(self):
         path = os.environ.get("CIVTOOLS_TUTORIALS_PATH")

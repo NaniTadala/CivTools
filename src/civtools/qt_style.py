@@ -122,6 +122,7 @@ QPushButton#chip:checked { background: #E6F3FA; color: #176B9F; border-color: #B
 QLineEdit, QSpinBox, QDoubleSpinBox, QComboBox { background: #FFFFFF; border: 1px solid #D5E4EC; border-radius: 7px; padding: 7px 10px; min-height: 19px; selection-background-color: #C9E6F5; selection-color: #193E58; }
 QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QComboBox:focus { border: 1px solid #1682BC; background: #FCFEFF; }
 QLineEdit:disabled, QComboBox:disabled { background: #F1F5F7; color: #95A5AE; }
+QComboBox { combobox-popup: 0; }
 QComboBox::drop-down { border: none; width: 25px; }
 QComboBox QAbstractItemView { background: white; border: 1px solid #D5E4EC; selection-background-color: #E4F2F9; selection-color: #193E58; padding: 6px; }
 QCheckBox { spacing: 10px; padding: 8px 0px; }

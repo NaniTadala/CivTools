@@ -54,6 +54,19 @@ class CheckBox(QCheckBox):
 
 class ComboBox(QComboBox):
     """Keep the dropdown affordance visible across native and styled Qt themes."""
+    def showPopup(self):
+        # The native popup container is a separate window. Style its surface as
+        # well as the list so a dark Windows theme cannot leave black margins.
+        from .qt_style import staad_palette
+        view = self.view()
+        popup = view.window()
+        popup.setPalette(staad_palette())
+        popup.setAutoFillBackground(True)
+        popup.setObjectName('comboPopupSurface')
+        popup.setStyleSheet('QFrame#comboPopupSurface { background: #FFFFFF; border: 1px solid #D5E4EC; }')
+        view.setPalette(staad_palette())
+        super().showPopup()
+
     def paintEvent(self, event):
         super().paintEvent(event)
         painter = QPainter(self)
