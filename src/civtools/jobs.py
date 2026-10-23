@@ -24,10 +24,11 @@ class JobSignals(QObject):
 
 
 class Job(QRunnable):
-    def __init__(self, operation, *, cad=False):
+    def __init__(self, operation, *, cad=False, cad_system="CAD"):
         super().__init__()
         self.operation = operation
         self.cad = cad
+        self.cad_system = cad_system
         self.signals = JobSignals()
 
     def run(self):
@@ -49,7 +50,7 @@ class Job(QRunnable):
                 self.signals.event.emit(kind, value)
         try:
             if self.cad:
-                self.signals.event.emit("stage", "Connecting to CAD…")
+                self.signals.event.emit("stage", f"Connecting to {self.cad_system}…")
                 with _cad_lock:
                     import pythoncom
                     pythoncom.CoInitialize()

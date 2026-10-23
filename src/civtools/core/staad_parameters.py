@@ -730,6 +730,9 @@ class SteelGenerator(BaseGenerator):
     CHANNEL_ANGLE_PREFIXES = (
         "ISMC",
         "ISA",
+        "MC",
+        "C",
+        "L",
     )
     VALUELESS = {
         "CHECK CODE",

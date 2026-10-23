@@ -7,15 +7,13 @@ from PySide6.QtCore import Qt, QThreadPool, QTimer, QUrl, QSettings, QEvent
 from PySide6.QtGui import QFont, QFontDatabase, QIcon, QKeySequence, QShortcut, QDesktopServices, QPixmap
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QFrame, QVBoxLayout,
     QHBoxLayout, QGridLayout, QStackedWidget, QScrollArea, QLineEdit, QComboBox, QMessageBox,
-    QSizePolicy, QPushButton, QButtonGroup)
+    QSizePolicy, QPushButton, QButtonGroup, QWidgetAction)
 from .qt_style import STYLE, style_for_scale
 from .qt_widgets import label, button, tool_icon, ComboBox, CheckBox as QCheckBox
 from .jobs import PdfProcess, Job
 
 TOOLS = (
     ("quantities", "DXF quantity extractor", "Quantities", "Extract drawing quantities and consolidate them in Excel.", "DXF / EXCEL"),
-    ("dj", "STAAD parameter generator", "Modeling", "Generate concrete and steel design commands for the active STAAD.Pro model.", "STAAD.PRO"),
-    ("rack", "Pipe rack modeler", "Modeling", "Configure grids, tiers and bracing for a STAAD model.", "STAAD.PRO"),
     ("productivity", "STAAD productivity suite", "Modeling", "Select and group members, export results, generate PEB frames and STAAD commands.", "STAAD.PRO / EXCEL"),
     ("mapper", "AutoCAD smart mapper", "Drawings", "Plot spreadsheet coordinates and labels in AutoCAD.", "EXCEL / CAD"),
     ("library", "EIL standards library", "Documents", "Find, preview and open engineering standards.", "PDF LIBRARY"),
@@ -199,29 +197,40 @@ class UtilityWindow(QMainWindow):
         super().__init__()
         self.launcher, self.key, self.page = launcher, key, page
         title = next(t[1] for t in TOOLS if t[0] == key)
-        self.setWindowTitle(f"{title} Â· CivTools")
+        self.setWindowTitle(f"{title} | CivTools")
         self.setWindowIcon(tool_icon(key, 64))
-        width, height = {"quantities": (640, 680), "dj": (900, 740), "rack": (720, 700),
-                         "mapper": (580, 620), "library": (850, 680), "productivity": (480, 560)}[key]
+        width, height = {"quantities": (640, 680),
+                         "mapper": (580, 620), "library": (850, 680), "productivity": (420, 480)}[key]
         self.resize(width, height)
         self.setMinimumSize(480, 460)
+        if key == 'productivity':
+            self.setMinimumSize(360, 300)
+            self.resize(width, height)
         central = QWidget()
         central.setObjectName("workspace")
         layout = QVBoxLayout(central)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
-        toolbar = QHBoxLayout()
-        toolbar.setContentsMargins(18, 10, 18, 0)
-        toolbar.addWidget(button("All tools", lambda: launcher.navigate("home"), True))
-        toolbar.addStretch()
         self.pin = QCheckBox("Keep on top")
         self.pin.setToolTip("Keep this utility visible beside your CAD application")
         self.pin.toggled.connect(self.set_pinned)
-        toolbar.addWidget(self.pin)
-        layout.addLayout(toolbar)
+        if key == 'productivity':
+            page.options_menu.addAction('All CivTools', lambda: launcher.navigate('home'))
+            self.pin.setText('Pin')
+            page.toolbar.insertWidget(0, self.pin)
+            page.options_menu.addSeparator()
+
+        else:
+            toolbar = QHBoxLayout()
+            toolbar.setContentsMargins(18, 10, 18, 0)
+            toolbar.addWidget(button("All tools", lambda: launcher.navigate("home"), True))
+            toolbar.addStretch()
+            toolbar.addWidget(self.pin)
+            layout.addLayout(toolbar)
         layout.addWidget(page, 1)
         self.setCentralWidget(central)
-        geometry = launcher.settings.value(f"windows/{key}")
+        geometry_key = "windows/productivity-floating-v3" if key == "productivity" else f"windows/{key}"
+        geometry = launcher.settings.value(geometry_key)
         if geometry:
             self.restoreGeometry(geometry)
         self.pin.setChecked(launcher.settings.value(f"pinned/{key}", False, type=bool))
@@ -256,7 +265,9 @@ class UtilityWindow(QMainWindow):
             self.launcher.navigate("home")
 
     def save_state(self):
-        self.launcher.settings.setValue(f"windows/{self.key}", self.saveGeometry())
+        geometry_key = "windows/productivity-floating-v3" if self.key == "productivity" else f"windows/{self.key}"
+        if self.key != "productivity" or not self.page.collapsed:
+            self.launcher.settings.setValue(geometry_key, self.saveGeometry())
         self.launcher.settings.setValue(f"pinned/{self.key}", self.pin.isChecked())
         self.page.save_state()
 
@@ -307,15 +318,19 @@ class CivToolsApp(QMainWindow):
         self.dashboard.arrange_cards()
 
     def navigate(self, key):
+        if key in ('dj', 'rack'):
+            self.navigate('productivity')
+            self.pages['productivity'].open_feature('parameters' if key == 'dj' else 'rack')
+            return
         if key == "home":
             self.showNormal() if self.isMinimized() else self.show()
             self.raise_()
             self.activateWindow()
             return
         if key not in self.pages:
-            from .qt_pages import QuantityPage, MapperPage, RackPage, DJPage, LibraryPage
+            from .qt_pages import QuantityPage, MapperPage, LibraryPage
             from .qt_productivity import ProductivityPage
-            factory = {"quantities": QuantityPage, "mapper": MapperPage, "rack": RackPage, "dj": DJPage, "library": LibraryPage,
+            factory = {"quantities": QuantityPage, "mapper": MapperPage, "library": LibraryPage,
                        "productivity": ProductivityPage}
             page = factory[key](self)
             page.restore_state(key)

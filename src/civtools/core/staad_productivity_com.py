@@ -1,5 +1,6 @@
 """OpenSTAAD boundaries for local productivity jobs. Run on the serial CAD worker."""
 from pathlib import Path
+from contextlib import contextmanager
 import hashlib
 import shutil
 from uuid import uuid4
@@ -59,6 +60,8 @@ def capture(staad, report=lambda *args: None):
         raise RuntimeError('Active model changed during scan. Scan again.')
     if source_digest != hashlib.sha256(Path(path).read_bytes()).hexdigest():
         raise RuntimeError('Saved model changed during scan. Scan again.')
+    stat = Path(path).stat()
+    snapshot.source_signature = (stat.st_size, stat.st_mtime_ns)
     report('progress', 100)
     return snapshot
 
@@ -101,7 +104,8 @@ def process_design_parameters(expected, mode, report):
 
 
 def _backup_model(staad, expected, report):
-    staad.SaveModel(True)
+    if staad.SaveModel(True) is False:
+        raise RuntimeError('STAAD could not save the model; no changes were applied.')
     source = Path(expected.path)
     backup = source.with_name(source.stem + '.civtools-' + uuid4().hex + '.std')
     shutil.copy2(source, backup)
@@ -186,13 +190,153 @@ def select_members(expected, ids, report, nodes=False):
     ids = sorted({positive_id(i) for i in ids})
     if not ids or set(ids) - allowed.keys():
         raise ValueError('Select valid nodes or members from the scanned model.')
-    if nodes:
-        staad.Geometry.ClearNodeSelection()
-        staad.Geometry.SelectMultipleNodes(ids)
-    else:
-        staad.Geometry.ClearMemberSelection()
-        staad.Geometry.SelectMultipleBeams(ids)
+    _replace_selection(staad, ids, nodes)
+    staad.View.RefreshView()
     return OperationResult(f'Selected {len(ids):,} ' + ('nodes.' if nodes else 'members.'))
+
+
+def _selected_ids(geometry, nodes=False):
+    count = geometry.GetNoOfSelectedNodes() if nodes else geometry.GetNoOfSelectedBeams()
+    if not isinstance(count, int) or count < 0:
+        raise RuntimeError('STAAD did not return a valid selection count.')
+    if not count:
+        return set()
+    ids = set(geometry.GetSelectedNodes() if nodes else geometry.GetSelectedBeams())
+    if len(ids) != count:
+        raise RuntimeError('STAAD returned an incomplete selection. Process members again.')
+    return ids
+
+
+def _replace_selection(staad, ids, nodes=False, universe=None):
+    """Replace one selection and verify it, including void-returning COM calls."""
+    geometry = staad.Geometry
+    # openstaadpy 0.2 compares the clear methods' void return with zero.
+    # Call the underlying COM method for clearing only (PDF p. 51: None).
+    # Keep the wrapper's SAFEARRAY conversion for the bulk selection calls.
+    selection_api = getattr(geometry, '_geometry', geometry)
+    clear = selection_api.ClearNodeSelection if nodes else selection_api.ClearMemberSelection
+    bulk = geometry.SelectMultipleNodes if nodes else geometry.SelectMultipleBeams
+    single = geometry.SelectNode if nodes else geometry.SelectBeam
+
+    def reset():
+        if universe is not None and not nodes:
+            if not _selected_ids(geometry, nodes):
+                return
+            # ClearMemberSelection repaints/removes members individually in
+            # STAAD. Select the cached universe, then invert it in one batch
+            # (OpenSTAAD guide p. 346). Avoid the wrapper's unwanted zoom.
+            try:
+                bulk(sorted(universe))
+                staad.View._view.SelectInverse(2)
+                if not _selected_ids(geometry, nodes):
+                    return
+            except Exception:
+                pass  # Older APIs/filtered views use the verified clear fallback.
+        # Node clearing must use the dedicated API. Selecting every node and
+        # inverting it can crash the native STAAD process on support deselection;
+        # a native crash cannot be recovered by the exception fallback above.
+        status = clear()
+        if isinstance(status, (int, float)) and status < 0:
+            raise RuntimeError(f'STAAD could not clear the selection (error {status}).')
+
+    def read():
+        return _selected_ids(geometry, nodes)
+
+    reset()
+    if ids:
+        bulk(ids)
+    if read() != set(ids):
+        # A void return cannot confirm that the bulk request was applied.
+        # Retry with scalar methods to avoid the bulk SAFEARRAY boundary.
+        reset()
+        for entity in ids:
+            if single(entity) is False:
+                raise RuntimeError(f'STAAD could not select {"node" if nodes else "member"} {entity}.')
+        if read() != set(ids):
+            raise RuntimeError('STAAD selection did not match the requested IDs. Process members again.')
+
+
+@contextmanager
+def selection_redraw_batch(staad):
+    """Paint STAAD once after a selection update, restoring redraw on failure."""
+    try:
+        import win32con
+        import win32gui
+        window = int(staad.GetMainWindowHandle())
+    except (ImportError, AttributeError, TypeError, ValueError):
+        yield
+        return
+    if not win32gui.IsWindow(window):
+        yield
+        return
+    windows = [window]
+    win32gui.EnumChildWindows(window, lambda handle, result: result.append(handle), windows)
+    # WM_SETREDRAW(True) can make a hidden control visible. Touch visible windows only.
+    windows = [handle for handle in windows if win32gui.IsWindowVisible(handle)]
+    disabled = []
+    try:
+        for handle in windows:
+            win32gui.SendMessage(handle, win32con.WM_SETREDRAW, 0, 0)
+            disabled.append(handle)
+        yield
+    finally:
+        for handle in reversed(disabled):
+            if win32gui.IsWindow(handle):
+                try:
+                    win32gui.SendMessage(handle, win32con.WM_SETREDRAW, 1, 0)
+                except win32gui.error:
+                    pass  # A child may close while STAAD processes the request.
+        if disabled and win32gui.IsWindow(window):
+            win32gui.RedrawWindow(window, None, None, win32con.RDW_INVALIDATE | win32con.RDW_ALLCHILDREN)
+
+
+def require_selection_model(staad, expected):
+    """Check cached selection identity without re-reading the model geometry.
+
+    Process Members refreshes geometry after edits, as in the selection guide.
+    Mutation/export operations continue to use the complete snapshot check.
+    """
+    path = str(staad.GetSTAADFile() or '')
+    if (not path or Path(path).resolve() != Path(expected.path).resolve() or
+            int(staad.Geometry.GetNodeCount()) != len(expected.nodes) or
+            int(staad.Geometry.GetMemberCount()) != len(expected.members)):
+        raise RuntimeError('Active model changed. Process members again.')
+    if expected.source_signature is not None:
+        stat = Path(path).stat()
+        if (stat.st_size, stat.st_mtime_ns) != expected.source_signature:
+            raise RuntimeError('Saved model changed. Process members again.')
+    elif expected.source_digest:
+        # Older/offline snapshots need one complete validation before caching.
+        current = require_snapshot(staad, expected, lambda *args: None)
+        expected.source_signature = current.source_signature
+
+
+def set_selection(expected, member_ids, node_ids, report):
+    """Apply the union of the selector's checked groups, allowing an empty set."""
+    staad = connect()
+    require_selection_model(staad, expected)
+    member_ids = sorted({positive_id(i) for i in member_ids})
+    node_ids = sorted({positive_id(i) for i in node_ids})
+    if set(member_ids) - expected.members.keys() or set(node_ids) - expected.nodes.keys():
+        raise ValueError('Select groups from the active model. Process members again.')
+    previous_members = _selected_ids(staad.Geometry)
+    previous_nodes = _selected_ids(staad.Geometry, nodes=True)
+    with selection_redraw_batch(staad):
+        try:
+            if set(member_ids) != previous_members:
+                _replace_selection(staad, member_ids, universe=expected.members)
+            if set(node_ids) != previous_nodes:
+                _replace_selection(staad, node_ids, nodes=True, universe=expected.nodes)
+            staad.View.RefreshView()
+        except Exception as exc:
+            try:
+                _replace_selection(staad, sorted(previous_members), universe=expected.members)
+                _replace_selection(staad, sorted(previous_nodes), nodes=True, universe=expected.nodes)
+                staad.View.RefreshView()
+            except Exception as restore_error:
+                raise RuntimeError(f'{exc} Selection could not be restored; process members again. {restore_error}') from exc
+            raise
+    return OperationResult(f'{len(member_ids):,} members, {len(node_ids):,} nodes selected.')
 
 
 def apply_renumber(expected, mapping, report):
@@ -208,7 +352,8 @@ def apply_renumber(expected, mapping, report):
         return OperationResult('Member numbering already matches the plan.')
     # Save the current model before taking the backup, including previously unsaved edits.
     report('stage', 'Saving and backing up the model')
-    staad.SaveModel(True)
+    if staad.SaveModel(True) is False:
+        raise RuntimeError('STAAD could not save the model before renumbering.')
     source = Path(expected.path)
     backup = source.with_name(source.stem + '.civtools-' + uuid4().hex + '.std')
     shutil.copy2(source, backup)
@@ -235,7 +380,8 @@ def apply_renumber(expected, mapping, report):
         for old, new in mapping.items():
             if tuple(staad.Geometry.GetMemberIncidence(new)) != expected.members[old]:
                 raise RuntimeError(f'Member connectivity changed for renumbered member {new}.')
-        staad.SaveModel(True)
+        if staad.SaveModel(True) is False:
+            raise RuntimeError('STAAD could not save the renumbered model.')
     except Exception as exc:
         raise RuntimeError(f'Renumbering stopped after {completed}/{len(steps)} steps. '
                            f'The active model may contain partial changes. Restore the backup {backup} '

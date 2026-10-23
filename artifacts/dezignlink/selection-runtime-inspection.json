@@ -1,0 +1,9816 @@
+{
+  "method": "Python Frida runtime code introspection; no app actions or network requests",
+  "functions": {
+    "smProc": [
+      {
+        "offset": 0,
+        "op": "LOAD_GLOBAL",
+        "arg": "time"
+      },
+      {
+        "offset": 2,
+        "op": "LOAD_METHOD",
+        "arg": "time"
+      },
+      {
+        "offset": 4,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 6,
+        "op": "STORE_FAST",
+        "arg": "st"
+      },
+      {
+        "offset": 8,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 10,
+        "op": "LOAD_METHOD",
+        "arg": "write_event_value"
+      },
+      {
+        "offset": 12,
+        "op": "LOAD_CONST",
+        "arg": "'_PROC-BTN-DSBL_'"
+      },
+      {
+        "offset": 14,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 16,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 18,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 20,
+        "op": "LOAD_GLOBAL",
+        "arg": "serverCall"
+      },
+      {
+        "offset": 22,
+        "op": "LOAD_CONST",
+        "arg": "'sel_members'"
+      },
+      {
+        "offset": 24,
+        "op": "LOAD_GLOBAL",
+        "arg": "getFileContent"
+      },
+      {
+        "offset": 26,
+        "op": "LOAD_GLOBAL",
+        "arg": "staadFile"
+      },
+      {
+        "offset": 28,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 30,
+        "op": "LOAD_CONST",
+        "arg": "'processMembers'"
+      },
+      {
+        "offset": 32,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 34,
+        "op": "STORE_FAST",
+        "arg": "resFrmSrvr"
+      },
+      {
+        "offset": 36,
+        "op": "LOAD_GLOBAL",
+        "arg": "isinstance"
+      },
+      {
+        "offset": 38,
+        "op": "LOAD_FAST",
+        "arg": "resFrmSrvr"
+      },
+      {
+        "offset": 40,
+        "op": "LOAD_GLOBAL",
+        "arg": "str"
+      },
+      {
+        "offset": 42,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 44,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 46,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 48,
+        "op": "LOAD_METHOD",
+        "arg": "write_event_value"
+      },
+      {
+        "offset": 50,
+        "op": "LOAD_CONST",
+        "arg": "'-RD_POPUP-'"
+      },
+      {
+        "offset": 52,
+        "op": "LOAD_FAST",
+        "arg": "resFrmSrvr"
+      },
+      {
+        "offset": 54,
+        "op": "BUILD_TUPLE",
+        "arg": ""
+      },
+      {
+        "offset": 56,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 58,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 60,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 62,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 64,
+        "op": "LOAD_METHOD",
+        "arg": "write_event_value"
+      },
+      {
+        "offset": 66,
+        "op": "LOAD_CONST",
+        "arg": "'_PROC-BTN-ENBL_'"
+      },
+      {
+        "offset": 68,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 70,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 72,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 74,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 76,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      },
+      {
+        "offset": 78,
+        "op": "LOAD_FAST",
+        "arg": "resFrmSrvr"
+      },
+      {
+        "offset": 80,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 82,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 84,
+        "op": "UNPACK_SEQUENCE",
+        "arg": ""
+      },
+      {
+        "offset": 86,
+        "op": "STORE_FAST",
+        "arg": "miDict"
+      },
+      {
+        "offset": 88,
+        "op": "STORE_FAST",
+        "arg": "mncDict"
+      },
+      {
+        "offset": 90,
+        "op": "STORE_FAST",
+        "arg": "uList"
+      },
+      {
+        "offset": 92,
+        "op": "STORE_FAST",
+        "arg": "bDict"
+      },
+      {
+        "offset": 94,
+        "op": "LOAD_FAST",
+        "arg": "resFrmSrvr"
+      },
+      {
+        "offset": 96,
+        "op": "LOAD_CONST",
+        "arg": "1"
+      },
+      {
+        "offset": 98,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 100,
+        "op": "STORE_FAST",
+        "arg": "actButtonsList"
+      },
+      {
+        "offset": 102,
+        "op": "LOAD_FAST",
+        "arg": "resFrmSrvr"
+      },
+      {
+        "offset": 104,
+        "op": "LOAD_CONST",
+        "arg": "2"
+      },
+      {
+        "offset": 106,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 108,
+        "op": "STORE_FAST",
+        "arg": "memGroupsDict"
+      },
+      {
+        "offset": 110,
+        "op": "LOAD_FAST",
+        "arg": "miDict"
+      },
+      {
+        "offset": 112,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 114,
+        "op": "LOAD_GLOBAL",
+        "arg": "dbSession"
+      },
+      {
+        "offset": 116,
+        "op": "LOAD_METHOD",
+        "arg": "begin"
+      },
+      {
+        "offset": 118,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 120,
+        "op": "SETUP_WITH",
+        "arg": "to 192"
+      },
+      {
+        "offset": 122,
+        "op": "STORE_FAST",
+        "arg": "session"
+      },
+      {
+        "offset": 124,
+        "op": "LOAD_GLOBAL",
+        "arg": "update"
+      },
+      {
+        "offset": 126,
+        "op": "LOAD_GLOBAL",
+        "arg": "Results"
+      },
+      {
+        "offset": 128,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 130,
+        "op": "LOAD_METHOD",
+        "arg": "where"
+      },
+      {
+        "offset": 132,
+        "op": "LOAD_GLOBAL",
+        "arg": "Results"
+      },
+      {
+        "offset": 134,
+        "op": "LOAD_ATTR",
+        "arg": "std_file"
+      },
+      {
+        "offset": 136,
+        "op": "LOAD_GLOBAL",
+        "arg": "staadFile"
+      },
+      {
+        "offset": 138,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 140,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 142,
+        "op": "LOAD_ATTR",
+        "arg": "values"
+      },
+      {
+        "offset": 144,
+        "op": "LOAD_FAST",
+        "arg": "miDict"
+      },
+      {
+        "offset": 146,
+        "op": "LOAD_FAST",
+        "arg": "mncDict"
+      },
+      {
+        "offset": 148,
+        "op": "LOAD_FAST",
+        "arg": "uList"
+      },
+      {
+        "offset": 150,
+        "op": "LOAD_FAST",
+        "arg": "bDict"
+      },
+      {
+        "offset": 152,
+        "op": "LOAD_GLOBAL",
+        "arg": "str"
+      },
+      {
+        "offset": 154,
+        "op": "LOAD_GLOBAL",
+        "arg": "datetime"
+      },
+      {
+        "offset": 156,
+        "op": "LOAD_METHOD",
+        "arg": "now"
+      },
+      {
+        "offset": 158,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 160,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 162,
+        "op": "LOAD_CONST",
+        "arg": "('mem_inc', 'node_coords', 'units', 'beta', 'access_date')"
+      },
+      {
+        "offset": 164,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 166,
+        "op": "STORE_FAST",
+        "arg": "stmt"
+      },
+      {
+        "offset": 168,
+        "op": "LOAD_FAST",
+        "arg": "session"
+      },
+      {
+        "offset": 170,
+        "op": "LOAD_METHOD",
+        "arg": "execute"
+      },
+      {
+        "offset": 172,
+        "op": "LOAD_FAST",
+        "arg": "stmt"
+      },
+      {
+        "offset": 174,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 176,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 178,
+        "op": "POP_BLOCK",
+        "arg": ""
+      },
+      {
+        "offset": 180,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 182,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 184,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 186,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 188,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 190,
+        "op": "JUMP_FORWARD",
+        "arg": "to 208"
+      },
+      {
+        "offset": 192,
+        "op": "WITH_EXCEPT_START",
+        "arg": ""
+      },
+      {
+        "offset": 194,
+        "op": "POP_JUMP_IF_TRUE",
+        "arg": ""
+      },
+      {
+        "offset": 196,
+        "op": "RERAISE",
+        "arg": ""
+      },
+      {
+        "offset": 198,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 200,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 202,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 204,
+        "op": "POP_EXCEPT",
+        "arg": ""
+      },
+      {
+        "offset": 206,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 208,
+        "op": "LOAD_FAST",
+        "arg": "miDict"
+      },
+      {
+        "offset": 210,
+        "op": "POP_JUMP_IF_TRUE",
+        "arg": ""
+      },
+      {
+        "offset": 212,
+        "op": "LOAD_CONST",
+        "arg": "'No geometry found!\\n'"
+      },
+      {
+        "offset": 214,
+        "op": "STORE_FAST",
+        "arg": "status"
+      },
+      {
+        "offset": 216,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 218,
+        "op": "LOAD_METHOD",
+        "arg": "write_event_value"
+      },
+      {
+        "offset": 220,
+        "op": "LOAD_CONST",
+        "arg": "'-RD_POPUP-'"
+      },
+      {
+        "offset": 222,
+        "op": "LOAD_FAST",
+        "arg": "status"
+      },
+      {
+        "offset": 224,
+        "op": "BUILD_TUPLE",
+        "arg": ""
+      },
+      {
+        "offset": 226,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 228,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 230,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 232,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 234,
+        "op": "LOAD_METHOD",
+        "arg": "write_event_value"
+      },
+      {
+        "offset": 236,
+        "op": "LOAD_CONST",
+        "arg": "'_PROC-BTN-ENBL_'"
+      },
+      {
+        "offset": 238,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 240,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 242,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 244,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 246,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      },
+      {
+        "offset": 248,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 250,
+        "op": "LOAD_METHOD",
+        "arg": "dumps"
+      },
+      {
+        "offset": 252,
+        "op": "LOAD_FAST",
+        "arg": "actButtonsList"
+      },
+      {
+        "offset": 254,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 256,
+        "op": "STORE_FAST",
+        "arg": "actButtonsStr"
+      },
+      {
+        "offset": 258,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 260,
+        "op": "LOAD_METHOD",
+        "arg": "dumps"
+      },
+      {
+        "offset": 262,
+        "op": "LOAD_FAST",
+        "arg": "memGroupsDict"
+      },
+      {
+        "offset": 264,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 266,
+        "op": "STORE_FAST",
+        "arg": "memGroupsStr"
+      },
+      {
+        "offset": 268,
+        "op": "BUILD_MAP",
+        "arg": ""
+      },
+      {
+        "offset": 270,
+        "op": "STORE_FAST",
+        "arg": "selMemResDict"
+      },
+      {
+        "offset": 272,
+        "op": "LOAD_FAST",
+        "arg": "actButtonsList"
+      },
+      {
+        "offset": 274,
+        "op": "LOAD_FAST",
+        "arg": "selMemResDict"
+      },
+      {
+        "offset": 276,
+        "op": "LOAD_CONST",
+        "arg": "'act_buttons'"
+      },
+      {
+        "offset": 278,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 280,
+        "op": "LOAD_FAST",
+        "arg": "memGroupsDict"
+      },
+      {
+        "offset": 282,
+        "op": "LOAD_FAST",
+        "arg": "selMemResDict"
+      },
+      {
+        "offset": 284,
+        "op": "LOAD_CONST",
+        "arg": "'mem_groups'"
+      },
+      {
+        "offset": 286,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 288,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 290,
+        "op": "LOAD_METHOD",
+        "arg": "dumps"
+      },
+      {
+        "offset": 292,
+        "op": "LOAD_FAST",
+        "arg": "selMemResDict"
+      },
+      {
+        "offset": 294,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 296,
+        "op": "STORE_FAST",
+        "arg": "selMemRes"
+      },
+      {
+        "offset": 298,
+        "op": "LOAD_GLOBAL",
+        "arg": "dbSession"
+      },
+      {
+        "offset": 300,
+        "op": "LOAD_METHOD",
+        "arg": "begin"
+      },
+      {
+        "offset": 302,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 304,
+        "op": "SETUP_WITH",
+        "arg": "to 360"
+      },
+      {
+        "offset": 306,
+        "op": "STORE_FAST",
+        "arg": "session"
+      },
+      {
+        "offset": 308,
+        "op": "LOAD_GLOBAL",
+        "arg": "update"
+      },
+      {
+        "offset": 310,
+        "op": "LOAD_GLOBAL",
+        "arg": "Results"
+      },
+      {
+        "offset": 312,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 314,
+        "op": "LOAD_METHOD",
+        "arg": "where"
+      },
+      {
+        "offset": 316,
+        "op": "LOAD_GLOBAL",
+        "arg": "Results"
+      },
+      {
+        "offset": 318,
+        "op": "LOAD_ATTR",
+        "arg": "std_file"
+      },
+      {
+        "offset": 320,
+        "op": "LOAD_GLOBAL",
+        "arg": "staadFile"
+      },
+      {
+        "offset": 322,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 324,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 326,
+        "op": "LOAD_ATTR",
+        "arg": "values"
+      },
+      {
+        "offset": 328,
+        "op": "LOAD_FAST",
+        "arg": "selMemRes"
+      },
+      {
+        "offset": 330,
+        "op": "LOAD_CONST",
+        "arg": "('sel_mem',)"
+      },
+      {
+        "offset": 332,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 334,
+        "op": "STORE_FAST",
+        "arg": "stmt"
+      },
+      {
+        "offset": 336,
+        "op": "LOAD_FAST",
+        "arg": "session"
+      },
+      {
+        "offset": 338,
+        "op": "LOAD_METHOD",
+        "arg": "execute"
+      },
+      {
+        "offset": 340,
+        "op": "LOAD_FAST",
+        "arg": "stmt"
+      },
+      {
+        "offset": 342,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 344,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 346,
+        "op": "POP_BLOCK",
+        "arg": ""
+      },
+      {
+        "offset": 348,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 350,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 352,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 354,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 356,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 358,
+        "op": "JUMP_FORWARD",
+        "arg": "to 378"
+      },
+      {
+        "offset": 360,
+        "op": "WITH_EXCEPT_START",
+        "arg": ""
+      },
+      {
+        "offset": 362,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 364,
+        "op": "POP_JUMP_IF_TRUE",
+        "arg": ""
+      },
+      {
+        "offset": 366,
+        "op": "RERAISE",
+        "arg": ""
+      },
+      {
+        "offset": 368,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 370,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 372,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 374,
+        "op": "POP_EXCEPT",
+        "arg": ""
+      },
+      {
+        "offset": 376,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 378,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 380,
+        "op": "LOAD_METHOD",
+        "arg": "write_event_value"
+      },
+      {
+        "offset": 382,
+        "op": "LOAD_CONST",
+        "arg": "'_SLMEM-BTN_'"
+      },
+      {
+        "offset": 384,
+        "op": "LOAD_FAST",
+        "arg": "actButtonsStr"
+      },
+      {
+        "offset": 386,
+        "op": "LOAD_FAST",
+        "arg": "memGroupsStr"
+      },
+      {
+        "offset": 388,
+        "op": "BUILD_TUPLE",
+        "arg": ""
+      },
+      {
+        "offset": 390,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 392,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 394,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 396,
+        "op": "LOAD_GLOBAL",
+        "arg": "time"
+      },
+      {
+        "offset": 398,
+        "op": "LOAD_METHOD",
+        "arg": "time"
+      },
+      {
+        "offset": 400,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 402,
+        "op": "STORE_FAST",
+        "arg": "et"
+      },
+      {
+        "offset": 404,
+        "op": "LOAD_CONST",
+        "arg": "'Processing operation completed in {0} seconds'"
+      },
+      {
+        "offset": 406,
+        "op": "LOAD_METHOD",
+        "arg": "format"
+      },
+      {
+        "offset": 408,
+        "op": "LOAD_GLOBAL",
+        "arg": "round"
+      },
+      {
+        "offset": 410,
+        "op": "LOAD_FAST",
+        "arg": "et"
+      },
+      {
+        "offset": 412,
+        "op": "LOAD_FAST",
+        "arg": "st"
+      },
+      {
+        "offset": 414,
+        "op": "BINARY_SUBTRACT",
+        "arg": ""
+      },
+      {
+        "offset": 416,
+        "op": "LOAD_CONST",
+        "arg": "2"
+      },
+      {
+        "offset": 418,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 420,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 422,
+        "op": "STORE_FAST",
+        "arg": "status"
+      },
+      {
+        "offset": 424,
+        "op": "LOAD_GLOBAL",
+        "arg": "win_selMem"
+      },
+      {
+        "offset": 426,
+        "op": "LOAD_CONST",
+        "arg": "'-TW_STS-'"
+      },
+      {
+        "offset": 428,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 430,
+        "op": "LOAD_METHOD",
+        "arg": "update"
+      },
+      {
+        "offset": 432,
+        "op": "LOAD_FAST",
+        "arg": "status"
+      },
+      {
+        "offset": 434,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 436,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 438,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 440,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      }
+    ],
+    "selMemWin": [
+      {
+        "offset": 0,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 2,
+        "op": "LOAD_ATTR",
+        "arg": "Column"
+      },
+      {
+        "offset": 4,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 6,
+        "op": "LOAD_METHOD",
+        "arg": "Text"
+      },
+      {
+        "offset": 8,
+        "op": "LOAD_CONST",
+        "arg": "'SELECT MEMBER GROUPS'"
+      },
+      {
+        "offset": 10,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 12,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 14,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 16,
+        "op": "LOAD_ATTR",
+        "arg": "Text"
+      },
+      {
+        "offset": 18,
+        "op": "LOAD_GLOBAL",
+        "arg": "modelPath"
+      },
+      {
+        "offset": 20,
+        "op": "LOAD_CONST",
+        "arg": "'-MDL_NM-'"
+      },
+      {
+        "offset": 22,
+        "op": "LOAD_CONST",
+        "arg": "('key',)"
+      },
+      {
+        "offset": 24,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 26,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 28,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 30,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 32,
+        "op": "LOAD_CONST",
+        "arg": "('expand_x',)"
+      },
+      {
+        "offset": 34,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 36,
+        "op": "STORE_FAST",
+        "arg": "smTopRowCol1"
+      },
+      {
+        "offset": 38,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 40,
+        "op": "LOAD_ATTR",
+        "arg": "Column"
+      },
+      {
+        "offset": 42,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 44,
+        "op": "LOAD_ATTR",
+        "arg": "Text"
+      },
+      {
+        "offset": 46,
+        "op": "LOAD_CONST",
+        "arg": "''"
+      },
+      {
+        "offset": 48,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 50,
+        "op": "LOAD_CONST",
+        "arg": "('expand_x',)"
+      },
+      {
+        "offset": 52,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 54,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 56,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 58,
+        "op": "LOAD_CONST",
+        "arg": "''"
+      },
+      {
+        "offset": 60,
+        "op": "LOAD_CONST",
+        "arg": "'-HLP_BTN-'"
+      },
+      {
+        "offset": 62,
+        "op": "LOAD_CONST",
+        "arg": "'./img/ctrlHelp.png'"
+      },
+      {
+        "offset": 64,
+        "op": "LOAD_CONST",
+        "arg": "'Help'"
+      },
+      {
+        "offset": 66,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 68,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'image_source', 'tooltip', 'border_width')"
+      },
+      {
+        "offset": 70,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 72,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 74,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 76,
+        "op": "LOAD_CONST",
+        "arg": "''"
+      },
+      {
+        "offset": 78,
+        "op": "LOAD_CONST",
+        "arg": "'X'"
+      },
+      {
+        "offset": 80,
+        "op": "LOAD_CONST",
+        "arg": "'./img/ctrlPower.png'"
+      },
+      {
+        "offset": 82,
+        "op": "LOAD_CONST",
+        "arg": "'Exit'"
+      },
+      {
+        "offset": 84,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 86,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'image_source', 'tooltip', 'border_width')"
+      },
+      {
+        "offset": 88,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 90,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 92,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 94,
+        "op": "LOAD_CONST",
+        "arg": "'top'"
+      },
+      {
+        "offset": 96,
+        "op": "LOAD_CONST",
+        "arg": "('vertical_alignment',)"
+      },
+      {
+        "offset": 98,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 100,
+        "op": "STORE_FAST",
+        "arg": "smControls"
+      },
+      {
+        "offset": 102,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 104,
+        "op": "LOAD_ATTR",
+        "arg": "Column"
+      },
+      {
+        "offset": 106,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 108,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 110,
+        "op": "LOAD_CONST",
+        "arg": "'Process Members'"
+      },
+      {
+        "offset": 112,
+        "op": "LOAD_CONST",
+        "arg": "'-PROC-'"
+      },
+      {
+        "offset": 114,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 116,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 118,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled', 'bind_return_key')"
+      },
+      {
+        "offset": 120,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 122,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 124,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 126,
+        "op": "LOAD_CONST",
+        "arg": "'Columns'"
+      },
+      {
+        "offset": 128,
+        "op": "LOAD_CONST",
+        "arg": "'-COL-'"
+      },
+      {
+        "offset": 130,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 132,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled')"
+      },
+      {
+        "offset": 134,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 136,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 138,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 140,
+        "op": "LOAD_CONST",
+        "arg": "'Pri. Beams'"
+      },
+      {
+        "offset": 142,
+        "op": "LOAD_CONST",
+        "arg": "'-PBM-'"
+      },
+      {
+        "offset": 144,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 146,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled')"
+      },
+      {
+        "offset": 148,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 150,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 152,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 154,
+        "op": "LOAD_CONST",
+        "arg": "'Sec. Beams'"
+      },
+      {
+        "offset": 156,
+        "op": "LOAD_CONST",
+        "arg": "'-SBM-'"
+      },
+      {
+        "offset": 158,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 160,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled')"
+      },
+      {
+        "offset": 162,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 164,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 166,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 168,
+        "op": "LOAD_CONST",
+        "arg": "'Vrt. Bracings'"
+      },
+      {
+        "offset": 170,
+        "op": "LOAD_CONST",
+        "arg": "'-VBR-'"
+      },
+      {
+        "offset": 172,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 174,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled')"
+      },
+      {
+        "offset": 176,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 178,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 180,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 182,
+        "op": "LOAD_CONST",
+        "arg": "'Pln. Bracings'"
+      },
+      {
+        "offset": 184,
+        "op": "LOAD_CONST",
+        "arg": "'-PBR-'"
+      },
+      {
+        "offset": 186,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 188,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled')"
+      },
+      {
+        "offset": 190,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 192,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 194,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 196,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 198,
+        "op": "LOAD_CONST",
+        "arg": "'Pri. Beams - X'"
+      },
+      {
+        "offset": 200,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMX-'"
+      },
+      {
+        "offset": 202,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 204,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 206,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'expand_x', 'disabled')"
+      },
+      {
+        "offset": 208,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 210,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 212,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 214,
+        "op": "LOAD_CONST",
+        "arg": "'Pri. Beams - Z'"
+      },
+      {
+        "offset": 216,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMZ-'"
+      },
+      {
+        "offset": 218,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 220,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 222,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'expand_x', 'disabled')"
+      },
+      {
+        "offset": 224,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 226,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 228,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 230,
+        "op": "LOAD_CONST",
+        "arg": "'Sec./Ter. Beams - X'"
+      },
+      {
+        "offset": 232,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMX-'"
+      },
+      {
+        "offset": 234,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 236,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 238,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'expand_x', 'disabled')"
+      },
+      {
+        "offset": 240,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 242,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 244,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 246,
+        "op": "LOAD_CONST",
+        "arg": "'Sec./Ter. Beams - Z'"
+      },
+      {
+        "offset": 248,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMZ-'"
+      },
+      {
+        "offset": 250,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 252,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 254,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'expand_x', 'disabled')"
+      },
+      {
+        "offset": 256,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 258,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 260,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 262,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 264,
+        "op": "LOAD_CONST",
+        "arg": "'Sup. Nodes'"
+      },
+      {
+        "offset": 266,
+        "op": "LOAD_CONST",
+        "arg": "'-SND-'"
+      },
+      {
+        "offset": 268,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 270,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled')"
+      },
+      {
+        "offset": 272,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 274,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 276,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 278,
+        "op": "LOAD_CONST",
+        "arg": "'Rafters'"
+      },
+      {
+        "offset": 280,
+        "op": "LOAD_CONST",
+        "arg": "'-RAF-'"
+      },
+      {
+        "offset": 282,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 284,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled')"
+      },
+      {
+        "offset": 286,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 288,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 290,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 292,
+        "op": "LOAD_CONST",
+        "arg": "'Raf. Bracings'"
+      },
+      {
+        "offset": 294,
+        "op": "LOAD_CONST",
+        "arg": "'-RBR-'"
+      },
+      {
+        "offset": 296,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 298,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled')"
+      },
+      {
+        "offset": 300,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 302,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 304,
+        "op": "LOAD_ATTR",
+        "arg": "Frame"
+      },
+      {
+        "offset": 306,
+        "op": "LOAD_CONST",
+        "arg": "''"
+      },
+      {
+        "offset": 308,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 310,
+        "op": "LOAD_ATTR",
+        "arg": "Text"
+      },
+      {
+        "offset": 312,
+        "op": "LOAD_CONST",
+        "arg": "'Level'"
+      },
+      {
+        "offset": 314,
+        "op": "LOAD_CONST",
+        "arg": "'#B0B0B0'"
+      },
+      {
+        "offset": 316,
+        "op": "LOAD_CONST",
+        "arg": "('background_color',)"
+      },
+      {
+        "offset": 318,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 320,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 322,
+        "op": "LOAD_ATTR",
+        "arg": "Combo"
+      },
+      {
+        "offset": 324,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 326,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 328,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 330,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 332,
+        "op": "LOAD_CONST",
+        "arg": "'-LVL-'"
+      },
+      {
+        "offset": 334,
+        "op": "LOAD_CONST",
+        "arg": "('expand_x', 'enable_events', 'readonly', 'key')"
+      },
+      {
+        "offset": 336,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 338,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 340,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 342,
+        "op": "LOAD_CONST",
+        "arg": "'Members'"
+      },
+      {
+        "offset": 344,
+        "op": "LOAD_CONST",
+        "arg": "'-BMAL-'"
+      },
+      {
+        "offset": 346,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 348,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled')"
+      },
+      {
+        "offset": 350,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 352,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 354,
+        "op": "LOAD_ATTR",
+        "arg": "Button"
+      },
+      {
+        "offset": 356,
+        "op": "LOAD_CONST",
+        "arg": "'Main Nodes'"
+      },
+      {
+        "offset": 358,
+        "op": "LOAD_CONST",
+        "arg": "'-NDAL-'"
+      },
+      {
+        "offset": 360,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 362,
+        "op": "LOAD_CONST",
+        "arg": "('key', 'disabled')"
+      },
+      {
+        "offset": 364,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 366,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 368,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 370,
+        "op": "LOAD_CONST",
+        "arg": "'#B0B0B0'"
+      },
+      {
+        "offset": 372,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 374,
+        "op": "LOAD_CONST",
+        "arg": "('background_color', 'expand_x')"
+      },
+      {
+        "offset": 376,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 378,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 380,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 382,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 384,
+        "op": "LOAD_CONST",
+        "arg": "('expand_x',)"
+      },
+      {
+        "offset": 386,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 388,
+        "op": "STORE_FAST",
+        "arg": "smMidRowCol"
+      },
+      {
+        "offset": 390,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 392,
+        "op": "LOAD_ATTR",
+        "arg": "Column"
+      },
+      {
+        "offset": 394,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 396,
+        "op": "LOAD_ATTR",
+        "arg": "Text"
+      },
+      {
+        "offset": 398,
+        "op": "LOAD_GLOBAL",
+        "arg": "status"
+      },
+      {
+        "offset": 400,
+        "op": "LOAD_CONST",
+        "arg": "'-TW_STS-'"
+      },
+      {
+        "offset": 402,
+        "op": "LOAD_CONST",
+        "arg": "('key',)"
+      },
+      {
+        "offset": 404,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 406,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 408,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 410,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 412,
+        "op": "LOAD_CONST",
+        "arg": "('expand_x',)"
+      },
+      {
+        "offset": 414,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 416,
+        "op": "STORE_FAST",
+        "arg": "smBotRowCol"
+      },
+      {
+        "offset": 418,
+        "op": "LOAD_FAST",
+        "arg": "smTopRowCol1"
+      },
+      {
+        "offset": 420,
+        "op": "LOAD_FAST",
+        "arg": "smControls"
+      },
+      {
+        "offset": 422,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 424,
+        "op": "LOAD_FAST",
+        "arg": "smMidRowCol"
+      },
+      {
+        "offset": 426,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 428,
+        "op": "LOAD_FAST",
+        "arg": "smBotRowCol"
+      },
+      {
+        "offset": 430,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 432,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 434,
+        "op": "STORE_FAST",
+        "arg": "layout"
+      },
+      {
+        "offset": 436,
+        "op": "LOAD_GLOBAL",
+        "arg": "sg"
+      },
+      {
+        "offset": 438,
+        "op": "LOAD_ATTR",
+        "arg": "Window"
+      },
+      {
+        "offset": 440,
+        "op": "LOAD_CONST",
+        "arg": "''"
+      },
+      {
+        "offset": 442,
+        "op": "LOAD_FAST",
+        "arg": "layout"
+      },
+      {
+        "offset": 444,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 446,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 448,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 450,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 452,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 454,
+        "op": "LOAD_CONST",
+        "arg": "('no_titlebar', 'grab_anywhere', 'finalize', 'keep_on_top', 'use_default_focus')"
+      },
+      {
+        "offset": 456,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 458,
+        "op": "STORE_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 460,
+        "op": "LOAD_GLOBAL",
+        "arg": "modelUnchanged"
+      },
+      {
+        "offset": 462,
+        "op": "LOAD_GLOBAL",
+        "arg": "staadFile"
+      },
+      {
+        "offset": 464,
+        "op": "LOAD_CONST",
+        "arg": "'sel_mem'"
+      },
+      {
+        "offset": 466,
+        "op": "LOAD_GLOBAL",
+        "arg": "getModelData"
+      },
+      {
+        "offset": 468,
+        "op": "LOAD_GLOBAL",
+        "arg": "staadFile"
+      },
+      {
+        "offset": 470,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 472,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 474,
+        "op": "UNPACK_SEQUENCE",
+        "arg": ""
+      },
+      {
+        "offset": 476,
+        "op": "STORE_FAST",
+        "arg": "modelIsSame"
+      },
+      {
+        "offset": 478,
+        "op": "STORE_FAST",
+        "arg": "selMemRes"
+      },
+      {
+        "offset": 480,
+        "op": "LOAD_FAST",
+        "arg": "modelIsSame"
+      },
+      {
+        "offset": 482,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 484,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 486,
+        "op": "LOAD_FAST",
+        "arg": "selMemRes"
+      },
+      {
+        "offset": 488,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 490,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 492,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 494,
+        "op": "LOAD_METHOD",
+        "arg": "loads"
+      },
+      {
+        "offset": 496,
+        "op": "LOAD_FAST",
+        "arg": "selMemRes"
+      },
+      {
+        "offset": 498,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 500,
+        "op": "STORE_FAST",
+        "arg": "selMemResDict"
+      },
+      {
+        "offset": 502,
+        "op": "LOAD_FAST",
+        "arg": "selMemResDict"
+      },
+      {
+        "offset": 504,
+        "op": "LOAD_CONST",
+        "arg": "'act_buttons'"
+      },
+      {
+        "offset": 506,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 508,
+        "op": "STORE_FAST",
+        "arg": "actButtonsList"
+      },
+      {
+        "offset": 510,
+        "op": "LOAD_FAST",
+        "arg": "selMemResDict"
+      },
+      {
+        "offset": 512,
+        "op": "LOAD_CONST",
+        "arg": "'mem_groups'"
+      },
+      {
+        "offset": 514,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 516,
+        "op": "STORE_FAST",
+        "arg": "memGroupsDict"
+      },
+      {
+        "offset": 518,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 520,
+        "op": "LOAD_METHOD",
+        "arg": "dumps"
+      },
+      {
+        "offset": 522,
+        "op": "LOAD_FAST",
+        "arg": "actButtonsList"
+      },
+      {
+        "offset": 524,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 526,
+        "op": "STORE_FAST",
+        "arg": "actButtonsStr"
+      },
+      {
+        "offset": 528,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 530,
+        "op": "LOAD_METHOD",
+        "arg": "dumps"
+      },
+      {
+        "offset": 532,
+        "op": "LOAD_FAST",
+        "arg": "memGroupsDict"
+      },
+      {
+        "offset": 534,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 536,
+        "op": "STORE_FAST",
+        "arg": "memGroupsStr"
+      },
+      {
+        "offset": 538,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 540,
+        "op": "LOAD_METHOD",
+        "arg": "write_event_value"
+      },
+      {
+        "offset": 542,
+        "op": "LOAD_CONST",
+        "arg": "'_SLMEM-BTN_'"
+      },
+      {
+        "offset": 544,
+        "op": "LOAD_FAST",
+        "arg": "actButtonsStr"
+      },
+      {
+        "offset": 546,
+        "op": "LOAD_FAST",
+        "arg": "memGroupsStr"
+      },
+      {
+        "offset": 548,
+        "op": "BUILD_TUPLE",
+        "arg": ""
+      },
+      {
+        "offset": 550,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 552,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 554,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 556,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 558,
+        "op": "LOAD_CONST",
+        "arg": "'-HLP_BTN-'"
+      },
+      {
+        "offset": 560,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 562,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 564,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 566,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 568,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 570,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 572,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 574,
+        "op": "LOAD_CONST",
+        "arg": "'-HLP_BTN-'"
+      },
+      {
+        "offset": 576,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 578,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 580,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 582,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 584,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 586,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 588,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 590,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 592,
+        "op": "LOAD_CONST",
+        "arg": "'-HLP_BTN-+MOUSE OVER+'"
+      },
+      {
+        "offset": 594,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 596,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 598,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 600,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 602,
+        "op": "LOAD_CONST",
+        "arg": "'-HLP_BTN-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 604,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 606,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 608,
+        "op": "LOAD_CONST",
+        "arg": "'./img/ctrlHelp1.png'"
+      },
+      {
+        "offset": 610,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverImgs"
+      },
+      {
+        "offset": 612,
+        "op": "LOAD_CONST",
+        "arg": "'-HLP_BTN-'"
+      },
+      {
+        "offset": 614,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 616,
+        "op": "LOAD_CONST",
+        "arg": "'./img/ctrlHelp.png'"
+      },
+      {
+        "offset": 618,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayImgs"
+      },
+      {
+        "offset": 620,
+        "op": "LOAD_CONST",
+        "arg": "'-HLP_BTN-'"
+      },
+      {
+        "offset": 622,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 624,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 626,
+        "op": "LOAD_CONST",
+        "arg": "'X'"
+      },
+      {
+        "offset": 628,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 630,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 632,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 634,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 636,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 638,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 640,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 642,
+        "op": "LOAD_CONST",
+        "arg": "'X'"
+      },
+      {
+        "offset": 644,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 646,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 648,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 650,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 652,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 654,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 656,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 658,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 660,
+        "op": "LOAD_CONST",
+        "arg": "'X+MOUSE OVER+'"
+      },
+      {
+        "offset": 662,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 664,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 666,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 668,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 670,
+        "op": "LOAD_CONST",
+        "arg": "'X+MOUSE AWAY+'"
+      },
+      {
+        "offset": 672,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 674,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 676,
+        "op": "LOAD_CONST",
+        "arg": "'./img/ctrlPower1.png'"
+      },
+      {
+        "offset": 678,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverImgs"
+      },
+      {
+        "offset": 680,
+        "op": "LOAD_CONST",
+        "arg": "'X'"
+      },
+      {
+        "offset": 682,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 684,
+        "op": "LOAD_CONST",
+        "arg": "'./img/ctrlPower.png'"
+      },
+      {
+        "offset": 686,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayImgs"
+      },
+      {
+        "offset": 688,
+        "op": "LOAD_CONST",
+        "arg": "'X'"
+      },
+      {
+        "offset": 690,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 692,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 694,
+        "op": "LOAD_CONST",
+        "arg": "'-PROC-'"
+      },
+      {
+        "offset": 696,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 698,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 700,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 702,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 704,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 706,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 708,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 710,
+        "op": "LOAD_CONST",
+        "arg": "'-PROC-'"
+      },
+      {
+        "offset": 712,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 714,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 716,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 718,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 720,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 722,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 724,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 726,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 728,
+        "op": "LOAD_CONST",
+        "arg": "'-PROC-+MOUSE OVER+'"
+      },
+      {
+        "offset": 730,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 732,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 734,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 736,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 738,
+        "op": "LOAD_CONST",
+        "arg": "'-PROC-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 740,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 742,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 744,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 746,
+        "op": "LOAD_CONST",
+        "arg": "'-COL-'"
+      },
+      {
+        "offset": 748,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 750,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 752,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 754,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 756,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 758,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 760,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 762,
+        "op": "LOAD_CONST",
+        "arg": "'-COL-'"
+      },
+      {
+        "offset": 764,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 766,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 768,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 770,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 772,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 774,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 776,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 778,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 780,
+        "op": "LOAD_CONST",
+        "arg": "'-COL-+MOUSE OVER+'"
+      },
+      {
+        "offset": 782,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 784,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 786,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 788,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 790,
+        "op": "LOAD_CONST",
+        "arg": "'-COL-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 792,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 794,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 796,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 798,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 800,
+        "op": "LOAD_CONST",
+        "arg": "'-COL-'"
+      },
+      {
+        "offset": 802,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 804,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 806,
+        "op": "LOAD_CONST",
+        "arg": "'-PBM-'"
+      },
+      {
+        "offset": 808,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 810,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 812,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 814,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 816,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 818,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 820,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 822,
+        "op": "LOAD_CONST",
+        "arg": "'-PBM-'"
+      },
+      {
+        "offset": 824,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 826,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 828,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 830,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 832,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 834,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 836,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 838,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 840,
+        "op": "LOAD_CONST",
+        "arg": "'-PBM-+MOUSE OVER+'"
+      },
+      {
+        "offset": 842,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 844,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 846,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 848,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 850,
+        "op": "LOAD_CONST",
+        "arg": "'-PBM-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 852,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 854,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 856,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 858,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 860,
+        "op": "LOAD_CONST",
+        "arg": "'-PBM-'"
+      },
+      {
+        "offset": 862,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 864,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 866,
+        "op": "LOAD_CONST",
+        "arg": "'-SBM-'"
+      },
+      {
+        "offset": 868,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 870,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 872,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 874,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 876,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 878,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 880,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 882,
+        "op": "LOAD_CONST",
+        "arg": "'-SBM-'"
+      },
+      {
+        "offset": 884,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 886,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 888,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 890,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 892,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 894,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 896,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 898,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 900,
+        "op": "LOAD_CONST",
+        "arg": "'-SBM-+MOUSE OVER+'"
+      },
+      {
+        "offset": 902,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 904,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 906,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 908,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 910,
+        "op": "LOAD_CONST",
+        "arg": "'-SBM-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 912,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 914,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 916,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 918,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 920,
+        "op": "LOAD_CONST",
+        "arg": "'-SBM-'"
+      },
+      {
+        "offset": 922,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 924,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 926,
+        "op": "LOAD_CONST",
+        "arg": "'-VBR-'"
+      },
+      {
+        "offset": 928,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 930,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 932,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 934,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 936,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 938,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 940,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 942,
+        "op": "LOAD_CONST",
+        "arg": "'-VBR-'"
+      },
+      {
+        "offset": 944,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 946,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 948,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 950,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 952,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 954,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 956,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 958,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 960,
+        "op": "LOAD_CONST",
+        "arg": "'-VBR-+MOUSE OVER+'"
+      },
+      {
+        "offset": 962,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 964,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 966,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 968,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 970,
+        "op": "LOAD_CONST",
+        "arg": "'-VBR-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 972,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 974,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 976,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 978,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 980,
+        "op": "LOAD_CONST",
+        "arg": "'-VBR-'"
+      },
+      {
+        "offset": 982,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 984,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 986,
+        "op": "LOAD_CONST",
+        "arg": "'-PBR-'"
+      },
+      {
+        "offset": 988,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 990,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 992,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 994,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 996,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 998,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1000,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1002,
+        "op": "LOAD_CONST",
+        "arg": "'-PBR-'"
+      },
+      {
+        "offset": 1004,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1006,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1008,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 1010,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1012,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1014,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1016,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 1018,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1020,
+        "op": "LOAD_CONST",
+        "arg": "'-PBR-+MOUSE OVER+'"
+      },
+      {
+        "offset": 1022,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1024,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1026,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 1028,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1030,
+        "op": "LOAD_CONST",
+        "arg": "'-PBR-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1032,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1034,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1036,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 1038,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 1040,
+        "op": "LOAD_CONST",
+        "arg": "'-PBR-'"
+      },
+      {
+        "offset": 1042,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1044,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1046,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMX-'"
+      },
+      {
+        "offset": 1048,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1050,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1052,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 1054,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 1056,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1058,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1060,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1062,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMX-'"
+      },
+      {
+        "offset": 1064,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1066,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1068,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 1070,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1072,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1074,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1076,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 1078,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1080,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMX-+MOUSE OVER+'"
+      },
+      {
+        "offset": 1082,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1084,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1086,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 1088,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1090,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMX-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1092,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1094,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1096,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 1098,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 1100,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMX-'"
+      },
+      {
+        "offset": 1102,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1104,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1106,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMZ-'"
+      },
+      {
+        "offset": 1108,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1110,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1112,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 1114,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 1116,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1118,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1120,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1122,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMZ-'"
+      },
+      {
+        "offset": 1124,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1126,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1128,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 1130,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1132,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1134,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1136,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 1138,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1140,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMZ-+MOUSE OVER+'"
+      },
+      {
+        "offset": 1142,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1144,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1146,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 1148,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1150,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMZ-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1152,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1154,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1156,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 1158,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 1160,
+        "op": "LOAD_CONST",
+        "arg": "'-PBMZ-'"
+      },
+      {
+        "offset": 1162,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1164,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1166,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMX-'"
+      },
+      {
+        "offset": 1168,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1170,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1172,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 1174,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 1176,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1178,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1180,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1182,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMX-'"
+      },
+      {
+        "offset": 1184,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1186,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1188,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 1190,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1192,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1194,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1196,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 1198,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1200,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMX-+MOUSE OVER+'"
+      },
+      {
+        "offset": 1202,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1204,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1206,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 1208,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1210,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMX-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1212,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1214,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1216,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 1218,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 1220,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMX-'"
+      },
+      {
+        "offset": 1222,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1224,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1226,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMZ-'"
+      },
+      {
+        "offset": 1228,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1230,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1232,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 1234,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 1236,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1238,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1240,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1242,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMZ-'"
+      },
+      {
+        "offset": 1244,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1246,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1248,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 1250,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1252,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1254,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1256,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 1258,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1260,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMZ-+MOUSE OVER+'"
+      },
+      {
+        "offset": 1262,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1264,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1266,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 1268,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1270,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMZ-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1272,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1274,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1276,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 1278,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 1280,
+        "op": "LOAD_CONST",
+        "arg": "'-SBMZ-'"
+      },
+      {
+        "offset": 1282,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1284,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1286,
+        "op": "LOAD_CONST",
+        "arg": "'-BMAL-'"
+      },
+      {
+        "offset": 1288,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1290,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1292,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 1294,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 1296,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1298,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1300,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1302,
+        "op": "LOAD_CONST",
+        "arg": "'-BMAL-'"
+      },
+      {
+        "offset": 1304,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1306,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1308,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 1310,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1312,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1314,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1316,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 1318,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1320,
+        "op": "LOAD_CONST",
+        "arg": "'-BMAL-+MOUSE OVER+'"
+      },
+      {
+        "offset": 1322,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1324,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1326,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 1328,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1330,
+        "op": "LOAD_CONST",
+        "arg": "'-BMAL-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1332,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1334,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1336,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 1338,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 1340,
+        "op": "LOAD_CONST",
+        "arg": "'-BMAL-'"
+      },
+      {
+        "offset": 1342,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1344,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1346,
+        "op": "LOAD_CONST",
+        "arg": "'-NDAL-'"
+      },
+      {
+        "offset": 1348,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1350,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1352,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 1354,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 1356,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1358,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1360,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1362,
+        "op": "LOAD_CONST",
+        "arg": "'-NDAL-'"
+      },
+      {
+        "offset": 1364,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1366,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1368,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 1370,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1372,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1374,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1376,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 1378,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1380,
+        "op": "LOAD_CONST",
+        "arg": "'-NDAL-+MOUSE OVER+'"
+      },
+      {
+        "offset": 1382,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1384,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1386,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 1388,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1390,
+        "op": "LOAD_CONST",
+        "arg": "'-NDAL-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1392,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1394,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1396,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 1398,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 1400,
+        "op": "LOAD_CONST",
+        "arg": "'-NDAL-'"
+      },
+      {
+        "offset": 1402,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1404,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1406,
+        "op": "LOAD_CONST",
+        "arg": "'-RBR-'"
+      },
+      {
+        "offset": 1408,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1410,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1412,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 1414,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 1416,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1418,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1420,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1422,
+        "op": "LOAD_CONST",
+        "arg": "'-RBR-'"
+      },
+      {
+        "offset": 1424,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1426,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1428,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 1430,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1432,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1434,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1436,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 1438,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1440,
+        "op": "LOAD_CONST",
+        "arg": "'-RBR-+MOUSE OVER+'"
+      },
+      {
+        "offset": 1442,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1444,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1446,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 1448,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1450,
+        "op": "LOAD_CONST",
+        "arg": "'-RBR-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1452,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1454,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1456,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 1458,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 1460,
+        "op": "LOAD_CONST",
+        "arg": "'-RBR-'"
+      },
+      {
+        "offset": 1462,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1464,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1466,
+        "op": "LOAD_CONST",
+        "arg": "'-RAF-'"
+      },
+      {
+        "offset": 1468,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1470,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1472,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 1474,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 1476,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1478,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1480,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1482,
+        "op": "LOAD_CONST",
+        "arg": "'-RAF-'"
+      },
+      {
+        "offset": 1484,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1486,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1488,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 1490,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1492,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1494,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1496,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 1498,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1500,
+        "op": "LOAD_CONST",
+        "arg": "'-RAF-+MOUSE OVER+'"
+      },
+      {
+        "offset": 1502,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1504,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1506,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 1508,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1510,
+        "op": "LOAD_CONST",
+        "arg": "'-RAF-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1512,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1514,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1516,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 1518,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 1520,
+        "op": "LOAD_CONST",
+        "arg": "'-RAF-'"
+      },
+      {
+        "offset": 1522,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1524,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1526,
+        "op": "LOAD_CONST",
+        "arg": "'-SND-'"
+      },
+      {
+        "offset": 1528,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1530,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1532,
+        "op": "LOAD_CONST",
+        "arg": "'<Enter>'"
+      },
+      {
+        "offset": 1534,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE OVER+'"
+      },
+      {
+        "offset": 1536,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1538,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1540,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1542,
+        "op": "LOAD_CONST",
+        "arg": "'-SND-'"
+      },
+      {
+        "offset": 1544,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1546,
+        "op": "LOAD_METHOD",
+        "arg": "bind"
+      },
+      {
+        "offset": 1548,
+        "op": "LOAD_CONST",
+        "arg": "'<Leave>'"
+      },
+      {
+        "offset": 1550,
+        "op": "LOAD_CONST",
+        "arg": "'+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1552,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1554,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1556,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseOverEvents"
+      },
+      {
+        "offset": 1558,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1560,
+        "op": "LOAD_CONST",
+        "arg": "'-SND-+MOUSE OVER+'"
+      },
+      {
+        "offset": 1562,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1564,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1566,
+        "op": "LOAD_GLOBAL",
+        "arg": "mouseAwayEvents"
+      },
+      {
+        "offset": 1568,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 1570,
+        "op": "LOAD_CONST",
+        "arg": "'-SND-+MOUSE AWAY+'"
+      },
+      {
+        "offset": 1572,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1574,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1576,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 1578,
+        "op": "LOAD_GLOBAL",
+        "arg": "btnPressed"
+      },
+      {
+        "offset": 1580,
+        "op": "LOAD_CONST",
+        "arg": "'-SND-'"
+      },
+      {
+        "offset": 1582,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1584,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1586,
+        "op": "LOAD_CONST",
+        "arg": "'-TW_STS-'"
+      },
+      {
+        "offset": 1588,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 1590,
+        "op": "LOAD_METHOD",
+        "arg": "update"
+      },
+      {
+        "offset": 1592,
+        "op": "LOAD_CONST",
+        "arg": "'System Ready'"
+      },
+      {
+        "offset": 1594,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 1596,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 1598,
+        "op": "LOAD_FAST",
+        "arg": "window"
+      },
+      {
+        "offset": 1600,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      }
+    ],
+    "modelUnchanged": [
+      {
+        "offset": 0,
+        "op": "LOAD_GLOBAL",
+        "arg": "dbSession"
+      },
+      {
+        "offset": 2,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 4,
+        "op": "SETUP_WITH",
+        "arg": "to 52"
+      },
+      {
+        "offset": 6,
+        "op": "STORE_FAST",
+        "arg": "session"
+      },
+      {
+        "offset": 8,
+        "op": "LOAD_GLOBAL",
+        "arg": "select"
+      },
+      {
+        "offset": 10,
+        "op": "LOAD_GLOBAL",
+        "arg": "Results"
+      },
+      {
+        "offset": 12,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 14,
+        "op": "LOAD_ATTR",
+        "arg": "filter_by"
+      },
+      {
+        "offset": 16,
+        "op": "LOAD_FAST",
+        "arg": "stdFP"
+      },
+      {
+        "offset": 18,
+        "op": "LOAD_CONST",
+        "arg": "('std_file',)"
+      },
+      {
+        "offset": 20,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 22,
+        "op": "STORE_FAST",
+        "arg": "stmt"
+      },
+      {
+        "offset": 24,
+        "op": "LOAD_FAST",
+        "arg": "session"
+      },
+      {
+        "offset": 26,
+        "op": "LOAD_METHOD",
+        "arg": "execute"
+      },
+      {
+        "offset": 28,
+        "op": "LOAD_FAST",
+        "arg": "stmt"
+      },
+      {
+        "offset": 30,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 32,
+        "op": "LOAD_METHOD",
+        "arg": "all"
+      },
+      {
+        "offset": 34,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 36,
+        "op": "STORE_FAST",
+        "arg": "results"
+      },
+      {
+        "offset": 38,
+        "op": "POP_BLOCK",
+        "arg": ""
+      },
+      {
+        "offset": 40,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 42,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 44,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 46,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 48,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 50,
+        "op": "JUMP_FORWARD",
+        "arg": "to 68"
+      },
+      {
+        "offset": 52,
+        "op": "WITH_EXCEPT_START",
+        "arg": ""
+      },
+      {
+        "offset": 54,
+        "op": "POP_JUMP_IF_TRUE",
+        "arg": ""
+      },
+      {
+        "offset": 56,
+        "op": "RERAISE",
+        "arg": ""
+      },
+      {
+        "offset": 58,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 60,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 62,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 64,
+        "op": "POP_EXCEPT",
+        "arg": ""
+      },
+      {
+        "offset": 66,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 68,
+        "op": "LOAD_FAST",
+        "arg": "results"
+      },
+      {
+        "offset": 70,
+        "op": "POP_JUMP_IF_TRUE",
+        "arg": ""
+      },
+      {
+        "offset": 72,
+        "op": "LOAD_CONST",
+        "arg": "(False, False)"
+      },
+      {
+        "offset": 74,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      },
+      {
+        "offset": 76,
+        "op": "LOAD_GLOBAL",
+        "arg": "dbSession"
+      },
+      {
+        "offset": 78,
+        "op": "LOAD_METHOD",
+        "arg": "begin"
+      },
+      {
+        "offset": 80,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 82,
+        "op": "SETUP_WITH",
+        "arg": "to 146"
+      },
+      {
+        "offset": 84,
+        "op": "STORE_FAST",
+        "arg": "session"
+      },
+      {
+        "offset": 86,
+        "op": "LOAD_GLOBAL",
+        "arg": "update"
+      },
+      {
+        "offset": 88,
+        "op": "LOAD_GLOBAL",
+        "arg": "Results"
+      },
+      {
+        "offset": 90,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 92,
+        "op": "LOAD_METHOD",
+        "arg": "where"
+      },
+      {
+        "offset": 94,
+        "op": "LOAD_GLOBAL",
+        "arg": "Results"
+      },
+      {
+        "offset": 96,
+        "op": "LOAD_ATTR",
+        "arg": "std_file"
+      },
+      {
+        "offset": 98,
+        "op": "LOAD_FAST",
+        "arg": "stdFP"
+      },
+      {
+        "offset": 100,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 102,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 104,
+        "op": "LOAD_ATTR",
+        "arg": "values"
+      },
+      {
+        "offset": 106,
+        "op": "LOAD_GLOBAL",
+        "arg": "str"
+      },
+      {
+        "offset": 108,
+        "op": "LOAD_GLOBAL",
+        "arg": "datetime"
+      },
+      {
+        "offset": 110,
+        "op": "LOAD_METHOD",
+        "arg": "now"
+      },
+      {
+        "offset": 112,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 114,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 116,
+        "op": "LOAD_CONST",
+        "arg": "('access_date',)"
+      },
+      {
+        "offset": 118,
+        "op": "CALL_FUNCTION_KW",
+        "arg": ""
+      },
+      {
+        "offset": 120,
+        "op": "STORE_FAST",
+        "arg": "stmt"
+      },
+      {
+        "offset": 122,
+        "op": "LOAD_FAST",
+        "arg": "session"
+      },
+      {
+        "offset": 124,
+        "op": "LOAD_METHOD",
+        "arg": "execute"
+      },
+      {
+        "offset": 126,
+        "op": "LOAD_FAST",
+        "arg": "stmt"
+      },
+      {
+        "offset": 128,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 130,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 132,
+        "op": "POP_BLOCK",
+        "arg": ""
+      },
+      {
+        "offset": 134,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 136,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 138,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 140,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 142,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 144,
+        "op": "JUMP_FORWARD",
+        "arg": "to 162"
+      },
+      {
+        "offset": 146,
+        "op": "WITH_EXCEPT_START",
+        "arg": ""
+      },
+      {
+        "offset": 148,
+        "op": "POP_JUMP_IF_TRUE",
+        "arg": ""
+      },
+      {
+        "offset": 150,
+        "op": "RERAISE",
+        "arg": ""
+      },
+      {
+        "offset": 152,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 154,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 156,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 158,
+        "op": "POP_EXCEPT",
+        "arg": ""
+      },
+      {
+        "offset": 160,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 162,
+        "op": "LOAD_GLOBAL",
+        "arg": "isinstance"
+      },
+      {
+        "offset": 164,
+        "op": "LOAD_FAST",
+        "arg": "curModelData"
+      },
+      {
+        "offset": 166,
+        "op": "LOAD_GLOBAL",
+        "arg": "str"
+      },
+      {
+        "offset": 168,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 170,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 172,
+        "op": "LOAD_GLOBAL",
+        "arg": "window"
+      },
+      {
+        "offset": 174,
+        "op": "LOAD_METHOD",
+        "arg": "write_event_value"
+      },
+      {
+        "offset": 176,
+        "op": "LOAD_CONST",
+        "arg": "'-RD_POPUP-'"
+      },
+      {
+        "offset": 178,
+        "op": "LOAD_FAST",
+        "arg": "curModelData"
+      },
+      {
+        "offset": 180,
+        "op": "BUILD_TUPLE",
+        "arg": ""
+      },
+      {
+        "offset": 182,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 184,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 186,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 188,
+        "op": "LOAD_CONST",
+        "arg": "False"
+      },
+      {
+        "offset": 190,
+        "op": "LOAD_FAST",
+        "arg": "curModelData"
+      },
+      {
+        "offset": 192,
+        "op": "BUILD_TUPLE",
+        "arg": ""
+      },
+      {
+        "offset": 194,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      },
+      {
+        "offset": 196,
+        "op": "LOAD_FAST",
+        "arg": "curModelData"
+      },
+      {
+        "offset": 198,
+        "op": "UNPACK_SEQUENCE",
+        "arg": ""
+      },
+      {
+        "offset": 200,
+        "op": "STORE_FAST",
+        "arg": "miCur"
+      },
+      {
+        "offset": 202,
+        "op": "STORE_FAST",
+        "arg": "mncCur"
+      },
+      {
+        "offset": 204,
+        "op": "STORE_FAST",
+        "arg": "lcCur"
+      },
+      {
+        "offset": 206,
+        "op": "LOAD_FAST",
+        "arg": "results"
+      },
+      {
+        "offset": 208,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 210,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 212,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 214,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 216,
+        "op": "LOAD_ATTR",
+        "arg": "__dict__"
+      },
+      {
+        "offset": 218,
+        "op": "LOAD_CONST",
+        "arg": "'mem_inc'"
+      },
+      {
+        "offset": 220,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 222,
+        "op": "STORE_FAST",
+        "arg": "miPrv"
+      },
+      {
+        "offset": 224,
+        "op": "LOAD_FAST",
+        "arg": "results"
+      },
+      {
+        "offset": 226,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 228,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 230,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 232,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 234,
+        "op": "LOAD_ATTR",
+        "arg": "__dict__"
+      },
+      {
+        "offset": 236,
+        "op": "LOAD_CONST",
+        "arg": "'node_coords'"
+      },
+      {
+        "offset": 238,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 240,
+        "op": "STORE_FAST",
+        "arg": "mncPrv"
+      },
+      {
+        "offset": 242,
+        "op": "LOAD_FAST",
+        "arg": "resData"
+      },
+      {
+        "offset": 244,
+        "op": "LOAD_CONST",
+        "arg": "'dat_tbl'"
+      },
+      {
+        "offset": 246,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 248,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 250,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 252,
+        "op": "LOAD_FAST",
+        "arg": "results"
+      },
+      {
+        "offset": 254,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 256,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 258,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 260,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 262,
+        "op": "LOAD_ATTR",
+        "arg": "__dict__"
+      },
+      {
+        "offset": 264,
+        "op": "LOAD_FAST",
+        "arg": "resData"
+      },
+      {
+        "offset": 266,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 268,
+        "op": "STORE_FAST",
+        "arg": "datTblRes"
+      },
+      {
+        "offset": 270,
+        "op": "LOAD_FAST",
+        "arg": "datTblRes"
+      },
+      {
+        "offset": 272,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 274,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 276,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 278,
+        "op": "LOAD_METHOD",
+        "arg": "loads"
+      },
+      {
+        "offset": 280,
+        "op": "LOAD_FAST",
+        "arg": "datTblRes"
+      },
+      {
+        "offset": 282,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 284,
+        "op": "STORE_FAST",
+        "arg": "datTblResDict"
+      },
+      {
+        "offset": 286,
+        "op": "LOAD_FAST",
+        "arg": "datTblResDict"
+      },
+      {
+        "offset": 288,
+        "op": "LOAD_CONST",
+        "arg": "'load_cases'"
+      },
+      {
+        "offset": 290,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 292,
+        "op": "STORE_FAST",
+        "arg": "lcPrv"
+      },
+      {
+        "offset": 294,
+        "op": "LOAD_GLOBAL",
+        "arg": "sorted"
+      },
+      {
+        "offset": 296,
+        "op": "LOAD_FAST",
+        "arg": "lcPrv"
+      },
+      {
+        "offset": 298,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 300,
+        "op": "LOAD_GLOBAL",
+        "arg": "sorted"
+      },
+      {
+        "offset": 302,
+        "op": "LOAD_FAST",
+        "arg": "lcCur"
+      },
+      {
+        "offset": 304,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 306,
+        "op": "COMPARE_OP",
+        "arg": "!="
+      },
+      {
+        "offset": 308,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 310,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 312,
+        "op": "LOAD_CONST",
+        "arg": "(False, 'Load cases changed')"
+      },
+      {
+        "offset": 314,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      },
+      {
+        "offset": 316,
+        "op": "LOAD_FAST",
+        "arg": "miPrv"
+      },
+      {
+        "offset": 318,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 320,
+        "op": "LOAD_METHOD",
+        "arg": "loads"
+      },
+      {
+        "offset": 322,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 324,
+        "op": "LOAD_METHOD",
+        "arg": "dumps"
+      },
+      {
+        "offset": 326,
+        "op": "LOAD_FAST",
+        "arg": "miCur"
+      },
+      {
+        "offset": 328,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 330,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 332,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 334,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 336,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 338,
+        "op": "LOAD_FAST",
+        "arg": "mncPrv"
+      },
+      {
+        "offset": 340,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 342,
+        "op": "LOAD_METHOD",
+        "arg": "loads"
+      },
+      {
+        "offset": 344,
+        "op": "LOAD_GLOBAL",
+        "arg": "json"
+      },
+      {
+        "offset": 346,
+        "op": "LOAD_METHOD",
+        "arg": "dumps"
+      },
+      {
+        "offset": 348,
+        "op": "LOAD_FAST",
+        "arg": "mncCur"
+      },
+      {
+        "offset": 350,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 352,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 354,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 356,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 358,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 360,
+        "op": "LOAD_CONST",
+        "arg": "True"
+      },
+      {
+        "offset": 362,
+        "op": "LOAD_FAST",
+        "arg": "results"
+      },
+      {
+        "offset": 364,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 366,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 368,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 370,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 372,
+        "op": "LOAD_ATTR",
+        "arg": "__dict__"
+      },
+      {
+        "offset": 374,
+        "op": "LOAD_FAST",
+        "arg": "resData"
+      },
+      {
+        "offset": 376,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 378,
+        "op": "BUILD_TUPLE",
+        "arg": ""
+      },
+      {
+        "offset": 380,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      },
+      {
+        "offset": 382,
+        "op": "LOAD_CONST",
+        "arg": "(False, 'Geometry changed!')"
+      },
+      {
+        "offset": 384,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      },
+      {
+        "offset": 386,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 388,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      }
+    ],
+    "getModelData": [
+      {
+        "offset": 0,
+        "op": "LOAD_GLOBAL",
+        "arg": "getFileContent"
+      },
+      {
+        "offset": 2,
+        "op": "LOAD_FAST",
+        "arg": "stdFP"
+      },
+      {
+        "offset": 4,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 6,
+        "op": "STORE_FAST",
+        "arg": "fileContent"
+      },
+      {
+        "offset": 8,
+        "op": "LOAD_CONST",
+        "arg": "' detected in the model. Process exiting.\\n'"
+      },
+      {
+        "offset": 10,
+        "op": "STORE_FAST",
+        "arg": "modelReadErrorStatus"
+      },
+      {
+        "offset": 12,
+        "op": "LOAD_FAST",
+        "arg": "modelReadErrorStatus"
+      },
+      {
+        "offset": 14,
+        "op": "LOAD_CONST",
+        "arg": "'Please make necessary corrections & try again.'"
+      },
+      {
+        "offset": 16,
+        "op": "INPLACE_ADD",
+        "arg": ""
+      },
+      {
+        "offset": 18,
+        "op": "STORE_FAST",
+        "arg": "modelReadErrorStatus"
+      },
+      {
+        "offset": 20,
+        "op": "BUILD_MAP",
+        "arg": ""
+      },
+      {
+        "offset": 22,
+        "op": "BUILD_MAP",
+        "arg": ""
+      },
+      {
+        "offset": 24,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 26,
+        "op": "ROT_THREE",
+        "arg": ""
+      },
+      {
+        "offset": 28,
+        "op": "ROT_TWO",
+        "arg": ""
+      },
+      {
+        "offset": 30,
+        "op": "STORE_FAST",
+        "arg": "miDict"
+      },
+      {
+        "offset": 32,
+        "op": "STORE_FAST",
+        "arg": "ncDict"
+      },
+      {
+        "offset": 34,
+        "op": "STORE_FAST",
+        "arg": "lcList"
+      },
+      {
+        "offset": 36,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 38,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 40,
+        "op": "BUILD_LIST",
+        "arg": ""
+      },
+      {
+        "offset": 42,
+        "op": "ROT_THREE",
+        "arg": ""
+      },
+      {
+        "offset": 44,
+        "op": "ROT_TWO",
+        "arg": ""
+      },
+      {
+        "offset": 46,
+        "op": "STORE_FAST",
+        "arg": "memIncsList"
+      },
+      {
+        "offset": 48,
+        "op": "STORE_FAST",
+        "arg": "nodeCoordsList"
+      },
+      {
+        "offset": 50,
+        "op": "STORE_FAST",
+        "arg": "lcListInit"
+      },
+      {
+        "offset": 52,
+        "op": "LOAD_CONST",
+        "arg": "(0, 0, 1, 0)"
+      },
+      {
+        "offset": 54,
+        "op": "UNPACK_SEQUENCE",
+        "arg": ""
+      },
+      {
+        "offset": 56,
+        "op": "STORE_FAST",
+        "arg": "coordsStartLine"
+      },
+      {
+        "offset": 58,
+        "op": "STORE_FAST",
+        "arg": "incStartLine"
+      },
+      {
+        "offset": 60,
+        "op": "STORE_FAST",
+        "arg": "incEndLine"
+      },
+      {
+        "offset": 62,
+        "op": "STORE_FAST",
+        "arg": "lineCount"
+      },
+      {
+        "offset": 64,
+        "op": "LOAD_FAST",
+        "arg": "fileContent"
+      },
+      {
+        "offset": 66,
+        "op": "GET_ITER",
+        "arg": ""
+      },
+      {
+        "offset": 68,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 70,
+        "op": "FOR_ITER",
+        "arg": "to 340"
+      },
+      {
+        "offset": 72,
+        "op": "STORE_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 74,
+        "op": "LOAD_CONST",
+        "arg": "'JOINT COORDINATES\\n'"
+      },
+      {
+        "offset": 76,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 78,
+        "op": "CONTAINS_OP",
+        "arg": ""
+      },
+      {
+        "offset": 80,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 82,
+        "op": "LOAD_FAST",
+        "arg": "lineCount"
+      },
+      {
+        "offset": 84,
+        "op": "LOAD_CONST",
+        "arg": "1"
+      },
+      {
+        "offset": 86,
+        "op": "BINARY_ADD",
+        "arg": ""
+      },
+      {
+        "offset": 88,
+        "op": "STORE_FAST",
+        "arg": "coordsStartLine"
+      },
+      {
+        "offset": 90,
+        "op": "JUMP_FORWARD",
+        "arg": "to 270"
+      },
+      {
+        "offset": 92,
+        "op": "LOAD_CONST",
+        "arg": "'MEMBER INCIDENCES\\n'"
+      },
+      {
+        "offset": 94,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 96,
+        "op": "CONTAINS_OP",
+        "arg": ""
+      },
+      {
+        "offset": 98,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 100,
+        "op": "LOAD_FAST",
+        "arg": "lineCount"
+      },
+      {
+        "offset": 102,
+        "op": "LOAD_CONST",
+        "arg": "1"
+      },
+      {
+        "offset": 104,
+        "op": "BINARY_ADD",
+        "arg": ""
+      },
+      {
+        "offset": 106,
+        "op": "STORE_FAST",
+        "arg": "incStartLine"
+      },
+      {
+        "offset": 108,
+        "op": "JUMP_FORWARD",
+        "arg": "to 270"
+      },
+      {
+        "offset": 110,
+        "op": "LOAD_FAST",
+        "arg": "lineCount"
+      },
+      {
+        "offset": 112,
+        "op": "LOAD_FAST",
+        "arg": "coordsStartLine"
+      },
+      {
+        "offset": 114,
+        "op": "COMPARE_OP",
+        "arg": ">="
+      },
+      {
+        "offset": 116,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 118,
+        "op": "LOAD_FAST",
+        "arg": "incStartLine"
+      },
+      {
+        "offset": 120,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 122,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 124,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 126,
+        "op": "SETUP_FINALLY",
+        "arg": "to 168"
+      },
+      {
+        "offset": 128,
+        "op": "LOAD_GLOBAL",
+        "arg": "int"
+      },
+      {
+        "offset": 130,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 132,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 134,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 136,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 138,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 140,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 142,
+        "op": "LOAD_METHOD",
+        "arg": "strip"
+      },
+      {
+        "offset": 144,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 146,
+        "op": "STORE_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 148,
+        "op": "LOAD_FAST",
+        "arg": "nodeCoordsList"
+      },
+      {
+        "offset": 150,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 152,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 154,
+        "op": "LOAD_METHOD",
+        "arg": "split"
+      },
+      {
+        "offset": 156,
+        "op": "LOAD_CONST",
+        "arg": "';'"
+      },
+      {
+        "offset": 158,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 160,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 162,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 164,
+        "op": "POP_BLOCK",
+        "arg": ""
+      },
+      {
+        "offset": 166,
+        "op": "JUMP_FORWARD",
+        "arg": "to 186"
+      },
+      {
+        "offset": 168,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 170,
+        "op": "LOAD_GLOBAL",
+        "arg": "Exception"
+      },
+      {
+        "offset": 172,
+        "op": "JUMP_IF_NOT_EXC_MATCH",
+        "arg": ""
+      },
+      {
+        "offset": 174,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 176,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 178,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 180,
+        "op": "POP_EXCEPT",
+        "arg": ""
+      },
+      {
+        "offset": 182,
+        "op": "JUMP_FORWARD",
+        "arg": "to 186"
+      },
+      {
+        "offset": 184,
+        "op": "RERAISE",
+        "arg": ""
+      },
+      {
+        "offset": 186,
+        "op": "JUMP_FORWARD",
+        "arg": "to 270"
+      },
+      {
+        "offset": 188,
+        "op": "LOAD_FAST",
+        "arg": "lineCount"
+      },
+      {
+        "offset": 190,
+        "op": "LOAD_FAST",
+        "arg": "incStartLine"
+      },
+      {
+        "offset": 192,
+        "op": "COMPARE_OP",
+        "arg": ">="
+      },
+      {
+        "offset": 194,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 196,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 198,
+        "op": "LOAD_FAST",
+        "arg": "incEndLine"
+      },
+      {
+        "offset": 200,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 202,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 204,
+        "op": "SETUP_FINALLY",
+        "arg": "to 246"
+      },
+      {
+        "offset": 206,
+        "op": "LOAD_GLOBAL",
+        "arg": "int"
+      },
+      {
+        "offset": 208,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 210,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 212,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 214,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 216,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 218,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 220,
+        "op": "LOAD_METHOD",
+        "arg": "strip"
+      },
+      {
+        "offset": 222,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 224,
+        "op": "STORE_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 226,
+        "op": "LOAD_FAST",
+        "arg": "memIncsList"
+      },
+      {
+        "offset": 228,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 230,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 232,
+        "op": "LOAD_METHOD",
+        "arg": "split"
+      },
+      {
+        "offset": 234,
+        "op": "LOAD_CONST",
+        "arg": "';'"
+      },
+      {
+        "offset": 236,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 238,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 240,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 242,
+        "op": "POP_BLOCK",
+        "arg": ""
+      },
+      {
+        "offset": 244,
+        "op": "JUMP_FORWARD",
+        "arg": "to 270"
+      },
+      {
+        "offset": 246,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 248,
+        "op": "LOAD_GLOBAL",
+        "arg": "Exception"
+      },
+      {
+        "offset": 250,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 252,
+        "op": "JUMP_IF_NOT_EXC_MATCH",
+        "arg": ""
+      },
+      {
+        "offset": 254,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 256,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 258,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 260,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 262,
+        "op": "STORE_FAST",
+        "arg": "incEndLine"
+      },
+      {
+        "offset": 264,
+        "op": "POP_EXCEPT",
+        "arg": ""
+      },
+      {
+        "offset": 266,
+        "op": "JUMP_FORWARD",
+        "arg": "to 270"
+      },
+      {
+        "offset": 268,
+        "op": "RERAISE",
+        "arg": ""
+      },
+      {
+        "offset": 270,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 272,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 274,
+        "op": "LOAD_CONST",
+        "arg": "4"
+      },
+      {
+        "offset": 276,
+        "op": "BUILD_SLICE",
+        "arg": ""
+      },
+      {
+        "offset": 278,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 280,
+        "op": "LOAD_CONST",
+        "arg": "'LOAD'"
+      },
+      {
+        "offset": 282,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 284,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 286,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 288,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 290,
+        "op": "LOAD_CONST",
+        "arg": "5"
+      },
+      {
+        "offset": 292,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 294,
+        "op": "LOAD_CONST",
+        "arg": "'C'"
+      },
+      {
+        "offset": 296,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 298,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 300,
+        "op": "POP_JUMP_IF_TRUE",
+        "arg": ""
+      },
+      {
+        "offset": 302,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 304,
+        "op": "LOAD_CONST",
+        "arg": "5"
+      },
+      {
+        "offset": 306,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 308,
+        "op": "LOAD_METHOD",
+        "arg": "isdigit"
+      },
+      {
+        "offset": 310,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 312,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 314,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 316,
+        "op": "LOAD_FAST",
+        "arg": "lcListInit"
+      },
+      {
+        "offset": 318,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 320,
+        "op": "LOAD_FAST",
+        "arg": "line"
+      },
+      {
+        "offset": 322,
+        "op": "LOAD_METHOD",
+        "arg": "strip"
+      },
+      {
+        "offset": 324,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 326,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 328,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 330,
+        "op": "LOAD_FAST",
+        "arg": "lineCount"
+      },
+      {
+        "offset": 332,
+        "op": "LOAD_CONST",
+        "arg": "1"
+      },
+      {
+        "offset": 334,
+        "op": "INPLACE_ADD",
+        "arg": ""
+      },
+      {
+        "offset": 336,
+        "op": "STORE_FAST",
+        "arg": "lineCount"
+      },
+      {
+        "offset": 338,
+        "op": "JUMP_ABSOLUTE",
+        "arg": ""
+      },
+      {
+        "offset": 340,
+        "op": "LOAD_FAST",
+        "arg": "nodeCoordsList"
+      },
+      {
+        "offset": 342,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 344,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 346,
+        "op": "LOAD_FAST",
+        "arg": "nodeCoordsList"
+      },
+      {
+        "offset": 348,
+        "op": "GET_ITER",
+        "arg": ""
+      },
+      {
+        "offset": 350,
+        "op": "FOR_ITER",
+        "arg": "to 512"
+      },
+      {
+        "offset": 352,
+        "op": "STORE_FAST",
+        "arg": "nodeCoordsLines"
+      },
+      {
+        "offset": 354,
+        "op": "LOAD_FAST",
+        "arg": "nodeCoordsLines"
+      },
+      {
+        "offset": 356,
+        "op": "GET_ITER",
+        "arg": ""
+      },
+      {
+        "offset": 358,
+        "op": "FOR_ITER",
+        "arg": "to 508"
+      },
+      {
+        "offset": 360,
+        "op": "STORE_FAST",
+        "arg": "item"
+      },
+      {
+        "offset": 362,
+        "op": "LOAD_FAST",
+        "arg": "item"
+      },
+      {
+        "offset": 364,
+        "op": "LOAD_METHOD",
+        "arg": "strip"
+      },
+      {
+        "offset": 366,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 368,
+        "op": "STORE_FAST",
+        "arg": "item"
+      },
+      {
+        "offset": 370,
+        "op": "LOAD_FAST",
+        "arg": "item"
+      },
+      {
+        "offset": 372,
+        "op": "LOAD_METHOD",
+        "arg": "split"
+      },
+      {
+        "offset": 374,
+        "op": "LOAD_CONST",
+        "arg": "' '"
+      },
+      {
+        "offset": 376,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 378,
+        "op": "STORE_FAST",
+        "arg": "nC"
+      },
+      {
+        "offset": 380,
+        "op": "LOAD_GLOBAL",
+        "arg": "len"
+      },
+      {
+        "offset": 382,
+        "op": "LOAD_FAST",
+        "arg": "nC"
+      },
+      {
+        "offset": 384,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 386,
+        "op": "LOAD_CONST",
+        "arg": "4"
+      },
+      {
+        "offset": 388,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 390,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 392,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 394,
+        "op": "SETUP_FINALLY",
+        "arg": "to 464"
+      },
+      {
+        "offset": 396,
+        "op": "LOAD_GLOBAL",
+        "arg": "round"
+      },
+      {
+        "offset": 398,
+        "op": "LOAD_GLOBAL",
+        "arg": "float"
+      },
+      {
+        "offset": 400,
+        "op": "LOAD_FAST",
+        "arg": "nC"
+      },
+      {
+        "offset": 402,
+        "op": "LOAD_CONST",
+        "arg": "1"
+      },
+      {
+        "offset": 404,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 406,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 408,
+        "op": "LOAD_CONST",
+        "arg": "4"
+      },
+      {
+        "offset": 410,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 412,
+        "op": "LOAD_GLOBAL",
+        "arg": "round"
+      },
+      {
+        "offset": 414,
+        "op": "LOAD_GLOBAL",
+        "arg": "float"
+      },
+      {
+        "offset": 416,
+        "op": "LOAD_FAST",
+        "arg": "nC"
+      },
+      {
+        "offset": 418,
+        "op": "LOAD_CONST",
+        "arg": "2"
+      },
+      {
+        "offset": 420,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 422,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 424,
+        "op": "LOAD_CONST",
+        "arg": "4"
+      },
+      {
+        "offset": 426,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 428,
+        "op": "LOAD_GLOBAL",
+        "arg": "round"
+      },
+      {
+        "offset": 430,
+        "op": "LOAD_GLOBAL",
+        "arg": "float"
+      },
+      {
+        "offset": 432,
+        "op": "LOAD_FAST",
+        "arg": "nC"
+      },
+      {
+        "offset": 434,
+        "op": "LOAD_CONST",
+        "arg": "3"
+      },
+      {
+        "offset": 436,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 438,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 440,
+        "op": "LOAD_CONST",
+        "arg": "4"
+      },
+      {
+        "offset": 442,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 444,
+        "op": "BUILD_TUPLE",
+        "arg": ""
+      },
+      {
+        "offset": 446,
+        "op": "LOAD_FAST",
+        "arg": "ncDict"
+      },
+      {
+        "offset": 448,
+        "op": "LOAD_GLOBAL",
+        "arg": "int"
+      },
+      {
+        "offset": 450,
+        "op": "LOAD_FAST",
+        "arg": "nC"
+      },
+      {
+        "offset": 452,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 454,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 456,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 458,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 460,
+        "op": "POP_BLOCK",
+        "arg": ""
+      },
+      {
+        "offset": 462,
+        "op": "JUMP_FORWARD",
+        "arg": "to 504"
+      },
+      {
+        "offset": 464,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 466,
+        "op": "LOAD_GLOBAL",
+        "arg": "Exception"
+      },
+      {
+        "offset": 468,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 470,
+        "op": "JUMP_IF_NOT_EXC_MATCH",
+        "arg": ""
+      },
+      {
+        "offset": 472,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 474,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 476,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 478,
+        "op": "LOAD_CONST",
+        "arg": "'Erroneous joint coordinates'"
+      },
+      {
+        "offset": 480,
+        "op": "LOAD_FAST",
+        "arg": "modelReadErrorStatus"
+      },
+      {
+        "offset": 482,
+        "op": "BINARY_ADD",
+        "arg": ""
+      },
+      {
+        "offset": 484,
+        "op": "STORE_FAST",
+        "arg": "modelReadErrorStatus"
+      },
+      {
+        "offset": 486,
+        "op": "LOAD_FAST",
+        "arg": "modelReadErrorStatus"
+      },
+      {
+        "offset": 488,
+        "op": "ROT_FOUR",
+        "arg": ""
+      },
+      {
+        "offset": 490,
+        "op": "POP_EXCEPT",
+        "arg": ""
+      },
+      {
+        "offset": 492,
+        "op": "ROT_TWO",
+        "arg": ""
+      },
+      {
+        "offset": 494,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 496,
+        "op": "ROT_TWO",
+        "arg": ""
+      },
+      {
+        "offset": 498,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 500,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      },
+      {
+        "offset": 502,
+        "op": "RERAISE",
+        "arg": ""
+      },
+      {
+        "offset": 504,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 506,
+        "op": "JUMP_ABSOLUTE",
+        "arg": ""
+      },
+      {
+        "offset": 508,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 510,
+        "op": "JUMP_ABSOLUTE",
+        "arg": ""
+      },
+      {
+        "offset": 512,
+        "op": "LOAD_FAST",
+        "arg": "memIncsList"
+      },
+      {
+        "offset": 514,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 516,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 518,
+        "op": "LOAD_FAST",
+        "arg": "memIncsList"
+      },
+      {
+        "offset": 520,
+        "op": "GET_ITER",
+        "arg": ""
+      },
+      {
+        "offset": 522,
+        "op": "FOR_ITER",
+        "arg": "to 656"
+      },
+      {
+        "offset": 524,
+        "op": "STORE_FAST",
+        "arg": "memIncsLines"
+      },
+      {
+        "offset": 526,
+        "op": "LOAD_FAST",
+        "arg": "memIncsLines"
+      },
+      {
+        "offset": 528,
+        "op": "GET_ITER",
+        "arg": ""
+      },
+      {
+        "offset": 530,
+        "op": "FOR_ITER",
+        "arg": "to 652"
+      },
+      {
+        "offset": 532,
+        "op": "STORE_FAST",
+        "arg": "item"
+      },
+      {
+        "offset": 534,
+        "op": "LOAD_FAST",
+        "arg": "item"
+      },
+      {
+        "offset": 536,
+        "op": "LOAD_METHOD",
+        "arg": "strip"
+      },
+      {
+        "offset": 538,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 540,
+        "op": "STORE_FAST",
+        "arg": "item"
+      },
+      {
+        "offset": 542,
+        "op": "LOAD_FAST",
+        "arg": "item"
+      },
+      {
+        "offset": 544,
+        "op": "LOAD_METHOD",
+        "arg": "split"
+      },
+      {
+        "offset": 546,
+        "op": "LOAD_CONST",
+        "arg": "' '"
+      },
+      {
+        "offset": 548,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 550,
+        "op": "STORE_FAST",
+        "arg": "mI"
+      },
+      {
+        "offset": 552,
+        "op": "LOAD_GLOBAL",
+        "arg": "len"
+      },
+      {
+        "offset": 554,
+        "op": "LOAD_FAST",
+        "arg": "mI"
+      },
+      {
+        "offset": 556,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 558,
+        "op": "LOAD_CONST",
+        "arg": "3"
+      },
+      {
+        "offset": 560,
+        "op": "COMPARE_OP",
+        "arg": "=="
+      },
+      {
+        "offset": 562,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 564,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 566,
+        "op": "SETUP_FINALLY",
+        "arg": "to 608"
+      },
+      {
+        "offset": 568,
+        "op": "LOAD_GLOBAL",
+        "arg": "int"
+      },
+      {
+        "offset": 570,
+        "op": "LOAD_FAST",
+        "arg": "mI"
+      },
+      {
+        "offset": 572,
+        "op": "LOAD_CONST",
+        "arg": "1"
+      },
+      {
+        "offset": 574,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 576,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 578,
+        "op": "LOAD_GLOBAL",
+        "arg": "int"
+      },
+      {
+        "offset": 580,
+        "op": "LOAD_FAST",
+        "arg": "mI"
+      },
+      {
+        "offset": 582,
+        "op": "LOAD_CONST",
+        "arg": "2"
+      },
+      {
+        "offset": 584,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 586,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 588,
+        "op": "BUILD_TUPLE",
+        "arg": ""
+      },
+      {
+        "offset": 590,
+        "op": "LOAD_FAST",
+        "arg": "miDict"
+      },
+      {
+        "offset": 592,
+        "op": "LOAD_GLOBAL",
+        "arg": "int"
+      },
+      {
+        "offset": 594,
+        "op": "LOAD_FAST",
+        "arg": "mI"
+      },
+      {
+        "offset": 596,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 598,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 600,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 602,
+        "op": "STORE_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 604,
+        "op": "POP_BLOCK",
+        "arg": ""
+      },
+      {
+        "offset": 606,
+        "op": "JUMP_FORWARD",
+        "arg": "to 648"
+      },
+      {
+        "offset": 608,
+        "op": "DUP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 610,
+        "op": "LOAD_GLOBAL",
+        "arg": "Exception"
+      },
+      {
+        "offset": 612,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 614,
+        "op": "JUMP_IF_NOT_EXC_MATCH",
+        "arg": ""
+      },
+      {
+        "offset": 616,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 618,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 620,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 622,
+        "op": "LOAD_CONST",
+        "arg": "'Erroneous member incidences'"
+      },
+      {
+        "offset": 624,
+        "op": "LOAD_FAST",
+        "arg": "modelReadErrorStatus"
+      },
+      {
+        "offset": 626,
+        "op": "BINARY_ADD",
+        "arg": ""
+      },
+      {
+        "offset": 628,
+        "op": "STORE_FAST",
+        "arg": "modelReadErrorStatus"
+      },
+      {
+        "offset": 630,
+        "op": "LOAD_FAST",
+        "arg": "modelReadErrorStatus"
+      },
+      {
+        "offset": 632,
+        "op": "ROT_FOUR",
+        "arg": ""
+      },
+      {
+        "offset": 634,
+        "op": "POP_EXCEPT",
+        "arg": ""
+      },
+      {
+        "offset": 636,
+        "op": "ROT_TWO",
+        "arg": ""
+      },
+      {
+        "offset": 638,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 640,
+        "op": "ROT_TWO",
+        "arg": ""
+      },
+      {
+        "offset": 642,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 644,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      },
+      {
+        "offset": 646,
+        "op": "RERAISE",
+        "arg": ""
+      },
+      {
+        "offset": 648,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 650,
+        "op": "JUMP_ABSOLUTE",
+        "arg": ""
+      },
+      {
+        "offset": 652,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 654,
+        "op": "JUMP_ABSOLUTE",
+        "arg": ""
+      },
+      {
+        "offset": 656,
+        "op": "LOAD_FAST",
+        "arg": "lcListInit"
+      },
+      {
+        "offset": 658,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 660,
+        "op": "POP_JUMP_IF_FALSE",
+        "arg": ""
+      },
+      {
+        "offset": 662,
+        "op": "LOAD_FAST",
+        "arg": "lcListInit"
+      },
+      {
+        "offset": 664,
+        "op": "GET_ITER",
+        "arg": ""
+      },
+      {
+        "offset": 666,
+        "op": "FOR_ITER",
+        "arg": "to 748"
+      },
+      {
+        "offset": 668,
+        "op": "STORE_FAST",
+        "arg": "ele"
+      },
+      {
+        "offset": 670,
+        "op": "LOAD_GLOBAL",
+        "arg": "re"
+      },
+      {
+        "offset": 672,
+        "op": "LOAD_METHOD",
+        "arg": "findall"
+      },
+      {
+        "offset": 674,
+        "op": "LOAD_CONST",
+        "arg": "'[0-9]+'"
+      },
+      {
+        "offset": 676,
+        "op": "LOAD_FAST",
+        "arg": "ele"
+      },
+      {
+        "offset": 678,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 680,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 682,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 684,
+        "op": "STORE_FAST",
+        "arg": "lcNo"
+      },
+      {
+        "offset": 686,
+        "op": "LOAD_FAST",
+        "arg": "ele"
+      },
+      {
+        "offset": 688,
+        "op": "LOAD_METHOD",
+        "arg": "find"
+      },
+      {
+        "offset": 690,
+        "op": "LOAD_FAST",
+        "arg": "lcNo"
+      },
+      {
+        "offset": 692,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 694,
+        "op": "LOAD_GLOBAL",
+        "arg": "len"
+      },
+      {
+        "offset": 696,
+        "op": "LOAD_FAST",
+        "arg": "lcNo"
+      },
+      {
+        "offset": 698,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 700,
+        "op": "BINARY_ADD",
+        "arg": ""
+      },
+      {
+        "offset": 702,
+        "op": "LOAD_CONST",
+        "arg": "1"
+      },
+      {
+        "offset": 704,
+        "op": "BINARY_ADD",
+        "arg": ""
+      },
+      {
+        "offset": 706,
+        "op": "STORE_FAST",
+        "arg": "startIdx"
+      },
+      {
+        "offset": 708,
+        "op": "LOAD_FAST",
+        "arg": "lcNo"
+      },
+      {
+        "offset": 710,
+        "op": "LOAD_CONST",
+        "arg": "': '"
+      },
+      {
+        "offset": 712,
+        "op": "BINARY_ADD",
+        "arg": ""
+      },
+      {
+        "offset": 714,
+        "op": "LOAD_FAST",
+        "arg": "ele"
+      },
+      {
+        "offset": 716,
+        "op": "LOAD_FAST",
+        "arg": "startIdx"
+      },
+      {
+        "offset": 718,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 720,
+        "op": "BUILD_SLICE",
+        "arg": ""
+      },
+      {
+        "offset": 722,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 724,
+        "op": "LOAD_METHOD",
+        "arg": "strip"
+      },
+      {
+        "offset": 726,
+        "op": "LOAD_CONST",
+        "arg": "' : '"
+      },
+      {
+        "offset": 728,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 730,
+        "op": "BINARY_ADD",
+        "arg": ""
+      },
+      {
+        "offset": 732,
+        "op": "STORE_FAST",
+        "arg": "loadCase"
+      },
+      {
+        "offset": 734,
+        "op": "LOAD_FAST",
+        "arg": "lcList"
+      },
+      {
+        "offset": 736,
+        "op": "LOAD_METHOD",
+        "arg": "append"
+      },
+      {
+        "offset": 738,
+        "op": "LOAD_FAST",
+        "arg": "loadCase"
+      },
+      {
+        "offset": 740,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 742,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 744,
+        "op": "EXTENDED_ARG",
+        "arg": ""
+      },
+      {
+        "offset": 746,
+        "op": "JUMP_ABSOLUTE",
+        "arg": ""
+      },
+      {
+        "offset": 748,
+        "op": "LOAD_FAST",
+        "arg": "miDict"
+      },
+      {
+        "offset": 750,
+        "op": "LOAD_FAST",
+        "arg": "ncDict"
+      },
+      {
+        "offset": 752,
+        "op": "LOAD_FAST",
+        "arg": "lcList"
+      },
+      {
+        "offset": 754,
+        "op": "BUILD_TUPLE",
+        "arg": ""
+      },
+      {
+        "offset": 756,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      }
+    ],
+    "SelectMultipleBeams": [
+      {
+        "offset": 0,
+        "op": "LOAD_FAST",
+        "arg": "osModule"
+      },
+      {
+        "offset": 2,
+        "op": "LOAD_METHOD",
+        "arg": "_FlagAsMethod"
+      },
+      {
+        "offset": 4,
+        "op": "LOAD_CONST",
+        "arg": "'SelectMultipleBeams'"
+      },
+      {
+        "offset": 6,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 8,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 10,
+        "op": "LOAD_GLOBAL",
+        "arg": "make_safe_array_long_input"
+      },
+      {
+        "offset": 12,
+        "op": "LOAD_FAST",
+        "arg": "memArr"
+      },
+      {
+        "offset": 14,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 16,
+        "op": "STORE_FAST",
+        "arg": "safe_list"
+      },
+      {
+        "offset": 18,
+        "op": "LOAD_GLOBAL",
+        "arg": "make_variant_vt_ref"
+      },
+      {
+        "offset": 20,
+        "op": "LOAD_FAST",
+        "arg": "safe_list"
+      },
+      {
+        "offset": 22,
+        "op": "LOAD_GLOBAL",
+        "arg": "automation"
+      },
+      {
+        "offset": 24,
+        "op": "LOAD_ATTR",
+        "arg": "VT_ARRAY"
+      },
+      {
+        "offset": 26,
+        "op": "LOAD_GLOBAL",
+        "arg": "automation"
+      },
+      {
+        "offset": 28,
+        "op": "LOAD_ATTR",
+        "arg": "VT_I4"
+      },
+      {
+        "offset": 30,
+        "op": "BINARY_OR",
+        "arg": ""
+      },
+      {
+        "offset": 32,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 34,
+        "op": "STORE_FAST",
+        "arg": "memArr_variant"
+      },
+      {
+        "offset": 36,
+        "op": "LOAD_FAST",
+        "arg": "osModule"
+      },
+      {
+        "offset": 38,
+        "op": "LOAD_METHOD",
+        "arg": "SelectMultipleBeams"
+      },
+      {
+        "offset": 40,
+        "op": "LOAD_FAST",
+        "arg": "memArr_variant"
+      },
+      {
+        "offset": 42,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 44,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 46,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 48,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      }
+    ],
+    "SelectMultipleNodes": [
+      {
+        "offset": 0,
+        "op": "LOAD_FAST",
+        "arg": "osModule"
+      },
+      {
+        "offset": 2,
+        "op": "LOAD_METHOD",
+        "arg": "_FlagAsMethod"
+      },
+      {
+        "offset": 4,
+        "op": "LOAD_CONST",
+        "arg": "'SelectMultipleNodes'"
+      },
+      {
+        "offset": 6,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 8,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 10,
+        "op": "LOAD_GLOBAL",
+        "arg": "make_safe_array_long_input"
+      },
+      {
+        "offset": 12,
+        "op": "LOAD_FAST",
+        "arg": "nodeArr"
+      },
+      {
+        "offset": 14,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 16,
+        "op": "STORE_FAST",
+        "arg": "safe_list"
+      },
+      {
+        "offset": 18,
+        "op": "LOAD_GLOBAL",
+        "arg": "make_variant_vt_ref"
+      },
+      {
+        "offset": 20,
+        "op": "LOAD_FAST",
+        "arg": "safe_list"
+      },
+      {
+        "offset": 22,
+        "op": "LOAD_GLOBAL",
+        "arg": "automation"
+      },
+      {
+        "offset": 24,
+        "op": "LOAD_ATTR",
+        "arg": "VT_ARRAY"
+      },
+      {
+        "offset": 26,
+        "op": "LOAD_GLOBAL",
+        "arg": "automation"
+      },
+      {
+        "offset": 28,
+        "op": "LOAD_ATTR",
+        "arg": "VT_I4"
+      },
+      {
+        "offset": 30,
+        "op": "BINARY_OR",
+        "arg": ""
+      },
+      {
+        "offset": 32,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 34,
+        "op": "STORE_FAST",
+        "arg": "nodeArr_variant"
+      },
+      {
+        "offset": 36,
+        "op": "LOAD_FAST",
+        "arg": "osModule"
+      },
+      {
+        "offset": 38,
+        "op": "LOAD_METHOD",
+        "arg": "SelectMultipleNodes"
+      },
+      {
+        "offset": 40,
+        "op": "LOAD_FAST",
+        "arg": "nodeArr_variant"
+      },
+      {
+        "offset": 42,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 44,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 46,
+        "op": "LOAD_CONST",
+        "arg": "None"
+      },
+      {
+        "offset": 48,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      }
+    ],
+    "GetSelectedBeams": [
+      {
+        "offset": 0,
+        "op": "LOAD_FAST",
+        "arg": "osModule"
+      },
+      {
+        "offset": 2,
+        "op": "LOAD_METHOD",
+        "arg": "_FlagAsMethod"
+      },
+      {
+        "offset": 4,
+        "op": "LOAD_CONST",
+        "arg": "'GetNoOfSelectedBeams'"
+      },
+      {
+        "offset": 6,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 8,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 10,
+        "op": "LOAD_FAST",
+        "arg": "osModule"
+      },
+      {
+        "offset": 12,
+        "op": "LOAD_METHOD",
+        "arg": "_FlagAsMethod"
+      },
+      {
+        "offset": 14,
+        "op": "LOAD_CONST",
+        "arg": "'GetSelectedBeams'"
+      },
+      {
+        "offset": 16,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 18,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 20,
+        "op": "LOAD_FAST",
+        "arg": "osModule"
+      },
+      {
+        "offset": 22,
+        "op": "LOAD_METHOD",
+        "arg": "_FlagAsMethod"
+      },
+      {
+        "offset": 24,
+        "op": "LOAD_CONST",
+        "arg": "'ClearMemberSelection'"
+      },
+      {
+        "offset": 26,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 28,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 30,
+        "op": "LOAD_FAST",
+        "arg": "osModule"
+      },
+      {
+        "offset": 32,
+        "op": "LOAD_METHOD",
+        "arg": "GetNoOfSelectedBeams"
+      },
+      {
+        "offset": 34,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 36,
+        "op": "STORE_FAST",
+        "arg": "n_beams"
+      },
+      {
+        "offset": 38,
+        "op": "LOAD_GLOBAL",
+        "arg": "make_safe_array_long"
+      },
+      {
+        "offset": 40,
+        "op": "LOAD_FAST",
+        "arg": "n_beams"
+      },
+      {
+        "offset": 42,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 44,
+        "op": "STORE_FAST",
+        "arg": "safe_list"
+      },
+      {
+        "offset": 46,
+        "op": "LOAD_GLOBAL",
+        "arg": "make_variant_vt_ref"
+      },
+      {
+        "offset": 48,
+        "op": "LOAD_FAST",
+        "arg": "safe_list"
+      },
+      {
+        "offset": 50,
+        "op": "LOAD_GLOBAL",
+        "arg": "automation"
+      },
+      {
+        "offset": 52,
+        "op": "LOAD_ATTR",
+        "arg": "VT_ARRAY"
+      },
+      {
+        "offset": 54,
+        "op": "LOAD_GLOBAL",
+        "arg": "automation"
+      },
+      {
+        "offset": 56,
+        "op": "LOAD_ATTR",
+        "arg": "VT_I4"
+      },
+      {
+        "offset": 58,
+        "op": "BINARY_OR",
+        "arg": ""
+      },
+      {
+        "offset": 60,
+        "op": "CALL_FUNCTION",
+        "arg": ""
+      },
+      {
+        "offset": 62,
+        "op": "STORE_FAST",
+        "arg": "selBeamsList"
+      },
+      {
+        "offset": 64,
+        "op": "LOAD_FAST",
+        "arg": "osModule"
+      },
+      {
+        "offset": 66,
+        "op": "LOAD_METHOD",
+        "arg": "GetSelectedBeams"
+      },
+      {
+        "offset": 68,
+        "op": "LOAD_FAST",
+        "arg": "selBeamsList"
+      },
+      {
+        "offset": 70,
+        "op": "CALL_METHOD",
+        "arg": ""
+      },
+      {
+        "offset": 72,
+        "op": "POP_TOP",
+        "arg": ""
+      },
+      {
+        "offset": 74,
+        "op": "LOAD_FAST",
+        "arg": "selBeamsList"
+      },
+      {
+        "offset": 76,
+        "op": "LOAD_CONST",
+        "arg": "0"
+      },
+      {
+        "offset": 78,
+        "op": "BINARY_SUBSCR",
+        "arg": ""
+      },
+      {
+        "offset": 80,
+        "op": "RETURN_VALUE",
+        "arg": ""
+      }
+    ]
+  },
+  "selection_call_windows": [
+    {
+      "offset": 930,
+      "op": "STORE_NAME",
+      "arg": "GetBeamList"
+    },
+    {
+      "offset": 932,
+      "op": "LOAD_CONST",
+      "arg": "<code object GetSelectedBeams at 0x0000024C7554E240, file \"dEZignLink_v3.2_uc.py\", line 229>"
+    },
+    {
+      "offset": 934,
+      "op": "LOAD_CONST",
+      "arg": "'GetSelectedBeams'"
+    },
+    {
+      "offset": 936,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 938,
+      "op": "STORE_NAME",
+      "arg": "GetSelectedBeams"
+    },
+    {
+      "offset": 940,
+      "op": "LOAD_CONST",
+      "arg": "<code object GetMemberIncidence at 0x0000024C7554E2F0, file \"dEZignLink_v3.2_uc.py\", line 240>"
+    },
+    {
+      "offset": 942,
+      "op": "LOAD_CONST",
+      "arg": "'GetMemberIncidence'"
+    },
+    {
+      "offset": 944,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 946,
+      "op": "STORE_NAME",
+      "arg": "GetMemberIncidence"
+    },
+    {
+      "offset": 948,
+      "op": "LOAD_CONST",
+      "arg": "<code object GetSelectedNodes at 0x0000024C7554E450, file \"dEZignLink_v3.2_uc.py\", line 249>"
+    },
+    {
+      "offset": 950,
+      "op": "LOAD_CONST",
+      "arg": "'GetSelectedNodes'"
+    },
+    {
+      "offset": 952,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 954,
+      "op": "STORE_NAME",
+      "arg": "GetSelectedNodes"
+    },
+    {
+      "offset": 956,
+      "op": "LOAD_CONST",
+      "arg": "<code object GetNodeCoordinates at 0x0000024C7554E3A0, file \"dEZignLink_v3.2_uc.py\", line 260>"
+    },
+    {
+      "offset": 958,
+      "op": "LOAD_CONST",
+      "arg": "'GetNodeCoordinates'"
+    },
+    {
+      "offset": 960,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 962,
+      "op": "STORE_NAME",
+      "arg": "GetNodeCoordinates"
+    },
+    {
+      "offset": 964,
+      "op": "LOAD_CONST",
+      "arg": "<code object SelectMultipleBeams at 0x0000024C7554E500, file \"dEZignLink_v3.2_uc.py\", line 274>"
+    },
+    {
+      "offset": 966,
+      "op": "LOAD_CONST",
+      "arg": "'SelectMultipleBeams'"
+    },
+    {
+      "offset": 968,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 970,
+      "op": "STORE_NAME",
+      "arg": "SelectMultipleBeams"
+    },
+    {
+      "offset": 972,
+      "op": "LOAD_CONST",
+      "arg": "<code object SelectMultipleNodes at 0x0000024C7554E5B0, file \"dEZignLink_v3.2_uc.py\", line 281>"
+    },
+    {
+      "offset": 974,
+      "op": "LOAD_CONST",
+      "arg": "'SelectMultipleNodes'"
+    },
+    {
+      "offset": 976,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 978,
+      "op": "STORE_NAME",
+      "arg": "SelectMultipleNodes"
+    },
+    {
+      "offset": 980,
+      "op": "LOAD_CONST",
+      "arg": "<code object CreateGroupEx at 0x0000024C7554E660, file \"dEZignLink_v3.2_uc.py\", line 288>"
+    },
+    {
+      "offset": 982,
+      "op": "LOAD_CONST",
+      "arg": "'CreateGroupEx'"
+    },
+    {
+      "offset": 984,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 986,
+      "op": "STORE_NAME",
+      "arg": "CreateGroupEx"
+    },
+    {
+      "offset": 988,
+      "op": "LOAD_CONST",
+      "arg": "<code object DefineReleases at 0x0000024C7554E710, file \"dEZignLink_v3.2_uc.py\", line 295>"
+    },
+    {
+      "offset": 990,
+      "op": "LOAD_CONST",
+      "arg": "'DefineReleases'"
+    },
+    {
+      "offset": 992,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 994,
+      "op": "STORE_NAME",
+      "arg": "DefineReleases"
+    },
+    {
+      "offset": 996,
+      "op": "LOAD_CONST",
+      "arg": "<code object GetSupportReactions at 0x0000024C7554E7C0, file \"dEZignLink_v3.2_uc.py\", line 314>"
+    },
+    {
+      "offset": 998,
+      "op": "LOAD_CONST",
+      "arg": "'GetSupportReactions'"
+    },
+    {
+      "offset": 1000,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 1002,
+      "op": "STORE_NAME",
+      "arg": "GetSupportReactions"
+    },
+    {
+      "offset": 1004,
+      "op": "LOAD_CONST",
+      "arg": "<code object GetNodeDisplacements at 0x0000024C7554E870, file \"dEZignLink_v3.2_uc.py\", line 334>"
+    },
+    {
+      "offset": 1006,
+      "op": "LOAD_CONST",
+      "arg": "'GetNodeDisplacements'"
+    },
+    {
+      "offset": 1008,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 1010,
+      "op": "STORE_NAME",
+      "arg": "GetNodeDisplacements"
+    },
+    {
+      "offset": 1012,
+      "op": "LOAD_CONST",
+      "arg": "<code object userCredWin at 0x0000024C755AFD40, file \"dEZignLink_v3.2_uc.py\", line 351>"
+    },
+    {
+      "offset": 8312,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 8314,
+      "op": "LOAD_NAME",
+      "arg": "selMemDict"
+    },
+    {
+      "offset": 8316,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8318,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8320,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8322,
+      "op": "POP_JUMP_IF_TRUE",
+      "arg": ""
+    },
+    {
+      "offset": 8324,
+      "op": "LOAD_NAME",
+      "arg": "connOS"
+    },
+    {
+      "offset": 8326,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8328,
+      "op": "LOAD_CONST",
+      "arg": "'Geometry'"
+    },
+    {
+      "offset": 8330,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8332,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8334,
+      "op": "STORE_NAME",
+      "arg": "osGeo"
+    },
+    {
+      "offset": 8336,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8338,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8340,
+      "op": "LOAD_CONST",
+      "arg": "'-SND-'"
+    },
+    {
+      "offset": 8342,
+      "op": "COMPARE_OP",
+      "arg": "=="
+    },
+    {
+      "offset": 8344,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8346,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 8348,
+      "op": "LOAD_NAME",
+      "arg": "SelectMultipleNodes"
+    },
+    {
+      "offset": 8350,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8352,
+      "op": "LOAD_NAME",
+      "arg": "osGeo"
+    },
+    {
+      "offset": 8354,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8356,
+      "op": "LOAD_NAME",
+      "arg": "memGroupsDict"
+    },
+    {
+      "offset": 8358,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8360,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8362,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8364,
+      "op": "POP_TOP",
+      "arg": ""
+    },
+    {
+      "offset": 8366,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8368,
+      "op": "LOAD_NAME",
+      "arg": "memGroupsDict"
+    },
+    {
+      "offset": 8370,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8372,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8374,
+      "op": "LOAD_NAME",
+      "arg": "selMemDict"
+    },
+    {
+      "offset": 8376,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8378,
+      "op": "STORE_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8380,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8382,
+      "op": "LOAD_CONST",
+      "arg": "'{0} {1} selected'"
+    },
+    {
+      "offset": 8454,
+      "op": "LOAD_METHOD",
+      "arg": "get"
+    },
+    {
+      "offset": 8456,
+      "op": "CALL_METHOD",
+      "arg": ""
+    },
+    {
+      "offset": 8458,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8460,
+      "op": "BINARY_ADD",
+      "arg": ""
+    },
+    {
+      "offset": 8462,
+      "op": "COMPARE_OP",
+      "arg": "=="
+    },
+    {
+      "offset": 8464,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8466,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 8468,
+      "op": "LOAD_NAME",
+      "arg": "str"
+    },
+    {
+      "offset": 8470,
+      "op": "LOAD_NAME",
+      "arg": "window"
+    },
+    {
+      "offset": 8472,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8474,
+      "op": "LOAD_CONST",
+      "arg": "'-LVL-'"
+    },
+    {
+      "offset": 8476,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8478,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8480,
+      "op": "LOAD_METHOD",
+      "arg": "get"
+    },
+    {
+      "offset": 8482,
+      "op": "CALL_METHOD",
+      "arg": ""
+    },
+    {
+      "offset": 8484,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8486,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8488,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 8490,
+      "op": "LOAD_NAME",
+      "arg": "SelectMultipleBeams"
+    },
+    {
+      "offset": 8492,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8494,
+      "op": "LOAD_NAME",
+      "arg": "osGeo"
+    },
+    {
+      "offset": 8496,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8498,
+      "op": "LOAD_NAME",
+      "arg": "memGroupsDict"
+    },
+    {
+      "offset": 8500,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8502,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8504,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8506,
+      "op": "POP_TOP",
+      "arg": ""
+    },
+    {
+      "offset": 8508,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8510,
+      "op": "LOAD_NAME",
+      "arg": "memGroupsDict"
+    },
+    {
+      "offset": 8512,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8514,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8516,
+      "op": "LOAD_NAME",
+      "arg": "selMemDict"
+    },
+    {
+      "offset": 8518,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8520,
+      "op": "STORE_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8522,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8524,
+      "op": "LOAD_CONST",
+      "arg": "'{0} beams at level {1} selected'"
+    },
+    {
+      "offset": 8600,
+      "op": "LOAD_METHOD",
+      "arg": "get"
+    },
+    {
+      "offset": 8602,
+      "op": "CALL_METHOD",
+      "arg": ""
+    },
+    {
+      "offset": 8604,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8606,
+      "op": "BINARY_ADD",
+      "arg": ""
+    },
+    {
+      "offset": 8608,
+      "op": "COMPARE_OP",
+      "arg": "=="
+    },
+    {
+      "offset": 8610,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8612,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 8614,
+      "op": "LOAD_NAME",
+      "arg": "str"
+    },
+    {
+      "offset": 8616,
+      "op": "LOAD_NAME",
+      "arg": "window"
+    },
+    {
+      "offset": 8618,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8620,
+      "op": "LOAD_CONST",
+      "arg": "'-LVL-'"
+    },
+    {
+      "offset": 8622,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8624,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8626,
+      "op": "LOAD_METHOD",
+      "arg": "get"
+    },
+    {
+      "offset": 8628,
+      "op": "CALL_METHOD",
+      "arg": ""
+    },
+    {
+      "offset": 8630,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8632,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8634,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 8636,
+      "op": "LOAD_NAME",
+      "arg": "SelectMultipleNodes"
+    },
+    {
+      "offset": 8638,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8640,
+      "op": "LOAD_NAME",
+      "arg": "osGeo"
+    },
+    {
+      "offset": 8642,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8644,
+      "op": "LOAD_NAME",
+      "arg": "memGroupsDict"
+    },
+    {
+      "offset": 8646,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8648,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8650,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8652,
+      "op": "POP_TOP",
+      "arg": ""
+    },
+    {
+      "offset": 8654,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8656,
+      "op": "LOAD_NAME",
+      "arg": "memGroupsDict"
+    },
+    {
+      "offset": 8658,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8660,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8662,
+      "op": "LOAD_NAME",
+      "arg": "selMemDict"
+    },
+    {
+      "offset": 8664,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8666,
+      "op": "STORE_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8668,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8670,
+      "op": "LOAD_CONST",
+      "arg": "'{0} main nodes at level {1} selected'"
+    },
+    {
+      "offset": 8726,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8728,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8730,
+      "op": "LOAD_CONST",
+      "arg": "('-BMAL-', '-NDAL-')"
+    },
+    {
+      "offset": 8732,
+      "op": "CONTAINS_OP",
+      "arg": ""
+    },
+    {
+      "offset": 8734,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8736,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 8738,
+      "op": "LOAD_NAME",
+      "arg": "str"
+    },
+    {
+      "offset": 8740,
+      "op": "LOAD_NAME",
+      "arg": "window"
+    },
+    {
+      "offset": 8742,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8744,
+      "op": "LOAD_CONST",
+      "arg": "'-LVL-'"
+    },
+    {
+      "offset": 8746,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8748,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8750,
+      "op": "LOAD_METHOD",
+      "arg": "get"
+    },
+    {
+      "offset": 8752,
+      "op": "CALL_METHOD",
+      "arg": ""
+    },
+    {
+      "offset": 8754,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8756,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8758,
+      "op": "POP_JUMP_IF_TRUE",
+      "arg": ""
+    },
+    {
+      "offset": 8760,
+      "op": "JUMP_FORWARD",
+      "arg": "to 8846"
+    },
+    {
+      "offset": 8762,
+      "op": "LOAD_NAME",
+      "arg": "SelectMultipleBeams"
+    },
+    {
+      "offset": 8764,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8766,
+      "op": "LOAD_NAME",
+      "arg": "osGeo"
+    },
+    {
+      "offset": 8768,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8770,
+      "op": "LOAD_NAME",
+      "arg": "memGroupsDict"
+    },
+    {
+      "offset": 8772,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8774,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8776,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8778,
+      "op": "POP_TOP",
+      "arg": ""
+    },
+    {
+      "offset": 8780,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8782,
+      "op": "LOAD_NAME",
+      "arg": "memGroupsDict"
+    },
+    {
+      "offset": 8784,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8786,
+      "op": "BINARY_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8788,
+      "op": "LOAD_NAME",
+      "arg": "selMemDict"
+    },
+    {
+      "offset": 8790,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8792,
+      "op": "STORE_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8794,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8796,
+      "op": "LOAD_CONST",
+      "arg": "'{0} {1} selected'"
+    },
+    {
+      "offset": 8926,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 8928,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8930,
+      "op": "LOAD_CONST",
+      "arg": "<code object <listcomp> at 0x0000024C75606BE0, file \"dEZignLink_v3.2_uc.py\", line 4142>"
+    },
+    {
+      "offset": 8932,
+      "op": "LOAD_CONST",
+      "arg": "'<listcomp>'"
+    },
+    {
+      "offset": 8934,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8936,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8938,
+      "op": "LOAD_NAME",
+      "arg": "prevSelMemsArr"
+    },
+    {
+      "offset": 8940,
+      "op": "GET_ITER",
+      "arg": ""
+    },
+    {
+      "offset": 8942,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8944,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8946,
+      "op": "STORE_NAME",
+      "arg": "selMemsList"
+    },
+    {
+      "offset": 8948,
+      "op": "LOAD_CONST",
+      "arg": "''"
+    },
+    {
+      "offset": 8950,
+      "op": "LOAD_NAME",
+      "arg": "selMemDict"
+    },
+    {
+      "offset": 8952,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8954,
+      "op": "STORE_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 8956,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8958,
+      "op": "LOAD_NAME",
+      "arg": "osGeo"
+    },
+    {
+      "offset": 8960,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8962,
+      "op": "LOAD_METHOD",
+      "arg": "ClearMemberSelection"
+    },
+    {
+      "offset": 8964,
+      "op": "CALL_METHOD",
+      "arg": ""
+    },
+    {
+      "offset": 8966,
+      "op": "POP_TOP",
+      "arg": ""
+    },
+    {
+      "offset": 8968,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8970,
+      "op": "LOAD_NAME",
+      "arg": "selMemsList"
+    },
+    {
+      "offset": 8972,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8974,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 8976,
+      "op": "LOAD_NAME",
+      "arg": "SelectMultipleBeams"
+    },
+    {
+      "offset": 8978,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8980,
+      "op": "LOAD_NAME",
+      "arg": "osGeo"
+    },
+    {
+      "offset": 8982,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8984,
+      "op": "LOAD_NAME",
+      "arg": "selMemsList"
+    },
+    {
+      "offset": 8986,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 8988,
+      "op": "POP_TOP",
+      "arg": ""
+    },
+    {
+      "offset": 8990,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 8992,
+      "op": "LOAD_CONST",
+      "arg": "'-BMAL-'"
+    },
+    {
+      "offset": 8994,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 8996,
+      "op": "CONTAINS_OP",
+      "arg": ""
+    },
+    {
+      "offset": 8998,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9000,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 9002,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9004,
+      "op": "LOAD_CONST",
+      "arg": "'{0} beams at level {1} deselected'"
+    },
+    {
+      "offset": 9006,
+      "op": "LOAD_METHOD",
+      "arg": "format"
+    },
+    {
+      "offset": 9008,
+      "op": "LOAD_NAME",
+      "arg": "len"
+    },
+    {
+      "offset": 9010,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9104,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 9106,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9108,
+      "op": "LOAD_CONST",
+      "arg": "<code object <listcomp> at 0x0000024C75606C90, file \"dEZignLink_v3.2_uc.py\", line 4162>"
+    },
+    {
+      "offset": 9110,
+      "op": "LOAD_CONST",
+      "arg": "'<listcomp>'"
+    },
+    {
+      "offset": 9112,
+      "op": "MAKE_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 9114,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9116,
+      "op": "LOAD_NAME",
+      "arg": "prevSelNodesArr"
+    },
+    {
+      "offset": 9118,
+      "op": "GET_ITER",
+      "arg": ""
+    },
+    {
+      "offset": 9120,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 9122,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9124,
+      "op": "STORE_NAME",
+      "arg": "selNodesList"
+    },
+    {
+      "offset": 9126,
+      "op": "LOAD_CONST",
+      "arg": "''"
+    },
+    {
+      "offset": 9128,
+      "op": "LOAD_NAME",
+      "arg": "selMemDict"
+    },
+    {
+      "offset": 9130,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 9132,
+      "op": "STORE_SUBSCR",
+      "arg": ""
+    },
+    {
+      "offset": 9134,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9136,
+      "op": "LOAD_NAME",
+      "arg": "osGeo"
+    },
+    {
+      "offset": 9138,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9140,
+      "op": "LOAD_METHOD",
+      "arg": "ClearNodeSelection"
+    },
+    {
+      "offset": 9142,
+      "op": "CALL_METHOD",
+      "arg": ""
+    },
+    {
+      "offset": 9144,
+      "op": "POP_TOP",
+      "arg": ""
+    },
+    {
+      "offset": 9146,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9148,
+      "op": "LOAD_NAME",
+      "arg": "selNodesList"
+    },
+    {
+      "offset": 9150,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9152,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 9154,
+      "op": "LOAD_NAME",
+      "arg": "SelectMultipleNodes"
+    },
+    {
+      "offset": 9156,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9158,
+      "op": "LOAD_NAME",
+      "arg": "osGeo"
+    },
+    {
+      "offset": 9160,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9162,
+      "op": "LOAD_NAME",
+      "arg": "selNodesList"
+    },
+    {
+      "offset": 9164,
+      "op": "CALL_FUNCTION",
+      "arg": ""
+    },
+    {
+      "offset": 9166,
+      "op": "POP_TOP",
+      "arg": ""
+    },
+    {
+      "offset": 9168,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9170,
+      "op": "LOAD_CONST",
+      "arg": "'-NDAL-'"
+    },
+    {
+      "offset": 9172,
+      "op": "LOAD_NAME",
+      "arg": "event"
+    },
+    {
+      "offset": 9174,
+      "op": "CONTAINS_OP",
+      "arg": ""
+    },
+    {
+      "offset": 9176,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9178,
+      "op": "POP_JUMP_IF_FALSE",
+      "arg": ""
+    },
+    {
+      "offset": 9180,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    },
+    {
+      "offset": 9182,
+      "op": "LOAD_CONST",
+      "arg": "'{0} main nodes at level {1} deselected'"
+    },
+    {
+      "offset": 9184,
+      "op": "LOAD_METHOD",
+      "arg": "format"
+    },
+    {
+      "offset": 9186,
+      "op": "LOAD_NAME",
+      "arg": "len"
+    },
+    {
+      "offset": 9188,
+      "op": "EXTENDED_ARG",
+      "arg": ""
+    }
+  ]
+}

@@ -11,7 +11,7 @@ def link_icon(key):
     pixmap.fill(Qt.GlobalColor.transparent)
     p = QPainter(pixmap)
     p.setRenderHint(QPainter.RenderHint.Antialiasing)
-    p.setPen(QPen(QColor('#327B68'), 1.5))
+    p.setPen(QPen(QColor('#1682BC'), 1.5))
     p.setBrush(Qt.BrushStyle.NoBrush)
     def line(a, b):
         p.drawLine(QPointF(*a), QPointF(*b))

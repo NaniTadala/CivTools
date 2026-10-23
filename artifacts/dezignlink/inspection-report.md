@@ -1,5 +1,151 @@
 # dEZignLink v3.2.1 inspection and CivTools feasibility
 
+## Suite implementation and migration: 20 October 2026
+
+The subsequent user request authorized implementing the remaining tools, then
+specifically required moving the complete existing parameter generator and rack
+modeler under the suite. The launcher now has four cards; **Dgn Prm** owns the
+existing concrete/steel editor, presets, validation and output preview, with an
+additional automatic-lengths/joints tab. **Pipe Rack** owns the complete previous
+modeler, saved configurations, preview and live generation, plus standalone STD
+export. Previous form settings remain readable. Legacy navigation redirects to
+these suite windows rather than creating additional standalone utilities.
+
+### Documented workflows implemented
+
+| Tool | Local implementation and output |
+| --- | --- |
+| Renum | Confirmed floor/category numbering; default first-floor beams1001, columns1501 and braces1751, with larger blocks for crowded floors. Full reviewed mapping, backup, temporary collision-free IDs and incidence verification. Guide pp8–9 describes floor/category patterns but not the exact remote algorithm. |
+| Groups | Predefined `_RB` CND/MEM/FLR/PRI_BM/SEC_TER_BM/PLN_BRC/VER_BRC and level sets, plus column/roof sets. Replaces exact generated names while preserving unrelated groups, with backup and readback. Guide pp10–11. |
+| Releases | Uses the actual STAAD member selection. START/END and local DOFs are chosen in a compact dialog; only exterior analytical ends of complete supported physical beam chains are assigned. Invalid or incomplete selections have explicit skip reasons; changed selection after review blocks assignment. Guide pp12–13. |
+| Dgn Prm | Full prior generator migrated, plus automatic column/beam restraint candidates and DJ1/DJ2 preview/copy/save/Assign. Two evidenced dialects are exposed: IS800:2007 LY/LZ/LX and IS800:1984 LY/LZ/UNL. Assign backs up, saves, closes/reopens the STD, adds a numbered block and restores units. Guide pp14–15. |
+| Tables | Available/selected primary/combination load-case lists. Reaction, per-level displacement and pedestal XLSX exports; true populated refreshable PivotTables, signed min/max summaries, controlling cases and horizontal/3D resultants. Pedestal inputs remain editable spreadsheet formulas; torsion is retained. Guide pp15–17. |
+| Load Comb | LOAD_COMB XLSX template/import or CSV input; genuine DOCX containing primary-case and combination STAAD scripts and formatted tables. IDs, symbols, load types and signed user factors are preserved. Guide pp18–20. |
+| Plate Girders | 142 dimension families from the earlier observed local catalogue, with independently calculated rectangular-plate properties and optional user-defined sections. Exports a STAAD WIDE FLANGE USER TABLE. Guide pp20–21. |
+| Pipe Rack | Complete prior rack tool migrated, including live blank-model generation; additional geometry-only STD export preserves its entire grid/tier/foundation/bracing configuration. |
+| PEB A–D | Enabled dimensional wizards with original sketches, metric/inch inputs, frame/tie/purlin spacings, height or slope where applicable, and internal-column spacings for C. Standalone STD geometry outputs. Guide pp22–23 and installed UI metadata. |
+
+### Evidence and limits
+
+REA again confirmed the same installed executable SHA-256 documented below; its
+native session was closed. Existing static metadata supplied labels and input
+contracts for defRelWin, desParamsWin, dataTblWin, pipeRackWin and pebStrWin. No
+vendor endpoint was invoked and no vendor account data was used. The algorithms
+are independent implementations, not recovered server code. Geometry output,
+exact numbering and full design-code equivalence remain unproven.
+
+Installed Bentley help supplied primary design-parameter evidence:
+
+- `C:/Program Files/Bentley/Engineering/STAAD.Pro CONNECT Edition/Help/GUID-C64E85CD-332E-44C1-B783-A5B8D0050102.html`,
+  D8.A.4: `CODE IS800 LSD`, LY/LZ/LX for IS800:2007.
+- `C:/Program Files/Bentley/Engineering/STAAD.Pro CONNECT Edition/Help/GUID-19E1572B-70F6-4F9D-BF10-398359C19D80.html`,
+  D8.B.4: `CODE INDIAN`, LY/LZ/UNL for IS800:1984.
+
+Other automatic code dialects are not exposed without evidence. The retained
+vendor response previously labelled IS800 actually contains CODE INDIAN. Length
+outputs remain geometry-based restraint candidates, not code-compliance checks;
+nonorthogonal beta orientations require manual review. Parameter assignment
+preserves earlier CHECK CODE blocks and does not invent a new design invocation.
+Release inference deliberately skips cantilevers, tertiary and ambiguous chains.
+Excel pivot XML, caches, relationships and workbook reopening are tested; actual
+Excel application refresh and live model-changing operations were not exercised.
+
+Dialog surfaces, checkbox labels and list colors are now explicit, so native dark
+Windows palettes do not produce dark text on dark dialog backgrounds. A dark-
+palette release-dialog check verifies background, text and button contrast.
+
+Validation includes the new core planners, exports, workbook/pivot structures,
+all 13 suite windows, preserved generator settings/presets/live-runner delegation,
+confirmation/selection checks and dashboard routing. The full existing suite was
+also run. The project virtual environment lacked OpenSTAAD; the already-installed
+pure Python 26.0.1.14 distribution was repackaged locally and installed there without
+changing its code or downloading a different implementation. A pre-existing
+missing-property-type channel/angle fallback in the migrated generator was also
+corrected using the existing regression test.
+
+Final regression command: `.venv/Scripts/python.exe -m unittest discover -s tests`
+with Qt offscreen and reduced motion. **All 148 tests passed**, including the
+isolated PDF renderer, existing CAD-service tests, complete tool migration,
+generated DOCX/XLSX/STD files and dark-palette dialog contrast. Tests of the new
+model-changing operations use mocked COM rather than modifying the user's model.
+
+---
+
+## Selection follow-up: 20 October 2026
+
+The current task compared the Select workflow with the user-supplied
+`Dezign link User Guides & Resources.pdf`, the already-open client, and the
+running STAAD model. This supplements the original historical inspection below.
+
+### Evidence and boundaries
+
+- REA `open_binary` confirmed the installed client still has SHA-256
+  `d700fa2cc24fabfd2b0afecddba608d190050d593bc356085837d680d6913aaa`.
+  The REA native session was closed after inspection.
+- REA's Frida provider could not load its Node binding. The existing Python
+  Frida helper was used instead, with approved process access. This is ordinary
+  runtime introspection, not REA-produced runtime Evidence. It inspected only
+  the engineering functions and selection-call bytecode, made no app actions or
+  vendor network requests, and detached. The bounded observation is retained in
+  `selection-runtime-inspection.json`; the probe is `probe-selection-inspection.py`.
+- Runtime code references cached `memGroupsDict` and `selMemDict` before
+  `SelectMultipleBeams`/`SelectMultipleNodes` (module offsets 8314–8788) and
+  clear/reselect operations for deselection (8950–9154). The separate `smProc`
+  function references saved-model processing and `serverCall`. This establishes
+  the client code path, not the remote classification algorithm or a timing
+  measurement of a user's Dezign Link click.
+- A later attempt to compare cached vendor category IDs could not run because
+  the previously observed client PID was no longer present. No cached vendor
+  classification output was acquired, so the counts below are CivTools results.
+- Guide pp. 5–7 documents processing once, enabling categories present in the
+  model, toggling multiple categories, and processing again after geometry edits.
+  It describes column-to-column primary beams, roof rafters and inclined-plane
+  roof braces. The requirement to restrict primary beams to columns rooted at
+  supports comes from the user's explicit correction.
+
+### Corrections and comparison
+
+| Selection behavior | Result |
+| --- | --- |
+| Process once, toggle cached groups | Full geometry/load-case scans and classification now run during processing. Toggles check the active model path, entity counts and saved-file signature, then update selection. They do not rebuild other feature tables. |
+| Main columns / primary beams | Vertical connectivity from support nodes identifies main column stacks. Straight split horizontal chains must connect main stacks at both ends. Floating columns cannot promote beams to primary. |
+| Vertical bracing | Frame-attached XY/YZ inclined members, including split braces, now receive this category. Previously the classifier never emitted it. |
+| Rafters / rafter bracing | Roof chains between supported column tops and diagonals in identified roof planes now receive the corresponding categories. Eave connections do not merge a brace with a rafter chain. |
+| Multiple categories and absent groups | Checked groups combine with overlap preserved. Categories absent from the processed model are disabled. |
+| Minimal controls | Select has model name, Process Members, category buttons and status. Process Members uses the accent style; other buttons use neutral checked borders. The console remains hidden on errors and completion. |
+
+Geometry inference remains conservative for skew vertical frames and unusual
+roof topology. The guide does not specify a complete classification algorithm;
+exact vendor algorithm equivalence and equivalence of the other suite features
+are not established by this follow-up. Reprocess after unsaved geometry edits;
+changes preserving entity counts cannot be detected by the inexpensive toggle
+checks alone. Model-changing and export workflows retain their full validation.
+
+### Live validation
+
+The running model `410-PR-01 Stretch- F.STD` contained 1,397 nodes and 2,417 members.
+The corrected classifier identified 402 column members, 519 primary beam members
+(282 X / 237 Z), and 144 vertical braces. These are geometry-based categories,
+not independently checked structural design roles.
+
+Profiling isolated an additional STAAD delay: its normal clear-selection call
+took about 1.7–2.1 seconds for 402–519 selected members. Redraw batching helped,
+and a verified select-all/invert operation removed that per-member clear delay.
+The implementation uses the documented inverse-selection operation (OpenSTAAD
+guide p. 346), avoids the Python wrapper's automatic zoom, and falls back to
+normal clearing if the batch result is not empty. It reenables redraw in a
+`finally` block and verifies the final IDs.
+
+The final measured six select/deselect operations took **24–96 ms**. Processing
+read the model in about 565 ms and classification took about 9 ms in that run.
+The full trace and restoration checks are in `selection-benchmark.json`, with
+the reproducible probe in `benchmark-selection.py`. Original selection was
+restored and the saved model's SHA-256 was unchanged. Thirty-six focused tests
+passed, including classification, cached toggles, inverse fallback, redraw
+restoration, hidden console, and productivity workspace workflows.
+
+---
+
 Inspection date: 15 October 2026. Scope: the supplied installed application at
 `C:\Root Bridge Technologies\dEZignLink for STAAD.Pro` and the current CivTools source.
 

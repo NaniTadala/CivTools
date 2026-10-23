@@ -36,16 +36,12 @@ structural design check.
   totals. Select an `.xlsx` or `.xlsm` mapping workbook, then choose an output
   workbook. Consolidation requires `Drawing_Structure_Mapping`. Work is staged in
   a temporary copy and committed only after success; VBA is preserved for `.xlsm`.
-- **STAAD parameter generator:** configure concrete and steel design parameters,
-  scan the active STAAD model, and generate editable command previews. Search
-  parameters, save or load JSON presets, validate commands and export the preview.
-- **Pipe rack modeler:** comma-separated grid positions and tier elevations,
-  live geometry preview, support selection, bracing and saved configurations.
-- **STAAD productivity suite:** local member classification/selection, group and
-  release command previews, member renumbering with backup, reaction/displacement
-  and pedestal workbooks, user-defined load combinations, tapered-I properties,
-  and PEB A–D geometry files. Opens the existing parameter and pipe-rack generators
-  from its Parameters / racks tab. No vendor account, server or internet is used.
+- **STAAD productivity suite:** Select, Renum, Groups, Releases, Dgn Prm,
+  Tables, Load Comb, Plate Girders, Pipe Rack and PEB A-D. The complete concrete/
+  steel parameter editor now lives under **Dgn Prm**, including presets and
+  command validation. The complete rack modeler lives under **Pipe Rack**,
+  including preview, saved configurations, live generation and `.std` export.
+  Neither tool has a separate launcher card. No vendor account or server is used.
 - **AutoCAD smart mapper:** choose a worksheet (the first is selected by default), with a header row followed
   by center X, center Y, width, height and optional label in columns A–E. Text
   height and offset use drawing units. A sample table and valid/invalid/blank counts
@@ -120,77 +116,108 @@ search, worker delivery on the UI thread, failure recovery, grid validation,
 transactional workbook output, unchanged drawing preservation, consolidated totals
 and PDF cache invalidation. Qt tests run with the offscreen platform. Actual CAD
 integration still requires validation with installed AutoCAD/STAAD and real models.
-`CivTools.exe --smoke-test` opens all six tools offscreen and checks real rendering
+`CivTools.exe --smoke-test` opens all four launcher tools offscreen and checks real rendering
 in the isolated PDF process. Set `CIVTOOLS_SMOKE_REPORT` to save its JSON result.
 Windows must permit local child processes for PDF tests and previews.
 
 ## Local STAAD productivity suite
 
-Open **STAAD productivity suite** from the launcher. The Model tab scans an open,
-saved analytical STAAD model through the existing COM worker queue. Geometry and
-support IDs use the STAAD base units: metres/kN or inches/kip. Scans are limited to
-10,000 nodes and 30,000 members. Save/load JSON geometry snapshots to generate
-commands offline; snapshots also preserve manually assigned member roles.
-Live actions reconnect and compare model path, saved-file digest, geometry,
-supports and base units against the scan before proceeding.
+Open **STAAD productivity suite** from the launcher. It opens a 420 x 480 floating
+panel with a searchable tool selector, four favourites and the active task.
+**Ctrl+K** focuses the tool selector. Choose a tool or type to find it, then Enter.
+Switching tools preserves inputs. **PEB frames** is one section in the selector.
+Choose **Frame A**, **B**, **C** or **D** inside it. Each variant keeps its inputs;
+returning to the section restores the last variant, including after a restart.
+**More ? Add / remove favourite** changes the shortcuts (up to four, saved).
 
-Automatic classification assumes global Y is vertical. Columns are near-vertical;
-axis-aligned horizontal chains terminating at column nodes are primary beams;
-remaining axis-aligned beams are secondary. Orientation tolerance is 0.001 of
-member length. These are explicit geometry rules, not inferred design restraint
-conditions. Sloping members remain **Sloping members** until you assign roles
-such as Rafters or Vertical bracing. Filter the table, select rows and assign roles
-as needed. **Select visible** selects every visible row; **Select in STAAD** changes
-the active member selection, and **Support nodes** selects the scanned supports.
+**Pin** keeps the panel on top. **Fold** collapses it to a toolbar; **Unfold**
+restores its size and inputs. **Expand** opens a larger editor for tables and
+complex forms; **Compact** restores the floating size. Position and size are
+remembered. Model name, units and cache state appear above the tool selector;
+hover for the full path, source and member count. **Refresh** scans the active
+model without changing tools.
 
-Groups and releases generate command snippets for review, copy and export as
-`.txt`. Group names use a configurable prefix; merge them into the correct group
-section of the model. Releases reference **local member axes** and start/end
-incidences. Commands are not inserted automatically. Plate-girder output describes
-a tapered I section with seven explicit dimensions; start depth must exceed end
-depth. Insert it in the member-property section and restore the original input
-units before later dimensional commands. No section catalogue or design capacity
-is assumed.
+Member tables, local-axis diagrams and command previews expand on demand.
+Release review and apply controls stay visible below the scrolling form.
+Design-parameter presets and enable controls are in **Presets**;
+validation, copy and export are in **Commands**. Compact parameter tables show
+Use, Parameter and Value, with the selected scope underneath. Expand restores
+Scope and Description columns. Result exports use a result-type selector and
+**Export Excel**; export actions stay below the scrolling form. Model changes still require
+review and confirmation. **More ? Detach tool** remains available for a separate
+editor; **Return to workbench** docks it again. Alt+S/N/G/R/M/T/L/E/P and
+Alt+A/B/C/D retain the existing tool shortcuts.
 
-Renumbering first produces an old/new CSV plan, ordered by category and Y/Z/X
-midpoint. **Apply renumber plan** asks you to review a concrete model operation,
-saves the current model, makes a uniquely named `.civtools-….std` backup and a
-`.renumber.json` journal beside it, and uses a disjoint temporary numbering range
-to avoid collisions. It checks the resulting IDs and member incidences. Plates,
-solids and physical members are excluded. If an operation fails, inspect the
-reported partial progress and restore the backup; CivTools does not silently roll
-back a partially modified CAD model. Scan again and rerun analysis after renumbering.
+![Compact STAAD panel with illustrative offline geometry](artifacts/floating-select.png)
 
-The Results tab reads available STAAD analysis output for selected nodes/load
-cases. Blank node input means support nodes for reactions/pedestals and all nodes
-for displacements. Blank case input means all scanned primary and combination
-cases. `.xlsx` exports contain raw signed values and per-node/component minima,
-maxima and controlling cases. Exports are staged so a failed read or write does
-not replace an existing workbook. Excel/Word installations are not required.
-STAAD must report results as available; CivTools does not independently validate
-the analysis or establish that results reflect every unsaved model edit.
+- **Select members:** **Scan active model** caches the model. Category checkboxes
+  show member counts and directly combine groups in STAAD. The searchable table
+  lists member incidences, categories, midpoint elevations and lengths in the
+  displayed model units. Primary beams span supported main-column stacks;
+  vertical and roof bracing use connected geometry rules. Toggles verify selected
+  IDs, avoid repeated scans, and batch STAAD redraws. Process again after geometry
+  edits. Live selection checks the model path, counts and saved-file signature;
+  it cannot detect every unsaved edit preserving those counts.
+- **Renum:** preview and confirm floor/category numbering. Beams start at 1001,
+  columns at 1501 and bracing at 1751 on the first floor; subsequent floors use
+  separate blocks. Crowded floors use a larger block. The operation backs up the
+  model, journals a collision-free plan, and verifies final incidences. Beam-only
+  analytical models are supported; plates, solids and physical members are excluded.
+- **Groups:** confirm creation of column-node, member, floor, primary/secondary
+  beam and bracing groups. Exact generated `_RB` names can be replaced; unrelated
+  user groups are preserved. Backups and post-write checks are retained.
+- **Releases:** select beams in STAAD and **Scan active model**. Choose START/END
+  and the local-axis DOFs beside the member incidence sketch, then **Review selected
+  members**. The inline table lists affected ends and skipped-member reasons;
+  the expandable command preview shows the exact STAAD commands. **Apply reviewed
+  releases** remains visible in the footer and requires confirmation. Changing
+  settings or refreshing the model clears the review. Complete
+  supported straight physical chains receive releases only at exterior ends.
+  Columns, braces, incomplete chains, tertiary framing, cantilevers and ambiguous
+  branches are skipped with reasons. The reviewed selection must remain unchanged
+  when Apply is confirmed.
+- **Dgn Prm:** contains the full former parameter generator (Concrete, Steel,
+  command Preview, presets, search and validation). An additional Automatic
+  lengths & joints tab provides the documented three-button workflow. Its code
+  selector supports IS 800:2007 (`LY/LZ/LX`) and IS 800:1984 (`LY/LZ/UNL`), with
+  DJ1/DJ2 generation. Lengths are geometry-based restraint candidates requiring
+  engineering review. Assign saves, backs up, closes and reopens the STD file,
+  adds a numbered parameter block and restores the original input units. Existing
+  design checks are preserved; defining parameters does not move earlier checks
+  or infer a new design invocation.
+- **Tables:** Load Cases lists primary cases and combinations. Move the required
+  cases to Selected, then export reactions, displacements or pedestal forces.
+  XLSX files contain signed data, summaries and genuine refreshable PivotTables;
+  displacements also have per-level sheets, horizontal XZ and 3D resultants.
+  Pedestal dimensions/height/density are editable spreadsheet inputs with force
+  transfer formulas and retained torsion. Formula/pivot recalculation requires a
+  compatible spreadsheet app. Excel itself was not used for automated validation.
+- **Load Comb:** download the `LOAD_COMB` XLSX template, enter case numbers,
+  symbols and types on rows 2-4 and combinations from row 5, select the file and
+  Generate Output. The DOCX contains STAAD primary-case and combination scripts
+  plus formatted tables. CSV long-form input is also supported. Factors are
+  user-supplied; no code-dependent factor catalogue is assumed.
+- **Plate Girders:** exports a STAAD USER TABLE catalogue of 142 built-up I
+  sections, with optional custom dimensions in mm. Properties are calculated
+  independently from rectangular plates, omitting welds and fillets. Use an unused
+  user-table number when inserting the output.
+- **Pipe Rack:** the full existing grid/tier modeler, preview, bracing, foundations,
+  saved configurations and live generation are preserved here. Live generation
+  requires a blank active model. Export STAAD file creates a standalone geometry
+  file without modifying the active model.
+- **PEB A-D:** standalone `.std` geometry wizards with dimensional sketches,
+  metre/inch inputs, ridge height or roof slope where applicable, frame count,
+  frame spacing, tie and purlin maximum spacing, and internal column spacings for
+  variant C. A is gable, B adds ridge columns, C adds two internal columns, and D
+  has a single-slope roof. Assign sections, materials and loads before analysis.
 
-Pedestal inputs use the displayed base length/force units and weight density in
-force/length³. With global Y upward, the signed top reaction is transferred to the
-bottom using `Mbottom = Mtop + (0,h,0) × F`: `Mx += h*Fz`, `Mz -= h*Fx`,
-`Fy += widthX*widthZ*h*density`. Torsion `My` is retained. These are support
-reactions; negate them when using actions on the foundation. This workbook is a
-force-transfer aid, without a pedestal or foundation design check.
-
-Load combinations accept CSV or a `LOAD_COMB` worksheet with four columns:
-`combination,title,case,factor`. Save a template from the tab. Repeat a combination
-number/title for its other contributing primary cases. Factors are user-specified;
-no code-dependent factor table is bundled. Zero/nonfinite factors, duplicate case
-rows and nested combinations are rejected. A fresh scan additionally checks
-existing IDs and the primary case list.
-
-PEB A–D generates a standalone geometry-only `.std` file and wireframe preview:
-A is a gable frame, B adds ridge columns, C adds two internal column lines, and D
-has a single-slope roof. Length inputs use the selected metres or inches. Columns
-and rafters split at tie/purlin attachment nodes; tie and purlin spacing inputs
-are maxima. Assign sections, materials, appropriate bracing and loads in STAAD
-before analysis. The new suite implements local workflows independently; exact
-dEZignLink output equivalence has not been established.
+Processing is bounded to 10,000 nodes / 30,000 members and result exports to
+100,000 node/case pairs. Model-changing workflows validate the complete snapshot,
+request confirmation and create backups. Existing parameter/rack settings are
+preserved under their prior settings keys. The guide and installed client supplied
+workflow evidence; the vendor's remote algorithms are unavailable, so exact
+algorithm/output equivalence is not claimed. See
+`artifacts/dezignlink/inspection-report.md` for evidence and limitations.
 
 After building, run `.\.venv\Scripts\python.exe scripts/verify_release.py` to check
 both source and packaged startup, including a real PDF render. Run

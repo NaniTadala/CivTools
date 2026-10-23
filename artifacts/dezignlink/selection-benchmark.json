@@ -1,0 +1,412 @@
+{
+  "model": "410-PR-01 Stretch- F.STD",
+  "nodes": 1397,
+  "members": 2417,
+  "scan_ms": 564.834,
+  "classify_ms": 9.192,
+  "categories": {
+    "Columns": 402,
+    "Vertical bracing": 144,
+    "Plan diagonals": 158,
+    "Primary beams X": 282,
+    "Primary beams Z": 237,
+    "Secondary beams Z": 610,
+    "Secondary beams X": 584
+  },
+  "toggles": [
+    {
+      "group": "Columns",
+      "select": true,
+      "members": 402,
+      "elapsed_ms": 89.744,
+      "calls": [
+        {
+          "call": "connect",
+          "ms": 7.634
+        },
+        {
+          "call": "STAAD.GetSTAADFile",
+          "ms": 0.154
+        },
+        {
+          "call": "STAAD.Geometry.GetNodeCount",
+          "ms": 0.15
+        },
+        {
+          "call": "STAAD.Geometry.GetMemberCount",
+          "ms": 0.105
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.171
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 0.772
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedNodes",
+          "ms": 0.374
+        },
+        {
+          "call": "STAAD.GetMainWindowHandle",
+          "ms": 0.542
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.093
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 0.433
+        },
+        {
+          "call": "STAAD.Geometry.SelectMultipleBeams",
+          "ms": 14.333
+        },
+        {
+          "call": "STAAD.View._view.SelectInverse",
+          "ms": 1.754
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.223
+        },
+        {
+          "call": "STAAD.Geometry.SelectMultipleBeams",
+          "ms": 3.181
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.235
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 0.667
+        },
+        {
+          "call": "STAAD.View.RefreshView",
+          "ms": 0.502
+        }
+      ]
+    },
+    {
+      "group": "Columns",
+      "select": false,
+      "members": 0,
+      "elapsed_ms": 90.552,
+      "calls": [
+        {
+          "call": "connect",
+          "ms": 66.994
+        },
+        {
+          "call": "STAAD.GetSTAADFile",
+          "ms": 0.155
+        },
+        {
+          "call": "STAAD.Geometry.GetNodeCount",
+          "ms": 0.17
+        },
+        {
+          "call": "STAAD.Geometry.GetMemberCount",
+          "ms": 0.133
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.119
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 0.265
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedNodes",
+          "ms": 0.1
+        },
+        {
+          "call": "STAAD.GetMainWindowHandle",
+          "ms": 0.097
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.059
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 0.202
+        },
+        {
+          "call": "STAAD.Geometry.SelectMultipleBeams",
+          "ms": 14.7
+        },
+        {
+          "call": "STAAD.View._view.SelectInverse",
+          "ms": 2.156
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.181
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.88
+        },
+        {
+          "call": "STAAD.View.RefreshView",
+          "ms": 1.342
+        }
+      ]
+    },
+    {
+      "group": "Primary beams",
+      "select": true,
+      "members": 519,
+      "elapsed_ms": 23.689,
+      "calls": [
+        {
+          "call": "connect",
+          "ms": 12.446
+        },
+        {
+          "call": "STAAD.GetSTAADFile",
+          "ms": 0.252
+        },
+        {
+          "call": "STAAD.Geometry.GetNodeCount",
+          "ms": 0.166
+        },
+        {
+          "call": "STAAD.Geometry.GetMemberCount",
+          "ms": 0.107
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.192
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedNodes",
+          "ms": 0.125
+        },
+        {
+          "call": "STAAD.GetMainWindowHandle",
+          "ms": 0.127
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.07
+        },
+        {
+          "call": "STAAD.Geometry.SelectMultipleBeams",
+          "ms": 3.992
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.21
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 1.495
+        },
+        {
+          "call": "STAAD.View.RefreshView",
+          "ms": 0.871
+        }
+      ]
+    },
+    {
+      "group": "Primary beams",
+      "select": false,
+      "members": 0,
+      "elapsed_ms": 87.369,
+      "calls": [
+        {
+          "call": "connect",
+          "ms": 13.386
+        },
+        {
+          "call": "STAAD.GetSTAADFile",
+          "ms": 0.128
+        },
+        {
+          "call": "STAAD.Geometry.GetNodeCount",
+          "ms": 0.154
+        },
+        {
+          "call": "STAAD.Geometry.GetMemberCount",
+          "ms": 0.103
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.111
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 0.279
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedNodes",
+          "ms": 0.098
+        },
+        {
+          "call": "STAAD.GetMainWindowHandle",
+          "ms": 0.095
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.061
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 0.319
+        },
+        {
+          "call": "STAAD.Geometry.SelectMultipleBeams",
+          "ms": 13.206
+        },
+        {
+          "call": "STAAD.View._view.SelectInverse",
+          "ms": 1.825
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.207
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 1.756
+        },
+        {
+          "call": "STAAD.View.RefreshView",
+          "ms": 0.381
+        }
+      ]
+    },
+    {
+      "group": "Vertical bracing",
+      "select": true,
+      "members": 144,
+      "elapsed_ms": 64.085,
+      "calls": [
+        {
+          "call": "connect",
+          "ms": 55.376
+        },
+        {
+          "call": "STAAD.GetSTAADFile",
+          "ms": 0.208
+        },
+        {
+          "call": "STAAD.Geometry.GetNodeCount",
+          "ms": 0.344
+        },
+        {
+          "call": "STAAD.Geometry.GetMemberCount",
+          "ms": 0.177
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.259
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedNodes",
+          "ms": 0.282
+        },
+        {
+          "call": "STAAD.GetMainWindowHandle",
+          "ms": 0.202
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.145
+        },
+        {
+          "call": "STAAD.Geometry.SelectMultipleBeams",
+          "ms": 1.434
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.165
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 1.476
+        },
+        {
+          "call": "STAAD.View.RefreshView",
+          "ms": 0.679
+        }
+      ]
+    },
+    {
+      "group": "Vertical bracing",
+      "select": false,
+      "members": 0,
+      "elapsed_ms": 95.898,
+      "calls": [
+        {
+          "call": "connect",
+          "ms": 7.719
+        },
+        {
+          "call": "STAAD.GetSTAADFile",
+          "ms": 0.165
+        },
+        {
+          "call": "STAAD.Geometry.GetNodeCount",
+          "ms": 0.154
+        },
+        {
+          "call": "STAAD.Geometry.GetMemberCount",
+          "ms": 0.13
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.143
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 0.288
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedNodes",
+          "ms": 0.124
+        },
+        {
+          "call": "STAAD.GetMainWindowHandle",
+          "ms": 0.115
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.075
+        },
+        {
+          "call": "STAAD.Geometry.GetSelectedBeams",
+          "ms": 0.2
+        },
+        {
+          "call": "STAAD.Geometry.SelectMultipleBeams",
+          "ms": 15.705
+        },
+        {
+          "call": "STAAD.View._view.SelectInverse",
+          "ms": 2.688
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 2.622
+        },
+        {
+          "call": "STAAD.Geometry.GetNoOfSelectedBeams",
+          "ms": 0.244
+        },
+        {
+          "call": "STAAD.View.RefreshView",
+          "ms": 0.402
+        }
+      ]
+    }
+  ],
+  "original_selection_restored": true,
+  "saved_model_unchanged": true
+}

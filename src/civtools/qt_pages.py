@@ -15,10 +15,10 @@ from PySide6.QtWidgets import (
     QDoubleSpinBox, QSpinBox, QComboBox, QFileDialog, QListWidget,
     QPlainTextEdit, QProgressBar, QScrollArea, QMessageBox, QTableView,
     QHeaderView, QAbstractItemView, QSplitter, QInputDialog, QTableWidget, QTableWidgetItem,
-    QTabWidget,
+    QTabWidget, QSizePolicy,
 )
 from .jobs import GeneratedParameterCommands, Job, run_quantities, run_mapper, run_piperack, run_staad_parameter_generation, scan_pdfs, render_pdf
-from .qt_widgets import label, button, panel, RackPreview, ComboBox, CheckBox as QCheckBox
+from .qt_widgets import label, button, panel, RackPreview, ComboBox, CheckBox as QCheckBox, DoubleSpinBox
 from .qt_artwork import ToolIllustration, product_icon
 from .core.geometry import rack_size
 from .core.results import OperationResult
@@ -43,7 +43,7 @@ def config_root():
 
 
 def number(value, minimum=-100000, maximum=100000):
-    field = QDoubleSpinBox()
+    field = DoubleSpinBox()
     field.setRange(minimum, maximum)
     field.setDecimals(3)
     field.setValue(value)
@@ -78,13 +78,15 @@ class ToolPage(QWidget):
         heading = QHBoxLayout()
         copy = QVBoxLayout()
         copy.setSpacing(4)
-        copy.addWidget(label(title, "title"))
-        copy.addWidget(label(description, "subtitle", True))
+        self.heading_title = label(title, "title")
+        self.heading_description = label(description, "subtitle", True)
+        copy.addWidget(self.heading_title)
+        copy.addWidget(self.heading_description)
         heading.addLayout(copy, 1)
         self.header_art = ToolIllustration(key)
         heading.addWidget(self.header_art)
         layout.addLayout(heading)
-        scroll = QScrollArea()
+        scroll = self.content_scroll = QScrollArea()
         scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         scroll.setWidgetResizable(True)
         self.form = QWidget()
@@ -120,6 +122,29 @@ class ToolPage(QWidget):
         self.log.setMaximumHeight(150)
         self.log.hide()
         layout.addWidget(self.log)
+
+    def set_workbench_mode(self, embedded=True):
+        """Use the workbench navigation as the page heading, keeping editors tall."""
+        self.heading_title.setVisible(not embedded)
+        self.heading_description.hide()
+        self.header_art.hide()
+        self.layout().setContentsMargins(4, 0, 4, 4)
+        self.layout().setSpacing(5)
+        self.body.setContentsMargins(0, 0, 0, 0)
+        self.body.setSpacing(6)
+        # Status belongs beside the actions rather than in another full-width row.
+        if not getattr(self, '_compact_feedback', False):
+            self.layout().removeWidget(self.feedback)
+            self.feedback.setWordWrap(False)
+            self.feedback.setMinimumWidth(0)
+            self.feedback.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
+            self.action_bar.insertWidget(1, self.feedback, 1)
+            for index in reversed(range(self.action_bar.count())):
+                if self.action_bar.itemAt(index).spacerItem():
+                    self.action_bar.takeAt(index)
+            if self.feedback.text() == 'Ready when you are.':
+                self.feedback.setText('Ready')
+            self._compact_feedback = True
 
     def restore_state(self, key):
         self.state_key = key
@@ -217,7 +242,7 @@ class ToolPage(QWidget):
         self.feedback.style().unpolish(self.feedback)
         self.feedback.style().polish(self.feedback)
 
-    def run(self, operation, *, cad=False):
+    def run(self, operation, *, cad=False, cad_system="CAD"):
         if self.busy:
             return
         self.busy = True
@@ -231,14 +256,14 @@ class ToolPage(QWidget):
         self.feedback_text("Operation in progress. Other tools remain available.")
         self.target.hide()
         self.started = time.monotonic()
-        self.current_stage = "Queued for CAD" if cad else "Starting…"
+        self.current_stage = f"Queued for {cad_system}" if cad else "Starting…"
         self.operation_progress = None
         self.runtime.show()
         self.update_elapsed()
         self.elapsed_timer.start()
         self.progress.setRange(0, 0)
         self.progress.show()
-        self.job = Job(operation, cad=cad)
+        self.job = Job(operation, cad=cad, cad_system=cad_system)
         self.job.signals.event.connect(self.on_event)
         self.job.signals.succeeded.connect(self.on_success)
         self.job.signals.failed.connect(self.on_failure)
@@ -768,6 +793,10 @@ class DJPage(ToolPage):
         self.tabs.addTab(preview, "Command preview")
         self.body.addWidget(self.tabs, 1)
         self.selected_kind = "concrete"
+        toolbar.addWidget(button("Enable all", lambda: self.models[self.selected_kind].toggle_all(True), True))
+        toolbar.addWidget(button("Disable all", lambda: self.models[self.selected_kind].toggle_all(False), True))
+        toolbar.addWidget(button("Save preset", lambda: self.save_preset(self.selected_kind), True))
+        toolbar.addWidget(button("Load preset", lambda: self.load_preset(self.selected_kind), True))
         self.tabs.currentChanged.connect(self.remember_parameter_tab)
         self.parameter_search.textChanged.connect(self.filter_parameters)
         self.body.addStretch()
@@ -780,14 +809,7 @@ class DJPage(ToolPage):
     def _parameter_tab(self, kind, title):
         page = QWidget()
         layout = QVBoxLayout(page)
-        layout.setContentsMargins(0, 8, 0, 0)
-        actions = QHBoxLayout()
-        actions.addWidget(label("Select design parameters and adjust their values.", "muted", True), 1)
-        actions.addWidget(button("Enable all", lambda: self.models[kind].toggle_all(True), True))
-        actions.addWidget(button("Disable all", lambda: self.models[kind].toggle_all(False), True))
-        actions.addWidget(button("Save preset", lambda: self.save_preset(kind), True))
-        actions.addWidget(button("Load preset", lambda: self.load_preset(kind), True))
-        layout.addLayout(actions)
+        layout.setContentsMargins(0, 0, 0, 0)
         table = QTableView()
         table.setAccessibleName(title)
         table.setModel(self.models[kind])

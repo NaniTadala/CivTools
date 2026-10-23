@@ -1,7 +1,89 @@
 """Visual tokens and native Qt widget styling."""
+def staad_palette():
+    """Give native surfaces the same light colours as the suite's styled controls."""
+    from PySide6.QtGui import QPalette, QColor
+    palette = QPalette()
+    colours = {'Window': '#F5F8FA', 'WindowText': '#233B4A', 'Base': '#FFFFFF',
+               'AlternateBase': '#F6F9FB', 'Text': '#233B4A', 'Button': '#FFFFFF',
+               'ButtonText': '#245B7A', 'Highlight': '#DDEFFA', 'HighlightedText': '#193E58',
+               'ToolTipBase': '#193E58', 'ToolTipText': '#FFFFFF', 'PlaceholderText': '#7D929F',
+               'Light': '#FFFFFF', 'Midlight': '#EDF3F7', 'Mid': '#D5E4EC',
+               'Dark': '#9CB2C0', 'Shadow': '#D5E4EC'}
+    for role, colour in colours.items():
+        palette.setColor(getattr(QPalette.ColorRole, role), QColor(colour))
+    palette.setColor(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, QColor('#899EAC'))
+    palette.setColor(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, QColor('#899EAC'))
+    return palette
+
+STAAD_WORKBENCH_STYLE = """
+QWidget#staadWorkbench { background: #F5F8FA; }
+QWidget#staadWorkbench QLabel#workbenchTitle { font-size: 21px; font-weight: 600; color: #193E58; }
+QWidget#staadWorkbench QLabel#title { font-size: 22px; font-weight: 600; color: #193E58; }
+QWidget#staadWorkbench QLabel#modelStatus { padding: 0 5px; color: #536C7B; }
+QWidget#staadWorkbench QFrame#toolNavigator { background: #FFFFFF; border: 1px solid #DEE8EE; border-radius: 6px; }
+QWidget#staadWorkbench QLabel#navHeading { font-size: 10px; font-weight: 600; color: #527A94; padding: 10px 3px 4px; }
+QWidget#staadWorkbench QPushButton { border-radius: 4px; padding: 7px 11px; }
+QWidget#staadWorkbench QPushButton#workbenchNav { background: transparent; color: #233B4A; text-align: left; border: 1px solid transparent; border-left: 3px solid transparent; padding: 7px 8px; font-weight: 400; }
+QWidget#staadWorkbench QPushButton#workbenchNav:hover { background: #F2F7FA; }
+QWidget#staadWorkbench QPushButton#workbenchNav:checked { background: #E6F3FA; color: #176B9F; border-left-color: #1682BC; font-weight: 600; }
+QWidget#staadWorkbench QPushButton#workbenchNav:focus { border-top-color: #88C5E4; border-right-color: #88C5E4; border-bottom-color: #88C5E4; }
+QWidget#staadWorkbench QLineEdit, QWidget#staadWorkbench QComboBox, QWidget#staadWorkbench QAbstractSpinBox { border-radius: 4px; padding: 7px; }
+QWidget#staadWorkbench QTableView { border-radius: 4px; }
+QWidget#staadWorkbench QHeaderView::section { padding: 8px; }
+QWidget#staadWorkbench QToolButton { background: white; color: #245B7A; border: 1px solid #D5E4EC; border-radius: 4px; padding: 7px 12px; }
+QWidget#staadWorkbench QMenu { background: white; color: #233B4A; border: 1px solid #D5E4EC; padding: 4px; }
+QWidget#staadWorkbench QMenu::item { padding: 7px 16px; }
+QWidget#staadWorkbench QMenu::item:selected { background: #E6F3FA; color: #176B9F; }
+QWidget#staadWorkbench QLabel#hint, QWidget#staadWorkbench QLabel#success,
+QWidget#staadWorkbench QLabel#error, QWidget#staadWorkbench QLabel#warning { border: none; border-radius: 3px; padding: 3px 5px; }
+QWidget#staadWorkbench QCheckBox { padding: 4px 0; }
+QWidget#staadWorkbench QCheckBox:disabled { color: #899EAC; }
+QWidget#staadWorkbench QLabel#scopeSummary { background: #EBF5FA; border: 1px solid #D7E8F1; padding: 9px; border-radius: 4px; color: #4F6F83; }
+QWidget#staadWorkbench { font-size: 12px; }
+QWidget#staadWorkbench QPushButton, QWidget#staadWorkbench QToolButton { padding: 5px 7px; }
+QWidget#staadWorkbench QLineEdit, QWidget#staadWorkbench QComboBox, QWidget#staadWorkbench QAbstractSpinBox { padding: 4px 6px; min-height: 19px; }
+QWidget#staadWorkbench QAbstractSpinBox QLineEdit { padding: 0; min-height: 0; border: none; }
+QWidget#staadWorkbench QCheckBox { padding: 2px 0; spacing: 5px; }
+QWidget#staadWorkbench QCheckBox::indicator { width: 15px; height: 15px; }
+QWidget#staadWorkbench QLabel#navHeading { padding: 3px 0; font-size: 9px; }
+QWidget#staadWorkbench QLabel#scopeSummary { padding: 5px; }
+QWidget#staadWorkbench QPushButton#favouriteTool { background: white; color: #245B7A; border: 1px solid #D5E4EC; font-weight: 400; }
+QWidget#staadWorkbench QPushButton#favouriteTool:checked { background: #E6F3FA; color: #176B9F; border-color: #1682BC; }
+QWidget#staadWorkbench QTabBar::tab { padding: 5px 7px; margin-right: 1px; font-size: 11px; }
+QWidget#staadWorkbench QWidget { font-family: 'Segoe UI'; font-size: 12px; }
+QWidget#staadWorkbench QMainWindow, QWidget#staadWorkbench QStackedWidget,
+QWidget#staadWorkbench QTabWidget > QWidget { background: #F5F8FA; }
+QWidget#staadWorkbench QPushButton, QWidget#staadWorkbench QToolButton { min-height: 18px; padding: 5px 9px; }
+QWidget#staadWorkbench QToolButton { padding-right: 19px; }
+QWidget#staadWorkbench QToolButton::menu-indicator { subcontrol-origin: padding; subcontrol-position: right center; right: 5px; }
+QWidget#staadWorkbench QComboBox QLineEdit { border: none; background: transparent; padding: 0; min-height: 0; }
+QWidget#staadWorkbench QAbstractSpinBox QLineEdit { padding: 0; border: none; min-height: 0; }
+QWidget#staadWorkbench QTableView::item { padding: 3px 6px; }
+QWidget#staadWorkbench QHeaderView::section { padding: 7px 6px; font-weight: 600; }
+QWidget#staadWorkbench QTabWidget::pane { border: 1px solid #D5E4EC; border-radius: 5px; background: white; }
+QWidget#staadWorkbench QTabBar::tab { font-size: 12px; padding: 6px 12px; margin-right: 3px; }
+QWidget#staadWorkbench QLabel#parameterContext { color: #536C7B; padding: 5px 7px; background: #EBF5FA; border-radius: 4px; }
+QWidget#staadWorkbench QScrollBar:horizontal { background: #EDF3F7; height: 9px; margin: 0; }
+QWidget#staadWorkbench QScrollBar::handle:horizontal { background: #BCD0DE; min-width: 30px; border-radius: 4px; }
+QWidget#staadWorkbench QScrollBar::add-line:horizontal, QWidget#staadWorkbench QScrollBar::sub-line:horizontal { width: 0; }
+QWidget#staadWorkbench QScrollBar::add-page:horizontal, QWidget#staadWorkbench QScrollBar::sub-page:horizontal { background: transparent; }
+QWidget#staadWorkbench QTableCornerButton::section { background: #F2F7FA; border: none; }
+QWidget#staadWorkbench QWidget#parameterForm, QWidget#staadWorkbench QTabBar { background: #F5F8FA; }
+QWidget#staadWorkbench QFrame#pebFamily { background: #EAF2F7; border: 1px solid #D5E4EC; border-radius: 6px; }
+QWidget#staadWorkbench QPushButton#pebVariant { background: white; color: #245B7A; border: 1px solid #D5E4EC; border-radius: 4px; font-weight: 400; }
+QWidget#staadWorkbench QPushButton#pebVariant:hover { background: #E6F3FA; border-color: #88C5E4; }
+QWidget#staadWorkbench QPushButton#pebVariant:checked { background: #1682BC; color: white; border-color: #1682BC; font-weight: 600; }
+"""
 STYLE = """
 QWidget { font-family: 'Poppins'; font-size: 13px; color: #233B4A; }
 QMainWindow, QWidget#workspace, QStackedWidget { background: #F5F8FA; }
+QDialog, QMessageBox { background: #F5F8FA; color: #233B4A; }
+QDialog QLabel, QMessageBox QLabel { color: #233B4A; background: transparent; }
+QDialog QCheckBox { color: #233B4A; background: transparent; }
+QDialog QCheckBox:disabled { color: #899EAC; }
+QDialog QDialogButtonBox { background: transparent; }
+QListWidget { background: white; color: #233B4A; border: 1px solid #D5E4EC; border-radius: 7px; selection-background-color: #E3F1F8; selection-color: #194865; }
+QListWidget::item { padding: 6px; }
 QFrame#sidebar { background: #153B55; border: none; }
 QLabel#brand { color: white; font-size: 29px; font-weight: 700; }
 QLabel#sidebarCaption { color: #A9C6D8; font-size: 10px; letter-spacing: 1px; }

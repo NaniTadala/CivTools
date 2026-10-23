@@ -2,9 +2,38 @@
 import math
 from PySide6.QtCore import Qt, QRectF, QPointF
 from PySide6.QtGui import QColor, QIcon, QPainter, QPen, QPixmap, QPainterPath
-from PySide6.QtWidgets import QFrame, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QWidget, QComboBox, QCheckBox, QStyleOptionButton, QStyle
+from PySide6.QtWidgets import QFrame, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QWidget, QComboBox, QCheckBox, QStyleOptionButton, QStyle, QDoubleSpinBox, QSpinBox, QStyleOptionSpinBox
 from .core.geometry import build_rack_plan
 from .qt_artwork import product_icon, action_icon
+
+
+class _NumericArrows:
+    """Draw visible step arrows when a Windows style omits the native glyphs."""
+    def paintEvent(self, event):
+        super().paintEvent(event)
+        if self.buttonSymbols() != self.ButtonSymbols.UpDownArrows:
+            return
+        option = QStyleOptionSpinBox()
+        self.initStyleOption(option)
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        for control, direction in ((QStyle.SubControl.SC_SpinBoxUp, -1),
+                                   (QStyle.SubControl.SC_SpinBoxDown, 1)):
+            rect = self.style().subControlRect(QStyle.ComplexControl.CC_SpinBox, option, control, self)
+            painter.fillRect(rect.adjusted(1, 1, -1, -1), QColor('#F2F7FA'))
+            painter.setPen(QPen(QColor('#527A94' if self.isEnabled() else '#A7BAC5'), 1.4))
+            x, y = rect.center().x(), rect.center().y()
+            painter.drawLine(QPointF(x - 3, y - direction), QPointF(x, y + direction))
+            painter.drawLine(QPointF(x, y + direction), QPointF(x + 3, y - direction))
+        painter.end()
+
+
+class DoubleSpinBox(_NumericArrows, QDoubleSpinBox):
+    pass
+
+
+class SpinBox(_NumericArrows, QSpinBox):
+    pass
 
 
 class CheckBox(QCheckBox):

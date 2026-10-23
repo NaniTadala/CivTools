@@ -92,8 +92,11 @@ class ModelSnapshot:
     source_digest: str = ''
     classifications: dict = field(default_factory=dict)
     primary_cases: list | None = None
+    source_signature: tuple | None = None
 
     def __post_init__(self):
+        if self.source_signature is not None:
+            self.source_signature = tuple(self.source_signature)
         self.nodes = {positive_id(k): tuple(finite(v) for v in xyz) for k, xyz in self.nodes.items()}
         self.members = {positive_id(k): tuple(positive_id(n) for n in ends) for k, ends in self.members.items()}
         self.supports = sorted({positive_id(n) for n in self.supports})
@@ -138,7 +141,8 @@ class ModelSnapshot:
                            'nodes': self.nodes, 'members': self.members,
                            'supports': self.supports, 'load_cases': self.load_cases,
                            'source_digest': self.source_digest, 'classifications': self.classifications,
-                           'primary_cases': self.primary_cases}, indent=2)
+                           'primary_cases': self.primary_cases,
+                           'source_signature': self.source_signature}, indent=2)
 
     @classmethod
     def from_json(cls, text):
@@ -154,15 +158,17 @@ class ModelSnapshot:
 
 
 def classify_members(model, tolerance=0.001, overrides=None):
-    """Orientation rules and straight-chain connectivity, never inferred design restraint.
+    """Classify geometry using support-connected columns and frame connectivity.
 
-    A primary beam is an axis-aligned horizontal chain ending at two column nodes.
-    Other axis-aligned beams are secondary. Sloping members remain unassigned roles.
+    Primary horizontal chains span main columns rooted at supports. Planar
+    diagonals attached to the frame are braces; roof chains between the tops of
+    main columns are rafters. Unattached slopes retain an unspecified role.
     """
     tolerance = finite(tolerance, 'Orientation tolerance', True)
     if tolerance >= .1:
         raise ValueError('Orientation tolerance must be below 0.1.')
     categories, axes, column_nodes = {}, {}, set()
+    vertical_adjacency, slope_axes = defaultdict(list), {}
     adjacency = defaultdict(list)
     for mid, (a, b) in model.members.items():
         xyz1, xyz2 = model.nodes[a], model.nodes[b]
@@ -171,6 +177,8 @@ def classify_members(model, tolerance=0.001, overrides=None):
         if math.hypot(dx, dz) / length <= tolerance:
             categories[mid] = 'Columns'
             column_nodes.update((a, b))
+            vertical_adjacency[a].append(b)
+            vertical_adjacency[b].append(a)
         elif dy / length <= tolerance:
             if dz / length <= tolerance:
                 axes[mid] = 'X'
@@ -180,14 +188,27 @@ def classify_members(model, tolerance=0.001, overrides=None):
                 categories[mid] = 'Plan diagonals'
         else:
             categories[mid] = 'Sloping members'
+            if dz / length <= tolerance:
+                slope_axes[mid] = 'X'
+            elif dx / length <= tolerance:
+                slope_axes[mid] = 'Z'
         adjacency[a].append(mid)
         adjacency[b].append(mid)
+
+    main_nodes = set(model.supports)
+    queue = list(main_nodes)
+    for node in queue:
+        for other in vertical_adjacency[node]:
+            if other not in main_nodes:
+                main_nodes.add(other)
+                queue.append(other)
+    main_column_nodes = main_nodes & column_nodes
 
     memo = {}
     def reaches_column(mid, node, axis):
         seen = {mid}
         visited = []
-        while node not in column_nodes:
+        while node not in main_column_nodes:
             anchor = (mid, node)
             if anchor in memo:
                 reached = memo[anchor]
@@ -210,6 +231,79 @@ def classify_members(model, tolerance=0.001, overrides=None):
     for mid, axis in axes.items():
         primary = all(reaches_column(mid, n, axis) for n in model.members[mid])
         categories[mid] = ('Primary' if primary else 'Secondary') + ' beams ' + axis
+
+    frame_nodes = column_nodes | {n for mid, ends in model.members.items()
+                                  if categories[mid] == 'Plan diagonals' or mid in axes
+                                  for n in ends}
+    column_tops = {n for n in main_column_nodes
+                   if not any(model.nodes[other][1] > model.nodes[n][1]
+                              for other in vertical_adjacency[n])}
+    roof_planes = set()
+    for axis in ('X', 'Z'):
+        slope_adjacency = defaultdict(set)
+        remaining = {mid for mid, direction in slope_axes.items() if direction == axis}
+        for mid in remaining:
+            for node in model.members[mid]:
+                slope_adjacency[node].add(mid)
+
+        # An isolated inclined member is not evidence of either a brace or roof.
+        # Peel dangling ends, retaining chains whose ends connect to the frame.
+        pending = [node for node, mids in slope_adjacency.items()
+                   if len(mids) == 1 and node not in frame_nodes]
+        for node in pending:
+            if len(slope_adjacency[node]) != 1:
+                continue
+            mid = next(iter(slope_adjacency[node]))
+            remaining.discard(mid)
+            for end in model.members[mid]:
+                slope_adjacency[end].discard(mid)
+                if len(slope_adjacency[end]) == 1 and end not in frame_nodes:
+                    pending.append(end)
+
+        while remaining:
+            seed = remaining.pop()
+            component, nodes = {seed}, set(model.members[seed])
+            pending = list(nodes)
+            for node in pending:
+                # Bracing and roof members may meet at a column eave. Their
+                # shared column must not merge both into one sloping chain.
+                if node in column_nodes:
+                    continue
+                for mid in slope_adjacency[node] & remaining:
+                    remaining.remove(mid)
+                    component.add(mid)
+                    for end in model.members[mid]:
+                        if end not in nodes:
+                            nodes.add(end)
+                            pending.append(end)
+            degrees = {n: len(slope_adjacency[n] & component) for n in nodes}
+            ends = {n for n in nodes if degrees[n] == 1}
+            anchors = nodes & main_column_nodes
+            if len(nodes & frame_nodes) < 2:
+                continue
+            roof = (len(ends) == 2 and ends <= column_tops and anchors <= column_tops
+                    and all(degrees[n] <= 2 for n in nodes)
+                    and min(model.nodes[n][1] for n in nodes)
+                    >= min(model.nodes[n][1] for n in ends) - tolerance)
+            for mid in component:
+                categories[mid] = 'Rafters' if roof else 'Vertical bracing'
+                if roof:
+                    a, b = (model.nodes[n] for n in model.members[mid])
+                    coordinate = 0 if axis == 'X' else 2
+                    gradient = (b[1] - a[1]) / (b[coordinate] - a[coordinate])
+                    roof_planes.add((coordinate, gradient, a[1] - gradient * a[coordinate]))
+
+    # A diagonal in an identified inclined roof plane is roof bracing.
+    for mid, (a, b) in model.members.items():
+        if categories[mid] != 'Sloping members' or mid in slope_axes:
+            continue
+        if a not in frame_nodes or b not in frame_nodes:
+            continue
+        points = (model.nodes[a], model.nodes[b])
+        if any(all(abs(p[1] - gradient * p[coordinate] - intercept)
+                       / math.sqrt(1 + gradient * gradient) <= tolerance for p in points)
+               for coordinate, gradient, intercept in roof_planes):
+            categories[mid] = 'Rafter bracing'
     for mid, category in (overrides or {}).items():
         mid = positive_id(mid)
         if mid not in model.members or category not in CATEGORIES:
