@@ -131,6 +131,8 @@ def panel(title, description=None):
 
 
 def tool_icon(kind, size=46, dark=False):
+    if kind == 'reports':
+        kind = 'excel'
     if kind in ("quantities", "mapper", "dj", "rack", "library", "excel", "productivity"):
         return product_icon(kind, size)
     pixmap = QPixmap(size, size)

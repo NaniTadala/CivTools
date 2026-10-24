@@ -1,0 +1,491 @@
+{
+  "count": 30,
+  "workload": "Repeated synthetic two-sheet workbooks",
+  "reports": [
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 1.328,
+      "prepare_seconds": 4.472,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.515,
+          "export_seconds": 0.92
+        },
+        {
+          "layout_seconds": 0.677,
+          "export_seconds": 0.771
+        }
+      ],
+      "validate_assemble_seconds": 0.143
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.314,
+      "prepare_seconds": 3.178,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.625,
+          "export_seconds": 0.627
+        },
+        {
+          "layout_seconds": 0.669,
+          "export_seconds": 0.706
+        }
+      ],
+      "validate_assemble_seconds": 0.035
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.413,
+      "prepare_seconds": 3.304,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.578,
+          "export_seconds": 0.641
+        },
+        {
+          "layout_seconds": 0.762,
+          "export_seconds": 0.78
+        }
+      ],
+      "validate_assemble_seconds": 0.039
+    },
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 0.388,
+      "prepare_seconds": 4.137,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.648,
+          "export_seconds": 1.137
+        },
+        {
+          "layout_seconds": 0.653,
+          "export_seconds": 0.751
+        }
+      ],
+      "validate_assemble_seconds": 0.035
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.295,
+      "prepare_seconds": 3.319,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.659,
+          "export_seconds": 0.641
+        },
+        {
+          "layout_seconds": 0.791,
+          "export_seconds": 0.731
+        }
+      ],
+      "validate_assemble_seconds": 0.039
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.286,
+      "prepare_seconds": 3.733,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.782,
+          "export_seconds": 0.643
+        },
+        {
+          "layout_seconds": 0.782,
+          "export_seconds": 0.612
+        }
+      ],
+      "validate_assemble_seconds": 0.054
+    },
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 0.349,
+      "prepare_seconds": 4.34,
+      "sheet_timings": [
+        {
+          "layout_seconds": 1.046,
+          "export_seconds": 1.124
+        },
+        {
+          "layout_seconds": 0.643,
+          "export_seconds": 0.724
+        }
+      ],
+      "validate_assemble_seconds": 0.038
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.361,
+      "prepare_seconds": 3.277,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.651,
+          "export_seconds": 0.639
+        },
+        {
+          "layout_seconds": 0.725,
+          "export_seconds": 0.753
+        }
+      ],
+      "validate_assemble_seconds": 0.037
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.38,
+      "prepare_seconds": 3.378,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.54,
+          "export_seconds": 0.629
+        },
+        {
+          "layout_seconds": 0.738,
+          "export_seconds": 0.784
+        }
+      ],
+      "validate_assemble_seconds": 0.037
+    },
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 0.412,
+      "prepare_seconds": 3.752,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.659,
+          "export_seconds": 1.121
+        },
+        {
+          "layout_seconds": 0.623,
+          "export_seconds": 0.757
+        }
+      ],
+      "validate_assemble_seconds": 0.045
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.551,
+      "prepare_seconds": 3.03,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.598,
+          "export_seconds": 0.626
+        },
+        {
+          "layout_seconds": 0.633,
+          "export_seconds": 0.715
+        }
+      ],
+      "validate_assemble_seconds": 0.038
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.43,
+      "prepare_seconds": 3.098,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.422,
+          "export_seconds": 0.713
+        },
+        {
+          "layout_seconds": 0.698,
+          "export_seconds": 0.773
+        }
+      ],
+      "validate_assemble_seconds": 0.036
+    },
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 0.46,
+      "prepare_seconds": 3.821,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.57,
+          "export_seconds": 1.208
+        },
+        {
+          "layout_seconds": 0.684,
+          "export_seconds": 0.721
+        }
+      ],
+      "validate_assemble_seconds": 0.035
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.587,
+      "prepare_seconds": 3.581,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.984,
+          "export_seconds": 0.643
+        },
+        {
+          "layout_seconds": 0.725,
+          "export_seconds": 0.743
+        }
+      ],
+      "validate_assemble_seconds": 0.036
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.761,
+      "prepare_seconds": 3.341,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.596,
+          "export_seconds": 0.669
+        },
+        {
+          "layout_seconds": 0.782,
+          "export_seconds": 0.732
+        }
+      ],
+      "validate_assemble_seconds": 0.036
+    },
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 0.451,
+      "prepare_seconds": 3.683,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.672,
+          "export_seconds": 1.16
+        },
+        {
+          "layout_seconds": 0.592,
+          "export_seconds": 0.718
+        }
+      ],
+      "validate_assemble_seconds": 0.037
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.392,
+      "prepare_seconds": 3.367,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.698,
+          "export_seconds": 0.66
+        },
+        {
+          "layout_seconds": 0.702,
+          "export_seconds": 0.711
+        }
+      ],
+      "validate_assemble_seconds": 0.037
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.368,
+      "prepare_seconds": 4.175,
+      "sheet_timings": [
+        {
+          "layout_seconds": 1.113,
+          "export_seconds": 0.684
+        },
+        {
+          "layout_seconds": 0.686,
+          "export_seconds": 0.767
+        }
+      ],
+      "validate_assemble_seconds": 0.04
+    },
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 0.499,
+      "prepare_seconds": 3.548,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.571,
+          "export_seconds": 1.104
+        },
+        {
+          "layout_seconds": 0.633,
+          "export_seconds": 0.695
+        }
+      ],
+      "validate_assemble_seconds": 0.037
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.485,
+      "prepare_seconds": 3.176,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.605,
+          "export_seconds": 0.658
+        },
+        {
+          "layout_seconds": 0.677,
+          "export_seconds": 0.749
+        }
+      ],
+      "validate_assemble_seconds": 0.036
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.455,
+      "prepare_seconds": 3.36,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.567,
+          "export_seconds": 0.627
+        },
+        {
+          "layout_seconds": 0.744,
+          "export_seconds": 0.788
+        }
+      ],
+      "validate_assemble_seconds": 0.04
+    },
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 0.379,
+      "prepare_seconds": 3.61,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.576,
+          "export_seconds": 1.122
+        },
+        {
+          "layout_seconds": 0.632,
+          "export_seconds": 0.75
+        }
+      ],
+      "validate_assemble_seconds": 0.035
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.347,
+      "prepare_seconds": 3.073,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.577,
+          "export_seconds": 0.605
+        },
+        {
+          "layout_seconds": 0.671,
+          "export_seconds": 0.753
+        }
+      ],
+      "validate_assemble_seconds": 0.036
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.445,
+      "prepare_seconds": 3.306,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.565,
+          "export_seconds": 0.656
+        },
+        {
+          "layout_seconds": 0.691,
+          "export_seconds": 0.814
+        }
+      ],
+      "validate_assemble_seconds": 0.05
+    },
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 0.412,
+      "prepare_seconds": 3.63,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.593,
+          "export_seconds": 1.122
+        },
+        {
+          "layout_seconds": 0.644,
+          "export_seconds": 0.694
+        }
+      ],
+      "validate_assemble_seconds": 0.035
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.377,
+      "prepare_seconds": 3.152,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.586,
+          "export_seconds": 0.592
+        },
+        {
+          "layout_seconds": 0.773,
+          "export_seconds": 0.736
+        }
+      ],
+      "validate_assemble_seconds": 0.045
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.386,
+      "prepare_seconds": 3.167,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.514,
+          "export_seconds": 0.659
+        },
+        {
+          "layout_seconds": 0.724,
+          "export_seconds": 0.728
+        }
+      ],
+      "validate_assemble_seconds": 0.047
+    },
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 0.373,
+      "prepare_seconds": 4.371,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.891,
+          "export_seconds": 1.338
+        },
+        {
+          "layout_seconds": 0.743,
+          "export_seconds": 0.692
+        }
+      ],
+      "validate_assemble_seconds": 0.039
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.416,
+      "prepare_seconds": 3.37,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.652,
+          "export_seconds": 0.654
+        },
+        {
+          "layout_seconds": 0.838,
+          "export_seconds": 0.733
+        }
+      ],
+      "validate_assemble_seconds": 0.036
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.369,
+      "prepare_seconds": 3.241,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.519,
+          "export_seconds": 0.703
+        },
+        {
+          "layout_seconds": 0.654,
+          "export_seconds": 0.76
+        }
+      ],
+      "validate_assemble_seconds": 0.036
+    }
+  ],
+  "intake_seconds": 15.488,
+  "prepare_seconds": 109.304,
+  "combined_assembly_seconds": 0.487,
+  "page_count": 60,
+  "first_page_seconds": 0.047
+}

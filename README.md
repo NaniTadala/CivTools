@@ -1,6 +1,6 @@
 # CivTools
 
-A Windows engineering workspace built with **PySide6 / Qt 6**. Six tools share
+A Windows engineering workspace built with **PySide6 / Qt 6**. Five tools share
 a compact launcher, independent utility windows, consistent controls and bundled
 Poppins typography. The desktop no longer depends on Tkinter.
 
@@ -30,6 +30,25 @@ preview for review and export. The geometry preview is a modeling aid, not a
 structural design check.
 
 ## Tools
+
+- **Excel Report Publisher:** drop Excel files or a folder, inspect worksheets,
+  choose automatic portrait/landscape with all report columns fitted to page
+  width, preview the actual PDF, and publish individual, per-sheet and combined
+  reports. Desktop Microsoft Excel is required. Supports `.xlsx`, `.xlsm`,
+  `.xlsb` and `.xls`; source workbooks are never saved. Existing print areas,
+  headers, numerical formats, diagrams and hidden content are preserved unless
+  explicitly overridden. A4/A3, repeated headings, section break rows, margins,
+  optional row-height repair and recalculation have sheet/workbook/batch settings.
+  Saved presets can match sheet names plus their layout signatures in later batches.
+  Exceptions are held for review; passwords are kept only for the current session.
+  Use **Retry exceptions** after resolving a problem. Export retains relative
+  folders, versions existing names, and writes an export summary. The last job
+  restores after restart. Prepared PDFs stay in `%APPDATA%/CivTools/report-jobs/`
+  so interrupted jobs and reviewed previews can be recovered.
+  Workbooks with data connections or legacy macro sheets require a publishing
+  copy without those features. External links are not refreshed; binary/legacy
+  formats have limited saved-value preflight and are explicitly marked for review.
+  See [publisher plan and implementation notes](docs/excel-report-publisher-plan.md).
 
 - **DXF quantity extractor:** extract Approximate Quantities tables from model and
   paper space; preserve other drawings, track changes and consolidate material

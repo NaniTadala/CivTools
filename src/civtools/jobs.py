@@ -184,6 +184,9 @@ def pdf_process_request(operation, args):
             page = document.new_page(width=100, height=100)
             page.insert_text((10, 30), "CivTools")
             return page.get_pixmap(alpha=False).tobytes("png"), []
+    if operation == 'report':
+        from .core.report_service import pdf_task
+        return pdf_task(args[0], args[1]), []
     function = {"scan": scan_pdfs, "render": render_pdf}[operation]
     if operation == "scan":
         result = function(args[0], report, args[1])

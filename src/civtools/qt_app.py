@@ -17,6 +17,7 @@ TOOLS = (
     ("productivity", "STAAD productivity suite", "Modeling", "Select and group members, export results, generate PEB frames and STAAD commands.", "STAAD.PRO / EXCEL"),
     ("mapper", "AutoCAD smart mapper", "Drawings", "Plot spreadsheet coordinates and labels in AutoCAD.", "EXCEL / CAD"),
     ("library", "EIL standards library", "Documents", "Find, preview and open engineering standards.", "PDF LIBRARY"),
+    ("reports", "Excel Report Publisher", "Documents", "Prepare calculation reports, review page layouts and publish PDFs in batches.", "EXCEL / PDF"),
 )
 
 def get_resource_path(relative_path):
@@ -200,12 +201,14 @@ class UtilityWindow(QMainWindow):
         self.setWindowTitle(f"{title} | CivTools")
         self.setWindowIcon(tool_icon(key, 64))
         width, height = {"quantities": (640, 680),
-                         "mapper": (580, 620), "library": (850, 680), "productivity": (420, 480)}[key]
+                         "mapper": (580, 620), "library": (850, 680), "productivity": (420, 480), "reports": (1000, 700)}[key]
         self.resize(width, height)
         self.setMinimumSize(480, 460)
         if key == 'productivity':
             self.setMinimumSize(360, 300)
             self.resize(width, height)
+        if key == 'reports':
+            self.setMinimumSize(760, 500)
         central = QWidget()
         central.setObjectName("workspace")
         layout = QVBoxLayout(central)
@@ -220,6 +223,11 @@ class UtilityWindow(QMainWindow):
             page.toolbar.insertWidget(0, self.pin)
             page.options_menu.addSeparator()
 
+        elif key == 'reports':
+            back = button('All tools',lambda:launcher.navigate('home'),True)
+            page.navigation.insertWidget(0,back)
+            self.pin.setText('Pin')
+            page.navigation.addWidget(self.pin)
         else:
             toolbar = QHBoxLayout()
             toolbar.setContentsMargins(18, 10, 18, 0)
@@ -229,7 +237,7 @@ class UtilityWindow(QMainWindow):
             layout.addLayout(toolbar)
         layout.addWidget(page, 1)
         self.setCentralWidget(central)
-        geometry_key = "windows/productivity-floating-v3" if key == "productivity" else f"windows/{key}"
+        geometry_key = "windows/productivity-floating-v3" if key == "productivity" else "windows/reports-compact-v1" if key == "reports" else f"windows/{key}"
         geometry = launcher.settings.value(geometry_key)
         if geometry:
             self.restoreGeometry(geometry)
@@ -265,7 +273,7 @@ class UtilityWindow(QMainWindow):
             self.launcher.navigate("home")
 
     def save_state(self):
-        geometry_key = "windows/productivity-floating-v3" if self.key == "productivity" else f"windows/{self.key}"
+        geometry_key = "windows/productivity-floating-v3" if self.key == "productivity" else "windows/reports-compact-v1" if self.key == "reports" else f"windows/{self.key}"
         if self.key != "productivity" or not self.page.collapsed:
             self.launcher.settings.setValue(geometry_key, self.saveGeometry())
         self.launcher.settings.setValue(f"pinned/{self.key}", self.pin.isChecked())
@@ -330,8 +338,9 @@ class CivToolsApp(QMainWindow):
         if key not in self.pages:
             from .qt_pages import QuantityPage, MapperPage, LibraryPage
             from .qt_productivity import ProductivityPage
+            from .qt_report_publisher import ReportPublisherPage
             factory = {"quantities": QuantityPage, "mapper": MapperPage, "library": LibraryPage,
-                       "productivity": ProductivityPage}
+                       "productivity": ProductivityPage, "reports": ReportPublisherPage}
             page = factory[key](self)
             page.restore_state(key)
             utility = UtilityWindow(self, key, page)
@@ -408,10 +417,18 @@ def main():
                 key in window.utility_windows and window.utility_windows[key].isVisible()
                 for key, *_ in TOOLS)
             window.pdf.close()
+            capture_folder = os.environ.get('CIVTOOLS_SMOKE_CAPTURE')
+            if capture_folder:
+                capture_folder = Path(capture_folder)
+                capture_folder.mkdir(parents=True,exist_ok=True)
+                window.utility_windows['reports'].grab().save(str(capture_folder/'publisher-packaged.png'))
             report_path = os.environ.get("CIVTOOLS_SMOKE_REPORT")
             if report_path:
                 import json
-                Path(report_path).write_text(json.dumps({"passed": valid, "failures": failures, "pdf_rendered": pdf_checked == [True], "tools": list(window.utility_windows)}, indent=2), encoding="utf-8")
+                report_page = window.pages['reports']
+                Path(report_path).write_text(json.dumps({"passed": valid, "failures": failures, "pdf_rendered": pdf_checked == [True], "tools": list(window.utility_windows),
+                    "publisher_buttons": {"add_type":type(report_page.add_reports_button).__name__,"add_icon":not report_page.add_reports_button.icon().isNull(),
+                                          "settings_icon":not report_page.layout_toggle.icon().isNull()}}, indent=2), encoding="utf-8")
             app.exit(0 if valid else 1)
         deadline = QTimer(window)
         deadline.setSingleShot(True)

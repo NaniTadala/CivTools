@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "failures": [],
+  "pdf_rendered": true,
+  "tools": [
+    "quantities",
+    "productivity",
+    "mapper",
+    "library",
+    "reports"
+  ],
+  "publisher_buttons": {
+    "add_type": "QPushButton",
+    "add_icon": false,
+    "settings_icon": false
+  }
+}

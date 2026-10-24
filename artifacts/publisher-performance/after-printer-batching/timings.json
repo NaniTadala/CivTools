@@ -1,0 +1,59 @@
+{
+  "count": 3,
+  "workload": "Repeated synthetic two-sheet workbooks",
+  "reports": [
+    {
+      "name": "Base plate check.xlsx",
+      "inspect_seconds": 1.545,
+      "prepare_seconds": 4.399,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.517,
+          "export_seconds": 0.932
+        },
+        {
+          "layout_seconds": 0.585,
+          "export_seconds": 0.756
+        }
+      ],
+      "validate_assemble_seconds": 0.128
+    },
+    {
+      "name": "Foundation design.xlsx",
+      "inspect_seconds": 0.326,
+      "prepare_seconds": 3.258,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.633,
+          "export_seconds": 0.615
+        },
+        {
+          "layout_seconds": 0.624,
+          "export_seconds": 0.692
+        }
+      ],
+      "validate_assemble_seconds": 0.036
+    },
+    {
+      "name": "Steel connection.xlsx",
+      "inspect_seconds": 0.275,
+      "prepare_seconds": 3.331,
+      "sheet_timings": [
+        {
+          "layout_seconds": 0.615,
+          "export_seconds": 0.633
+        },
+        {
+          "layout_seconds": 0.724,
+          "export_seconds": 0.793
+        }
+      ],
+      "validate_assemble_seconds": 0.035
+    }
+  ],
+  "intake_seconds": 4.161,
+  "prepare_seconds": 13.21,
+  "combined_assembly_seconds": 0.081,
+  "page_count": 6,
+  "first_page_seconds": 0.054
+}

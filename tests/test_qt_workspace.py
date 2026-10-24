@@ -257,7 +257,7 @@ class WorkspaceTests(unittest.TestCase):
         dashboard.set_category("Documents")
         self.assertFalse(dashboard.empty.isHidden())
         dashboard.search.clear()
-        self.assertEqual(sum(not c.isHidden() for c in dashboard.cards), 1)
+        self.assertEqual(sum(not c.isHidden() for c in dashboard.cards), 2)
         self.assertTrue(dashboard.category_buttons["Documents"].isChecked())
 
     def test_open_buttons_launch_every_tool_and_resume_the_same_window(self):

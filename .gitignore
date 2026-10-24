@@ -11,3 +11,7 @@ __pycache__/
 /data/pdf_metadata_cache.json
 
 .rea-runtime/
+/artifacts/publisher-polish/config/
+/artifacts/publisher-polish/samples/
+/artifacts/publisher-polish/PDFs/
+/artifacts/publisher-text-audit/config/

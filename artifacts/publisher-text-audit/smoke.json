@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "failures": [],
+  "pdf_rendered": true,
+  "tools": [
+    "quantities",
+    "productivity",
+    "mapper",
+    "library",
+    "reports"
+  ]
+}
